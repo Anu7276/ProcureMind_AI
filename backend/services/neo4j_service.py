@@ -35,6 +35,7 @@ async def get_driver() -> AsyncDriver:
         _driver = AsyncGraphDatabase.driver(
             settings.NEO4J_URI,
             auth=(settings.NEO4J_USER, settings.NEO4J_PASSWORD),
+            connection_timeout=1.0,
         )
     return _driver
 
@@ -42,11 +43,16 @@ async def get_driver() -> AsyncDriver:
 # ── Availability check ────────────────────────────────────────────────────────
 
 async def is_available() -> Tuple[bool, Optional[float]]:
+    import asyncio
     t0 = time.monotonic()
     try:
-        driver = await get_driver()
-        async with driver.session() as s:
-            await s.run("RETURN 1")
+        async def _ping():
+            driver = await get_driver()
+            async with driver.session() as s:
+                await s.run("RETURN 1")
+            return True
+
+        await asyncio.wait_for(_ping(), timeout=1.0)
         return True, (time.monotonic() - t0) * 1000
     except Exception as exc:
         logger.warning("Neo4j unavailable: %s", exc)

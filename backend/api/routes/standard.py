@@ -46,8 +46,21 @@ async def get_standard(key: str):
                 for n in neighbours
                 if n.get("key")
             ]
+        else:
+            raise RuntimeError("Neo4j offline")
     except Exception:
-        pass  # graph neighbours are supplementary; don't fail the request
+        # Fall back to in-memory relationships graph
+        in_mem = kl.get_related_standards_in_memory(record["key"])
+        related = [
+            RelatedStandard(
+                key=n.get("key", ""),
+                display_code=n.get("display_code", n.get("key", "")),
+                title=n.get("title", ""),
+                relationship_type=n.get("relationship_type", "references"),
+            )
+            for n in in_mem
+            if n.get("key")
+        ]
 
     # Compliance info (in-memory)
     cert_info = None

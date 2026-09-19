@@ -36,7 +36,7 @@ async def get_async_client() -> AsyncQdrantClient:
     global _async_client
     if _async_client is None:
         _async_client = AsyncQdrantClient(
-            host=settings.QDRANT_HOST, port=settings.QDRANT_PORT
+            host=settings.QDRANT_HOST, port=settings.QDRANT_PORT, timeout=1.0
         )
     return _async_client
 
@@ -45,10 +45,14 @@ async def get_async_client() -> AsyncQdrantClient:
 
 async def is_available() -> Tuple[bool, Optional[float]]:
     """Returns (available, latency_ms)."""
+    import asyncio
     t0 = time.monotonic()
     try:
-        client = await get_async_client()
-        await client.get_collections()
+        async def _ping():
+            client = await get_async_client()
+            return await client.get_collections()
+
+        await asyncio.wait_for(_ping(), timeout=1.0)
         latency = (time.monotonic() - t0) * 1000
         return True, latency
     except Exception as exc:

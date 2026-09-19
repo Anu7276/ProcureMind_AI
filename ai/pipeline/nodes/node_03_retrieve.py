@@ -168,15 +168,19 @@ async def node_03_retrieve(state: PipelineState) -> dict:
     if not qdrant_available:
         try:
             candidates = await _postgres_keyword_fallback(query_text, top_k)
-            logger.info(
-                "Node03: keyword fallback returned %d candidates", len(candidates)
-            )
+            if candidates:
+                logger.info(
+                    "Node03: keyword fallback returned %d candidates", len(candidates)
+                )
         except Exception as exc:
-            logger.error("Node03: PostgreSQL keyword fallback also failed: %s", exc)
+            logger.warning("Node03: PostgreSQL keyword fallback also unavailable (%s)", exc)
+
+        if not candidates:
+            logger.info("Node03: using in-memory verified BIS standards catalog")
             warnings.append(
-                "All vector stores unavailable — no candidates retrieved"
+                "External stores offline — using in-memory verified BIS standards catalog"
             )
-            candidates = []
+            candidates = kl.search_standards_in_memory(query_text, top_k)
 
     # ── Step 3: Boost literal IS code mentions ───────────────────────────────
     if literal_keys:
@@ -198,12 +202,18 @@ async def node_03_retrieve(state: PipelineState) -> dict:
                 raise RuntimeError("Neo4j ping failed")
 
         except Exception as exc:
-            logger.warning("Node03: Neo4j unavailable (%s) — skipping graph expansion", exc)
+            logger.warning("Node03: Neo4j unavailable (%s) — using in-memory relationship graph", exc)
             warnings.append(
-                "Neo4j unavailable — graph enrichment skipped, results are vector-only"
+                "Neo4j offline — populated related standards from in-memory BIS relationships graph"
             )
-            # Ensure every candidate has an empty related_standards list
-            candidates = [{**c, "related_standards": c.get("related_standards", [])} for c in candidates]
+            # Use in-memory relationships index
+            candidates = [
+                {
+                    **c,
+                    "related_standards": c.get("related_standards") or kl.get_related_standards_in_memory(c.get("key", "")),
+                }
+                for c in candidates
+            ]
 
     stages.append("retrieve")
     return {

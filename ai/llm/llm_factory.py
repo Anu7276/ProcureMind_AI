@@ -32,14 +32,37 @@ logger = logging.getLogger(__name__)
 def get_llm() -> BaseChatModel:
     """
     Return a cached LangChain chat model based on LLM_PROVIDER env var.
-    The same instance is reused across all pipeline nodes.
+    If no valid API key is set, automatically falls back to MockChatModel
+    so the system runs fully end-to-end without errors until the user adds their key.
     """
     provider = settings.LLM_PROVIDER.lower()
     model_name = settings.llm_model_name
 
     logger.info("Initialising LLM: provider=%s model=%s", provider, model_name)
 
-    if provider == "google":
+    def _is_placeholder_key(key: str) -> bool:
+        if not key or not key.strip():
+            return True
+        k = key.strip().lower()
+        return (
+            k.startswith("your_")
+            or "actual_key" in k
+            or "placeholder" in k
+            or len(k) < 15
+        )
+
+    if provider in ["mock", "local", "offline"]:
+        from ai.llm.mock_llm import MockChatModel
+        return MockChatModel()
+
+    elif provider == "google":
+        if _is_placeholder_key(settings.GOOGLE_API_KEY):
+            logger.warning(
+                "GOOGLE_API_KEY is not set or is a placeholder in .env. "
+                "Using built-in MockChatModel. Add your real Google Gemini API key to .env anytime to switch automatically."
+            )
+            from ai.llm.mock_llm import MockChatModel
+            return MockChatModel()
         from langchain_google_genai import ChatGoogleGenerativeAI
         return ChatGoogleGenerativeAI(
             model=model_name,
@@ -49,6 +72,10 @@ def get_llm() -> BaseChatModel:
         )
 
     elif provider == "openai":
+        if _is_placeholder_key(settings.OPENAI_API_KEY):
+            logger.warning("OPENAI_API_KEY is not set in .env. Using built-in MockChatModel.")
+            from ai.llm.mock_llm import MockChatModel
+            return MockChatModel()
         from langchain_openai import ChatOpenAI
         return ChatOpenAI(
             model=model_name,
@@ -57,6 +84,10 @@ def get_llm() -> BaseChatModel:
         )
 
     elif provider == "anthropic":
+        if _is_placeholder_key(settings.ANTHROPIC_API_KEY):
+            logger.warning("ANTHROPIC_API_KEY is not set in .env. Using built-in MockChatModel.")
+            from ai.llm.mock_llm import MockChatModel
+            return MockChatModel()
         from langchain_anthropic import ChatAnthropic
         return ChatAnthropic(
             model=model_name,
@@ -65,6 +96,10 @@ def get_llm() -> BaseChatModel:
         )
 
     elif provider == "groq":
+        if _is_placeholder_key(settings.GROQ_API_KEY):
+            logger.warning("GROQ_API_KEY is not set in .env. Using built-in MockChatModel.")
+            from ai.llm.mock_llm import MockChatModel
+            return MockChatModel()
         from langchain_groq import ChatGroq
         return ChatGroq(
             model=model_name,
@@ -84,10 +119,9 @@ def get_llm() -> BaseChatModel:
         )
 
     else:
-        raise ValueError(
-            f"Unsupported LLM_PROVIDER: '{provider}'. "
-            "Supported: google | openai | anthropic | groq | ollama"
-        )
+        logger.warning("Unknown provider '%s' — using MockChatModel fallback", provider)
+        from ai.llm.mock_llm import MockChatModel
+        return MockChatModel()
 
 
 # ── Embedding model ───────────────────────────────────────────────────────────

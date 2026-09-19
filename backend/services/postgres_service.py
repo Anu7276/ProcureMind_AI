@@ -24,6 +24,7 @@ _engine = create_async_engine(
     pool_size=10,
     max_overflow=20,
     echo=False,
+    connect_args={"timeout": 1.0},
 )
 _session_factory = async_sessionmaker(_engine, expire_on_commit=False)
 
@@ -38,10 +39,14 @@ async def get_session():
 
 async def is_available() -> bool:
     """Ping check — used for health endpoint and degraded-mode detection."""
+    import asyncio
     try:
-        async with get_session() as s:
-            await s.execute(text("SELECT 1"))
-        return True
+        async def _ping():
+            async with get_session() as s:
+                await s.execute(text("SELECT 1"))
+            return True
+
+        return await asyncio.wait_for(_ping(), timeout=1.0)
     except Exception as exc:
         logger.warning("PostgreSQL unavailable: %s", exc)
         return False
@@ -174,7 +179,7 @@ async def write_recommendation_log(
             )
             await s.commit()
     except Exception as exc:
-        logger.error("write_recommendation_log failed: %s", exc)
+        logger.debug("write_recommendation_log failed (non-fatal): %s", exc)
 
 
 async def close():

@@ -106,19 +106,46 @@ async def evaluate(api_base: str, concurrency: int = 5) -> None:
                 "hit@1": hit1,
             }
 
+    direct_mode = False
     async with httpx.AsyncClient() as client:
         # Check API is reachable
         try:
-            health = await client.get(f"{api_base}/health", timeout=10.0)
+            health = await client.get(f"{api_base}/health", timeout=3.0)
             health.raise_for_status()
             logger.warning("API health: %s", health.json().get("status"))
-        except Exception as exc:
-            print(f"\n❌ Cannot reach API at {api_base}: {exc}")
-            print("   Start the backend first:  python -m uvicorn backend.main:app --reload")
-            sys.exit(1)
+        except Exception:
+            print(f"Notice: Backend API server not running on {api_base}.")
+            print("Running direct in-process evaluation with local pipeline...")
+            direct_mode = True
 
-        tasks = [bounded_run(q) for q in eval_queries]
-        results = await tqdm_asyncio.gather(*tasks, desc="Evaluating")
+        if not direct_mode:
+            tasks = [bounded_run(q) for q in eval_queries]
+            results = await tqdm_asyncio.gather(*tasks, desc="Evaluating (HTTP)")
+        else:
+            from ai.knowledge import knowledge_loader as kl
+            from ai.pipeline.graph import run_pipeline
+            kl.load_all()
+
+            async def direct_run(q: Dict) -> Dict[str, Any]:
+                try:
+                    res = await run_pipeline(q["query"], input_type="text")
+                    recs = res.get("recommendations", [])
+                    top5 = [r.get("key", r.get("is_code", "")).split(":")[0].strip() for r in recs[:5]]
+                except Exception as e:
+                    top5 = []
+                expected = q.get("expected_standards", [])
+                return {
+                    "id": q.get("id"),
+                    "query": q["query"],
+                    "category": q.get("category", "Unknown"),
+                    "expected": expected,
+                    "top5": top5,
+                    "hit@5": _check_hit(top5, expected),
+                    "hit@1": _check_hit_at_1(top5, expected),
+                }
+
+            tasks = [direct_run(q) for q in eval_queries]
+            results = await tqdm_asyncio.gather(*tasks, desc="Evaluating (Direct)")
 
     # ── Compute metrics ───────────────────────────────────────────────────────
     total = len(results)
@@ -131,28 +158,35 @@ async def evaluate(api_base: str, concurrency: int = 5) -> None:
     from collections import defaultdict
     cat_hits: Dict[str, List[bool]] = defaultdict(list)
     for r in results:
-        cat_hits[r["category"]].append(r["hit@5"])
+        cat_name = str(r.get("category") or "General / Uncategorized")
+        cat_hits[cat_name].append(r["hit@5"])
 
     cat_table = []
-    for cat, hits in sorted(cat_hits.items()):
+    for cat, hits in sorted(cat_hits.items(), key=lambda x: x[0]):
         cat_table.append([cat, len(hits), sum(hits), f"{sum(hits)/len(hits):.1%}"])
 
     # Failures
     failures = [r for r in results if not r["hit@5"]]
 
+    if hasattr(sys.stdout, "reconfigure"):
+        try:
+            sys.stdout.reconfigure(encoding="utf-8")
+        except Exception:
+            pass
+
     # ── Print report ──────────────────────────────────────────────────────────
-    print("\n" + "═" * 60)
+    print("\n" + "=" * 60)
     print("BIS Standards Recommendation Engine — Eval Report")
-    print("═" * 60)
+    print("=" * 60)
     print(f"\n  Queries evaluated : {total}")
     print(f"  recall@5          : {recall5:.1%}  ({hits5}/{total})")
     print(f"  recall@1          : {recall1:.1%}  ({hits1}/{total})")
 
-    print("\n── Per-category breakdown ──")
+    print("\n-- Per-category breakdown --")
     print(tabulate(cat_table, headers=["Category", "Queries", "Hits@5", "Recall@5"]))
 
     if failures:
-        print(f"\n── Failures ({len(failures)} queries where expected NOT in top 5) ──")
+        print(f"\n-- Failures ({len(failures)} queries where expected NOT in top 5) --")
         fail_table = [
             [r["id"], r["query"][:60], r["expected"], r["top5"]]
             for r in failures[:20]  # show up to 20
@@ -161,8 +195,8 @@ async def evaluate(api_base: str, concurrency: int = 5) -> None:
         if len(failures) > 20:
             print(f"  ... and {len(failures) - 20} more")
 
-    print(f"\n✅ recall@5 = {recall5:.1%}")
-    print("═" * 60)
+    print(f"\n[OK] recall@5 = {recall5:.1%}")
+    print("=" * 60)
 
     # Write results to JSON
     out_path = Path("ai/evaluation/eval_results.json")

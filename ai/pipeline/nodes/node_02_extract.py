@@ -84,10 +84,10 @@ async def node_02_extract(state: PipelineState) -> dict:
 
         if requirement is None:
             warnings.append(
-                "Node02: LLM returned unparseable JSON — using empty requirement. "
-                f"Raw (first 200 chars): {raw_content[:200]}"
+                "Node02: LLM returned unparseable JSON — falling back to rule-based extraction."
             )
-            requirement = _EMPTY_REQ
+            from ai.llm.mock_llm import extract_structured_heuristically
+            requirement = extract_structured_heuristically(text)
         else:
             # Fill in missing keys
             for k in _EMPTY_REQ:
@@ -99,9 +99,10 @@ async def node_02_extract(state: PipelineState) -> dict:
             )
 
     except Exception as exc:
-        logger.error("Node02: LLM call failed: %s", exc)
-        warnings.append(f"Node02: LLM extraction failed ({exc}) — using empty requirement")
-        requirement = _EMPTY_REQ
+        logger.warning("Node02: LLM call unavailable or failed (%s) — using rule-based extraction", exc)
+        warnings.append("LLM unavailable or API key pending — extracted requirements via procurement taxonomy")
+        from ai.llm.mock_llm import extract_structured_heuristically
+        requirement = extract_structured_heuristically(text)
 
     stages.append("extract")
     return {
