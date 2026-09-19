@@ -1,0 +1,32 @@
+[
+  {
+    "id": "CB-01",
+    "query": "Industrial moulded case circuit breaker rated 630A for factory main panel, 415V AC, category A",
+    "expected_standard": "IS/IEC 60947-2:2003",
+    "why": "Direct scope match: industrial LV circuit breaker, main contacts <=1000V a.c., utilization category A"
+  },
+  {
+    "id": "CB-02",
+    "query": "Miniature circuit breaker (MCB) for household wiring protection, single phase, 32A",
+    "expected_standard": "IS/IEC 60898-1:2002",
+    "why": "Household/domestic circuit breaker for uninstructed persons -> IS/IEC 60898-1:2002 (supersedes withdrawn IS 8828:1996). Common confusion point vs IS/IEC 60947-2 (industrial). Correct answer also tests whether the system flags IS 8828:1996 as withdrawn if a stale document cites it."
+  },
+  {
+    "id": "CB-03",
+    "query": "Air circuit breaker with short-time withstand rating for selective coordination in substation, category B",
+    "expected_standard": "IS/IEC 60947-2:2003",
+    "why": "Utilization category B with Icw rating explicitly defined in this standard (4.4, Table 4)"
+  },
+  {
+    "id": "CB-04",
+    "query": "Circuit breaker with integral residual current protection for earth leakage, industrial panel",
+    "expected_standard": "IS/IEC 60947-2:2003",
+    "why": "Covered by Annex B of IS/IEC 60947-2:2003 specifically"
+  },
+  {
+    "id": "CB-05",
+    "query": "General rules for low-voltage switchgear and controlgear applicable to all device types",
+    "expected_standard": "IS/IEC 60947-1:2004",
+    "why": "Part 1 (general rules) is the parent standard referenced throughout Part 2; tests understanding of the series hierarchy"
+  }
+]

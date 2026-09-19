@@ -1,0 +1,64 @@
+[
+ {
+  "name": "Scheme-I / ISI Mark",
+  "scheme_code": "Scheme-I",
+  "popular_name": "ISI Mark",
+  "description": "Product Certification Scheme involving factory audits, testing infrastructure verification, and third-party laboratory sample verification.",
+  "statutory_basis": "BIS Act 2016, Schedule II, Scheme I",
+  "symbol": "ISI Monogram + CM/L (Certification Marks License Number)",
+  "applicable_sectors": [
+   "Electrical",
+   "Civil",
+   "Mechanical",
+   "Food",
+   "Chemicals",
+   "Solar"
+  ],
+  "lead_time_weeks": 8,
+  "is_mandatory_for_qco": true
+ },
+ {
+  "name": "Scheme-II / CRS",
+  "scheme_code": "Scheme-II",
+  "popular_name": "Compulsory Registration Scheme (CRS)",
+  "description": "Self-declaration of conformity based on testing of product samples in BIS-recognized labs. Mandated by MeitY for electronics, IT equipment, and solar inverters.",
+  "statutory_basis": "BIS (Conformity Assessment) Regulations 2018, Scheme II",
+  "symbol": "Standard Mark with Registration Number R-XXXXXXXX",
+  "applicable_sectors": [
+   "Electronics & IT",
+   "Solar Inverters",
+   "Secondary Lithium Cells",
+   "LED Drivers"
+  ],
+  "lead_time_weeks": 4,
+  "is_mandatory_for_qco": true
+ },
+ {
+  "name": "Scheme-IV / Code of Practice",
+  "scheme_code": "Scheme-IV",
+  "popular_name": "Certificate of Conformity / National Engineering Code",
+  "description": "Code of practice or system conformity standard defining design engineering, installation safety, and testing methods (e.g., IS 456 for concrete, IS 3043 for earthing).",
+  "statutory_basis": "BIS Standardization Rules & National Building/Electrical Code",
+  "symbol": "Technical Compliance Specification",
+  "applicable_sectors": [
+   "Civil Design",
+   "Electrical Installation",
+   "Testing Protocols"
+  ],
+  "lead_time_weeks": 0,
+  "is_mandatory_for_qco": false
+ },
+ {
+  "name": "FMCS",
+  "scheme_code": "FMCS",
+  "popular_name": "Foreign Manufacturers Certification Scheme",
+  "description": "Allows foreign manufacturers to use the standard ISI mark on products exported to India, requiring BIS physical factory inspection abroad.",
+  "statutory_basis": "BIS Act 2016, Regulation 7",
+  "symbol": "ISI Mark with Foreign CM/L License",
+  "applicable_sectors": [
+   "All Sectors for Imported Goods"
+  ],
+  "lead_time_weeks": 16,
+  "is_mandatory_for_qco": true
+ }
+]

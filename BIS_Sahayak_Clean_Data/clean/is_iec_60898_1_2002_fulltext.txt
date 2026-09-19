@@ -1,0 +1,166 @@
+IS/IEC 60898-1:2002
+[Superseding IS 8828:1996 - IS 8828 was WITHDRAWN 2008-01-11]
+Indian Standard - ELECTRICAL ACCESSORIES - CIRCUIT-BREAKERS FOR OVERCURRENT PROTECTION FOR
+HOUSEHOLD AND SIMILAR INSTALLATIONS - PART 1: CIRCUIT-BREAKERS FOR AC OPERATION
+ICS 29.120.50
+Equivalence: IEC 60898-1:2002 (consolidated with Amendments 1 & 2)
+Source: https://archive.org/details/gov.in.is.iec.60898.1.2002 (Public.Resource.Org)
+License: CC0 1.0 Universal (public domain) - published under RTI Act 2005
+Division: Electrotechnical | Committee: ETD 07 (Low-Voltage Switchgear and Controlgear)
+
+=== STATUS CORRECTION (important for version/amendment tracking) ===
+IS 8828:1996 was WITHDRAWN on 2008-01-11. It is superseded by TWO standards:
+  - IS/IEC 60898-1:2002 (this document) - AC-only circuit-breakers
+  - IS/IEC 60898-2:2003 - AC and DC circuit-breakers
+Per BIS Connect record: IS 8828:1996, Reviewed 2006, Status "Withdrawn", superseded by
+IS/IEC 60898-1:2002. This is exactly the kind of version/amendment-checker fact your
+architecture diagram's "Version & Amendment Checker" module should catch - recommending
+IS 8828:1996 today would be citing a dead standard.
+
+=== SCOPE AND OBJECT (Clause 1) - KEY DISAMBIGUATION FROM IS/IEC 60947-2 ===
+"This part of IEC 60898 applies to a.c. air-break circuit-breakers for operation at 50 Hz
+or 60 Hz, having a RATED VOLTAGE NOT EXCEEDING 440V (between phases), a RATED CURRENT NOT
+EXCEEDING 125A and a RATED SHORT-CIRCUIT CAPACITY NOT EXCEEDING 25000A. As far as possible,
+it is in line with the requirements contained in IEC 60947-2."
+
+"These circuit-breakers are intended for the protection against overcurrents of wiring
+installations of buildings and similar applications; they are designed for USE BY
+UNINSTRUCTED PEOPLE and for not being maintained. They are intended for use in an
+environment with pollution degree 2. They are suitable for isolation."
+
+Explicitly EXCLUDED from this standard's scope:
+  - circuit-breakers intended to protect motors
+  - circuit-breakers with user-accessible adjustable current setting
+
+NOTE 1 in the standard itself: "For more severe overvoltage conditions, circuit-breakers
+complying with other standards (e.g. IEC 60947-2) should be used."//
+
+THIS IS THE EXACT DISAMBIGUATION RULE for a recommendation engine:
+  - Rated current <=125A, voltage <=440V, Icu <=25000A, household/uninstructed-person use,
+    non-adjustable settings -> IS/IEC 60898-1 (or -2 for DC)
+  - Anything above those ceilings, OR industrial/instructed-person use, OR motor protection,
+    OR adjustable settings -> IS/IEC 60947-2
+  - Pollution degree 2 (60898-1) vs pollution degree 3 default (60947-2, per its Clause 6)
+    is another distinguishing signal between the two standards.
+
+Related standards referenced in scope: IEC 60898-2 (AC+DC circuit-breakers), IEC 61009-1/
+-2-1/-2-2 (residual current circuit-breakers with integral overcurrent protection - RCBOs),
+Annex D (co-ordination under short-circuit conditions with another SCPD).
+
+=== KEY DEFINITIONS (Clause 3) - overlap and divergence from IS/IEC 60947-1/-2 ===
+- circuit-breaker (mechanical) (3.1.4): same core wording as IEC 60947-1/-2 definition, with
+  "automatically breaking currents" made explicit.
+- protected pole / unprotected pole / switched neutral pole (3.2.7.x) - household-specific
+  pole classification not present in Part 2.
+- uninterrupted duty (3.2.14) - same concept as Part 1's 4.3.4.2.
+- short-circuit (making and breaking) capacity (3.5.5): DIFFERENT formula basis than Part 2 -
+  defined relative to "0,85 times its non-tripping current for the conventional time" rather
+  than Part 2's Icu/Ics % table (Table 1).
+- instantaneous tripping current + Type B/C/D classification (3.5.17, Clause 4.5) - THIS
+  CLASSIFICATION DOES NOT EXIST IN IS/IEC 60947-2. Type B/C/D (tripping curve shape) is a
+  household/MCB-specific concept - useful signal for a classifier distinguishing the two
+  standards from free-text queries mentioning "Type B breaker" or "Type C MCB".
+- Cross-references confirm shared lineage: total/partial discrimination, selectivity limit
+  current, take-over current definitions are explicitly cited FROM IEC 60947-1 and
+  IEC 60947-2 (3.5.14.1-3.5.14.9) - i.e. this household standard borrows its coordination
+  concepts directly from the Part 1/Part 2 framework already in the dataset.
+
+=== CLASSIFICATION (Clause 4) ===
+4.1 By number of poles: single/two/three/four-pole (with protected/unprotected/switched-
+  neutral pole combinations).
+4.2 By protection against external influences: enclosed-type vs unenclosed-type.
+4.3 By mounting: surface-type, flush-type, panel board (distribution board) type.
+4.4 By connection method: fixation system (plug-in/bolt-on/screw-in) and terminal type
+  (screw-type, screwless-type, flat quick-connect, aluminium-conductor screw-type).
+4.5 By instantaneous tripping current - THE TYPE B/C/D CLASSIFICATION (Table 2):
+    Type B: tripping range >3In to <=5In
+    Type C: tripping range >5In to <=10In
+    Type D: tripping range >10In to <=20In (up to 50In for special cases)
+4.6 By I2t characteristic (optional manufacturer classification).
+
+=== CHARACTERISTICS (Clause 5) ===
+5.2 Rated quantities: Ue (rated operational voltage), Ui (rated insulation voltage - defaults
+  to max Ue unless stated), Uimp (rated impulse withstand voltage per Table 3), In (rated
+  current - reference ambient 30C), rated frequency, Icn (rated short-circuit capacity =
+  ultimate short-circuit breaking capacity assigned by manufacturer).
+5.3 Standard/preferred values:
+  - Table 1: preferred rated voltages by pole count and system type (e.g. single-pole/
+    single-phase 230V; three-pole/three-phase 400V; North American 120/240V variants)
+  - Table 2 (5.3.2): preferred rated currents: 6,8,10,13,16,20,25,32,40,50,63,80,100,125A
+  - Table 3 (5.3.3): standard frequencies 50Hz, 60Hz
+  - 5.3.4: standard Icn values up to 10000A: 1500/3000/4500/6000/10000A; above 10000A up to
+    25000A: preferred value 20000A (THIS IS THE HARD CEILING vs Part 2's much higher Icu
+    ranges in its Table 2, up to and beyond 50kA)
+  - Table 3 (5.3.6): rated impulse withstand voltage by installation nominal voltage (2.5kV
+    for 120/240V single-phase mid-point-earthed; 4kV for 230/400V three-phase)
+
+=== MARKING (Clause 6) ===
+Required marking includes: manufacturer name/trademark; type/catalogue/serial number; rated
+voltage(s); RATED CURRENT PRECEDED BY TRIPPING-TYPE SYMBOL (e.g. "B16", "C32", "D63") - this
+compact marking format (letter+number) is a strong text-pattern signal for identifying
+household MCBs in free-text queries; rated frequency (if single-frequency); rated
+short-circuit capacity in amperes; wiring diagram; reference ambient temp if != 30C; degree
+of protection if != IP20; for Type D: max instantaneous tripping current if >20In; Uimp if
+2.5kV. Isolation suitability symbol (per IEC TC3 symbols). Terminal markings: N for neutral,
+earth symbol per IEC 60417-5019.
+
+=== STANDARD CONDITIONS FOR SERVICE (Clause 7) ===
+- Ambient air temp: -5C to +40C (24h average <=+35C) - vs Part 2/Part 1 which don't state
+  a universal range this explicitly at the product-standard level for LV switchgear generally.
+- Altitude: <=2000m default.
+- Pollution degree 2 (vs Part 2's default pollution degree 3, per Part 2 Clause 6) - THIS IS
+  A CONCRETE DISTINGUISHING TECHNICAL PARAMETER between the household and industrial
+  standards, useful as a retrieval/reranking feature.
+
+=== CONSTRUCTION/OPERATION REQUIREMENTS (Clause 8) - selected ===
+8.1 Mechanical design: trip-free mechanism required; multipole poles must make/break
+  substantially together; switched neutral must not close after / open before protected
+  poles; ON/OFF must be manually possible; isolating distance required in open position.
+  8.1.3 Clearances/creepage (Table 4): detailed by insulating-material CTI group (Group I/II/
+  IIIa/IIIb) and working voltage - same underlying framework as Part 1's insulation
+  coordination definitions (2.5.46-2.5.58) but with household-specific numeric values.
+  8.1.5 Terminals: Table 5 gives connectable copper conductor cross-sections by rated current
+  (e.g. up to 13A: 1-2.5mm2; up to 125A: 25-50mm2).
+8.2 Protection against electric shock: live parts must not be accessible via standard test
+  finger (Fig 9); plug-in breakers must be replaceable without touching live parts.
+8.3 Dielectric properties: power-frequency dielectric strength, isolating capability
+  (verified via Table 4 item 1 clearances + tests), impulse withstand voltage.
+8.4 Temperature-rise (Table 6): terminals 60K; external touchable parts (insulating) 40K;
+  external metallic operating-means parts 25K; other external parts 60K.
+8.6 Automatic operation - Table 7 (the core tripping-characteristic verification table,
+  DIRECTLY analogous to Part 2's Table 6 but with household-specific multipliers):
+    Test a: 1.13x In, cold, must NOT trip within 1h (In<=63A) / 2h (In>63A)
+    Test b: 1.45x In, immediately after test a, MUST trip within 1h/2h
+    Test c: 2.55x In, cold, must trip within 1s-60s (In<=32A) or 1s-120s (In>32A)
+    Test d: Type-dependent instantaneous current (B:3-5In, C:5-10In, D:10-20In), must NOT
+      trip within 0.1s
+    Test e: Type-dependent instantaneous current (B:5In, C:10In, D:20In), MUST trip within
+      0.1s
+  8.6.2 Conventional non-tripping current = 1.13x In; conventional tripping current = 1.45x
+  In (DIFFERENT multipliers than Part 2's 1.05x/1.30x - another concrete disambiguator).
+8.7 Mechanical/electrical endurance testing.
+8.8 Short-circuit performance: must make/break up to Icn at 105%(+/-5%) of rated voltage.
+8.11 Resistance to abnormal heat and fire (glow-wire type test, referencing IEC 60695-2-10).
+8.12 Resistance to rusting (ferrous parts).
+
+=== TESTS (Clause 9) ===
+Table 8 lists type tests: Indelibility of marking; reliability of screws/current-carrying
+parts/connections; reliability of terminals; protection against electric shock; dielectric
+properties/isolating capability; temperature-rise; 28-day test (indirect contact-overheating
+check - UNIQUE to this household standard, not present in Part 2); tripping characteristic;
+mechanical/electrical endurance; short-circuit; mechanical shock/impact; resistance to heat;
+resistance to abnormal heat/fire; resistance to rusting.
+Test conditions (9.2): ambient 20-25C, mounted vertically in free air on painted plywood
+board, single-core PVC-insulated copper test cables per Table 9 (cross-sections by rated
+current, e.g. 1mm2 for In<=6A up to 50mm2 for In=100-125A).
+
+[NOTE: Full text runs to 130+ pages including Annexes A-L (short-circuit power factor calc,
+clearances/creepage determination, sample/test-sequence tables, SCPD coordination guide,
+terminal examples, aluminium-conductor requirements). This extraction covers Clauses 1-9.2
+(Scope through start of Tests) plus Tables 1-10 - the core scope/definition/characteristics/
+marking/construction content needed for requirement extraction and disambiguation from
+IS/IEC 60947-2. Detailed short-circuit test procedures (9.12) and Annexes were not captured
+in this fetch.]
+
+Source PDF: https://law.resource.org/pub/in/bis/S05/is.iec.60898.1.2002.pdf
+Source full text: https://archive.org/stream/gov.in.is.iec.60898.1.2002/is.iec.60898.1.2002_djvu.txt

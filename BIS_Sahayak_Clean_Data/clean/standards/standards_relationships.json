@@ -1,0 +1,8394 @@
+[
+ {
+  "frm": "IS 1003 (Part 1)",
+  "to": "IS 12896",
+  "type": "references",
+  "to_title": "INDIAN TIMBERS FOR DOOR AND",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1003 (Part 2)",
+  "to": "IS 12896",
+  "type": "references",
+  "to_title": "INDIAN TIMBERS FOR DOOR AND",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 10258",
+  "to": "IS 10654",
+  "type": "allied",
+  "to_title": "Sterile Hypodermic Needles for Single Use - Specification",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 10258",
+  "to": "IS/ISO 10993",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 10258",
+  "to": "Medical Device Rules (CDSCO) 2017",
+  "type": "requires_safety",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 10292",
+  "to": "IS 5382",
+  "type": "references",
+  "to_title": "Rubber Seals Joint Rings For Water Supply,Drainage And Sewerage Pipelines Specification For Materials",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 10292",
+  "to": "IS 8794",
+  "type": "references",
+  "to_title": "Cast Iron Detachable Joints For Use With Asbestos Cement Pressure Pipes",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 10322 (Part 5/Sec 1)",
+  "to": "IS 15885 (Part 2/Sec 13)",
+  "type": "allied",
+  "to_title": "Lamp Controlgear — Part 2: Particular Requirements — Section 13: d.c. or a.c. Supplied Electronic Controlgear for LED Modules",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 10322 (Part 5/Sec 1)",
+  "to": "IS 16102",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 10322 (Part 5/Sec 1)",
+  "to": "IS 16103",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 10322 (Part 5/Sec 1)",
+  "to": "IS 16107 (Part 2/Sec 1)",
+  "type": "performance",
+  "to_title": "Luminaires Performance - Particular Requirements - LED Luminaires",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 10322 (Part 5/Sec 1)",
+  "to": "IS 10322",
+  "type": "requires_safety",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 10322 (Part 5/Sec 1)",
+  "to": "IS 15885 (Part 2-13)",
+  "type": "requires_safety",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 10322 (Part 5/Sec 1)",
+  "to": "IS 10322",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 10322 (Part 5/Sec 1)",
+  "to": "IS 16103 (Part 1 & 2)",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 10322 (Part 5/Sec 3)",
+  "to": "IS 10322 (Part 1)",
+  "type": "references",
+  "to_title": "Luminaires — General requirements and tests",
+  "sources": [
+   "sih108"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 10322 (Part 5/Sec 3)",
+  "to": "IS 15885 (Part 2/Sec 13)",
+  "type": "references",
+  "to_title": "Electronic controlgear for LED modules (LED Drivers)",
+  "sources": [
+   "sih108"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 10322 (Part 5/Sec 3)",
+  "to": "IS 16102 (Part 1)",
+  "type": "references",
+  "to_title": "Self-ballasted LED lamps safety requirements",
+  "sources": [
+   "sih108"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 10322 (Part 5/Sec 3)",
+  "to": "IS 16103",
+  "type": "references",
+  "to_title": "LED modules for general lighting",
+  "sources": [
+   "sih108"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 10360",
+  "to": "IS 2690 (Part 2)",
+  "type": "references",
+  "to_title": "BURNT CLAY FLAT TERRACING TILES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1038",
+  "to": "IS 2835",
+  "type": "references",
+  "to_title": "FLAT TRANSPARENT SHEET GLASS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1038",
+  "to": "IS 7452",
+  "type": "references",
+  "to_title": "Specification For Hot-rolled Steel Sections For Doors,Windows And Ventilators",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 10388",
+  "to": "IS 269",
+  "type": "references",
+  "to_title": "Ordinary Portland Cement, 33 Grade — Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 10388",
+  "to": "IS 8041",
+  "type": "references",
+  "to_title": "RAPID HARDENING PORTLAND CEMENT",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 10388",
+  "to": "IS 8112",
+  "type": "references",
+  "to_title": "Ordinary Portland Cement, 43 Grade — Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 10394",
+  "to": "IS 212",
+  "type": "references",
+  "to_title": "CRUDE COAL TAR FOR GENERAL USE",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 10394",
+  "to": "IS 215",
+  "type": "references",
+  "to_title": "ROAD TAR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 10394",
+  "to": "IS 216",
+  "type": "references",
+  "to_title": "COAL TAR PITCH",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 10394",
+  "to": "IS 218",
+  "type": "references",
+  "to_title": "CREOSOTE OIL FOR USE AS WOOD",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 10394",
+  "to": "IS 3117",
+  "type": "references",
+  "to_title": "BITUMEN EMULSION FOR ROADS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 10394",
+  "to": "IS 454",
+  "type": "references",
+  "to_title": "CUTBACK  BITUMEN FROM WAXY CRUDE",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 10394",
+  "to": "IS 702",
+  "type": "references",
+  "to_title": "Industrial Bitumen",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 10394",
+  "to": "IS 73",
+  "type": "references",
+  "to_title": "Paving Bitumen - Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 10394",
+  "to": "IS 8887",
+  "type": "references",
+  "to_title": "Bitumen Emulsion for Roads (Cationic Type) - Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 10394",
+  "to": "IS 9912",
+  "type": "references",
+  "to_title": "COAL TAR BASED COATING MATERIALS AND",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 10500",
+  "to": "IS 3025",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 10701",
+  "to": "IS 5539",
+  "type": "references",
+  "to_title": "PRESERVATIVE TREATED PLYWOOD",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1077",
+  "to": "IS 2180",
+  "type": "references",
+  "to_title": "HEAVY DUTY BURNT CLAY BUILDING BRICKS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1077",
+  "to": "IS 3495",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 10772",
+  "to": "IS 4098",
+  "type": "references",
+  "to_title": "LIME POZZOLANA MIXTURE",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1079",
+  "to": "IS 1730",
+  "type": "references",
+  "to_title": "STEEL  PLATES SHEETS STRIPS AND FLATS, FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1149",
+  "to": "IS 1148",
+  "type": "references",
+  "to_title": "HOT  ROLLED  STEEL RIVETS  BARS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1180 (Part 1)",
+  "to": "IS 2026",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 1180 (Part 1)",
+  "to": "IS 2099",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 1180 (Part 1)",
+  "to": "IS 335",
+  "type": "allied",
+  "to_title": "Uninhibited and Inhibited Mineral Insulating Oils for Transformers and Switchgears",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1180 (Part 1)",
+  "to": "IS 3639",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 1180 (Part 1)",
+  "to": "BEE Star Labeling",
+  "type": "performance",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 1180 (Part 1)",
+  "to": "Central Electricity Authority Safety Regulations",
+  "type": "requires_safety",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 1180 (Part 1)",
+  "to": "IS 10028",
+  "type": "requires_safety",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 1180 (Part 1)",
+  "to": "IS 2026 (Part 1 to 4)",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 1180 (Part 1)",
+  "to": "IS 335",
+  "type": "requires_testing",
+  "to_title": "Uninhibited and Inhibited Mineral Insulating Oils for Transformers and Switchgears",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 11925",
+  "to": "IS 5382",
+  "type": "references",
+  "to_title": "Rubber Seals Joint Rings For Water Supply,Drainage And Sewerage Pipelines Specification For Materials",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12118 (Part 1)",
+  "to": "IS 10360",
+  "type": "references",
+  "to_title": "LIME-POZZOLANA CONCRETE",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12118 (Part 1)",
+  "to": "IS 10772",
+  "type": "references",
+  "to_title": "QUICK SETTING LIME POZZOLANA MIXTURE",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12118 (Part 1)",
+  "to": "IS 12894",
+  "type": "references",
+  "to_title": "Pulverized Fuel Ash-Lime Bricks - Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12118 (Part 1)",
+  "to": "IS 2686",
+  "type": "references",
+  "to_title": "CINDER AS FINE AGGREGATES FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12118 (Part 1)",
+  "to": "IS 3068",
+  "type": "references",
+  "to_title": "BROKEN BRICK (BURNT CLAY) COARSE",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12118 (Part 1)",
+  "to": "IS 3115",
+  "type": "references",
+  "to_title": "LIME BASED BLOCKS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12118 (Part 1)",
+  "to": "IS 3182",
+  "type": "references",
+  "to_title": "BROKEN BRICK (BURNT CLAY)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12118 (Part 1)",
+  "to": "IS 4098",
+  "type": "references",
+  "to_title": "LIME POZZOLANA MIXTURE",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12118 (Part 1)",
+  "to": "IS 4139",
+  "type": "references",
+  "to_title": "CALCIUM SILICATE BRICKS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12118 (Part 1)",
+  "to": "IS 712",
+  "type": "references",
+  "to_title": "Specification For Building Limes",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12269",
+  "to": "IS 269",
+  "type": "references",
+  "to_title": "Ordinary Portland Cement, 33 Grade — Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12269",
+  "to": "IS 4031",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 12269",
+  "to": "IS 4032",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 1239 (Part 1)",
+  "to": "IS 1387",
+  "type": "references",
+  "to_title": "General requirements for the supply of metallurgical materials",
+  "sources": [
+   "sih108",
+   "bis_ai_db",
+   "bis_ai_ingest_map"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1239 (Part 1)",
+  "to": "IS 1586",
+  "type": "references",
+  "to_title": "Tensile Testing of Steel Products",
+  "sources": [
+   "bis_ai_db",
+   "bis_ai_ingest_map"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1239 (Part 1)",
+  "to": "IS 1599",
+  "type": "references",
+  "to_title": "Method for Bend Test on Steel",
+  "sources": [
+   "bis_ai_db",
+   "bis_ai_ingest_map"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1239 (Part 1)",
+  "to": "IS 1608",
+  "type": "references",
+  "to_title": "Mechanical testing of metals — Tensile testing",
+  "sources": [
+   "sih108"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1239 (Part 1)",
+  "to": "IS 2062",
+  "type": "references",
+  "to_title": "Hot rolled medium and high tensile structural steel",
+  "sources": [
+   "sih108"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1239 (Part 1)",
+  "to": "IS 228",
+  "type": "references",
+  "to_title": "Methods of Chemical Analysis of Steel",
+  "sources": [
+   "bis_ai_db",
+   "bis_ai_ingest_map"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1239 (Part 1)",
+  "to": "IS 3468",
+  "type": "references",
+  "to_title": "PIPE NUTS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1239 (Part 1)",
+  "to": "IS 4736",
+  "type": "references",
+  "to_title": "Hot-dip zinc coatings on steel tubes",
+  "sources": [
+   "sih108"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 1239 (Part 1)",
+  "to": "IS 1239",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 1239 (Part 2)",
+  "to": "IS 1239 (Part 1)",
+  "type": "references",
+  "to_title": "Steel tubes for water, gas and air lines",
+  "sources": [
+   "sih108"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12427",
+  "to": "IS 2140",
+  "type": "references",
+  "to_title": "STRANDED GALVANIZED STEEL WIRE FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12427",
+  "to": "IS 2365",
+  "type": "references",
+  "to_title": "Steel Wire Suspension Ropes For Lifts, Elevators And Hoists",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12427",
+  "to": "IS 278",
+  "type": "references",
+  "to_title": "Galvanized Steel Barbed Wire For Fencing-specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1254",
+  "to": "IS 2676",
+  "type": "references",
+  "to_title": "DIMENSIONS FOR WROUGHT ALUMINIUM AND",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12583",
+  "to": "IS 73",
+  "type": "references",
+  "to_title": "Paving Bitumen - Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12615",
+  "to": "IS 12802",
+  "type": "allied",
+  "to_title": "Methods of test for three-phase induction motors",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12615",
+  "to": "IS 12824",
+  "type": "allied",
+  "to_title": "Three Phase Induction Motors for Inverter Duty / Variable Frequency Drives (VFD)",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12615",
+  "to": "IS 8789",
+  "type": "allied",
+  "to_title": "Values of Performance Characteristics for Three-Phase Induction Motors",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12615",
+  "to": "IS/IEC 60034 (Part 5)",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 12615",
+  "to": "IS 15999 (Part 2/Sec 1)",
+  "type": "efficiency_verification",
+  "to_title": "Standard methods for determining losses and efficiency from tests",
+  "sources": [
+   "sure_relationships"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 12615",
+  "to": "IS 900",
+  "type": "installation_safety",
+  "to_title": "Code of Practice for Installation and Maintenance of Induction Motors",
+  "sources": [
+   "sure_relationships"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12615",
+  "to": "IS 12824",
+  "type": "performance",
+  "to_title": "Three Phase Induction Motors for Inverter Duty / Variable Frequency Drives (VFD)",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12615",
+  "to": "IS 8789",
+  "type": "performance",
+  "to_title": "Values of Performance Characteristics for Three-Phase Induction Motors",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12615",
+  "to": "IS 8789",
+  "type": "performance_rating",
+  "to_title": "Values of Performance Characteristics for Three-Phase Induction Motors",
+  "sources": [
+   "sure_relationships"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12615",
+  "to": "IS 900",
+  "type": "requires_safety",
+  "to_title": "Code of Practice for Installation and Maintenance of Induction Motors",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12615",
+  "to": "IS/IEC 60034 (Part 5)",
+  "type": "requires_safety",
+  "to_title": "Degrees of protection provided by the integral design of rotating electrical machines (IP code)",
+  "sources": [
+   "sure",
+   "sure_relationships"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 12615",
+  "to": "IS 12802",
+  "type": "requires_testing",
+  "to_title": "Methods of test for three-phase induction motors",
+  "sources": [
+   "sure",
+   "sure_relationships"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12615",
+  "to": "IS 15999 (Part 2/Sec 1)",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 12615",
+  "to": "IS 325",
+  "type": "supersedes",
+  "to_title": "Three-phase induction motors (OBSOLETE)",
+  "sources": [
+   "sure_relationships"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12615",
+  "to": "IS 12824",
+  "type": "vfd_application",
+  "to_title": "Three Phase Induction Motors for Inverter Duty / VFD",
+  "sources": [
+   "sure_relationships"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12640 (Part 1)",
+  "to": "IS/IEC 60898 (Part 1)",
+  "type": "allied",
+  "to_title": "ELECTRICAL ACCESSORIES - CIRCUIT-BREAKERS FOR OVERCURRENT PROTECTION FOR HOUSEHOLD AND SIMILAR INSTALLATIONS - PART 1: CIRCUIT-BREAKERS FOR AC OPERATION",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12640 (Part 1)",
+  "to": "National Electrical Code 2023",
+  "type": "requires_safety",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 12701",
+  "to": "IS 10146",
+  "type": "references",
+  "to_title": "Polyethylene for safe use in contact with foodstuffs and drinking water",
+  "sources": [
+   "sih108"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 12701",
+  "to": "IS 2508",
+  "type": "references",
+  "to_title": "Low Density Polyethylene Films",
+  "sources": [
+   "bis_ai_db",
+   "bis_ai_ingest_map"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12701",
+  "to": "IS 4984",
+  "type": "references",
+  "to_title": "High Density Polyethylene Pipes",
+  "sources": [
+   "bis_ai_db",
+   "bis_ai_ingest_map"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12701",
+  "to": "IS 4985",
+  "type": "references",
+  "to_title": "uPVC pipes for water supplies",
+  "sources": [
+   "sih108"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12709",
+  "to": "IS 5382",
+  "type": "references",
+  "to_title": "Rubber Seals Joint Rings For Water Supply,Drainage And Sewerage Pipelines Specification For Materials",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12778",
+  "to": "IS 1278",
+  "type": "references",
+  "to_title": "FILLER RODS FOR GAS WELDING",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12778",
+  "to": "IS 1395",
+  "type": "references",
+  "to_title": "LOW AND MEDIUM ALLOY STEEL COVERED",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12778",
+  "to": "IS 4972",
+  "type": "references",
+  "to_title": "RESISTANCE SPOT – WELDING ELECTRODES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12778",
+  "to": "IS 5511",
+  "type": "references",
+  "to_title": "COVERED ELECTRODES FOR MANUAL METAL",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12778",
+  "to": "IS 5897",
+  "type": "references",
+  "to_title": "ALUMINIUM AND ALUMINIUM ALLOY WELDING",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12778",
+  "to": "IS 5898",
+  "type": "references",
+  "to_title": "COPPER AND COPPER ALLOY BARE SOLID",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12778",
+  "to": "IS 6560",
+  "type": "references",
+  "to_title": "MOLYBDENUM AND CHROMIUM-MOLYBDENUM",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12778",
+  "to": "IS 7280",
+  "type": "references",
+  "to_title": "BARE WIRE ELECTRODES FOR SUBMERGED ARC",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12778",
+  "to": "IS 814",
+  "type": "references",
+  "to_title": "Covered Electrodes For Manual Metal Arc Welding Of Carbon And Carbon Manganese Steel",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12778",
+  "to": "IS 8363",
+  "type": "references",
+  "to_title": "BARE WIRE ELECTRODES FOR ELECTROSLAG",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12802",
+  "to": "IS 12615",
+  "type": "allied",
+  "to_title": "Line Operated Three Phase AC Motors (IE Code) 'Efficiency Classes and Performance Specification'",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12802",
+  "to": "IS 12615",
+  "type": "performance",
+  "to_title": "Line Operated Three Phase AC Motors (IE Code) 'Efficiency Classes and Performance Specification'",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12820",
+  "to": "IS 5382",
+  "type": "references",
+  "to_title": "Rubber Seals Joint Rings For Water Supply,Drainage And Sewerage Pipelines Specification For Materials",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12823",
+  "to": "IS 12049",
+  "type": "references",
+  "to_title": "DIMENSIONS AND TOLERANCES RELATING",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12823",
+  "to": "IS 3087",
+  "type": "references",
+  "to_title": "Particle Boards Of Wood And Other Lignocellulosic Materials (medium Density) For General Purposes -specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12824",
+  "to": "IS 12615",
+  "type": "allied",
+  "to_title": "Line Operated Three Phase AC Motors (IE Code) 'Efficiency Classes and Performance Specification'",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12824",
+  "to": "IS 12802",
+  "type": "allied",
+  "to_title": "Methods of test for three-phase induction motors",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12824",
+  "to": "IS/IEC 60034 (Part 5)",
+  "type": "requires_safety",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 12824",
+  "to": "IS 12802",
+  "type": "requires_testing",
+  "to_title": "Methods of test for three-phase induction motors",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12866",
+  "to": "IS 1254",
+  "type": "references",
+  "to_title": "CORRUGATED ALUMINIUM SHEET",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12866",
+  "to": "IS 459",
+  "type": "references",
+  "to_title": "CORRUGATED AND SEMI-CORRUGATED ASBESTOS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12894",
+  "to": "IS 1127",
+  "type": "references",
+  "to_title": "DIMENSIONS AND WORKMANSHIP OF NATURAL",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12894",
+  "to": "IS 1128",
+  "type": "references",
+  "to_title": "LIMESTONE (SLAB AND  TILES)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12894",
+  "to": "IS 1130",
+  "type": "references",
+  "to_title": "MARBLE  (BLOCKS, SLABS AND TILES)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12894",
+  "to": "IS 14223 (Part 1)",
+  "type": "references",
+  "to_title": "POLISHED BUILDING STONES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12894",
+  "to": "IS 3316",
+  "type": "references",
+  "to_title": "STRUCTURAL GRANITE",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12894",
+  "to": "IS 3620",
+  "type": "references",
+  "to_title": "LATERITE  STONE  BLOCK  FOR  MASONRY",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12894",
+  "to": "IS 3622",
+  "type": "references",
+  "to_title": "SANDSTONE (SLABS AND TILES)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12894",
+  "to": "IS 4139",
+  "type": "references",
+  "to_title": "CALCIUM SILICATE BRICKS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12894",
+  "to": "IS 6250",
+  "type": "references",
+  "to_title": "ROOFING SLATE TILES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12894",
+  "to": "IS 6579",
+  "type": "references",
+  "to_title": "COARSE AGGREGATE FOR WATER BOUND",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12894",
+  "to": "IS 9394",
+  "type": "references",
+  "to_title": "STONE LINTELS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1293",
+  "to": "IS 1870",
+  "type": "references",
+  "to_title": "Test Methods for Electrical Accessories",
+  "sources": [
+   "bis_ai_db",
+   "bis_ai_ingest_map"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1293",
+  "to": "IS 302 (Part 1)",
+  "type": "references",
+  "to_title": "Safety of Household Electrical Appliances — General Requirements",
+  "sources": [
+   "bis_ai_db",
+   "bis_ai_ingest_map"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12933 (Part 1)",
+  "to": "IS 12933 (Part 2 to 5)",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 12933 (Part 1)",
+  "to": "IS 12933 (Part 2)",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 12987",
+  "to": "IS 9627",
+  "type": "references",
+  "to_title": "ASBESTOS CEMENT PRESSURE PIPES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 12988",
+  "to": "IS 5382",
+  "type": "references",
+  "to_title": "Rubber Seals Joint Rings For Water Supply,Drainage And Sewerage Pipelines Specification For Materials",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13204",
+  "to": "IS 10889",
+  "type": "references",
+  "to_title": "High Density Polyethylene Films",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13204",
+  "to": "IS 12830",
+  "type": "references",
+  "to_title": "RUBBER BASED ADHESIVE FOR FIXING PVC",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13204",
+  "to": "IS 12994",
+  "type": "references",
+  "to_title": "EPOXY ADHESIVES, ROOM TEMPERATURE",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13204",
+  "to": "IS 14182",
+  "type": "references",
+  "to_title": "Solvent Cement For Use With Unplasticized Polyvinylchloride Plastic Pipe And Fittings",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13204",
+  "to": "IS 14443",
+  "type": "references",
+  "to_title": "POLYCARBONATE SHEETS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13204",
+  "to": "IS 14643",
+  "type": "references",
+  "to_title": "UNSINTERED POLYTETRAFLUOROETHYLENE",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13204",
+  "to": "IS 14753",
+  "type": "references",
+  "to_title": "POLYMETHYL METHACRYLATE (PMMA)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13204",
+  "to": "IS 2036",
+  "type": "references",
+  "to_title": "PHENOLIC LAMINATED SHEETS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13204",
+  "to": "IS 2046",
+  "type": "references",
+  "to_title": "Decorative Thermosetting Synthetic Resin Bonded Laminated Sheets",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13204",
+  "to": "IS 2508",
+  "type": "references",
+  "to_title": "Polyethylene Films And Sheets - Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13204",
+  "to": "IS 6307",
+  "type": "references",
+  "to_title": "RIGID PVC SHEETS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13252 (Part 1)",
+  "to": "IS 16046 (Part 2)",
+  "type": "allied",
+  "to_title": "Secondary Cells and Batteries Containing Alkaline or Other Non-Acid Electrolytes - Safety Requirements for Portable Lithium Systems",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13252 (Part 1)",
+  "to": "IS 616",
+  "type": "allied",
+  "to_title": "Application Guide for Bright Rolled Steel Furniture Strip",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13252 (Part 1)",
+  "to": "IS/IEC 60950",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 13252 (Part 1)",
+  "to": "IS 16046 (Part 2)",
+  "type": "battery_safety",
+  "to_title": "Secondary Lithium Cells and Batteries Safety",
+  "sources": [
+   "sure_relationships"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13252 (Part 1)",
+  "to": "IS 13252",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 1328",
+  "to": "IS 12049",
+  "type": "references",
+  "to_title": "DIMENSIONS AND TOLERANCES RELATING",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13317",
+  "to": "IS 2849",
+  "type": "references",
+  "to_title": "NON-LOAD BEARING GYPSUM PARTITION",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13317",
+  "to": "IS 8272",
+  "type": "references",
+  "to_title": "GYPSUM PLASTER FOR USE IN THE",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13422",
+  "to": "IS 4148",
+  "type": "allied",
+  "to_title": "Surgical Rubber Gloves - Specification",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13422",
+  "to": "IS/ISO 10993",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 13422",
+  "to": "CDSCO Medical Device Rules 2017",
+  "type": "requires_safety",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 13488",
+  "to": "IS 2062",
+  "type": "references",
+  "to_title": "Steel for General Structural Purposes",
+  "sources": [
+   "bis_ai_new"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13592",
+  "to": "IS 6307",
+  "type": "references",
+  "to_title": "RIGID PVC SHEETS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13620",
+  "to": "IS 1786",
+  "type": "references",
+  "to_title": "High Strength Deformed Steel Bars/Wires for Concrete Reinforcement",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13757",
+  "to": "IS 1077",
+  "type": "references",
+  "to_title": "Common Burnt Clay Building Bricks — Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13757",
+  "to": "IS 2180",
+  "type": "references",
+  "to_title": "HEAVY DUTY BURNT CLAY BUILDING BRICKS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13779",
+  "to": "IS 15884",
+  "type": "allied",
+  "to_title": "Alternating Current Direct Connected Static Prepayment Meters for Active Energy",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13779",
+  "to": "IS 15959",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 13779",
+  "to": "IS 16444",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 13947 (Part 1)",
+  "to": "IS 13947",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 13957",
+  "to": "IS 12049",
+  "type": "references",
+  "to_title": "DIMENSIONS AND TOLERANCES RELATING",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13957",
+  "to": "IS 737",
+  "type": "references",
+  "to_title": "WROUGHT ALUMINIUM AND ALUMINIUM ALLOY",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13958",
+  "to": "IS 12049",
+  "type": "references",
+  "to_title": "DIMENSIONS AND TOLERANCES RELATING",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 13990",
+  "to": "IS 432 (Part 1)",
+  "type": "references",
+  "to_title": "Mild Steel and Medium Tensile Steel Bars and Hard-Drawn Steel Wire for Concrete Reinforcement",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14143",
+  "to": "IS 2180",
+  "type": "references",
+  "to_title": "HEAVY DUTY BURNT CLAY BUILDING BRICKS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14143",
+  "to": "IS 432 (Part 1)",
+  "type": "references",
+  "to_title": "Mild Steel and Medium Tensile Steel Bars and Hard-Drawn Steel Wire for Concrete Reinforcement",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14201",
+  "to": "IS 432 (Part 1)",
+  "type": "references",
+  "to_title": "Mild Steel and Medium Tensile Steel Bars and Hard-Drawn Steel Wire for Concrete Reinforcement",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14223 (Part 1)",
+  "to": "IS 1077",
+  "type": "references",
+  "to_title": "Common Burnt Clay Building Bricks — Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14223 (Part 1)",
+  "to": "IS 13317",
+  "type": "references",
+  "to_title": "CLAY ROOFING COUNTRY TILES,",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14223 (Part 1)",
+  "to": "IS 13757",
+  "type": "references",
+  "to_title": "BURNT CLAY FLY ASH BUILDING BRICKS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14223 (Part 1)",
+  "to": "IS 1464",
+  "type": "references",
+  "to_title": "CLAY RIDGE AND  CEILING TILES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14223 (Part 1)",
+  "to": "IS 1478",
+  "type": "references",
+  "to_title": "CLAY FLOORING  TILES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14223 (Part 1)",
+  "to": "IS 2180",
+  "type": "references",
+  "to_title": "HEAVY DUTY BURNT CLAY BUILDING BRICKS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14223 (Part 1)",
+  "to": "IS 2222",
+  "type": "references",
+  "to_title": "BURNT CLAY PERFORATED BUILDING BRICKS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14223 (Part 1)",
+  "to": "IS 2691",
+  "type": "references",
+  "to_title": "BURNT CLAY FACING BRICKS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14223 (Part 1)",
+  "to": "IS 3367",
+  "type": "references",
+  "to_title": "BURNT CLAY TILES FOR USE IN LINING",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14223 (Part 1)",
+  "to": "IS 3583",
+  "type": "references",
+  "to_title": "BURNT CLAY PAVING BRICKS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14223 (Part 1)",
+  "to": "IS 3952",
+  "type": "references",
+  "to_title": "BURNT CLAY HOLLOW  BRICKS FOR WALLS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14223 (Part 1)",
+  "to": "IS 4885",
+  "type": "references",
+  "to_title": "SEWER BRICKS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14223 (Part 1)",
+  "to": "IS 5779",
+  "type": "references",
+  "to_title": "BURNT CLAY SOLING BRICKS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14223 (Part 1)",
+  "to": "IS 6165",
+  "type": "references",
+  "to_title": "DIMENSIONS FOR SPECIAL SHAPES OF CLAY",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14223 (Part 1)",
+  "to": "IS 654",
+  "type": "references",
+  "to_title": "CLAY ROOFING TILES, MANGALORE PATTERN",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14223 (Part 1)",
+  "to": "IS 7556",
+  "type": "references",
+  "to_title": "BURNT CLAY  JALLIES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14241",
+  "to": "IS 432 (Part 1)",
+  "type": "references",
+  "to_title": "Mild Steel and Medium Tensile Steel Bars and Hard-Drawn Steel Wire for Concrete Reinforcement",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14268",
+  "to": "IS 1079",
+  "type": "references",
+  "to_title": "Hot Rolled Carbon Steel Sheet and Strip - Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14268",
+  "to": "IS 1148",
+  "type": "references",
+  "to_title": "HOT  ROLLED  STEEL RIVETS  BARS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14268",
+  "to": "IS 1149",
+  "type": "references",
+  "to_title": "HIGH  TENSILE STEEL RIVETS BARS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14268",
+  "to": "IS 11587",
+  "type": "references",
+  "to_title": "STRUCTURAL WEATHER RESISTANCE STEELS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14268",
+  "to": "IS 1161",
+  "type": "references",
+  "to_title": "Steel Tubes for Structural Purposes - Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14268",
+  "to": "IS 12313",
+  "type": "references",
+  "to_title": "HOT–DIP TERNE COATED CARBON STEEL",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14268",
+  "to": "IS 1977",
+  "type": "references",
+  "to_title": "LOW TENSILE STRUCTURAL  STEEL",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14268",
+  "to": "IS 2062",
+  "type": "references",
+  "to_title": "Hot Rolled Medium and High Tensile Structural Steel — Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14268",
+  "to": "IS 277",
+  "type": "references",
+  "to_title": "Galvanized Steel Sheets (Plain and Corrugated) - Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14268",
+  "to": "IS 280",
+  "type": "references",
+  "to_title": "Mild Steel Wire for General Engineering Purposes (Binding Wire)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14268",
+  "to": "IS 3502",
+  "type": "references",
+  "to_title": "Steel Chequered Plates",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14268",
+  "to": "IS 412",
+  "type": "references",
+  "to_title": "EXPANDED METAL STEEL SHEETS FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14268",
+  "to": "IS 4923",
+  "type": "references",
+  "to_title": "Hollow Steel Sections for Structural Use — Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14268",
+  "to": "IS 513",
+  "type": "references",
+  "to_title": "COLD ROLLED LOW CARBON STEEL",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14268",
+  "to": "IS 7226",
+  "type": "references",
+  "to_title": "COLD–ROLLED MEDIUM, HIGH CARBON AND LOW",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14268",
+  "to": "IS 7887",
+  "type": "references",
+  "to_title": "Mild Steel Wire Rods For General Engineering Purposes",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14268",
+  "to": "IS 8500",
+  "type": "references",
+  "to_title": "STRUCTURAL  STEEL- MICRO ALLOYED",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14276",
+  "to": "IS 8112",
+  "type": "references",
+  "to_title": "Ordinary Portland Cement, 43 Grade — Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14286",
+  "to": "IS 16046",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 14286",
+  "to": "IS 16221",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 14286",
+  "to": "IS/IEC 61730 (Part 1)",
+  "type": "allied",
+  "to_title": "Photovoltaic (PV) Module Safety Qualification - Part 1: Requirements for Construction",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14286",
+  "to": "IS/IEC 61730 (Part 2)",
+  "type": "allied",
+  "to_title": "Photovoltaic (PV) Module Safety Qualification - Part 2: Requirements for Testing",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14286",
+  "to": "IS 16046 (Part 2)",
+  "type": "battery_storage",
+  "to_title": "Safety Requirements for Portable Lithium Systems",
+  "sources": [
+   "sure_relationships"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14286",
+  "to": "IS 16221 (Part 2)",
+  "type": "inverter_system",
+  "to_title": "Safety of Power Inverters for PV Systems",
+  "sources": [
+   "sure_relationships"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14286",
+  "to": "MNRE ALMM Mandate",
+  "type": "performance",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 14286",
+  "to": "IS/IEC 61730 (Part 1 & 2)",
+  "type": "requires_safety",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 14286",
+  "to": "IS/IEC 61730 (Part 1)",
+  "type": "requires_safety",
+  "to_title": "Requirements for Construction of PV Modules",
+  "sources": [
+   "sure_relationships"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14286",
+  "to": "IS/IEC 61730 (Part 2)",
+  "type": "requires_safety",
+  "to_title": "Requirements for Testing of PV Modules",
+  "sources": [
+   "sure_relationships"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14286",
+  "to": "IS/IEC 61215",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 14543",
+  "to": "IS 10500",
+  "type": "allied",
+  "to_title": "Drinking Water — Specification",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14543",
+  "to": "IS 3025",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 14543",
+  "to": "FSSAI Food Safety and Standards (Food Products Standards) Regulations",
+  "type": "requires_safety",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 14543",
+  "to": "IS 3025",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 14587",
+  "to": "IS 12049",
+  "type": "references",
+  "to_title": "DIMENSIONS AND TOLERANCES RELATING",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14588",
+  "to": "IS 12049",
+  "type": "references",
+  "to_title": "DIMENSIONS AND TOLERANCES RELATING",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 10292",
+  "type": "references",
+  "to_title": "DIMENSIONAL REQUIREMENTS FOR RUBBER",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 10299",
+  "type": "references",
+  "to_title": "CAST IRON SADDLE PIECES FOR SERVICE",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 11246",
+  "type": "references",
+  "to_title": "GLASS FIBRE REINFORCED POLYESTER",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 11925",
+  "type": "references",
+  "to_title": "PITCH IMPREGNATED FIBRE PIPES AND FITTINGS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 12234",
+  "type": "references",
+  "to_title": "Plastic Equilibrium Float Valve For Cold Water Services",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 12701",
+  "type": "references",
+  "to_title": "Rotomoulded Polyethylene Water Storage Tanks — Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 12709",
+  "type": "references",
+  "to_title": "GLASS FIBRE REINFORCED PLASTICS (GRP)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 12818",
+  "type": "references",
+  "to_title": "Unplasticized Polyvinyl Chloride(pvc-u)screen And Casing Pipes For Bore/tubewell",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 12820",
+  "type": "references",
+  "to_title": "DIMENSIONAL REQUIREMENTS OF RUBBER",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 12987",
+  "type": "references",
+  "to_title": "CAST IRON DETACHABLE JOINTS FOR USE WITH",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 12988",
+  "type": "references",
+  "to_title": "DIMENSIONAL REQUIREMENTS FOR RUBBER",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 13049",
+  "type": "references",
+  "to_title": "Diaphragm Type(plastic Body)Float Operated Valves For Cold Water Services",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 13114",
+  "type": "references",
+  "to_title": "Forged Brass Gate, Globe And Check Valves For Water Works Purposes",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 13349",
+  "type": "references",
+  "to_title": "SINGLE FACED CAST IRON THIMBLE",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 13382",
+  "type": "references",
+  "to_title": "CAST IRON SPECIALS FOR MECHANICAL AND",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 13592",
+  "type": "references",
+  "to_title": "Unplasticized Polyvinyl Chloride (pvc-u) Pipes For Soil And Waste Discharge System Inside And Outside Buildings Including Ventilation And Rainwater System",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 13983",
+  "type": "references",
+  "to_title": "Stainless Steel Sinks For Domestic Purposes",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 14333",
+  "type": "references",
+  "to_title": "High Density Polyethylene (HDPE) Pipes for Sewerage",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 14402",
+  "type": "references",
+  "to_title": "GLASS FIBRE REINFORCED PLASTICS (GRP)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 14735",
+  "type": "references",
+  "to_title": "Unplasticized Polyvinyl Chloride (upvc) Injection Moulded Fittings For Soil And Waste Discharge System For Inside And Outside Buildings Including Ventilation And Rain Water System -",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 14846",
+  "type": "references",
+  "to_title": "Sluice Valves for Water Works Purposes (50 to 1200 mm Size) - Specification (Gate Valves)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 1536",
+  "type": "references",
+  "to_title": "Centrifugally Cast (Spun) Iron Pressure Pipes for Water, Gas and Sewage",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 1537",
+  "type": "references",
+  "to_title": "Vertically Cast Iron Pressure Pipes For Water, Gas And Sewage",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 1538",
+  "type": "references",
+  "to_title": "Cast Iron Fittings for Pressure Pipes for Water, Gas and Sewage",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 1700",
+  "type": "references",
+  "to_title": "DRINKING FOUNTAINS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 1701",
+  "type": "references",
+  "to_title": "MIXING  VALVES FOR ABLUTIONARY AND",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 1703",
+  "type": "references",
+  "to_title": "Water Fittings - Copper Alloy Float Valves (horizontal Plunger Type) -",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 1711",
+  "type": "references",
+  "to_title": "SELF–CLOSING TAPS FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 1726",
+  "type": "references",
+  "to_title": "Cast Iron Manhole Covers And Frames",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 1795",
+  "type": "references",
+  "to_title": "PILLAR TAPS FOR WATER SUPPLY PURPOSES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 1879",
+  "type": "references",
+  "to_title": "Malleable Cast Iron Pipe Fittings Specification _",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 2104",
+  "type": "references",
+  "to_title": ". WATER METER BOXES (DOMESTIC TYPE)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 2326",
+  "type": "references",
+  "to_title": "AUTOMATIC FLUSHING CISTERNS FOR URINALS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 2373",
+  "type": "references",
+  "to_title": "WATER METERS (BULK TYPE)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 2501",
+  "type": "references",
+  "to_title": "SOLID DRAWN COPPER TUBES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 2692",
+  "type": "references",
+  "to_title": "Ferrules For Water Services",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 2963",
+  "type": "references",
+  "to_title": "COPPER ALLOY WASTE FITTINGS FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 3004",
+  "type": "references",
+  "to_title": "PLUG COCKS FOR WATER SUPPLY PURPOSES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 3006",
+  "type": "references",
+  "to_title": "CHEMICALLY  RESISTANT GLAZED STONEWARE",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 3076",
+  "type": "references",
+  "to_title": "LOW DENSITY POLYETHYLENE PIPES FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 3311",
+  "type": "references",
+  "to_title": "WASTE PLUG AND ITS ACCESSORIES FOR SINKS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 3489",
+  "type": "references",
+  "to_title": "ENAMELLED STEEL BATH TUBS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 3589",
+  "type": "references",
+  "to_title": "Steel Pipes for Water and Sewage (168.3 to 2540 mm Outside Diameter)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 3989",
+  "type": "references",
+  "to_title": "Centrifugally Cast (spun) Iron Spigot And Socket Soil,waste, Ventilation And Rainwater Pipes, Fittings, And Accessories",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 404 (Part 1)",
+  "type": "references",
+  "to_title": "LEAD PIPES – FOR OTHER THAN",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 407",
+  "type": "references",
+  "to_title": "BRASS TUBES FORGENERAL PURPOSES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 4270",
+  "type": "references",
+  "to_title": "Steel Tubes Used For Water Wells",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 4346",
+  "type": "references",
+  "to_title": "WASHERS  FOR USE WITH FITTINGS FOR WATER",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 4984",
+  "type": "references",
+  "to_title": "High Density Polyethylene (HDPE) Pipes for Water Supply - Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 4985",
+  "type": "references",
+  "to_title": "Unplasticized PVC Pipes for Potable Water Supplies — Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 5382",
+  "type": "references",
+  "to_title": "Rubber Seals Joint Rings For Water Supply,Drainage And Sewerage Pipelines Specification For Materials",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 5455",
+  "type": "references",
+  "to_title": "CAST IRON STEPS FOR MANHOLES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 5504",
+  "type": "references",
+  "to_title": "Spiral Welded Pipes",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 5531",
+  "type": "references",
+  "to_title": "CAST IRON SPECIALS FOR  ASBESTOS CEMENT",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 5961",
+  "type": "references",
+  "to_title": "CAST IRON GRATING FOR DRAINAGE PURPOSES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 6163",
+  "type": "references",
+  "to_title": "CENTRIFUGALLY CAST (SPUN) IRON LOW",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 6286",
+  "type": "references",
+  "to_title": "SEAMLESS AND WELDED STEEL PIPE FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 638",
+  "type": "references",
+  "to_title": "Sheet Rubber Jointing And Rubber Insertion Jointing",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 6418",
+  "type": "references",
+  "to_title": "CAST IRON AND MALLEABLE CAST IRON",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 651",
+  "type": "references",
+  "to_title": "Glazed Stoneware Pipe And Fittings -",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 7181",
+  "type": "references",
+  "to_title": "Horizontally Cast Iron Double Flanged Pipes For Water, Gas And Sewage",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 7231",
+  "type": "references",
+  "to_title": "Plastic Flushing Cisterns For Waterclosets And Urinals",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 772",
+  "type": "references",
+  "to_title": "GENERAL  REQUIREMENT FOR ENAMELLED CAST",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 773",
+  "type": "references",
+  "to_title": "ENAMELLED CAST IRON WATER–CLOSETS,",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 774",
+  "type": "references",
+  "to_title": "Flushing Cistern For Water Closets And Urinals (other Than Plastic Cisterns) -",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 775",
+  "type": "references",
+  "to_title": "CAST IRON BRACKETS AND SUPPORTS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 778",
+  "type": "references",
+  "to_title": "Specification for Copper Alloy Gate, Globe and Check Valves for Water Works Purposes",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 779",
+  "type": "references",
+  "to_title": "Water Meters (Domestic Type) - Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 781",
+  "type": "references",
+  "to_title": "Cast Copper Alloy Screw Down Bib Taps And Stop Valves For Water Services",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 782",
+  "type": "references",
+  "to_title": "CAULKING LEAD",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 7834",
+  "type": "references",
+  "to_title": "INJECTION MOULDED PVC SOCKET FITTINGS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 804",
+  "type": "references",
+  "to_title": "RECTANGULAR PRESSED STEEL TANKS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 8329",
+  "type": "references",
+  "to_title": "Centrifugally Cast (Ductile) Iron Pressure Pipes for Water, Gas and Sewage",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 8718",
+  "type": "references",
+  "to_title": "VITREOUS ENAMELLED STEELKITCHEN SINKS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 8727",
+  "type": "references",
+  "to_title": "VITREOUS  ENAMELLED STEEL WASH–BASINS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 8794",
+  "type": "references",
+  "to_title": "Cast Iron Detachable Joints For Use With Asbestos Cement Pressure Pipes",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 8931",
+  "type": "references",
+  "to_title": "Copper Alloy Fancy Single Taps, Combination Tap Assembly And Stop Valves For Water Services",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 9338",
+  "type": "references",
+  "to_title": "CAST IRON SCREW-DOWN STOP VALVES AND",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 9523",
+  "type": "references",
+  "to_title": "Ductile Iron Fittings For Pressure Pipes For Water, Gas And Sewage",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 9739",
+  "type": "references",
+  "to_title": "PRESSURE REDUCING VALVES FOR DOMESTIC",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 9758",
+  "type": "references",
+  "to_title": "Flush Valves And Fittings For Water Closets And Urinals",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 9762",
+  "type": "references",
+  "to_title": "Polyethylene Floats (spherical) For Float Valves",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14695",
+  "to": "IS 9763",
+  "type": "references",
+  "to_title": "Plastics Bib Taps,Pillar Taps,Angle Valves And Stop Valves For Hot And Cold Water Services -",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14735",
+  "to": "IS 13592",
+  "type": "references",
+  "to_title": "Unplasticized Polyvinyl Chloride (pvc-u) Pipes For Soil And Waste Discharge System Inside And Outside Buildings Including Ventilation And Rainwater System",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14735",
+  "to": "IS 5382",
+  "type": "references",
+  "to_title": "Rubber Seals Joint Rings For Water Supply,Drainage And Sewerage Pipelines Specification For Materials",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14735",
+  "to": "IS 6307",
+  "type": "references",
+  "to_title": "RIGID PVC SHEETS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14753",
+  "to": "IS 1554 (Part 1)",
+  "type": "references",
+  "to_title": "PVC Insulated (Heavy Duty) Electric Cables for Working Voltages up to 1100 V",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14753",
+  "to": "IS 694",
+  "type": "references",
+  "to_title": "PVC Insulated Cables for Working Voltages up to and Including 1100 V",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14753",
+  "to": "IS 7098 (Part 1)",
+  "type": "references",
+  "to_title": "Crosslinked Polyethylene (XLPE) Insulated PVC Sheathed Cables for Working Voltages up to and including 1100 V",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14846",
+  "to": "IS 1538",
+  "type": "allied",
+  "to_title": "Cast Iron Fittings for Pressure Pipes for Water, Gas and Sewage",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14846",
+  "to": "IS 5120",
+  "type": "allied",
+  "to_title": "Technical Requirements for Rotodynamic Special Purpose Pumps",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14856",
+  "to": "IS 13620",
+  "type": "references",
+  "to_title": "FUSION BONDED  EPOXY COATED",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14856",
+  "to": "IS 14268",
+  "type": "references",
+  "to_title": "Prestressing Steel - Uncoated Stress-Relieved Low Relaxation Seven-Ply Strand for Prestressed Concrete",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14856",
+  "to": "IS 1566",
+  "type": "references",
+  "to_title": "Hard-Drawn Steel Wire Fabric for Concrete Reinforcement",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14856",
+  "to": "IS 1786",
+  "type": "references",
+  "to_title": "High Strength Deformed Steel Bars/Wires for Concrete Reinforcement",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14856",
+  "to": "IS 2090",
+  "type": "references",
+  "to_title": "HIGH TENSILE STEEL BARS USED IN",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14856",
+  "to": "IS 280",
+  "type": "references",
+  "to_title": "Mild Steel Wire for General Engineering Purposes (Binding Wire)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14856",
+  "to": "IS 6003",
+  "type": "references",
+  "to_title": "INDENTED WIRE FOR PRESTRESSED CONCRETE",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14856",
+  "to": "IS 6006",
+  "type": "references",
+  "to_title": "Uncoated Stress Relieved Strand For Prestressed Concrete - Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14856",
+  "to": "IS 7887",
+  "type": "references",
+  "to_title": "Mild Steel Wire Rods For General Engineering Purposes",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1489 (Part 1)",
+  "to": "IS 269",
+  "type": "references",
+  "to_title": "Ordinary Portland Cement",
+  "sources": [
+   "sp21",
+   "sih108"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1489 (Part 1)",
+  "to": "IS 4031",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 1489 (Part 1)",
+  "to": "IS 4032",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 1489 (Part 2)",
+  "to": "IS 269",
+  "type": "references",
+  "to_title": "Ordinary Portland Cement, 33 Grade — Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 10701",
+  "type": "references",
+  "to_title": "Specification For Structural Plywood - Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 12049",
+  "type": "references",
+  "to_title": "DIMENSIONS AND TOLERANCES RELATING",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 12406",
+  "type": "references",
+  "to_title": "Medium Density Fibre Boards For General Purpose -specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 12823",
+  "type": "references",
+  "to_title": "Wood Products - Prelaminated Particle Boards -specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 1328",
+  "type": "references",
+  "to_title": "Veneered Decorative Plywood -specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 13957",
+  "type": "references",
+  "to_title": "METAL FACED PLYWOOD",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 13958",
+  "type": "references",
+  "to_title": "Bamboo Mat Board For General Purposes -specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 14276",
+  "type": "references",
+  "to_title": "Cement Bonded Particle Boards -specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 14587",
+  "type": "references",
+  "to_title": "Prelaminated Medium Density Fibre Board -specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 14588",
+  "type": "references",
+  "to_title": "BAMBOO MAT-VEENER COMPOSITE FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 14842",
+  "type": "references",
+  "to_title": "COIR VENEER BOARD FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 15476",
+  "type": "references",
+  "to_title": "BAMBOO MAT CORRUGATED SHEETS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 15491",
+  "type": "references",
+  "to_title": "MEDIUM DENSITY COIRBOARDS FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 1658",
+  "type": "references",
+  "to_title": "Fibre Hardboards -specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 1659",
+  "type": "references",
+  "to_title": "Block Boards -specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 3087",
+  "type": "references",
+  "to_title": "Particle Boards Of Wood And Other Lignocellulosic Materials (medium Density) For General Purposes -specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 3097",
+  "type": "references",
+  "to_title": "VENEERED PARTICLE BOARDS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 3129",
+  "type": "references",
+  "to_title": "LOW DENSITY PARTICLE BOARDS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 3308",
+  "type": "references",
+  "to_title": "WOOD WOOL BUILDING SLABS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 3348",
+  "type": "references",
+  "to_title": "FIBRE INSULATION BOARD",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 3478",
+  "type": "references",
+  "to_title": "HIGH DENSITY WOOD PARTICLE BOARDS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 3564",
+  "type": "references",
+  "to_title": "Hydraulically Regulated Door Closers -specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 4990",
+  "type": "references",
+  "to_title": "Plywood For Concrete Shuttering Work - Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 5509",
+  "type": "references",
+  "to_title": "Fire Retardant Plywood -specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 7316",
+  "type": "references",
+  "to_title": "DECORATIVE PLYWOOD USING PLURALITY",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 849",
+  "type": "references",
+  "to_title": "COLD SETTING CASE IN GLUE FOR WOOD",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 851",
+  "type": "references",
+  "to_title": "SYNTHETIC RESIN ADHESIVES FOR CONSTRUCTION",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 14912",
+  "to": "IS 852",
+  "type": "references",
+  "to_title": "ANIMAL GLUE FOR GENERAL WOOD-WORKING",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1520",
+  "to": "IS 12615",
+  "type": "allied",
+  "to_title": "Line Operated Three Phase AC Motors (IE Code) 'Efficiency Classes and Performance Specification'",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1520",
+  "to": "IS 5120",
+  "type": "allied",
+  "to_title": "Technical Requirements for Rotodynamic Special Purpose Pumps",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1520",
+  "to": "IS 9137",
+  "type": "allied",
+  "to_title": "Acceptance Tests for Centrifugal, Mixed Flow and Axial Pumps - Class C",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1520",
+  "to": "IS 5120",
+  "type": "requires_safety",
+  "to_title": "Technical Requirements for Rotodynamic Special Purpose Pumps",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1520",
+  "to": "IS 9137",
+  "type": "requires_testing",
+  "to_title": "Acceptance Tests for Centrifugal, Mixed Flow and Axial Pumps - Class C",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 15298 (Part 2)",
+  "to": "IS 15298",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 15298 (Part 3)",
+  "to": "IS 15298",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 15491",
+  "to": "IS 15380",
+  "type": "references",
+  "to_title": "Moulded Raised High Density Fibre (hdf) Panel Doors -",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 15491",
+  "to": "IS 1826",
+  "type": "references",
+  "to_title": "VENETIAN BLINDS FOR WINDOWS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 15491",
+  "to": "IS 2191 (Part 1)",
+  "type": "references",
+  "to_title": "WOODEN FLUSH DOOR SHUTTERS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1554 (Part 1)",
+  "to": "IS 5831",
+  "type": "references",
+  "to_title": "PVC insulation and sheath of electric cables",
+  "sources": [
+   "sih108"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1554 (Part 1)",
+  "to": "IS 8130",
+  "type": "references",
+  "to_title": "Conductors for insulated cables",
+  "sources": [
+   "sih108"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1554 (Part 1)",
+  "to": "IS 10810",
+  "type": "requires_testing",
+  "to_title": "Methods of Test for Cables",
+  "sources": [
+   "normai"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 15683",
+  "to": "IS 15222",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 15683",
+  "to": "IS 2190",
+  "type": "allied",
+  "to_title": "Selection, Installation and Maintenance of First-Aid Fire Extinguishers - Code of Practice",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 15683",
+  "to": "IS 4308",
+  "type": "allied",
+  "to_title": "Dry Chemical Powder for Fire Fighting - Specification",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 15683",
+  "to": "IS 2190",
+  "type": "maintenance_code",
+  "to_title": "Selection, Installation and Maintenance of Fire Extinguishers",
+  "sources": [
+   "sure_relationships"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 15683",
+  "to": "IS 2190",
+  "type": "requires_safety",
+  "to_title": "Selection, Installation and Maintenance of First-Aid Fire Extinguishers - Code of Practice",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 16046 (Part 2)",
+  "to": "IS 13252 (Part 1)",
+  "type": "allied",
+  "to_title": "Information Technology Equipment — Safety — General Requirements",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 16046 (Part 2)",
+  "to": "IS 16221",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 16169",
+  "to": "IS 16221 (Part 2)",
+  "type": "allied",
+  "to_title": "Safety of Power Converters for use in Photovoltaic Power Systems - Part 2: Particular Requirements for Inverters",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 16169",
+  "to": "IS 16221 (Part 2)",
+  "type": "requires_safety",
+  "to_title": "Safety of Power Converters for use in Photovoltaic Power Systems - Part 2: Particular Requirements for Inverters",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 16221 (Part 2)",
+  "to": "IS 14286",
+  "type": "allied",
+  "to_title": "Crystalline Silicon Terrestrial Photovoltaic (PV) Modules - Design Qualification and Type Approval",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 16221 (Part 2)",
+  "to": "IS 16169",
+  "type": "allied",
+  "to_title": "Test Procedure of Islanding Prevention Measures for Utility-Interconnected Photovoltaic Inverters",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 16221 (Part 2)",
+  "to": "IS 16169",
+  "type": "performance",
+  "to_title": "Test Procedure of Islanding Prevention Measures for Utility-Interconnected Photovoltaic Inverters",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 16242 (Part 1)",
+  "to": "IS 13252 (Part 1)",
+  "type": "allied",
+  "to_title": "Information Technology Equipment — Safety — General Requirements",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 16242 (Part 1)",
+  "to": "IS 16046",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 16242 (Part 1)",
+  "to": "IS 16242 (Part 3)",
+  "type": "performance",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 1626",
+  "to": "IS 459",
+  "type": "references",
+  "to_title": "CORRUGATED AND SEMI-CORRUGATED ASBESTOS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 16444 (Part 1)",
+  "to": "IS 13779",
+  "type": "allied",
+  "to_title": "AC Static Watthour Meters, Class 1 and 2 - Specification",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 16444 (Part 1)",
+  "to": "IS 15959 (Part 2)",
+  "type": "allied",
+  "to_title": "Data Exchange for Electricity Meter Reading - Smart Meter Companion Standard",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 16444 (Part 1)",
+  "to": "IS 16444 (Part 2)",
+  "type": "allied",
+  "to_title": "A.c. Static Transformer Operated Watthour And Var-hour Smart Meters,Class0.2S,0.5S And1.0S Part2Specification Transformer Operated Smart Meters",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 16444 (Part 1)",
+  "to": "IS 16444",
+  "type": "performance",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 16444 (Part 1)",
+  "to": "IS 16444",
+  "type": "requires_safety",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 1651",
+  "to": "IS 13369",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 1651",
+  "to": "IS 8320",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 1651",
+  "to": "IS 8320",
+  "type": "requires_safety",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 16560 (Part 1)",
+  "to": "IS 14286",
+  "type": "allied",
+  "to_title": "Crystalline Silicon Terrestrial Photovoltaic (PV) Modules - Design Qualification and Type Approval",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 16560 (Part 1)",
+  "to": "IS 16221",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 16560 (Part 1)",
+  "to": "IS 8034",
+  "type": "allied",
+  "to_title": "Submersible Pumpsets - Specification",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 16560 (Part 1)",
+  "to": "IS 16221",
+  "type": "requires_safety",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 16560 (Part 1)",
+  "to": "IS 16560 (Part 2)",
+  "type": "requires_testing",
+  "to_title": "Solar Photovoltaic Water Pumping Systems - Test Procedure",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1703",
+  "to": "IS 9762",
+  "type": "references",
+  "to_title": "Polyethylene Floats (spherical) For Float Valves",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1786",
+  "to": "IS 13920",
+  "type": "allied",
+  "to_title": "Ductile Detailing of RC Structures",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1786",
+  "to": "IS 1599",
+  "type": "allied",
+  "to_title": "Method for Bend Test on Steel",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1786",
+  "to": "IS 1608",
+  "type": "allied",
+  "to_title": "Metallic Materials — Tensile Testing at Ambient Temperature",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1786",
+  "to": "IS 456",
+  "type": "allied",
+  "to_title": "Plain and Reinforced Concrete — Code of Practice",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1786",
+  "to": "IS 13920",
+  "type": "requires_safety",
+  "to_title": "Ductile Detailing of RC Structures",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1786",
+  "to": "IS 1599",
+  "type": "requires_testing",
+  "to_title": "Metallic materials - Bend test",
+  "sources": [
+   "sure",
+   "sure_relationships",
+   "normai"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1786",
+  "to": "IS 1608",
+  "type": "requires_testing",
+  "to_title": "Metallic Materials — Tensile Testing at Ambient Temperature",
+  "sources": [
+   "normai"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1786",
+  "to": "IS 1608 (Part 1)",
+  "type": "requires_testing",
+  "to_title": "Metallic materials - Tensile testing",
+  "sources": [
+   "sure",
+   "sure_relationships"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 1786",
+  "to": "IS 13920",
+  "type": "seismic_safety",
+  "to_title": "Ductile Design and Detailing of Reinforced Concrete Structures Subject to Seismic Forces",
+  "sources": [
+   "sure_relationships"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1826",
+  "to": "IS 399",
+  "type": "references",
+  "to_title": "CLASSIFICATION OF COMMERCIAL TIMBERS AND",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 1863",
+  "to": "IS 8500",
+  "type": "references",
+  "to_title": "STRUCTURAL  STEEL- MICRO ALLOYED",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2016",
+  "to": "IS 5369",
+  "type": "references",
+  "to_title": "GENERAL REQUIREMENTS FOR PLAIN WASHERS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2026 (Part 1)",
+  "to": "IS 1180",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 2026 (Part 1)",
+  "to": "IS 2099",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 2026 (Part 1)",
+  "to": "IS 335",
+  "type": "allied",
+  "to_title": "Uninhibited and Inhibited Mineral Insulating Oils for Transformers and Switchgears",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2026 (Part 1)",
+  "to": "IS 2026",
+  "type": "performance",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 2026 (Part 1)",
+  "to": "IS 10028",
+  "type": "requires_safety",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 2026 (Part 1)",
+  "to": "IS 2026 (Part 1 to 5)",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 2062",
+  "to": "IS 1608",
+  "type": "allied",
+  "to_title": "Metallic Materials — Tensile Testing at Ambient Temperature",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2062",
+  "to": "IS 1757",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 2062",
+  "to": "IS 800",
+  "type": "allied",
+  "to_title": "General Construction in Steel — Code of Practice",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2062",
+  "to": "IS 1599",
+  "type": "references",
+  "to_title": "Method for Bend Test on Steel",
+  "sources": [
+   "bis_ai_db",
+   "bis_ai_ingest_map"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2062",
+  "to": "IS 228",
+  "type": "references",
+  "to_title": "Methods of Chemical Analysis of Steel",
+  "sources": [
+   "bis_ai_db",
+   "bis_ai_ingest_map"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2062",
+  "to": "IS 3613",
+  "type": "references",
+  "to_title": "Carbon Steel Forgings for Structural Use",
+  "sources": [
+   "bis_ai_db",
+   "bis_ai_ingest_map"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2062",
+  "to": "IS 8910",
+  "type": "references",
+  "to_title": "General Requirements for Supply of Microalloyed Steel",
+  "sources": [
+   "bis_ai_db",
+   "bis_ai_ingest_map"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2062",
+  "to": "IS 800",
+  "type": "requires_safety",
+  "to_title": "General Construction in Steel — Code of Practice",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2062",
+  "to": "IS 1608",
+  "type": "requires_testing",
+  "to_title": "Metallic Materials — Tensile Testing at Ambient Temperature",
+  "sources": [
+   "sure",
+   "normai"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2062",
+  "to": "IS 1757",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "sure",
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 2095 (Part 1)",
+  "to": "IS 2547 (Part 1)",
+  "type": "references",
+  "to_title": "Gypsum Building Plaster: Part 1 Excluding Premixed Lightweight Plaster",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2096",
+  "to": "IS 13000",
+  "type": "references",
+  "to_title": "SILICA ASBESTOS  - CEMENT",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2140",
+  "to": "IS 280",
+  "type": "references",
+  "to_title": "Mild Steel Wire for General Engineering Purposes (Binding Wire)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2185 (Part 1)",
+  "to": "IS 2185",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 2191 (Part 2)",
+  "to": "IS 2191 (Part 1)",
+  "type": "references",
+  "to_title": "WOODEN FLUSH DOOR SHUTTERS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2202 (Part 2)",
+  "to": "IS 2202 (Part 1)",
+  "type": "references",
+  "to_title": "Wooden Flush Door Shutters(solid Core Type):Part1Plywood Face Panels",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2309",
+  "to": "IS 3043",
+  "type": "allied",
+  "to_title": "Code of Practice for Earthing",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2309",
+  "to": "IS/IEC 62305",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 2309",
+  "to": "IS/IEC 62305",
+  "type": "requires_safety",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 2314",
+  "to": "IS 8500",
+  "type": "references",
+  "to_title": "STRUCTURAL  STEEL- MICRO ALLOYED",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 10019",
+  "type": "references",
+  "to_title": "MILD STEEL  STAYS  AND FASTENERS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 10090",
+  "type": "references",
+  "to_title": "NUMERICALS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 1019",
+  "type": "references",
+  "to_title": "RIM LATCHES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 10342",
+  "type": "references",
+  "to_title": "CURTAIN  RAIL SYSTEM",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 12817",
+  "type": "references",
+  "to_title": "Stainless Steel Butt Hinges",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 12867",
+  "type": "references",
+  "to_title": "PVC HAND RAIL COVERS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 1341",
+  "type": "references",
+  "to_title": "Steel Butt Hinges -",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 14912",
+  "type": "references",
+  "to_title": "DOOR CLOSERS - CONCEALED TYPE",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 1823",
+  "type": "references",
+  "to_title": "FLOOR DOOR STOPPERS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 204 (Part 1)",
+  "type": "references",
+  "to_title": "Tower Bolts - Specification Part-1 Ferrous Metals",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 204 (Part 2)",
+  "type": "references",
+  "to_title": "Tower Bolts - Specification Part-2 Non-ferrous Metals",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 205",
+  "type": "references",
+  "to_title": "Non-ferrous Metal Butt Hinges -specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 206",
+  "type": "references",
+  "to_title": "TEE AND STRAP HINGES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 208",
+  "type": "references",
+  "to_title": "Door Handles -specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 2209",
+  "type": "references",
+  "to_title": "MORTICE LOCKS (VERTICAL TYPE)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 281",
+  "type": "references",
+  "to_title": "Mild Steel Sliding Door Bolts For Use With Padlocks -specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 3564",
+  "type": "references",
+  "to_title": "Hydraulically Regulated Door Closers -specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 362",
+  "type": "references",
+  "to_title": "Parliament Hinges -specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 363",
+  "type": "references",
+  "to_title": "HASPS AND STAPLES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 364",
+  "type": "references",
+  "to_title": "FAN LIGHT CATCH",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 3818",
+  "type": "references",
+  "to_title": "Continuous (piano) Hinges -specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 3828",
+  "type": "references",
+  "to_title": "VENTILATOR CHAINS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 3843",
+  "type": "references",
+  "to_title": "STEEL BACK FLAP HINGES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 3847",
+  "type": "references",
+  "to_title": "MORTICE NIGHT LATCHES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 452",
+  "type": "references",
+  "to_title": "DOOR SPRING RAT- TAIL TYPE",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 453",
+  "type": "references",
+  "to_title": "DOUBLE-ACTING SPRING HINGES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 4621",
+  "type": "references",
+  "to_title": "INDICATING BOLT FOR USE IN  PUBLIC BATHS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 4948",
+  "type": "references",
+  "to_title": "Welded Steel Wire Fabric For General Use",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 4992",
+  "type": "references",
+  "to_title": "DOOR HANDLES FOR MORTICE LOCKS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 5187",
+  "type": "references",
+  "to_title": "FLUSH BOLTS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 5899",
+  "type": "references",
+  "to_title": "BATH ROOM LATCHES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 5930",
+  "type": "references",
+  "to_title": "MORTICE LATCH",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 6315",
+  "type": "references",
+  "to_title": "FLOOR SPRINGS (HYDRAULICALLY  REGULATED)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 6318",
+  "type": "references",
+  "to_title": "PLASTIC WINDOW STAYS AND FASTENERS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 6343",
+  "type": "references",
+  "to_title": "DOOR CLOSERS (PNEUMATICALLY REGULATED)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 6607",
+  "type": "references",
+  "to_title": "REBATED MORTICE LOCKS (VERTICAL TYPE)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 7196",
+  "type": "references",
+  "to_title": "HOLD FAST",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 7197",
+  "type": "references",
+  "to_title": "DOUBLE ACTION  FLOOR SPRINGS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 7534",
+  "type": "references",
+  "to_title": "SLIDING LOCKING BOLTS FOR USE WITH",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 7540",
+  "type": "references",
+  "to_title": "MORTICE DEAD  LOCKS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 8760",
+  "type": "references",
+  "to_title": "MORTICE  SLIDING  DOOR LOCKS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 9106",
+  "type": "references",
+  "to_title": "RISING BUTT HINGES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2373",
+  "to": "IS 9131",
+  "type": "references",
+  "to_title": "RIM LOCKS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 252",
+  "to": "IS 1070",
+  "type": "allied",
+  "to_title": "Water for Analytical Laboratory Use - Specification",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 252",
+  "to": "Hazardous Chemicals Rules",
+  "type": "requires_safety",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 2548 (Part 2)",
+  "to": "IS 2548 (Part 1)",
+  "type": "references",
+  "to_title": "PLASTIC SEATS AND COVERS FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2678",
+  "to": "IS 1173",
+  "type": "references",
+  "to_title": "HOT ROLLED AND SLIT STEEL TEE BARS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2678",
+  "to": "IS 12778",
+  "type": "references",
+  "to_title": "HOT ROLLED PARALLEL FLANGE STEEL SECTION",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2678",
+  "to": "IS 1730",
+  "type": "references",
+  "to_title": "STEEL  PLATES SHEETS STRIPS AND FLATS, FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2678",
+  "to": "IS 1732",
+  "type": "references",
+  "to_title": "STEEL BARS, ROUND AND SQUARE FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2678",
+  "to": "IS 1863",
+  "type": "references",
+  "to_title": "ROLLED  STEEL BULB FLATS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2678",
+  "to": "IS 2314",
+  "type": "references",
+  "to_title": "STEEL SHEET PILLING SECTIONS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2678",
+  "to": "IS 3443",
+  "type": "references",
+  "to_title": "Crane Rail Sections -",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2678",
+  "to": "IS 3908",
+  "type": "references",
+  "to_title": "ALUMINIUM EQUAL LEG ANGLES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2678",
+  "to": "IS 3909",
+  "type": "references",
+  "to_title": "ALUMINIUM UNEQUAL LEG ANGLES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2678",
+  "to": "IS 3921",
+  "type": "references",
+  "to_title": "ALUMINIUM CHANNELS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2678",
+  "to": "IS 3954",
+  "type": "references",
+  "to_title": "HOT ROLLED CHANNEL SECTIONS FOR GENERAL",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2678",
+  "to": "IS 3964",
+  "type": "references",
+  "to_title": "LIGHT RAILS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2678",
+  "to": "IS 5384",
+  "type": "references",
+  "to_title": "ALUMINIUM   I–BEAM",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2678",
+  "to": "IS 6445",
+  "type": "references",
+  "to_title": "ALUMINIUM TEE - SECTIONS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2678",
+  "to": "IS 808",
+  "type": "references",
+  "to_title": "DIMENSIONS FOR HOT ROLLED STEELBEAM,",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2678",
+  "to": "IS 8081",
+  "type": "references",
+  "to_title": "SLOTTED SECTIONS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2678",
+  "to": "IS 811",
+  "type": "references",
+  "to_title": "COLD FORMED LIGHT GAUGE STRUCTURAL STEEL",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 269",
+  "to": "IS 4031",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 269",
+  "to": "IS 4032",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 269",
+  "to": "IS 456",
+  "type": "allied",
+  "to_title": "Plain and Reinforced Concrete — Code of Practice",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 269",
+  "to": "IS 456",
+  "type": "application_code",
+  "to_title": "Plain and Reinforced Concrete - Code of Practice",
+  "sources": [
+   "sure_relationships"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 269",
+  "to": "IS 3535",
+  "type": "references",
+  "to_title": "Methods of Sampling for Cement",
+  "sources": [
+   "bis_ai_ingest_map"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 269",
+  "to": "IS 4031 (Part 1)",
+  "type": "references",
+  "to_title": "Methods of Physical Tests for Cement — Fineness",
+  "sources": [
+   "bis_ai_ingest_map"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 269",
+  "to": "IS 650",
+  "type": "references",
+  "to_title": "Standard sand for testing of cement",
+  "sources": [
+   "sih108"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 269",
+  "to": "IS 456",
+  "type": "requires_safety",
+  "to_title": "Plain and Reinforced Concrete — Code of Practice",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 269",
+  "to": "IS 4031",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "sure",
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 269",
+  "to": "IS 4031 (Part 1 to 15)",
+  "type": "requires_testing",
+  "to_title": "Methods of Physical Tests for Hydraulic Cement",
+  "sources": [
+   "sure_relationships"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 269",
+  "to": "IS 4032",
+  "type": "requires_testing",
+  "to_title": "Method of Chemical Analysis of Hydraulic Cement",
+  "sources": [
+   "sure",
+   "sure_relationships",
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 2721",
+  "to": "IS 2835",
+  "type": "references",
+  "to_title": "FLAT TRANSPARENT SHEET GLASS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2721",
+  "to": "IS 3438",
+  "type": "references",
+  "to_title": "SILVERED GLASS MIRRORS FOR GENERAL",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2721",
+  "to": "IS 5437",
+  "type": "references",
+  "to_title": "FIGURED, ROLLED AND WIRED GLASS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 278",
+  "to": "IS 280",
+  "type": "references",
+  "to_title": "Mild Steel Wire for General Engineering Purposes (Binding Wire)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 2925",
+  "to": "IS 2",
+  "type": "references",
+  "to_title": "Rules for rounding off numerical values",
+  "sources": [
+   "sih108"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 2925",
+  "to": "IS 7016",
+  "type": "references",
+  "to_title": "Methods of test for coated fabrics",
+  "sources": [
+   "sih108"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 302 (Part 1)",
+  "to": "IS 302",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 3025 (Part 1)",
+  "to": "IS 3025",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 3043",
+  "to": "IS 2309",
+  "type": "allied",
+  "to_title": "Code of Practice for the Protection of Allied Structures against Lightning",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3043",
+  "to": "IS 732",
+  "type": "allied",
+  "to_title": "Code of Practice for Electrical Wiring Installations",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3043",
+  "to": "CEA Safety Regulations 2023",
+  "type": "requires_safety",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 3068",
+  "to": "IS 1077",
+  "type": "references",
+  "to_title": "Common Burnt Clay Building Bricks — Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3115",
+  "to": "IS 2185 (Part 1)",
+  "type": "references",
+  "to_title": "Concrete Masonry Units — Hollow/Solid Concrete Blocks",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3182",
+  "to": "IS 1077",
+  "type": "references",
+  "to_title": "Common Burnt Clay Building Bricks — Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3182",
+  "to": "IS 3068",
+  "type": "references",
+  "to_title": "BROKEN BRICK (BURNT CLAY) COARSE",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 325",
+  "to": "IS 12615",
+  "type": "allied",
+  "to_title": "Line Operated Three Phase AC Motors (IE Code) 'Efficiency Classes and Performance Specification'",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 325",
+  "to": "IS 8789",
+  "type": "performance",
+  "to_title": "Values of Performance Characteristics for Three-Phase Induction Motors",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 325",
+  "to": "IS/IEC 60034 (Part 5)",
+  "type": "requires_safety",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 325",
+  "to": "IS 12802",
+  "type": "requires_testing",
+  "to_title": "Methods of test for three-phase induction motors",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 325",
+  "to": "IS 12615",
+  "type": "superseded_by",
+  "to_title": "Line Operated Three Phase AC Motors (IE Code) 'Efficiency Classes and Performance Specification'",
+  "sources": [
+   "sure_relationships"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3311",
+  "to": "IS 2556 (Part 4)",
+  "type": "references",
+  "to_title": "VITREOUS SANITARY  APLLIANCES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3311",
+  "to": "IS 2963",
+  "type": "references",
+  "to_title": "COPPER ALLOY WASTE FITTINGS FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 335",
+  "to": "IS 1180",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 335",
+  "to": "IS 2026",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 335",
+  "to": "IS 10028",
+  "type": "requires_safety",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 335",
+  "to": "IS 1866",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 335",
+  "to": "IS 6792",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 3419",
+  "to": "IS 9537 (Part 3)",
+  "type": "references",
+  "to_title": "Conduits for Electrical Installations - Rigid Non-Metallic Conduits (PVC Conduits)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3438",
+  "to": "IS 2835",
+  "type": "references",
+  "to_title": "FLAT TRANSPARENT SHEET GLASS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3502",
+  "to": "IS 1730",
+  "type": "references",
+  "to_title": "STEEL  PLATES SHEETS STRIPS AND FLATS, FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3502",
+  "to": "IS 1977",
+  "type": "references",
+  "to_title": "LOW TENSILE STRUCTURAL  STEEL",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3589",
+  "to": "IS 1608",
+  "type": "references",
+  "to_title": "Tensile testing of metals",
+  "sources": [
+   "sih108"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3589",
+  "to": "IS 2062",
+  "type": "references",
+  "to_title": "Hot rolled medium and high tensile structural steel",
+  "sources": [
+   "sih108"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3629",
+  "to": "IS 4891",
+  "type": "references",
+  "to_title": "PREFERRED CUT SIZES OF  STRUCTURAL TIMBER",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3709",
+  "to": "IS 11128",
+  "type": "references",
+  "to_title": "SPRAY – APPLIED HYDRATED CALCIUM SILICATE",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3709",
+  "to": "IS 11307",
+  "type": "references",
+  "to_title": "CELLULAR GLASS BLOCK AND PIPE THERMAL",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3709",
+  "to": "IS 11308",
+  "type": "references",
+  "to_title": "HYDRAULIC SETTING THERMAL INSULATING",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3709",
+  "to": "IS 12436",
+  "type": "references",
+  "to_title": "PREFORMED RIGID POLYURETHANE (PUR) AND",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3709",
+  "to": "IS 13204",
+  "type": "references",
+  "to_title": "RIGID PHENOLIC FOAM FOR THERMAL",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3709",
+  "to": "IS 3677",
+  "type": "references",
+  "to_title": "UNBONDED ROCK AND SLAG WOOL FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3709",
+  "to": "IS 4671",
+  "type": "references",
+  "to_title": "EXPANDED POLYSTYRENE FOR THERMAL",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3709",
+  "to": "IS 6598",
+  "type": "references",
+  "to_title": "CELLULAR CONCRETE FOR THERMAL INSULATION",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3709",
+  "to": "IS 7509",
+  "type": "references",
+  "to_title": "THERMAL INSULATING CEMENT",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3709",
+  "to": "IS 8154",
+  "type": "references",
+  "to_title": "PREORMED CALCIUM SILICATE INSULATION",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3709",
+  "to": "IS 8183",
+  "type": "references",
+  "to_title": "BONDED MINERAL WOOL",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3709",
+  "to": "IS 9428",
+  "type": "references",
+  "to_title": "PREFORMED CALCIUM SILICATE INSULATION",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3709",
+  "to": "IS 9742",
+  "type": "references",
+  "to_title": "SPRAYED MINERAL WOOL THERMAL INSULATION",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3709",
+  "to": "IS 9743",
+  "type": "references",
+  "to_title": "THERMAL INSULATION FINISHING CEMENTS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3709",
+  "to": "IS 9842",
+  "type": "references",
+  "to_title": "PREFORMED FIBROUS PIPE INSULATION",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3812 (Part 1)",
+  "to": "IS 1727",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 383",
+  "to": "IS 2386",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 3908",
+  "to": "IS 733",
+  "type": "references",
+  "to_title": "Wrought Aluminium And Aluminium Alloy Bars,Rods And Sections (for General Engineering Purposes)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3909",
+  "to": "IS 733",
+  "type": "references",
+  "to_title": "Wrought Aluminium And Aluminium Alloy Bars,Rods And Sections (for General Engineering Purposes)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 3921",
+  "to": "IS 733",
+  "type": "references",
+  "to_title": "Wrought Aluminium And Aluminium Alloy Bars,Rods And Sections (for General Engineering Purposes)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 4021",
+  "to": "IS 12896",
+  "type": "references",
+  "to_title": "INDIAN TIMBERS FOR DOOR AND",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 4037",
+  "to": "IS 1363 (Part 1)",
+  "type": "references",
+  "to_title": "Hexagon Head Bolts, Screws and Nuts",
+  "sources": [
+   "bis_ai_new"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 4037",
+  "to": "IS 2062",
+  "type": "references",
+  "to_title": "Steel for General Structural Purposes",
+  "sources": [
+   "bis_ai_new"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 432 (Part 1)",
+  "to": "IS 2062",
+  "type": "references",
+  "to_title": "Hot Rolled Medium and High Tensile Structural Steel — Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 455",
+  "to": "IS 4031",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 455",
+  "to": "IS 4032",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 456",
+  "to": "IS 1786",
+  "type": "allied",
+  "to_title": "High Strength Deformed Steel Bars/Wires for Concrete Reinforcement",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 456",
+  "to": "IS 269",
+  "type": "allied",
+  "to_title": "Ordinary Portland Cement, 33 Grade — Specification",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 456",
+  "to": "IS 383",
+  "type": "allied",
+  "to_title": "Coarse and Fine Aggregate for Concrete — Specification",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 456",
+  "to": "IS 4926",
+  "type": "allied",
+  "to_title": "Ready-Mixed Concrete (RMC)",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 456",
+  "to": "National Building Code 2016",
+  "type": "requires_safety",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 456",
+  "to": "IS 1199",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "sure",
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 456",
+  "to": "IS 516",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "sure",
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 4860",
+  "to": "IS 1237",
+  "type": "references",
+  "to_title": "Cement Concrete Flooring Tiles - Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 4923",
+  "to": "IS 1254",
+  "type": "references",
+  "to_title": "CORRUGATED ALUMINIUM SHEET",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 4923",
+  "to": "IS 1285",
+  "type": "references",
+  "to_title": "Wrought Aluminium And Aluminium Alloys-Extruded Round Tube And Hollow Sections For General Engineering Purposes",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 4923",
+  "to": "IS 2525",
+  "type": "references",
+  "to_title": "DIMENSION FOR WROUGHT ALUMINIUM AND",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 4923",
+  "to": "IS 2676",
+  "type": "references",
+  "to_title": "DIMENSIONS FOR WROUGHT ALUMINIUM AND",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 4923",
+  "to": "IS 2677",
+  "type": "references",
+  "to_title": "DIMENSIONS FOR  WROUGHT ALUMINIUM AND",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 4923",
+  "to": "IS 2678",
+  "type": "references",
+  "to_title": "DIMENSIONS AND  TOLERANCE FOR WROUGHT",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 4923",
+  "to": "IS 733",
+  "type": "references",
+  "to_title": "Wrought Aluminium And Aluminium Alloy Bars,Rods And Sections (for General Engineering Purposes)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 4923",
+  "to": "IS 736",
+  "type": "references",
+  "to_title": "WROUGHT ALUMINIUM AND ALUMINIUM ALLOY",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 4923",
+  "to": "IS 737",
+  "type": "references",
+  "to_title": "WROUGHT ALUMINIUM AND ALUMINIUM ALLOY",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 4923",
+  "to": "IS 738",
+  "type": "references",
+  "to_title": "Wrought Aluminium Alloys, Drawn Tube For General Engineering Purposes",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 4923",
+  "to": "IS 739",
+  "type": "references",
+  "to_title": "WROUGHT ALUMINIUM AND ALUMINIUM",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 4923",
+  "to": "IS 740",
+  "type": "references",
+  "to_title": "WROUGHT ALUMINIUM ALLOY RIVET STOCK FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 4984",
+  "to": "IS 10146",
+  "type": "references",
+  "to_title": "Polyethylene for safe use in contact with foodstuffs, pharmaceuticals and drinking water",
+  "sources": [
+   "sih108"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 4984",
+  "to": "IS 4985",
+  "type": "references",
+  "to_title": "Unplasticized PVC pipes for potable water supplies",
+  "sources": [
+   "sih108"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 4985",
+  "to": "IS 10124",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 4985",
+  "to": "IS 12235",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 4985",
+  "to": "IS 7634",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 4985",
+  "to": "IS 10146",
+  "type": "food_contact_safety",
+  "to_title": "Polyethylene for Safe Use in Contact with Foodstuffs and Drinking Water",
+  "sources": [
+   "sure_relationships"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 4985",
+  "to": "IS 10146",
+  "type": "requires_safety",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 4985",
+  "to": "IS 12235",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "sure",
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 4985",
+  "to": "IS 12235 (Part 1 to 19)",
+  "type": "requires_testing",
+  "to_title": "Methods of Test for UPVC Pipes for Potable Water Supplies",
+  "sources": [
+   "sure_relationships"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 4990",
+  "to": "IS 12049",
+  "type": "references",
+  "to_title": "DIMENSIONS AND TOLERANCES RELATING",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 4992",
+  "to": "IS 2209",
+  "type": "references",
+  "to_title": "MORTICE LOCKS (VERTICAL TYPE)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 503",
+  "to": "IS 2062",
+  "type": "references",
+  "to_title": "Steel for General Structural Purposes",
+  "sources": [
+   "bis_ai_new"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 504",
+  "to": "IS 2062",
+  "type": "references",
+  "to_title": "Steel for General Structural Purposes",
+  "sources": [
+   "bis_ai_new"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 5372",
+  "to": "IS 5369",
+  "type": "references",
+  "to_title": "GENERAL REQUIREMENTS FOR PLAIN WASHERS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 5384",
+  "to": "IS 733",
+  "type": "references",
+  "to_title": "Wrought Aluminium And Aluminium Alloy Bars,Rods And Sections (for General Engineering Purposes)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 5437",
+  "to": "IS 110",
+  "type": "references",
+  "to_title": "READY MIXED PAINT, BRUSHING, GREY FILLER,",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 5437",
+  "to": "IS 3709",
+  "type": "references",
+  "to_title": "MASTIC CEMENT FOR BEDDING OF",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 5437",
+  "to": "IS 419",
+  "type": "references",
+  "to_title": "PUTTY, FOR USE ON WINDOW FRAMES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 5437",
+  "to": "IS 423",
+  "type": "references",
+  "to_title": "PLASTIC WOOD FOR JOINERS FILLER",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 5509",
+  "to": "IS 12049",
+  "type": "references",
+  "to_title": "DIMENSIONS AND TOLERANCES RELATING",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 5539",
+  "to": "IS 1328",
+  "type": "references",
+  "to_title": "Veneered Decorative Plywood -specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 5961",
+  "to": "IS 1726",
+  "type": "references",
+  "to_title": "Cast Iron Manhole Covers And Frames",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 616",
+  "to": "IS 13252 (Part 1)",
+  "type": "allied",
+  "to_title": "Information Technology Equipment — Safety — General Requirements",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 616",
+  "to": "IS 15885",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 6198",
+  "to": "IS 12896",
+  "type": "references",
+  "to_title": "INDIAN TIMBERS FOR DOOR AND",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 6445",
+  "to": "IS 733",
+  "type": "references",
+  "to_title": "Wrought Aluminium And Aluminium Alloy Bars,Rods And Sections (for General Engineering Purposes)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 6523",
+  "to": "IS 4021",
+  "type": "references",
+  "to_title": "TIMBER DOOR, WINDOW AND VENTILATOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 6538",
+  "to": "IS 1293",
+  "type": "references",
+  "to_title": "Plugs and Socket-Outlets of Rated Voltage up to and including 250 Volts and Rated Current up to and including 16 Amperes",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 6579",
+  "to": "IS 1077",
+  "type": "references",
+  "to_title": "Common Burnt Clay Building Bricks — Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 6610",
+  "to": "IS 5369",
+  "type": "references",
+  "to_title": "GENERAL REQUIREMENTS FOR PLAIN WASHERS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 6649",
+  "to": "IS 3757",
+  "type": "references",
+  "to_title": "HIGH STRENGTH STRUCTURAL BOLTS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 6649",
+  "to": "IS 5369",
+  "type": "references",
+  "to_title": "GENERAL REQUIREMENTS FOR PLAIN WASHERS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 694",
+  "to": "IS 10810",
+  "type": "allied",
+  "to_title": "Methods of Test for Cables",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 694",
+  "to": "IS 5831",
+  "type": "allied",
+  "to_title": "PVC Insulation and Sheath of Electric Cables",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 694",
+  "to": "IS 8130",
+  "type": "allied",
+  "to_title": "Conductors for Insulated Electric Cables and Flexible Cords",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 694",
+  "to": "IS 8130",
+  "type": "performance",
+  "to_title": "Conductors for Insulated Electric Cables and Flexible Cords",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 694",
+  "to": "National Electrical Code (NEC) 2023",
+  "type": "requires_safety",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 694",
+  "to": "IS 10810",
+  "type": "requires_testing",
+  "to_title": "Methods of Test for Cables",
+  "sources": [
+   "sure",
+   "normai"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 694",
+  "to": "IS 8130",
+  "type": "requires_testing",
+  "to_title": "Conductors for Insulated Electric Cables and Flexible Cords",
+  "sources": [
+   "normai"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 7098 (Part 1)",
+  "to": "IS 3975",
+  "type": "allied",
+  "to_title": "Low Carbon Galvanized Steel Wires, Formed Wires and Tapes for Armouring of Cables",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 7098 (Part 1)",
+  "to": "IS 5831",
+  "type": "allied",
+  "to_title": "PVC Insulation and Sheath of Electric Cables",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 7098 (Part 1)",
+  "to": "IS 8130",
+  "type": "allied",
+  "to_title": "Conductors for Insulated Electric Cables and Flexible Cords",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 7098 (Part 1)",
+  "to": "IS 8130",
+  "type": "performance",
+  "to_title": "Conductors for Insulated Electric Cables and Flexible Cords",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 7098 (Part 1)",
+  "to": "IS 1255",
+  "type": "requires_safety",
+  "to_title": "Code of Practice for Installation and Maintenance of Power Cables up to and including 33 kV Rating",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 7098 (Part 1)",
+  "to": "IS 7098",
+  "type": "requires_safety",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 7098 (Part 1)",
+  "to": "IS 10810",
+  "type": "requires_testing",
+  "to_title": "Methods of Test for Cables",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 7098 (Part 2)",
+  "to": "IS 10810",
+  "type": "allied",
+  "to_title": "Methods of Test for Cables",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 7098 (Part 2)",
+  "to": "IS 5831",
+  "type": "allied",
+  "to_title": "PVC Insulation and Sheath of Electric Cables",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 7098 (Part 2)",
+  "to": "IS 8130",
+  "type": "allied",
+  "to_title": "Conductors for Insulated Electric Cables and Flexible Cords",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 7098 (Part 2)",
+  "to": "IS 7098",
+  "type": "performance",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 7098 (Part 2)",
+  "to": "IS 1255",
+  "type": "requires_safety",
+  "to_title": "Code of Practice for Installation and Maintenance of Power Cables up to and including 33 kV Rating",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 7098 (Part 2)",
+  "to": "IS 10810",
+  "type": "requires_testing",
+  "to_title": "Methods of Test for Cables",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 730",
+  "to": "IS 2585",
+  "type": "references",
+  "to_title": "BLACK SQUARE BOLTS AND NUTS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 736",
+  "to": "IS 2677",
+  "type": "references",
+  "to_title": "DIMENSIONS FOR  WROUGHT ALUMINIUM AND",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 737",
+  "to": "IS 2676",
+  "type": "references",
+  "to_title": "DIMENSIONS FOR WROUGHT ALUMINIUM AND",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 737",
+  "to": "IS 2677",
+  "type": "references",
+  "to_title": "DIMENSIONS FOR  WROUGHT ALUMINIUM AND",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 738",
+  "to": "IS 2678",
+  "type": "references",
+  "to_title": "DIMENSIONS AND  TOLERANCE FOR WROUGHT",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 739",
+  "to": "IS 2525",
+  "type": "references",
+  "to_title": "DIMENSION FOR WROUGHT ALUMINIUM AND",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 773",
+  "to": "IS 772",
+  "type": "references",
+  "to_title": "GENERAL  REQUIREMENT FOR ENAMELLED CAST",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 7834",
+  "to": "IS 4985",
+  "type": "references",
+  "to_title": "Unplasticized PVC Pipes for Potable Water Supplies — Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8008 (Part 1)",
+  "to": "IS 4984",
+  "type": "references",
+  "to_title": "High Density Polyethylene (HDPE) Pipes for Water Supply - Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8008 (Part 2)",
+  "to": "IS 8008 (Part 1)",
+  "type": "references",
+  "to_title": "Injection Moulded/Machined High Density Polyethylene (HDPE) Fittings for Potable Water Supplies - Part 1 : General Requirements for Fittings",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8008 (Part 3)",
+  "to": "IS 8008 (Part 1)",
+  "type": "references",
+  "to_title": "Injection Moulded/Machined High Density Polyethylene (HDPE) Fittings for Potable Water Supplies - Part 1 : General Requirements for Fittings",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8008 (Part 4)",
+  "to": "IS 8008 (Part 1)",
+  "type": "references",
+  "to_title": "Injection Moulded/Machined High Density Polyethylene (HDPE) Fittings for Potable Water Supplies - Part 1 : General Requirements for Fittings",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8008 (Part 5)",
+  "to": "IS 8008 (Part 1)",
+  "type": "references",
+  "to_title": "Injection Moulded/Machined High Density Polyethylene (HDPE) Fittings for Potable Water Supplies - Part 1 : General Requirements for Fittings",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8008 (Part 6)",
+  "to": "IS 8008 (Part 1)",
+  "type": "references",
+  "to_title": "Injection Moulded/Machined High Density Polyethylene (HDPE) Fittings for Potable Water Supplies - Part 1 : General Requirements for Fittings",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8034",
+  "to": "IS 11346",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 8034",
+  "to": "IS 12615",
+  "type": "allied",
+  "to_title": "Line Operated Three Phase AC Motors (IE Code) 'Efficiency Classes and Performance Specification'",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8034",
+  "to": "IS 9283",
+  "type": "allied",
+  "to_title": "Motors for Submersible Pumpsets - Specification",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8034",
+  "to": "IS 9601",
+  "type": "references",
+  "to_title": "Submersible Motors Technical Delivery Conditions",
+  "sources": [
+   "bis_ai_db",
+   "bis_ai_ingest_map"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8034",
+  "to": "IS 9283",
+  "type": "requires_safety",
+  "to_title": "Motors for Submersible Pumpsets - Specification",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8034",
+  "to": "IS 11346",
+  "type": "requires_testing",
+  "to_title": "Code of Acceptance Tests for Submersible Pumpsets",
+  "sources": [
+   "sure",
+   "sure_relationships"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 8034",
+  "to": "IS 9283",
+  "type": "submersible_motor_safety",
+  "to_title": "Motors for Submersible Pumpsets",
+  "sources": [
+   "sure_relationships"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8041",
+  "to": "IS 269",
+  "type": "references",
+  "to_title": "Ordinary Portland Cement, 33 Grade — Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8042",
+  "to": "IS 269",
+  "type": "references",
+  "to_title": "Ordinary Portland Cement, 33 Grade — Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8043",
+  "to": "IS 269",
+  "type": "references",
+  "to_title": "Ordinary Portland Cement, 33 Grade — Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 809",
+  "to": "IS 12027",
+  "type": "references",
+  "to_title": "SILICONE-BASED WATER REPELLENTS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 809",
+  "to": "IS 1322",
+  "type": "references",
+  "to_title": "Bitumen Felts For Water Proofing And Damp-proofing",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 809",
+  "to": "IS 14695",
+  "type": "references",
+  "to_title": "GLASS FIBRE BASE COAL",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 809",
+  "to": "IS 1580",
+  "type": "references",
+  "to_title": "BITUMINOUS COMPOUNDS FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 809",
+  "to": "IS 2645",
+  "type": "references",
+  "to_title": "Integral Waterproofing Compounds For Cement Mortar And Concrete -specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 809",
+  "to": "IS 3037",
+  "type": "references",
+  "to_title": "BITUMEN MASTIC FOR USE IN",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 809",
+  "to": "IS 3384",
+  "type": "references",
+  "to_title": "BITUMEN PRIMER FOR USE IN",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 809",
+  "to": "IS 5871",
+  "type": "references",
+  "to_title": "BITUMEN MASTIC FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 811",
+  "to": "IS 1079",
+  "type": "references",
+  "to_title": "Hot Rolled Carbon Steel Sheet and Strip - Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 811",
+  "to": "IS 513",
+  "type": "references",
+  "to_title": "COLD ROLLED LOW CARBON STEEL",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8112",
+  "to": "IS 4031",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 8112",
+  "to": "IS 4032",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "normai"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 8272",
+  "to": "IS 10394",
+  "type": "references",
+  "to_title": "WOODEN SLEEPERS FOR  RAILWAY TRACK",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8272",
+  "to": "IS 1326",
+  "type": "references",
+  "to_title": "NON-CONIFEROUS  SAWN TIMBER",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8272",
+  "to": "IS 190",
+  "type": "references",
+  "to_title": "CONIFEROUS SAWN TIMBER",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8272",
+  "to": "IS 2372",
+  "type": "references",
+  "to_title": "TIMBER FOR COOLING TOWERS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8272",
+  "to": "IS 3337",
+  "type": "references",
+  "to_title": "BALLIES FOR GENERAL PURPOSES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8272",
+  "to": "IS 3629",
+  "type": "references",
+  "to_title": "STRUCTURAL TIMBER IN BUILDINGS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8272",
+  "to": "IS 3731",
+  "type": "references",
+  "to_title": "TEAK  SQUARES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8272",
+  "to": "IS 399",
+  "type": "references",
+  "to_title": "CLASSIFICATION OF COMMERCIAL TIMBERS AND",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8272",
+  "to": "IS 4891",
+  "type": "references",
+  "to_title": "PREFERRED CUT SIZES OF  STRUCTURAL TIMBER",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8272",
+  "to": "IS 4895",
+  "type": "references",
+  "to_title": "TEAK LOGS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8272",
+  "to": "IS 5246",
+  "type": "references",
+  "to_title": "CONIFEROUS LOGS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8272",
+  "to": "IS 6056",
+  "type": "references",
+  "to_title": "JOINTED WOOD POLES FOR  OVERHEAD",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8272",
+  "to": "IS 7308",
+  "type": "references",
+  "to_title": "NON-CONIFEROUS LOGS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8272",
+  "to": "IS 876",
+  "type": "references",
+  "to_title": "WOOD POLES  FOR OVER HEAD POWER",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8329",
+  "to": "IS 12288",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 8329",
+  "to": "IS 9523",
+  "type": "allied",
+  "to_title": "Ductile Iron Fittings For Pressure Pipes For Water, Gas And Sewage",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8329",
+  "to": "IS 5382",
+  "type": "references",
+  "to_title": "Rubber Seals Joint Rings For Water Supply,Drainage And Sewerage Pipelines Specification For Materials",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8329",
+  "to": "IS 638",
+  "type": "references",
+  "to_title": "Sheet Rubber Jointing And Rubber Insertion Jointing",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8329",
+  "to": "IS 12288",
+  "type": "requires_safety",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 8329",
+  "to": "IS 1500",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 8360 (Part 1)",
+  "to": "IS 4984",
+  "type": "references",
+  "to_title": "High Density Polyethylene (HDPE) Pipes for Water Supply - Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8360 (Part 2)",
+  "to": "IS 8360 (Part 1)",
+  "type": "references",
+  "to_title": "FABRICATED HIGH DENSITY",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8360 (Part 3)",
+  "to": "IS 4985",
+  "type": "references",
+  "to_title": "Unplasticized PVC Pipes for Potable Water Supplies — Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8360 (Part 3)",
+  "to": "IS 8360 (Part 1)",
+  "type": "references",
+  "to_title": "FABRICATED HIGH DENSITY",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 10238",
+  "type": "references",
+  "to_title": "FASTENERS – THREADED STEEL",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 1120",
+  "type": "references",
+  "to_title": "COACH SCREW",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 12427",
+  "type": "references",
+  "to_title": "Fasteners - Threaded Steel Fasteners - Hexagon Head Transmission Tower Bolts",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 1365",
+  "type": "references",
+  "to_title": "SLOTTED COUNTERSUNK HEAD SCREWS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 1366",
+  "type": "references",
+  "to_title": "ISO 1207 - 1992 SLOTTED",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 1929",
+  "type": "references",
+  "to_title": "HOT FORGED STEEL RIVETS FOR HOT CLOSING",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 2016",
+  "type": "references",
+  "to_title": "Plain Washers — Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 207",
+  "type": "references",
+  "to_title": "GATE AND SHUTTER HOOKS AND EYES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 2155",
+  "type": "references",
+  "to_title": "COLD FORGED SOLID STEEL RIVETS FOR HOT",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 2585",
+  "type": "references",
+  "to_title": "BLACK SQUARE BOLTS AND NUTS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 2687",
+  "type": "references",
+  "to_title": "CAP NUTS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 2907",
+  "type": "references",
+  "to_title": "NON-FERROUS RIVETS (1.6 TO 10 mm)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 2998",
+  "type": "references",
+  "to_title": "COLD FORGED STEEL RIVETS FOR COLD",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 3063",
+  "type": "references",
+  "to_title": "FASTENERS-SINGLE COIL RECTANGULAR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 3468",
+  "type": "references",
+  "to_title": "PIPE NUTS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 3757",
+  "type": "references",
+  "to_title": "HIGH STRENGTH STRUCTURAL BOLTS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 4762",
+  "type": "references",
+  "to_title": "WORM DRIVE CLAMPS FOR GENERAL PURPOSE",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 5369",
+  "type": "references",
+  "to_title": "GENERAL REQUIREMENTS FOR PLAIN WASHERS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 5372",
+  "type": "references",
+  "to_title": "TAPER WASHERS FOR CHANNELS (ISMC)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 5373",
+  "type": "references",
+  "to_title": "SQUARE WASHERS FOR WOOD FASTENINGS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 5374",
+  "type": "references",
+  "to_title": "TAPER WASHERS FOR I-BEAMS (ISMB)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 5624",
+  "type": "references",
+  "to_title": "FOUNDATION BOLTS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 6113",
+  "type": "references",
+  "to_title": "ALUMINIUM FASTENERS FOR BUILDING",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 6610",
+  "type": "references",
+  "to_title": "HEAVY WASHERS FOR STEEL STRUCTURES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 6623",
+  "type": "references",
+  "to_title": "HIGH STRENGTH STRUCTURAL NUTS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 6639",
+  "type": "references",
+  "to_title": "HEXAGON BOLTS FOR STEEL STRUCTURES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 6649",
+  "type": "references",
+  "to_title": "HARDENED AND TEMPERED WASHERS FOR HIGH",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 6733",
+  "type": "references",
+  "to_title": "WALL AND ROOFING NAILS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 6736",
+  "type": "references",
+  "to_title": "SLOTTED RAISED COUNTERSUNK HEAD",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 6739",
+  "type": "references",
+  "to_title": "SLOTTED ROUND HEAD WOOD SCREWS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 6760",
+  "type": "references",
+  "to_title": "Slotted Countersunk Head Wood Screws",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 723",
+  "type": "references",
+  "to_title": "Steel Countersunk Head Wire Nails",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 724",
+  "type": "references",
+  "to_title": "MILD STEEL AND BRASS CUP, RULER AND SQUARE",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 725",
+  "type": "references",
+  "to_title": "COPPER WIRE NAILS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 730",
+  "type": "references",
+  "to_title": "HOOK BOLTS FOR CORRUGATED SHEET ROOFING",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 8033",
+  "type": "references",
+  "to_title": "WASHERS WITH SQUARE HOLE FOR WOOD",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 8412",
+  "type": "references",
+  "to_title": "SLOTTED COUNTERSUNK HEAD BOLTS FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8363",
+  "to": "IS 8869",
+  "type": "references",
+  "to_title": "WASHERS FOR CORRUGATED SHEET ROOFING",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8374",
+  "to": "IS 702",
+  "type": "references",
+  "to_title": "Industrial Bitumen",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8718",
+  "to": "IS 772",
+  "type": "references",
+  "to_title": "GENERAL  REQUIREMENT FOR ENAMELLED CAST",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8727",
+  "to": "IS 772",
+  "type": "references",
+  "to_title": "GENERAL  REQUIREMENT FOR ENAMELLED CAST",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8789",
+  "to": "IS 12615",
+  "type": "allied",
+  "to_title": "Line Operated Three Phase AC Motors (IE Code) 'Efficiency Classes and Performance Specification'",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8789",
+  "to": "IS 12802",
+  "type": "requires_testing",
+  "to_title": "Methods of test for three-phase induction motors",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8828",
+  "to": "IS/IEC 60898 (Part 1)",
+  "type": "superseded_by",
+  "to_title": "ELECTRICAL ACCESSORIES - CIRCUIT-BREAKERS FOR OVERCURRENT PROTECTION FOR HOUSEHOLD AND SIMILAR INSTALLATIONS - PART 1: CIRCUIT-BREAKERS FOR AC OPERATION",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 8828",
+  "to": "IS/IEC 60898 (Part 2)",
+  "type": "superseded_by",
+  "to_title": null,
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 9142",
+  "to": "IS 2185 (Part 2)",
+  "type": "references",
+  "to_title": "CONCRETE MASONRY UNITS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9142",
+  "to": "IS 2686",
+  "type": "references",
+  "to_title": "CINDER AS FINE AGGREGATES FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9197",
+  "to": "IS 383",
+  "type": "references",
+  "to_title": "Coarse and Fine Aggregate for Concrete — Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9510",
+  "to": "IS 383",
+  "type": "references",
+  "to_title": "Coarse and Fine Aggregate for Concrete — Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9537 (Part 3)",
+  "to": "IS 12252",
+  "type": "references",
+  "to_title": "Polyalkylene Pipe Specifications",
+  "sources": [
+   "bis_ai_db",
+   "bis_ai_ingest_map"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9537 (Part 3)",
+  "to": "IS 3400",
+  "type": "references",
+  "to_title": "Methods of Test for Vulcanized Rubbers",
+  "sources": [
+   "bis_ai_db",
+   "bis_ai_ingest_map"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9537 (Part 4)",
+  "to": "IS 9537 (Part 1)",
+  "type": "references",
+  "to_title": "CONDUITS FOR ELECTRICAL",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9537 (Part II)",
+  "to": "IS 9537 (Part 1)",
+  "type": "references",
+  "to_title": "CONDUITS FOR ELECTRICAL",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9627",
+  "to": "IS 5382",
+  "type": "references",
+  "to_title": "Rubber Seals Joint Rings For Water Supply,Drainage And Sewerage Pipelines Specification For Materials",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9627",
+  "to": "IS 8794",
+  "type": "references",
+  "to_title": "Cast Iron Detachable Joints For Use With Asbestos Cement Pressure Pipes",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9742",
+  "to": "IS 3677",
+  "type": "references",
+  "to_title": "UNBONDED ROCK AND SLAG WOOL FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9912",
+  "to": "IS 1195",
+  "type": "references",
+  "to_title": "BITUMEN MASTIC FOR FLOORING",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9912",
+  "to": "IS 1237",
+  "type": "references",
+  "to_title": "Cement Concrete Flooring Tiles - Specification",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9912",
+  "to": "IS 12583",
+  "type": "references",
+  "to_title": "CORRUGATED BITMEN ROOFING SHEETS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9912",
+  "to": "IS 12866",
+  "type": "references",
+  "to_title": "PLASTIC TRANSLUCENT SHEET MADE",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9912",
+  "to": "IS 13026",
+  "type": "references",
+  "to_title": "BITUMEN MASTIC FOR FLOORING FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9912",
+  "to": "IS 13753",
+  "type": "references",
+  "to_title": "DUST– PRESSED CERAMIC TILES WITH WATER",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9912",
+  "to": "IS 13754",
+  "type": "references",
+  "to_title": "DUST – PRESSED CERAMIC TILES WITH",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9912",
+  "to": "IS 13755",
+  "type": "references",
+  "to_title": "DUST– PRESSED CERAMIC TILES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9912",
+  "to": "IS 13756",
+  "type": "references",
+  "to_title": "DUST – PRESSED CERAMIC TILES WITH LOW",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9912",
+  "to": "IS 14862",
+  "type": "references",
+  "to_title": "FIBRE CEMENT FLAT SHEETS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9912",
+  "to": "IS 1542",
+  "type": "references",
+  "to_title": "SAND FOR  PLASTER",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9912",
+  "to": "IS 2116",
+  "type": "references",
+  "to_title": "SAND FOR MASONRY MORTARS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9912",
+  "to": "IS 3461",
+  "type": "references",
+  "to_title": "PVC ASBESTOS FLOOR TILES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9912",
+  "to": "IS 3462",
+  "type": "references",
+  "to_title": "Unbacked Flexible Pvc Flooring",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9912",
+  "to": "IS 4457",
+  "type": "references",
+  "to_title": "Ceramic Unglazed Vitreous Acid Resisting Tile",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9912",
+  "to": "IS 4860",
+  "type": "references",
+  "to_title": "ACID – RESISTANT BRICKS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9912",
+  "to": "IS 5317",
+  "type": "references",
+  "to_title": "BITUMEN MASTIC FOR  BRIDGE",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9912",
+  "to": "IS 638",
+  "type": "references",
+  "to_title": "Sheet Rubber Jointing And Rubber Insertion Jointing",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9912",
+  "to": "IS 653",
+  "type": "references",
+  "to_title": "LINOLEUM SHEET  AND TILES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9912",
+  "to": "IS 809",
+  "type": "references",
+  "to_title": "RUBBER FLOORING MATERIALS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9912",
+  "to": "IS 8374",
+  "type": "references",
+  "to_title": "BITUMEN MASTIC, ANTI-STATIC AND",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9912",
+  "to": "IS 9197",
+  "type": "references",
+  "to_title": "EPOXY RESIN, HARDENERS AND EPOXY",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9912",
+  "to": "IS 9510",
+  "type": "references",
+  "to_title": "BITUMEN MASTIC, ACID – RESISTING GRADE",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 996",
+  "to": "IS 302",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS 996",
+  "to": "IS 900",
+  "type": "allied",
+  "to_title": "Code of Practice for Installation and Maintenance of Induction Motors",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 996",
+  "to": "IS 302 (Part 1)",
+  "type": "requires_safety",
+  "to_title": "Safety of Household and Similar Electrical Appliances — General Requirements",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9968 (Part 1)",
+  "to": "IS 1293",
+  "type": "references",
+  "to_title": "Plugs and Socket-Outlets of Rated Voltage up to and including 250 Volts and Rated Current up to and including 16 Amperes",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9968 (Part 1)",
+  "to": "IS 14772",
+  "type": "references",
+  "to_title": "General Requirements For Enclosures For Accessories For Household And Similar Fixed Electrical Installations(superseding Is5133(part1 And 2)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9968 (Part 1)",
+  "to": "IS 2086",
+  "type": "references",
+  "to_title": "Semi-Enclosed Electric Fuses (Rewireable Type)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9968 (Part 1)",
+  "to": "IS 2412",
+  "type": "references",
+  "to_title": "LINK CLIPS FOR ELECTRICAL WIRING",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9968 (Part 1)",
+  "to": "IS 3419",
+  "type": "references",
+  "to_title": "Fittings for Rigid Non-Metallic Conduits",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9968 (Part 1)",
+  "to": "IS 3480",
+  "type": "references",
+  "to_title": "FLEXIBLE STEEL CONDUITS FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9968 (Part 1)",
+  "to": "IS 3837",
+  "type": "references",
+  "to_title": "ACCESSORIES FOR RIGID STEEL CONDUITS FOR",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9968 (Part 1)",
+  "to": "IS 3854",
+  "type": "references",
+  "to_title": "Switches for Domestic and Similar Fixed Electrical Installations",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9968 (Part 1)",
+  "to": "IS 4160",
+  "type": "references",
+  "to_title": "INTERLOCKING SWITCH SOCKET OUTLET",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9968 (Part 1)",
+  "to": "IS 4615",
+  "type": "references",
+  "to_title": "SWITCH SOCKET-OUTLETS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9968 (Part 1)",
+  "to": "IS 4649",
+  "type": "references",
+  "to_title": "ADAPTORS FOR FLEXIBLE STEEL CONDUITS",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9968 (Part 1)",
+  "to": "IS 6538",
+  "type": "references",
+  "to_title": "THREE-PIN PLUGS MADE OF RESILIENTMATERIAL",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9968 (Part 1)",
+  "to": "IS 694",
+  "type": "references",
+  "to_title": "PVC Insulated Cables for Working Voltages up to and Including 1100 V",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS 9968 (Part 1)",
+  "to": "IS 8828",
+  "type": "references",
+  "to_title": "Electrical Accessories - Circuit-Breakers for Overcurrent Protection (MCB)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS/IEC 60898 (Part 1)",
+  "to": "IS 12640",
+  "type": "allied",
+  "to_title": null,
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS/IEC 60898 (Part 1)",
+  "to": "IS/IEC 60947 (Part 2)",
+  "type": "allied",
+  "to_title": "LOW-VOLTAGE SWITCHGEAR AND CONTROLGEAR - PART 2: CIRCUIT BREAKERS",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS/IEC 60898 (Part 1)",
+  "to": "IEC61009-1",
+  "type": "references",
+  "to_title": null,
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS/IEC 60898 (Part 1)",
+  "to": "IEC61009-2-1",
+  "type": "references",
+  "to_title": null,
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS/IEC 60898 (Part 1)",
+  "to": "IEC61009-2-2",
+  "type": "references",
+  "to_title": null,
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS/IEC 60898 (Part 1)",
+  "to": "IS 8828",
+  "type": "references",
+  "to_title": "Electrical Accessories - Circuit-Breakers for Overcurrent Protection (MCB)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS/IEC 60898 (Part 1)",
+  "to": "IS/IEC 60898 (Part 2)",
+  "type": "references",
+  "to_title": null,
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS/IEC 60898 (Part 1)",
+  "to": "IS/IEC 60947 (Part 1)",
+  "type": "references",
+  "to_title": "LOW-VOLTAGE SWITCHGEAR AND CONTROLGEAR - PART 1: GENERAL RULES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS/IEC 60947 (Part 1)",
+  "to": "IS 12032 (Part 7)",
+  "type": "references",
+  "to_title": null,
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS/IEC 60947 (Part 1)",
+  "to": "IS 12063",
+  "type": "references",
+  "to_title": null,
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS/IEC 60947 (Part 1)",
+  "to": "IS 13703 (Part 1)",
+  "type": "references",
+  "to_title": "Low-Voltage Fuses for Rated Voltages not Exceeding 1000 V AC - General Requirements",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS/IEC 60947 (Part 1)",
+  "to": "IS 15382 (Part 1)",
+  "type": "references",
+  "to_title": null,
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS/IEC 60947 (Part 1)",
+  "to": "IS 8623 (Part 1)",
+  "type": "references",
+  "to_title": "Specification for Low-Voltage Switchgear and Controlgear Assemblies",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS/IEC 60947 (Part 1)",
+  "to": "IS/IEC 60947 (Part 5-1)",
+  "type": "references",
+  "to_title": "LOW-VOLTAGE SWITCHGEAR AND CONTROLGEAR - PART 5: CONTROL CIRCUIT DEVICES AND SWITCHING ELEMENTS, SECTION 1: ELECTROMECHANICAL CONTROL CIRCUIT DEVICES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS/IEC 60947 (Part 2)",
+  "to": "IS/IEC 60947 (Part 1)",
+  "type": "allied",
+  "to_title": "LOW-VOLTAGE SWITCHGEAR AND CONTROLGEAR - PART 1: GENERAL RULES",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS/IEC 60947 (Part 2)",
+  "to": "IS/IEC 60947 (Part 4-1)",
+  "type": "allied",
+  "to_title": "LOW-VOLTAGE SWITCHGEAR AND CONTROLGEAR - PART 4: CONTACTORS AND MOTOR-STARTERS, SECTION 1: ELECTROMECHANICAL CONTACTORS AND MOTOR-STARTERS",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS/IEC 60947 (Part 2)",
+  "to": "IEC60898:1995",
+  "type": "references",
+  "to_title": null,
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS/IEC 60947 (Part 2)",
+  "to": "IEC60934:1995",
+  "type": "references",
+  "to_title": null,
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS/IEC 60947 (Part 2)",
+  "to": "IEC60947-1:1999",
+  "type": "references",
+  "to_title": null,
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS/IEC 60947 (Part 2)",
+  "to": "IEC60947-4-1:2000",
+  "type": "references",
+  "to_title": null,
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": false
+ },
+ {
+  "frm": "IS/IEC 60947 (Part 2)",
+  "to": "IS 8828",
+  "type": "references",
+  "to_title": "Electrical Accessories - Circuit-Breakers for Overcurrent Protection (MCB)",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS/IEC 60947 (Part 4-1)",
+  "to": "IS/IEC 60947 (Part 1)",
+  "type": "references",
+  "to_title": "LOW-VOLTAGE SWITCHGEAR AND CONTROLGEAR - PART 1: GENERAL RULES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS/IEC 60947 (Part 5-1)",
+  "to": "IS/IEC 60947 (Part 1)",
+  "type": "references",
+  "to_title": "LOW-VOLTAGE SWITCHGEAR AND CONTROLGEAR - PART 1: GENERAL RULES",
+  "sources": [
+   "sp21"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS/IEC 61730 (Part 1)",
+  "to": "IS 14286",
+  "type": "allied",
+  "to_title": "Crystalline Silicon Terrestrial Photovoltaic (PV) Modules - Design Qualification and Type Approval",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS/IEC 61730 (Part 1)",
+  "to": "IS/IEC 61730 (Part 2)",
+  "type": "allied",
+  "to_title": "Photovoltaic (PV) Module Safety Qualification - Part 2: Requirements for Testing",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS/IEC 61730 (Part 1)",
+  "to": "IS 14286",
+  "type": "performance",
+  "to_title": "Crystalline Silicon Terrestrial Photovoltaic (PV) Modules - Design Qualification and Type Approval",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS/IEC 61730 (Part 1)",
+  "to": "IS/IEC 61730 (Part 2)",
+  "type": "requires_testing",
+  "to_title": "Photovoltaic (PV) Module Safety Qualification - Part 2: Requirements for Testing",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS/IEC 61730 (Part 2)",
+  "to": "IS 14286",
+  "type": "allied",
+  "to_title": "Crystalline Silicon Terrestrial Photovoltaic (PV) Modules - Design Qualification and Type Approval",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS/IEC 61730 (Part 2)",
+  "to": "IS/IEC 61730 (Part 1)",
+  "type": "allied",
+  "to_title": "Photovoltaic (PV) Module Safety Qualification - Part 1: Requirements for Construction",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS/IEC 61730 (Part 2)",
+  "to": "IS 14286",
+  "type": "performance",
+  "to_title": "Crystalline Silicon Terrestrial Photovoltaic (PV) Modules - Design Qualification and Type Approval",
+  "sources": [
+   "sure"
+  ],
+  "to_in_master": true
+ },
+ {
+  "frm": "IS/ISO/IEC 27001",
+  "to": "ISO/IEC 27002",
+  "type": "requires_testing",
+  "to_title": null,
+  "sources": [
+   "normai"
+  ],
+  "to_in_master": false
+ }
+]

@@ -1,0 +1,2918 @@
+[
+ {
+  "id": "Q001",
+  "query": "Supply of TMT reinforcement bars, Fe 500D grade, for RCC column and beam work",
+  "language": "en",
+  "expected_standards": [
+   "IS 1786"
+  ],
+  "role": "eval",
+  "category": "Structural Steel",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q001"
+   },
+   {
+    "source": "normai_example_prompts",
+    "id": "Civil & Structural#1"
+   }
+  ],
+  "department": "Public Works Department",
+  "merged_duplicates": [
+   "Supply of TMT reinforcement bars Fe 500D grade for RCC column and beam work"
+  ],
+  "expected_resolved_in_master": {
+   "IS 1786": [
+    "IS 1786"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q002",
+  "query": "Procurement of 53 grade OPC cement for precast pile manufacturing",
+  "language": "en",
+  "expected_standards": [
+   "IS 12269"
+  ],
+  "role": "eval",
+  "category": "Construction Materials - Cement",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q002"
+   }
+  ],
+  "department": "Public Works Department",
+  "expected_resolved_in_master": {
+   "IS 12269": [
+    "IS 12269"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q003",
+  "query": "43 grade ordinary Portland cement required for plastering and masonry work at site office",
+  "language": "en",
+  "expected_standards": [
+   "IS 8112"
+  ],
+  "role": "eval",
+  "category": "Construction Materials - Cement",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q003"
+   }
+  ],
+  "department": "General Administration",
+  "expected_resolved_in_master": {
+   "IS 8112": [
+    "IS 8112"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q004",
+  "query": "Fly-ash based Portland Pozzolana Cement for mass concreting of dam foundation",
+  "language": "en",
+  "expected_standards": [
+   "IS 1489 (Part 1)",
+   "IS 3812 (Part 1)"
+  ],
+  "role": "eval",
+  "category": "Construction Materials - Cement",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q004"
+   }
+  ],
+  "department": "Irrigation Department",
+  "expected_resolved_in_master": {
+   "IS 1489 (Part 1)": [
+    "IS 1489 (Part 1)"
+   ],
+   "IS 3812 (Part 1)": [
+    "IS 3812 (Part 1)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q005",
+  "query": "Hot rolled structural steel plates and sections for fabrication of workshop shed",
+  "language": "en",
+  "expected_standards": [
+   "IS 2062",
+   "IS 800"
+  ],
+  "role": "eval",
+  "category": "Structural Steel",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q005"
+   }
+  ],
+  "department": "Public Works Department",
+  "expected_resolved_in_master": {
+   "IS 2062": [
+    "IS 2062"
+   ],
+   "IS 800": [
+    "IS 800"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q006",
+  "query": "Mild steel tubes for hand railing and staircase fabrication",
+  "language": "en",
+  "expected_standards": [
+   "IS 1239 (Part 1)"
+  ],
+  "role": "eval",
+  "category": "Structural Steel - Pipes",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q006"
+   }
+  ],
+  "department": "Public Works Department",
+  "expected_resolved_in_master": {
+   "IS 1239 (Part 1)": [
+    "IS 1239 (Part 1)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q007",
+  "query": "Hollow square steel sections for gate and grill fabrication",
+  "language": "en",
+  "expected_standards": [
+   "IS 4923"
+  ],
+  "role": "eval",
+  "category": "Structural Steel",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q007"
+   }
+  ],
+  "department": "General Administration",
+  "expected_resolved_in_master": {
+   "IS 4923": [
+    "IS 4923"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q008",
+  "query": "Steel pipes for laying of raw water transmission main",
+  "language": "en",
+  "expected_standards": [
+   "IS 3589"
+  ],
+  "role": "eval",
+  "category": "Structural Steel - Pipes",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q008"
+   }
+  ],
+  "department": "Water Resources Department",
+  "expected_resolved_in_master": {
+   "IS 3589": [
+    "IS 3589"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q009",
+  "query": "Coarse and fine aggregate for RCC slab casting at construction site",
+  "language": "en",
+  "expected_standards": [
+   "IS 383"
+  ],
+  "role": "eval",
+  "category": "Construction Materials - Concrete",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q009"
+   }
+  ],
+  "department": "Public Works Department",
+  "expected_resolved_in_master": {
+   "IS 383": [
+    "IS 383"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q010",
+  "query": "Design and execution of RCC retaining wall as per applicable concrete code",
+  "language": "en",
+  "expected_standards": [
+   "IS 456"
+  ],
+  "role": "eval",
+  "category": "Construction Materials - Concrete",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q010"
+   }
+  ],
+  "department": "Public Works Department",
+  "expected_resolved_in_master": {
+   "IS 456": [
+    "IS 456"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q011",
+  "query": "Concrete hollow blocks for compound wall masonry",
+  "language": "en",
+  "expected_standards": [
+   "IS 2185 (Part 1)"
+  ],
+  "role": "eval",
+  "category": "Construction Materials - Masonry",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q011"
+   }
+  ],
+  "department": "General Administration",
+  "expected_resolved_in_master": {
+   "IS 2185 (Part 1)": [
+    "IS 2185 (Part 1)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q012",
+  "query": "Burnt clay bricks for boundary wall construction",
+  "language": "en",
+  "expected_standards": [
+   "IS 1077"
+  ],
+  "role": "eval",
+  "category": "Construction Materials - Masonry",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q012"
+   }
+  ],
+  "department": "General Administration",
+  "expected_resolved_in_master": {
+   "IS 1077": [
+    "IS 1077"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q013",
+  "query": "Interlocking paver blocks for parking area and internal roads",
+  "language": "en",
+  "expected_standards": [
+   "IS 15658"
+  ],
+  "role": "eval",
+  "category": "Construction Materials - Paving",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q013"
+   }
+  ],
+  "department": "Public Works Department",
+  "expected_resolved_in_master": {
+   "IS 15658": [
+    "IS 15658"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q014",
+  "query": "PVC insulated single-core wires for internal building wiring, 1.5 sq mm and 2.5 sq mm",
+  "language": "en",
+  "expected_standards": [
+   "IS 694"
+  ],
+  "role": "eval",
+  "category": "Electrical - Cables",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q014"
+   }
+  ],
+  "department": "Electrical Wing",
+  "expected_resolved_in_master": {
+   "IS 694": [
+    "IS 694"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q015",
+  "query": "Heavy duty PVC insulated power cables for main distribution feeder",
+  "language": "en",
+  "expected_standards": [
+   "IS 1554 (Part 1)"
+  ],
+  "role": "eval",
+  "category": "Electrical - Cables",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q015"
+   }
+  ],
+  "department": "Electrical Wing",
+  "expected_resolved_in_master": {
+   "IS 1554 (Part 1)": [
+    "IS 1554 (Part 1)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q016",
+  "query": "Copper conductor procurement for cable manufacturing sub-contract",
+  "language": "en",
+  "expected_standards": [
+   "IS 8130"
+  ],
+  "role": "eval",
+  "category": "Electrical - Cables",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q016"
+   }
+  ],
+  "department": "Electrical Wing",
+  "expected_resolved_in_master": {
+   "IS 8130": [
+    "IS 8130"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q017",
+  "query": "Complete internal electrical wiring installation for new administrative building",
+  "language": "en",
+  "expected_standards": [
+   "IS 732",
+   "IS 3043"
+  ],
+  "role": "eval",
+  "category": "Electrical - Wiring",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q017"
+   }
+  ],
+  "department": "Electrical Wing",
+  "expected_resolved_in_master": {
+   "IS 732": [
+    "IS 732"
+   ],
+   "IS 3043": [
+    "IS 3043"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q018",
+  "query": "Earthing system installation for server room and electrical panel",
+  "language": "en",
+  "expected_standards": [
+   "IS 3043"
+  ],
+  "role": "eval",
+  "category": "Electrical - Safety",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q018"
+   }
+  ],
+  "department": "IT Department",
+  "expected_resolved_in_master": {
+   "IS 3043": [
+    "IS 3043"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q019",
+  "query": "Low voltage switchgear panel (MCCB/ACB) for substation upgrade",
+  "language": "en",
+  "expected_standards": [
+   "IS 13947 (Part 1)"
+  ],
+  "role": "eval",
+  "category": "Electrical - Switchgear",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q019"
+   }
+  ],
+  "department": "Electrical Wing",
+  "expected_resolved_in_master": {
+   "IS 13947 (Part 1)": [
+    "IS 13947 (Part 1)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q020",
+  "query": "3-phase induction motors for water pumping station, installation and commissioning",
+  "language": "en",
+  "expected_standards": [
+   "IS 900"
+  ],
+  "role": "eval",
+  "category": "Electrical - Motors",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q020"
+   }
+  ],
+  "department": "Water Resources Department",
+  "expected_resolved_in_master": {
+   "IS 900": [
+    "IS 900"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q021",
+  "query": "IP65 rated junction boxes and enclosures for outdoor electrical fittings",
+  "language": "en",
+  "expected_standards": [
+   "IS/IEC 60529"
+  ],
+  "role": "eval",
+  "category": "Electrical - Enclosures",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q021"
+   }
+  ],
+  "department": "Electrical Wing",
+  "expected_resolved_in_master": {
+   "IS/IEC 60529": [
+    "IS/IEC 60529"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q022",
+  "query": "Ceiling fans and electrical appliances for office renovation",
+  "language": "en",
+  "expected_standards": [
+   "IS 302 (Part 1)"
+  ],
+  "role": "eval",
+  "category": "Electrical - Appliances",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q022"
+   }
+  ],
+  "department": "General Administration",
+  "expected_resolved_in_master": {
+   "IS 302 (Part 1)": [
+    "IS 302 (Part 1)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q023",
+  "query": "Bottled and packaged drinking water for canteen and site offices",
+  "language": "en",
+  "expected_standards": [
+   "IS 10500"
+  ],
+  "role": "eval",
+  "category": "Water & Environment",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q023"
+   }
+  ],
+  "department": "General Administration",
+  "expected_resolved_in_master": {
+   "IS 10500": [
+    "IS 10500"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q024",
+  "query": "uPVC pipes and fittings for overhead water tank plumbing line",
+  "language": "en",
+  "expected_standards": [
+   "IS 4985"
+  ],
+  "role": "eval",
+  "category": "Water & Environment - Pipes",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q024"
+   }
+  ],
+  "department": "Public Works Department",
+  "expected_resolved_in_master": {
+   "IS 4985": [
+    "IS 4985"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q025",
+  "query": "CPVC piping for hot water supply lines in staff quarters",
+  "language": "en",
+  "expected_standards": [
+   "IS 15450"
+  ],
+  "role": "eval",
+  "category": "Water & Environment - Pipes",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q025"
+   }
+  ],
+  "department": "Public Works Department",
+  "expected_resolved_in_master": {
+   "IS 15450": [
+    "IS 15450"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q026",
+  "query": "Water quality testing services for borewell samples across district",
+  "language": "en",
+  "expected_standards": [
+   "IS 3025 (Part 1)",
+   "IS 10500"
+  ],
+  "role": "eval",
+  "category": "Water & Environment - Testing",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q026"
+   }
+  ],
+  "department": "Public Health Engineering",
+  "expected_resolved_in_master": {
+   "IS 3025 (Part 1)": [
+    "IS 3025 (Part 1)"
+   ],
+   "IS 10500": [
+    "IS 10500"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q027",
+  "query": "Industrial safety helmets for construction site workers",
+  "language": "en",
+  "expected_standards": [
+   "IS 2925"
+  ],
+  "role": "eval",
+  "category": "Safety & PPE",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q027"
+   },
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#18"
+   }
+  ],
+  "department": "Public Works Department",
+  "merged_duplicates": [
+   "industrial safety helmets for construction workers"
+  ],
+  "expected_resolved_in_master": {
+   "IS 2925": [
+    "IS 2925"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q028",
+  "query": "Safety goggles for workshop and welding staff",
+  "language": "en",
+  "expected_standards": [
+   "IS 15298 (Part 2)"
+  ],
+  "role": "eval",
+  "category": "Safety & PPE",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q028"
+   }
+  ],
+  "department": "General Administration",
+  "expected_resolved_in_master": {
+   "IS 15298 (Part 2)": [
+    "IS 15298 (Part 2)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q029",
+  "query": "Insulating rubber hand gloves for high-voltage line maintenance crew",
+  "language": "en",
+  "expected_standards": [
+   "IS 4770"
+  ],
+  "role": "eval",
+  "category": "Safety & PPE",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q029"
+   }
+  ],
+  "department": "Electrical Wing",
+  "expected_resolved_in_master": {
+   "IS 4770": [
+    "IS 4770"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q030",
+  "query": "N95-equivalent respiratory masks for hazardous area workers",
+  "language": "en",
+  "expected_standards": [
+   "IS 5983"
+  ],
+  "role": "eval",
+  "category": "Safety & PPE",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q030"
+   }
+  ],
+  "department": "General Administration",
+  "expected_resolved_in_master": {
+   "IS 5983": [
+    "IS 5983"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q031",
+  "query": "Leather safety shoes for site supervisors and field staff",
+  "language": "en",
+  "expected_standards": [
+   "IS 11226"
+  ],
+  "role": "eval",
+  "category": "Safety & PPE",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q031"
+   }
+  ],
+  "department": "General Administration",
+  "expected_resolved_in_master": {
+   "IS 11226": [
+    "IS 11226"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q032",
+  "query": "Protective gloves and arm guards for fabrication shop personnel",
+  "language": "en",
+  "expected_standards": [
+   "IS 15298 (Part 3)"
+  ],
+  "role": "eval",
+  "category": "Safety & PPE",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q032"
+   }
+  ],
+  "department": "General Administration",
+  "expected_resolved_in_master": {
+   "IS 15298 (Part 3)": [
+    "IS 15298 (Part 3)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q033",
+  "query": "Desktop computers and printers for office IT infrastructure upgrade",
+  "language": "en",
+  "expected_standards": [
+   "IS 13252 (Part 1)"
+  ],
+  "role": "eval",
+  "category": "IT & Electronics",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q033"
+   }
+  ],
+  "department": "IT Department",
+  "expected_resolved_in_master": {
+   "IS 13252 (Part 1)": [
+    "IS 13252 (Part 1)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q034",
+  "query": "Empanelment of IT service vendor with certified information security management practices",
+  "language": "en",
+  "expected_standards": [
+   "IS/ISO/IEC 27001"
+  ],
+  "role": "eval",
+  "category": "IT & Information Security",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q034"
+   }
+  ],
+  "department": "IT Department",
+  "expected_resolved_in_master": {
+   "IS/ISO/IEC 27001": [
+    "IS/ISO/IEC 27001"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q035",
+  "query": "Steel strip material for manufacture of office furniture racks",
+  "language": "en",
+  "expected_standards": [
+   "IS 616"
+  ],
+  "role": "eval",
+  "category": "Furniture & Fixtures",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q035"
+   }
+  ],
+  "department": "General Administration",
+  "expected_resolved_in_master": {
+   "IS 616": [
+    "IS 616"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q036",
+  "query": "Portland slag cement for marine jetty construction work",
+  "language": "en",
+  "expected_standards": [
+   "IS 455"
+  ],
+  "role": "eval",
+  "category": "Construction Materials - Cement",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q036"
+   }
+  ],
+  "department": "Ports Department",
+  "expected_resolved_in_master": {
+   "IS 455": [
+    "IS 455"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q037",
+  "query": "Grey iron castings for manhole covers and drainage fittings",
+  "language": "en",
+  "expected_standards": [
+   "IS 210"
+  ],
+  "role": "eval",
+  "category": "Metals & Castings",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q037"
+   }
+  ],
+  "department": "Public Works Department",
+  "expected_resolved_in_master": {
+   "IS 210": [
+    "IS 210"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q038",
+  "query": "Carbon steel castings for pump housing components",
+  "language": "en",
+  "expected_standards": [
+   "IS 1030"
+  ],
+  "role": "eval",
+  "category": "Metals & Castings",
+  "sources": [
+   {
+    "source": "normai_procurement_reference",
+    "id": "Q038"
+   }
+  ],
+  "department": "Water Resources Department",
+  "expected_resolved_in_master": {
+   "IS 1030": [
+    "IS 1030"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q039",
+  "query": "Procurement of 43 Grade Ordinary Portland Cement for RCC construction work",
+  "language": "en",
+  "expected_standards": [],
+  "role": "unlabeled_prompt",
+  "category": "Civil & Structural",
+  "sources": [
+   {
+    "source": "normai_example_prompts",
+    "id": "Civil & Structural#2"
+   }
+  ],
+  "expected_resolved_in_master": {},
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q040",
+  "query": "Supply of hot-rolled structural steel I-beams and channels for warehouse shed fabrication",
+  "language": "en",
+  "expected_standards": [],
+  "role": "unlabeled_prompt",
+  "category": "Civil & Structural",
+  "sources": [
+   {
+    "source": "normai_example_prompts",
+    "id": "Civil & Structural#3"
+   }
+  ],
+  "expected_resolved_in_master": {},
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q041",
+  "query": "Interlocking precast concrete paver blocks 80mm thickness for heavy vehicle parking lot",
+  "language": "en",
+  "expected_standards": [],
+  "role": "unlabeled_prompt",
+  "category": "Civil & Structural",
+  "sources": [
+   {
+    "source": "normai_example_prompts",
+    "id": "Civil & Structural#4"
+   }
+  ],
+  "expected_resolved_in_master": {},
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q042",
+  "query": "Supply of precast solid concrete masonry blocks for partition walls",
+  "language": "en",
+  "expected_standards": [],
+  "role": "unlabeled_prompt",
+  "category": "Civil & Structural",
+  "sources": [
+   {
+    "source": "normai_example_prompts",
+    "id": "Civil & Structural#5"
+   }
+  ],
+  "expected_resolved_in_master": {},
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q043",
+  "query": "PVC insulated copper conductor 1100V grade FRLS cables for office wiring",
+  "language": "en",
+  "expected_standards": [],
+  "role": "unlabeled_prompt",
+  "category": "Electrical & Power",
+  "sources": [
+   {
+    "source": "normai_example_prompts",
+    "id": "Electrical & Power#1"
+   }
+  ],
+  "expected_resolved_in_master": {},
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q044",
+  "query": "Installation of pipe and plate earthing system for computer server room",
+  "language": "en",
+  "expected_standards": [],
+  "role": "unlabeled_prompt",
+  "category": "Electrical & Power",
+  "sources": [
+   {
+    "source": "normai_example_prompts",
+    "id": "Electrical & Power#2"
+   }
+  ],
+  "expected_resolved_in_master": {},
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q045",
+  "query": "Heavy duty armoured 4-core aluminium power cable for underground substation feeder",
+  "language": "en",
+  "expected_standards": [],
+  "role": "unlabeled_prompt",
+  "category": "Electrical & Power",
+  "sources": [
+   {
+    "source": "normai_example_prompts",
+    "id": "Electrical & Power#3"
+   }
+  ],
+  "expected_resolved_in_master": {},
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q046",
+  "query": "Low voltage MCCB and distribution switchgear panel for commercial building",
+  "language": "en",
+  "expected_standards": [],
+  "role": "unlabeled_prompt",
+  "category": "Electrical & Power",
+  "sources": [
+   {
+    "source": "normai_example_prompts",
+    "id": "Electrical & Power#4"
+   }
+  ],
+  "expected_resolved_in_master": {},
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q047",
+  "query": "Energy-efficient 3-phase induction motor for water booster pumping station",
+  "language": "en",
+  "expected_standards": [],
+  "role": "unlabeled_prompt",
+  "category": "Electrical & Power",
+  "sources": [
+   {
+    "source": "normai_example_prompts",
+    "id": "Electrical & Power#5"
+   }
+  ],
+  "expected_resolved_in_master": {},
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q048",
+  "query": "Supply of uPVC pipes 110mm diameter Class 3 for drinking water distribution",
+  "language": "en",
+  "expected_standards": [],
+  "role": "unlabeled_prompt",
+  "category": "Water & Sanitation",
+  "sources": [
+   {
+    "source": "normai_example_prompts",
+    "id": "Water & Sanitation#1"
+   }
+  ],
+  "expected_resolved_in_master": {},
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q049",
+  "query": "CPVC piping and brass fittings for hot and cold potable water plumbing",
+  "language": "en",
+  "expected_standards": [],
+  "role": "unlabeled_prompt",
+  "category": "Water & Sanitation",
+  "sources": [
+   {
+    "source": "normai_example_prompts",
+    "id": "Water & Sanitation#2"
+   }
+  ],
+  "expected_resolved_in_master": {},
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q050",
+  "query": "Large diameter welded steel pipes 500mm OD for municipal raw water pipeline",
+  "language": "en",
+  "expected_standards": [],
+  "role": "unlabeled_prompt",
+  "category": "Water & Sanitation",
+  "sources": [
+   {
+    "source": "normai_example_prompts",
+    "id": "Water & Sanitation#3"
+   }
+  ],
+  "expected_resolved_in_master": {},
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q051",
+  "query": "Comprehensive chemical and bacteriological drinking water testing as per Jal Jeevan Mission",
+  "language": "en",
+  "expected_standards": [],
+  "role": "unlabeled_prompt",
+  "category": "Water & Sanitation",
+  "sources": [
+   {
+    "source": "normai_example_prompts",
+    "id": "Water & Sanitation#4"
+   }
+  ],
+  "expected_resolved_in_master": {},
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q052",
+  "query": "Procurement of 100 desktop computers, LED monitors, and multifunction laser printers",
+  "language": "en",
+  "expected_standards": [],
+  "role": "unlabeled_prompt",
+  "category": "IT & Digital Infrastructure",
+  "sources": [
+   {
+    "source": "normai_example_prompts",
+    "id": "IT & Digital Infrastructure#1"
+   }
+  ],
+  "expected_resolved_in_master": {},
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q053",
+  "query": "Selection of managed cloud hosting vendor with certified Information Security Management",
+  "language": "en",
+  "expected_standards": [],
+  "role": "unlabeled_prompt",
+  "category": "IT & Digital Infrastructure",
+  "sources": [
+   {
+    "source": "normai_example_prompts",
+    "id": "IT & Digital Infrastructure#2"
+   }
+  ],
+  "expected_resolved_in_master": {},
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q054",
+  "query": "Rack-mounted enterprise servers and online UPS power backup units for data center",
+  "language": "en",
+  "expected_standards": [],
+  "role": "unlabeled_prompt",
+  "category": "IT & Digital Infrastructure",
+  "sources": [
+   {
+    "source": "normai_example_prompts",
+    "id": "IT & Digital Infrastructure#3"
+   }
+  ],
+  "expected_resolved_in_master": {},
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q055",
+  "query": "Industrial safety helmets with ratchet harness and chin strap for construction workers",
+  "language": "en",
+  "expected_standards": [],
+  "role": "unlabeled_prompt",
+  "category": "Safety & Occupational PPE",
+  "sources": [
+   {
+    "source": "normai_example_prompts",
+    "id": "Safety & Occupational PPE#1"
+   }
+  ],
+  "expected_resolved_in_master": {},
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q056",
+  "query": "Rubber insulating electrical gloves Class 2 for 11kV substation maintenance crew",
+  "language": "en",
+  "expected_standards": [],
+  "role": "unlabeled_prompt",
+  "category": "Safety & Occupational PPE",
+  "sources": [
+   {
+    "source": "normai_example_prompts",
+    "id": "Safety & Occupational PPE#2"
+   }
+  ],
+  "expected_resolved_in_master": {},
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q057",
+  "query": "Leather safety footwear with steel toe cap for workshop and foundry workers",
+  "language": "en",
+  "expected_standards": [],
+  "role": "unlabeled_prompt",
+  "category": "Safety & Occupational PPE",
+  "sources": [
+   {
+    "source": "normai_example_prompts",
+    "id": "Safety & Occupational PPE#3"
+   }
+  ],
+  "expected_resolved_in_master": {},
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q058",
+  "query": "Safety goggles and face shields for metal grinding and gas welding operations",
+  "language": "en",
+  "expected_standards": [],
+  "role": "unlabeled_prompt",
+  "category": "Safety & Occupational PPE",
+  "sources": [
+   {
+    "source": "normai_example_prompts",
+    "id": "Safety & Occupational PPE#4"
+   }
+  ],
+  "expected_resolved_in_master": {},
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q059",
+  "query": "200 kW induction motor for sewage pumping",
+  "language": "en",
+  "expected_standards": [
+   "IS 12615"
+  ],
+  "role": "eval",
+  "category": "Electrical",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "1"
+   }
+  ],
+  "expected_qco": true,
+  "expected_scheme": "Scheme-I / ISI Mark",
+  "test_type": "benchmark_demo",
+  "expected_resolved_in_master": {
+   "IS 12615": [
+    "IS 12615"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q060",
+  "query": "Solar PV module for government rooftop project",
+  "language": "en",
+  "expected_standards": [
+   "IS 14286"
+  ],
+  "role": "eval",
+  "category": "Solar Energy",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "2"
+   }
+  ],
+  "expected_qco": true,
+  "expected_scheme": "Scheme-I / ISI Mark",
+  "test_type": "benchmark_demo",
+  "expected_resolved_in_master": {
+   "IS 14286": [
+    "IS 14286"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q061",
+  "query": "High-performance laptop for government office",
+  "language": "en",
+  "expected_standards": [
+   "IS 13252"
+  ],
+  "role": "eval",
+  "category": "Electronics & IT",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "3"
+   }
+  ],
+  "expected_qco": true,
+  "expected_scheme": "Scheme-II / CRS",
+  "test_type": "benchmark_demo",
+  "expected_resolved_in_master": {
+   "IS 13252": [
+    "IS 13252 (Part 1)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q062",
+  "query": "Use IS 325 for three-phase induction motor",
+  "language": "en",
+  "expected_standards": [
+   "IS 325"
+  ],
+  "role": "eval",
+  "category": "Electrical",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "4"
+   }
+  ],
+  "expected_qco": true,
+  "test_type": "superseded_warning",
+  "expected_resolved_in_master": {
+   "IS 325": [
+    "IS 325"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q063",
+  "query": "Submersible pump sets for rural irrigation tube wells",
+  "language": "en",
+  "expected_standards": [
+   "IS 8034"
+  ],
+  "role": "eval",
+  "category": "Mechanical",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "5"
+   }
+  ],
+  "expected_qco": true,
+  "expected_scheme": "Scheme-I / ISI Mark",
+  "test_type": "qco_upcoming",
+  "expected_resolved_in_master": {
+   "IS 8034": [
+    "IS 8034"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q064",
+  "query": "Ordinary Portland Cement 53 grade for bridge pier concreting",
+  "language": "en",
+  "expected_standards": [
+   "IS 269",
+   "IS 12269"
+  ],
+  "role": "eval",
+  "category": "Civil & Construction",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "6"
+   }
+  ],
+  "expected_qco": true,
+  "expected_scheme": "Scheme-I / ISI Mark",
+  "test_type": "civil_materials",
+  "expected_resolved_in_master": {
+   "IS 269": [
+    "IS 269"
+   ],
+   "IS 12269": [
+    "IS 12269"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q065",
+  "query": "TMT Fe 500D steel rebars for seismic resistant high-rise building",
+  "language": "en",
+  "expected_standards": [
+   "IS 1786"
+  ],
+  "role": "eval",
+  "category": "Civil & Construction",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "7"
+   }
+  ],
+  "expected_qco": true,
+  "expected_scheme": "Scheme-I / ISI Mark",
+  "test_type": "civil_materials",
+  "expected_resolved_in_master": {
+   "IS 1786": [
+    "IS 1786"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q066",
+  "query": "UPVC pipes for potable water distribution line in Jal Jeevan Mission",
+  "language": "en",
+  "expected_standards": [
+   "IS 4985"
+  ],
+  "role": "eval",
+  "category": "Civil & Construction",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "8"
+   }
+  ],
+  "expected_qco": true,
+  "expected_scheme": "Scheme-I / ISI Mark",
+  "test_type": "civil_piping",
+  "expected_resolved_in_master": {
+   "IS 4985": [
+    "IS 4985"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q067",
+  "query": "Outdoor oil immersed distribution transformer 500 kVA 11kV BEE star rated",
+  "language": "en",
+  "expected_standards": [
+   "IS 1180"
+  ],
+  "role": "eval",
+  "category": "Electrical",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "9"
+   }
+  ],
+  "expected_qco": true,
+  "expected_scheme": "Scheme-I / ISI Mark",
+  "test_type": "electrical_grid",
+  "expected_resolved_in_master": {
+   "IS 1180": [
+    "IS 1180 (Part 1)",
+    "IS 1180 (Part 3)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q068",
+  "query": "FRLS PVC insulated flexible copper wire 1100V for school building",
+  "language": "en",
+  "expected_standards": [
+   "IS 694"
+  ],
+  "role": "eval",
+  "category": "Electrical",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "10"
+   }
+  ],
+  "expected_qco": true,
+  "expected_scheme": "Scheme-I / ISI Mark",
+  "test_type": "electrical_cables",
+  "expected_resolved_in_master": {
+   "IS 694": [
+    "IS 694"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q069",
+  "query": "11kV XLPE underground armoured power distribution cable",
+  "language": "en",
+  "expected_standards": [
+   "IS 7098"
+  ],
+  "role": "eval",
+  "category": "Electrical",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "11"
+   }
+  ],
+  "expected_qco": true,
+  "expected_scheme": "Scheme-I / ISI Mark",
+  "test_type": "electrical_cables",
+  "expected_resolved_in_master": {
+   "IS 7098": [
+    "IS 7098 (Part 1)",
+    "IS 7098 (Part 2)",
+    "IS 7098 (Part 3)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q070",
+  "query": "Moulded case circuit breaker MCCB 400A for main distribution panel",
+  "language": "en",
+  "expected_standards": [
+   "IS/IEC 60947"
+  ],
+  "role": "eval",
+  "category": "Electrical",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "12"
+   }
+  ],
+  "expected_qco": true,
+  "expected_scheme": "Scheme-I / ISI Mark",
+  "test_type": "electrical_switchgear",
+  "expected_resolved_in_master": {
+   "IS/IEC 60947": [
+    "IS/IEC 60947 (Part 1)",
+    "IS/IEC 60947 (Part 2)",
+    "IS/IEC 60947 (Part 3)",
+    "IS/IEC 60947 (Part 4-1)",
+    "IS/IEC 60947 (Part 5-1)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q071",
+  "query": "Miniature circuit breaker MCB 32A C-curve for residential quarters",
+  "language": "en",
+  "expected_standards": [
+   "IS/IEC 60898"
+  ],
+  "role": "eval",
+  "category": "Electrical",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "13"
+   }
+  ],
+  "expected_qco": true,
+  "expected_scheme": "Scheme-I / ISI Mark",
+  "test_type": "electrical_switchgear",
+  "expected_resolved_in_master": {
+   "IS/IEC 60898": [
+    "IS/IEC 60898 (Part 1)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q072",
+  "query": "Smart prepaid electricity meters direct connected for utility RDSS tender",
+  "language": "en",
+  "expected_standards": [
+   "IS 16444"
+  ],
+  "role": "eval",
+  "category": "Electrical",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "14"
+   }
+  ],
+  "expected_qco": true,
+  "expected_scheme": "Scheme-I / ISI Mark",
+  "test_type": "smart_metering",
+  "expected_resolved_in_master": {
+   "IS 16444": [
+    "IS 16444 (Part 1)",
+    "IS 16444 (Part 2)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q073",
+  "query": "Municipal LED street lighting luminaire 120W with high efficiency",
+  "language": "en",
+  "expected_standards": [
+   "IS 10322"
+  ],
+  "role": "eval",
+  "category": "Electrical",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "15"
+   }
+  ],
+  "expected_qco": true,
+  "expected_scheme": "Scheme-I / ISI Mark",
+  "test_type": "lighting",
+  "expected_resolved_in_master": {
+   "IS 10322": [
+    "IS 10322 (Part 5/Sec 1)",
+    "IS 10322 (Part 5/Sec 3)",
+    "IS 10322 (Part 5/Sec 7)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q074",
+  "query": "On-grid solar inverter 50kW string inverter with anti-islanding protection",
+  "language": "en",
+  "expected_standards": [
+   "IS 16221"
+  ],
+  "role": "eval",
+  "category": "Solar Energy",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "16"
+   }
+  ],
+  "expected_qco": true,
+  "expected_scheme": "Scheme-II / CRS",
+  "test_type": "solar_equipment",
+  "expected_resolved_in_master": {
+   "IS 16221": [
+    "IS 16221 (Part 2)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q075",
+  "query": "Lithium ion secondary battery pack for energy storage system ESS",
+  "language": "en",
+  "expected_standards": [
+   "IS 16046",
+   "IS 16627"
+  ],
+  "role": "eval",
+  "category": "Solar Energy",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "17"
+   }
+  ],
+  "expected_qco": true,
+  "expected_scheme": "Scheme-II / CRS",
+  "test_type": "energy_storage",
+  "expected_resolved_in_master": {
+   "IS 16046": [
+    "IS 16046 (Part 1)",
+    "IS 16046 (Part 2)"
+   ],
+   "IS 16627": [
+    "IS 16627"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q076",
+  "query": "Online UPS 20 kVA for municipal data center with battery backup",
+  "language": "en",
+  "expected_standards": [
+   "IS 16242"
+  ],
+  "role": "eval",
+  "category": "Electronics & IT",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "18"
+   }
+  ],
+  "expected_qco": true,
+  "expected_scheme": "Scheme-II / CRS",
+  "test_type": "it_power",
+  "expected_resolved_in_master": {
+   "IS 16242": [
+    "IS 16242 (Part 1)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q077",
+  "query": "IP CCTV surveillance cameras for smart city project with PoE support",
+  "language": "en",
+  "expected_standards": [
+   "IS 13252"
+  ],
+  "role": "eval",
+  "category": "Electronics & IT",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "19"
+   }
+  ],
+  "expected_qco": true,
+  "expected_scheme": "Scheme-II / CRS",
+  "test_type": "surveillance",
+  "expected_resolved_in_master": {
+   "IS 13252": [
+    "IS 13252 (Part 1)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q078",
+  "query": "Portable ABC powder fire extinguisher 6kg for hospital corridor",
+  "language": "en",
+  "expected_standards": [
+   "IS 15683"
+  ],
+  "role": "eval",
+  "category": "Mechanical",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "20"
+   }
+  ],
+  "expected_qco": true,
+  "expected_scheme": "Scheme-I / ISI Mark",
+  "test_type": "fire_safety",
+  "expected_resolved_in_master": {
+   "IS 15683": [
+    "IS 15683"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q079",
+  "query": "Horizontal centrifugal pump for clear cold water circulation",
+  "language": "en",
+  "expected_standards": [
+   "IS 1520"
+  ],
+  "role": "eval",
+  "category": "Mechanical",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "21"
+   }
+  ],
+  "expected_qco": true,
+  "expected_scheme": "Scheme-I / ISI Mark",
+  "test_type": "pumps",
+  "expected_resolved_in_master": {
+   "IS 1520": [
+    "IS 1520"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q080",
+  "query": "Cast iron sluice valves 300 mm size for urban water pipeline isolation",
+  "language": "en",
+  "expected_standards": [
+   "IS 14846"
+  ],
+  "role": "eval",
+  "category": "Mechanical",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "22"
+   }
+  ],
+  "expected_qco": true,
+  "expected_scheme": "Scheme-I / ISI Mark",
+  "test_type": "valves",
+  "expected_resolved_in_master": {
+   "IS 14846": [
+    "IS 14846"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q081",
+  "query": "Sterile disposable hypodermic syringes 5ml for vaccination campaign",
+  "language": "en",
+  "expected_standards": [
+   "IS 10258"
+  ],
+  "role": "eval",
+  "category": "Medical Devices",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "23"
+   }
+  ],
+  "expected_qco": true,
+  "expected_scheme": "Scheme-I / CDSCO Medical License",
+  "test_type": "medical_consumables",
+  "expected_resolved_in_master": {
+   "IS 10258": [
+    "IS 10258"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q082",
+  "query": "Sterile rubber surgical gloves for operation theater",
+  "language": "en",
+  "expected_standards": [
+   "IS 13422"
+  ],
+  "role": "eval",
+  "category": "Medical Devices",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "24"
+   }
+  ],
+  "expected_qco": true,
+  "expected_scheme": "Scheme-I / ISI Mark",
+  "test_type": "medical_consumables",
+  "expected_resolved_in_master": {
+   "IS 13422": [
+    "IS 13422"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q083",
+  "query": "Caustic soda flakes pure technical grade for water treatment plant",
+  "language": "en",
+  "expected_standards": [
+   "IS 252"
+  ],
+  "role": "eval",
+  "category": "Chemicals",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "25"
+   }
+  ],
+  "expected_qco": true,
+  "expected_scheme": "Scheme-I / ISI Mark",
+  "test_type": "chemicals",
+  "expected_resolved_in_master": {
+   "IS 252": [
+    "IS 252"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q084",
+  "query": "Packaged bottled drinking water 1 litre for state summit meeting",
+  "language": "en",
+  "expected_standards": [
+   "IS 14543"
+  ],
+  "role": "eval",
+  "category": "Food & Agriculture",
+  "sources": [
+   {
+    "source": "sure_benchmark",
+    "id": "26"
+   }
+  ],
+  "expected_qco": true,
+  "expected_scheme": "Scheme-I / ISI Mark",
+  "test_type": "food_and_water",
+  "expected_resolved_in_master": {
+   "IS 14543": [
+    "IS 14543"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q085",
+  "query": "steel pipes for water supply",
+  "language": "en",
+  "expected_standards": [
+   "IS 1239",
+   "IS 3589",
+   "IS 6392"
+  ],
+  "role": "eval",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_eval",
+    "id": "q1"
+   }
+  ],
+  "notes": "Demo evaluation query — expected results based on demo dataset",
+  "expected_resolved_in_master": {
+   "IS 1239": [
+    "IS 1239 (Part 1)",
+    "IS 1239 (Part 2)"
+   ],
+   "IS 3589": [
+    "IS 3589"
+   ],
+   "IS 6392": [
+    "IS 6392"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q086",
+  "query": "LED street lights for municipal roads",
+  "language": "en",
+  "expected_standards": [
+   "IS 16014",
+   "IS 10322",
+   "IS 15885"
+  ],
+  "role": "eval",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_eval",
+    "id": "q2"
+   }
+  ],
+  "notes": "Demo evaluation query",
+  "expected_resolved_in_master": {
+   "IS 16014": [
+    "IS 16014"
+   ],
+   "IS 10322": [
+    "IS 10322 (Part 5/Sec 1)",
+    "IS 10322 (Part 5/Sec 3)",
+    "IS 10322 (Part 5/Sec 7)"
+   ],
+   "IS 15885": [
+    "IS 15885 (Part 1)",
+    "IS 15885 (Part 2/Sec 13)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q087",
+  "query": "PVC insulated electric cables",
+  "language": "en",
+  "expected_standards": [
+   "IS 694",
+   "IS 7098",
+   "IS 5831"
+  ],
+  "role": "eval",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_eval",
+    "id": "q3"
+   }
+  ],
+  "notes": "Demo evaluation query",
+  "expected_resolved_in_master": {
+   "IS 694": [
+    "IS 694"
+   ],
+   "IS 7098": [
+    "IS 7098 (Part 1)",
+    "IS 7098 (Part 2)",
+    "IS 7098 (Part 3)"
+   ],
+   "IS 5831": [
+    "IS 5831"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q088",
+  "query": "cement for building construction",
+  "language": "en",
+  "expected_standards": [
+   "IS 269",
+   "IS 383",
+   "IS 456"
+  ],
+  "role": "eval",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_eval",
+    "id": "q4"
+   }
+  ],
+  "notes": "Demo evaluation query",
+  "expected_resolved_in_master": {
+   "IS 269": [
+    "IS 269"
+   ],
+   "IS 383": [
+    "IS 383"
+   ],
+   "IS 456": [
+    "IS 456"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q089",
+  "query": "safety helmet for industrial workers",
+  "language": "en",
+  "expected_standards": [
+   "IS 2206",
+   "IS 15986"
+  ],
+  "role": "eval",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_eval",
+    "id": "q5"
+   }
+  ],
+  "notes": "Demo evaluation query",
+  "expected_resolved_in_master": {
+   "IS 2206": [
+    "IS 2206"
+   ],
+   "IS 15986": [
+    "IS 15986"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q090",
+  "query": "पानी की सप्लाई के लिए स्टील पाइप",
+  "language": "hi",
+  "expected_standards": [
+   "IS 1239",
+   "IS 3589"
+  ],
+  "role": "eval",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_eval",
+    "id": "q6"
+   }
+  ],
+  "notes": "Hindi query — same semantic intent as q1",
+  "expected_resolved_in_master": {
+   "IS 1239": [
+    "IS 1239 (Part 1)",
+    "IS 1239 (Part 2)"
+   ],
+   "IS 3589": [
+    "IS 3589"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q091",
+  "query": "Industrial moulded case circuit breaker rated 630A for factory main panel, 415V AC, category A",
+  "language": "en",
+  "expected_standards": [
+   "IS/IEC 60947 (Part 2)"
+  ],
+  "role": "eval",
+  "category": "Electrical - Circuit Breakers",
+  "sources": [
+   {
+    "source": "files2_circuit_breaker",
+    "id": "CB-01"
+   }
+  ],
+  "notes": "Direct scope match: industrial LV circuit breaker, main contacts <=1000V a.c., utilization category A",
+  "expected_resolved_in_master": {
+   "IS/IEC 60947 (Part 2)": [
+    "IS/IEC 60947 (Part 2)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q092",
+  "query": "Miniature circuit breaker (MCB) for household wiring protection, single phase, 32A",
+  "language": "en",
+  "expected_standards": [
+   "IS/IEC 60898 (Part 1)"
+  ],
+  "role": "eval",
+  "category": "Electrical - Circuit Breakers",
+  "sources": [
+   {
+    "source": "files2_circuit_breaker",
+    "id": "CB-02"
+   }
+  ],
+  "notes": "Household/domestic circuit breaker for uninstructed persons -> IS/IEC 60898-1:2002 (supersedes withdrawn IS 8828:1996). Common confusion point vs IS/IEC 60947-2 (industrial). Correct answer also tests whether the system flags IS 8828:1996 as withdrawn if a stale document cites it.",
+  "expected_resolved_in_master": {
+   "IS/IEC 60898 (Part 1)": [
+    "IS/IEC 60898 (Part 1)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q093",
+  "query": "Air circuit breaker with short-time withstand rating for selective coordination in substation, category B",
+  "language": "en",
+  "expected_standards": [
+   "IS/IEC 60947 (Part 2)"
+  ],
+  "role": "eval",
+  "category": "Electrical - Circuit Breakers",
+  "sources": [
+   {
+    "source": "files2_circuit_breaker",
+    "id": "CB-03"
+   }
+  ],
+  "notes": "Utilization category B with Icw rating explicitly defined in this standard (4.4, Table 4)",
+  "expected_resolved_in_master": {
+   "IS/IEC 60947 (Part 2)": [
+    "IS/IEC 60947 (Part 2)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q094",
+  "query": "Circuit breaker with integral residual current protection for earth leakage, industrial panel",
+  "language": "en",
+  "expected_standards": [
+   "IS/IEC 60947 (Part 2)"
+  ],
+  "role": "eval",
+  "category": "Electrical - Circuit Breakers",
+  "sources": [
+   {
+    "source": "files2_circuit_breaker",
+    "id": "CB-04"
+   }
+  ],
+  "notes": "Covered by Annex B of IS/IEC 60947-2:2003 specifically",
+  "expected_resolved_in_master": {
+   "IS/IEC 60947 (Part 2)": [
+    "IS/IEC 60947 (Part 2)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q095",
+  "query": "General rules for low-voltage switchgear and controlgear applicable to all device types",
+  "language": "en",
+  "expected_standards": [
+   "IS/IEC 60947 (Part 1)"
+  ],
+  "role": "eval",
+  "category": "Electrical - Circuit Breakers",
+  "sources": [
+   {
+    "source": "files2_circuit_breaker",
+    "id": "CB-05"
+   }
+  ],
+  "notes": "Part 1 (general rules) is the parent standard referenced throughout Part 2; tests understanding of the series hierarchy",
+  "expected_resolved_in_master": {
+   "IS/IEC 60947 (Part 1)": [
+    "IS/IEC 60947 (Part 1)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q096",
+  "query": "high strength deformed steel bars for concrete reinforcement",
+  "language": "en",
+  "expected_standards": [
+   "IS 1786"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#1"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 1786": [
+    "IS 1786"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q097",
+  "query": "thermo mechanically treated rebar for earthquake resistant building",
+  "language": "en",
+  "expected_standards": [
+   "IS 1786"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#2"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 1786": [
+    "IS 1786"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q098",
+  "query": "mild steel tubes and tubulars for water gas and sewage",
+  "language": "en",
+  "expected_standards": [
+   "IS 1239 (Part 1)"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#3"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 1239 (Part 1)": [
+    "IS 1239 (Part 1)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q099",
+  "query": "galvanized iron gi pipes for plumbing and potable water distribution",
+  "language": "en",
+  "expected_standards": [
+   "IS 1239 (Part 1)"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#4"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 1239 (Part 1)": [
+    "IS 1239 (Part 1)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q100",
+  "query": "large diameter welded steel pipe for cross country water supply",
+  "language": "en",
+  "expected_standards": [
+   "IS 3589"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#5"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 3589": [
+    "IS 3589"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q101",
+  "query": "ordinary portland cement 43 grade for general concrete construction",
+  "language": "en",
+  "expected_standards": [
+   "IS 8112"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#6"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 8112": [
+    "IS 8112"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q102",
+  "query": "portland pozzolana cement fly ash based for plastering and masonry",
+  "language": "en",
+  "expected_standards": [
+   "IS 1489 (Part 1)"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#7"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 1489 (Part 1)": [
+    "IS 1489 (Part 1)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q103",
+  "query": "structural steel standard quality plates and sections",
+  "language": "en",
+  "expected_standards": [
+   "IS 2062"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#8"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 2062": [
+    "IS 2062"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q104",
+  "query": "high density polyethylene hdpe pipes for drinking water supply",
+  "language": "en",
+  "expected_standards": [
+   "IS 4984"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#9"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 4984": [
+    "IS 4984"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q105",
+  "query": "polyethylene pipes for sewerage and industrial effluent drainage",
+  "language": "en",
+  "expected_standards": [
+   "IS 14333"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#10"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 14333": [
+    "IS 14333"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q106",
+  "query": "polyethylene pipes for municipal fuel gas distribution networks",
+  "language": "en",
+  "expected_standards": [
+   "IS 14885"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#11"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 14885": [
+    "IS 14885"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q107",
+  "query": "precast concrete pipes for culverts and highway stormwater drainage",
+  "language": "en",
+  "expected_standards": [
+   "IS 458"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#12"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 458": [
+    "IS 458"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q108",
+  "query": "rotational moulded polyethylene water storage tanks for overhead",
+  "language": "en",
+  "expected_standards": [
+   "IS 12701"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#13"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 12701": [
+    "IS 12701"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q109",
+  "query": "fixed general purpose led luminaires and street lighting",
+  "language": "en",
+  "expected_standards": [
+   "IS 10322 (Part 5/Sec 3)"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#14"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 10322 (Part 5/Sec 3)": [
+    "IS 10322 (Part 5/Sec 3)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q110",
+  "query": "pvc insulated cables for working voltages up to and including 1100 v",
+  "language": "en",
+  "expected_standards": [
+   "IS 694"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#15"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 694": [
+    "IS 694"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q111",
+  "query": "self ballasted led lamps for general lighting services safety",
+  "language": "en",
+  "expected_standards": [
+   "IS 16102 (Part 1)"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#16"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 16102 (Part 1)": [
+    "IS 16102 (Part 1)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q112",
+  "query": "lithium ion secondary cells and batteries for portable applications",
+  "language": "en",
+  "expected_standards": [
+   "IS 16046 (Part 2)"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#17"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 16046 (Part 2)": [
+    "IS 16046 (Part 2)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q113",
+  "query": "safety footwear with steel toe cap for industrial hazard protection",
+  "language": "en",
+  "expected_standards": [
+   "IS 15298 (Part 2)"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#19"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 15298 (Part 2)": [
+    "IS 15298 (Part 2)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q114",
+  "query": "portable fire extinguishers dry powder and mechanical foam type",
+  "language": "en",
+  "expected_standards": [
+   "IS 15683"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#20"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 15683": [
+    "IS 15683"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q115",
+  "query": "landing valves and internal fire hydrants for buildings",
+  "language": "en",
+  "expected_standards": [
+   "IS 5290"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#21"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 5290": [
+    "IS 5290"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q116",
+  "query": "outdoor distribution transformers up to and including 2500 kva 33 kv",
+  "language": "en",
+  "expected_standards": [
+   "IS 1180 (Part 1)"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#22"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 1180 (Part 1)": [
+    "IS 1180 (Part 1)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q117",
+  "query": "crystalline silicon terrestrial photovoltaic solar pv modules",
+  "language": "en",
+  "expected_standards": [
+   "IS 14286"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#23"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 14286": [
+    "IS 14286"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q118",
+  "query": "medical examination and surgical gloves single use",
+  "language": "en",
+  "expected_standards": [
+   "IS 13422"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#24"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 13422": [
+    "IS 13422"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q119",
+  "query": "clinical thermometers electrical and digital for patient temperature",
+  "language": "en",
+  "expected_standards": [
+   "IS 15814"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#25"
+   }
+  ],
+  "expected_resolved_in_master": {},
+  "expected_not_in_master": [
+   "IS 15814"
+  ]
+ },
+ {
+  "id": "Q120",
+  "query": "ready mixed paint exterior weather resistant emulsion",
+  "language": "en",
+  "expected_standards": [
+   "IS 15489"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#26"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 15489": [
+    "IS 15489"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q121",
+  "query": "पानी की सप्लाई के लिए गैल्वनाइज्ड जीआई पाइप",
+  "language": "en",
+  "expected_standards": [
+   "IS 1239 (Part 1)"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#27"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 1239 (Part 1)": [
+    "IS 1239 (Part 1)"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q122",
+  "query": "भूकंप रोधी निर्माण के लिए टीएमटी सरिया Fe 500D",
+  "language": "en",
+  "expected_standards": [
+   "IS 1786"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#28"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 1786": [
+    "IS 1786"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q123",
+  "query": "पीने के पानी के लिए एचडीपीई पाइप",
+  "language": "en",
+  "expected_standards": [
+   "IS 4984"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#29"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 4984": [
+    "IS 4984"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q124",
+  "query": "छत के लिए पानी की टंकी 1000 लीटर",
+  "language": "en",
+  "expected_standards": [
+   "IS 12701"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#30"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 12701": [
+    "IS 12701"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q125",
+  "query": "सड़क और हाईवे के लिए कंक्रीट पाइप",
+  "language": "en",
+  "expected_standards": [
+   "IS 458"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#31"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 458": [
+    "IS 458"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q126",
+  "query": "आग बुझाने का यंत्र और अग्निशामक",
+  "language": "en",
+  "expected_standards": [
+   "IS 15683"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#32"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 15683": [
+    "IS 15683"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q127",
+  "query": "बिजली के तार और केबल कॉपर एल्युमिनियम",
+  "language": "en",
+  "expected_standards": [
+   "IS 694"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#33"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 694": [
+    "IS 694"
+   ]
+  },
+  "expected_not_in_master": []
+ },
+ {
+  "id": "Q128",
+  "query": "सोलर पैनल और फोटोवोल्टिक मॉड्यूल",
+  "language": "en",
+  "expected_standards": [
+   "IS 14286"
+  ],
+  "role": "training_pair",
+  "category": null,
+  "sources": [
+   {
+    "source": "sih108_training_pairs",
+    "id": "pair#34"
+   }
+  ],
+  "expected_resolved_in_master": {
+   "IS 14286": [
+    "IS 14286"
+   ]
+  },
+  "expected_not_in_master": []
+ }
+]

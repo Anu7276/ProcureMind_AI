@@ -1,0 +1,21 @@
+GOVERNMENT OF INDIA - SMART CITY WATER SUPPLY & SEWERAGE MISSION
+NOTICE INVITING TENDER (NIT) No: SC/WTR/2026/04
+PROJECT: MODERNIZATION OF MUNICIPAL SEWAGE PUMPING STATION & DISTRIBUTION NETWORK
+
+SECTION IV - TECHNICAL SPECIFICATIONS & SCHEDULE OF REQUIREMENTS:
+
+Item 1: Supply, installation and testing of 200 kW, 3-Phase, 415V Squirrel Cage Induction Motor for continuous sewage pumping duty. Efficiency class must be high performance.
+
+Item 2: Horizontal Centrifugal Pumps for clear water transmission capacity 450 m3/hr, head 60m with bronze impeller and mechanical seal.
+
+Item 3: Cast Iron Sluice Valves 300 mm nominal bore, PN 1.0 pressure rating, non-rising stem for water supply isolation.
+
+Item 4: Unplasticized PVC (UPVC) Pipes 110 mm outer diameter, Class 3 (0.6 MPa) for potable water distribution network.
+
+Item 5: 11kV Grade Cross-Linked Polyethylene (XLPE) Underground Armoured Power Cable, 3 Core 185 sq.mm with stranded compacted aluminum conductors.
+
+Item 6: Outdoor Oil-Immersed Step-Down Distribution Transformer, 500 kVA, 11kV/433V with off-circuit tap changer and standard protective fittings.
+
+Item 7: High-performance Commercial Laptops with Core i7 processor, 16GB RAM, 512GB SSD for SCADA monitoring and plant automation.
+
+Item 8: Portable ABC Dry Powder Fire Extinguisher 6 kg capacity for substation and motor control center fire safety.

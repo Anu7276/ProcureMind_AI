@@ -1,0 +1,423 @@
+{
+ "cpwd_dsr_2023_mapping": {
+  "18.1": {
+   "title": "Providing and fixing G.I. pipes complete with G.I. fittings and clamps",
+   "standards": [
+    "IS 1239 (Part 1)",
+    "IS 1879",
+    "IS 1239 (Part 2)"
+   ],
+   "category": "WATER_SUPPLY",
+   "keywords": [
+    "gi pipe",
+    "galvanized iron",
+    "water pipe",
+    "mild steel tube",
+    "plumbing"
+   ],
+   "standard_keys": [
+    "IS 1239 (Part 1)",
+    "IS 1879",
+    "IS 1239 (Part 2)"
+   ]
+  },
+  "18.1.1": {
+   "title": "15 mm dia nominal bore G.I. pipes",
+   "standards": [
+    "IS 1239 (Part 1)",
+    "IS 1879"
+   ],
+   "category": "WATER_SUPPLY",
+   "keywords": [
+    "15mm gi pipe",
+    "mild steel tube 15mm",
+    "plumbing"
+   ],
+   "standard_keys": [
+    "IS 1239 (Part 1)",
+    "IS 1879"
+   ]
+  },
+  "18.1.2": {
+   "title": "20 mm dia nominal bore G.I. pipes",
+   "standards": [
+    "IS 1239 (Part 1)",
+    "IS 1879"
+   ],
+   "category": "WATER_SUPPLY",
+   "keywords": [
+    "20mm gi pipe",
+    "mild steel tube 20mm"
+   ],
+   "standard_keys": [
+    "IS 1239 (Part 1)",
+    "IS 1879"
+   ]
+  },
+  "18.1.3": {
+   "title": "25 mm dia nominal bore G.I. pipes",
+   "standards": [
+    "IS 1239 (Part 1)",
+    "IS 1879"
+   ],
+   "category": "WATER_SUPPLY",
+   "keywords": [
+    "25mm gi pipe",
+    "mild steel tube 25mm"
+   ],
+   "standard_keys": [
+    "IS 1239 (Part 1)",
+    "IS 1879"
+   ]
+  },
+  "18.1.4": {
+   "title": "32 mm dia nominal bore G.I. pipes",
+   "standards": [
+    "IS 1239 (Part 1)",
+    "IS 1879"
+   ],
+   "category": "WATER_SUPPLY",
+   "keywords": [
+    "32mm gi pipe",
+    "mild steel tube 32mm"
+   ],
+   "standard_keys": [
+    "IS 1239 (Part 1)",
+    "IS 1879"
+   ]
+  },
+  "18.1.5": {
+   "title": "40 mm dia nominal bore G.I. pipes",
+   "standards": [
+    "IS 1239 (Part 1)",
+    "IS 1879"
+   ],
+   "category": "WATER_SUPPLY",
+   "keywords": [
+    "40mm gi pipe",
+    "mild steel tube 40mm"
+   ],
+   "standard_keys": [
+    "IS 1239 (Part 1)",
+    "IS 1879"
+   ]
+  },
+  "18.1.6": {
+   "title": "50 mm dia nominal bore G.I. pipes",
+   "standards": [
+    "IS 1239 (Part 1)",
+    "IS 1879"
+   ],
+   "category": "WATER_SUPPLY",
+   "keywords": [
+    "50mm gi pipe",
+    "mild steel tube 50mm"
+   ],
+   "standard_keys": [
+    "IS 1239 (Part 1)",
+    "IS 1879"
+   ]
+  },
+  "18.2": {
+   "title": "Providing and fixing Chlorinated Polyvinyl Chloride (CPVC) pipes",
+   "standards": [
+    "IS 15778"
+   ],
+   "category": "WATER_SUPPLY",
+   "keywords": [
+    "cpvc pipes",
+    "chlorinated pvc",
+    "hot cold water"
+   ],
+   "standard_keys": [
+    "IS 15778"
+   ]
+  },
+  "18.7": {
+   "title": "Providing and fixing High Density Polyethylene (HDPE) pipes",
+   "standards": [
+    "IS 4984",
+    "IS 14333"
+   ],
+   "category": "WATER_SUPPLY",
+   "keywords": [
+    "hdpe pipe",
+    "potable water supply",
+    "polyethylene"
+   ],
+   "standard_keys": [
+    "IS 4984",
+    "IS 14333"
+   ]
+  },
+  "18.8": {
+   "title": "Providing and fixing gun metal gate valve with C.I. wheel",
+   "standards": [
+    "IS 778"
+   ],
+   "category": "WATER_SUPPLY",
+   "keywords": [
+    "gun metal gate valve",
+    "brass valve",
+    "sluice valve"
+   ],
+   "standard_keys": [
+    "IS 778"
+   ]
+  },
+  "5.22": {
+   "title": "Steel reinforcement for R.C.C work Thermo-Mechanically Treated bars (TMT bars Fe 500D)",
+   "standards": [
+    "IS 1786"
+   ],
+   "category": "CONSTRUCTION",
+   "keywords": [
+    "tmt rebar",
+    "fe 500d",
+    "reinforcement steel",
+    "sariya"
+   ],
+   "standard_keys": [
+    "IS 1786"
+   ]
+  },
+  "5.22.1": {
+   "title": "Fe 415 TMT bars for concrete reinforcement",
+   "standards": [
+    "IS 1786"
+   ],
+   "category": "CONSTRUCTION",
+   "keywords": [
+    "fe 415",
+    "tmt sariya"
+   ],
+   "standard_keys": [
+    "IS 1786"
+   ]
+  },
+  "5.22.2": {
+   "title": "Fe 500 TMT bars for concrete reinforcement",
+   "standards": [
+    "IS 1786"
+   ],
+   "category": "CONSTRUCTION",
+   "keywords": [
+    "fe 500",
+    "tmt bar"
+   ],
+   "standard_keys": [
+    "IS 1786"
+   ]
+  },
+  "5.22.3": {
+   "title": "Fe 500D TMT bars for earthquake resistant concrete reinforcement",
+   "standards": [
+    "IS 1786"
+   ],
+   "category": "CONSTRUCTION",
+   "keywords": [
+    "fe 500d",
+    "earthquake resistant",
+    "ductile rebar"
+   ],
+   "standard_keys": [
+    "IS 1786"
+   ]
+  },
+  "4.1": {
+   "title": "Providing and laying in position specified grade of reinforced cement concrete",
+   "standards": [
+    "IS 456",
+    "IS 8112",
+    "IS 1489 (Part 1)"
+   ],
+   "category": "CONSTRUCTION",
+   "keywords": [
+    "rcc concrete",
+    "portland cement",
+    "structural concrete"
+   ],
+   "standard_keys": [
+    "IS 456",
+    "IS 8112",
+    "IS 1489 (Part 1)"
+   ]
+  },
+  "10.25": {
+   "title": "Steel work in built up tubular (round, square or rectangular) trusses",
+   "standards": [
+    "IS 1161",
+    "IS 4923"
+   ],
+   "category": "CONSTRUCTION",
+   "keywords": [
+    "tubular truss",
+    "structural tube",
+    "hollow section"
+   ],
+   "standard_keys": [
+    "IS 1161",
+    "IS 4923"
+   ]
+  },
+  "11.1": {
+   "title": "Wiring in conduit with PVC insulated copper conductor cables 1100V",
+   "standards": [
+    "IS 694"
+   ],
+   "category": "ELECTRICAL",
+   "keywords": [
+    "pvc wire",
+    "1100v cable",
+    "copper conductor",
+    "building wire"
+   ],
+   "standard_keys": [
+    "IS 694"
+   ]
+  },
+  "11.4": {
+   "title": "Supply and fixing of LED street lighting luminaires and floodlights",
+   "standards": [
+    "IS 10322 (Part 5/Sec 3)",
+    "IS 16102 (Part 1)"
+   ],
+   "category": "ELECTRICAL",
+   "keywords": [
+    "led street light",
+    "luminaire",
+    "floodlight",
+    "outdoor lighting"
+   ],
+   "standard_keys": [
+    "IS 10322 (Part 5/Sec 3)",
+    "IS 16102 (Part 1)"
+   ]
+  },
+  "13.1": {
+   "title": "Providing and applying plastic emulsion paint exterior weather resistant",
+   "standards": [
+    "IS 15489"
+   ],
+   "category": "CHEMICALS",
+   "keywords": [
+    "emulsion paint",
+    "exterior paint",
+    "weatherproof"
+   ],
+   "standard_keys": [
+    "IS 15489"
+   ]
+  },
+  "3.1": {
+   "title": "Providing and laying reinforced concrete pipes for highway culverts and drainage",
+   "standards": [
+    "IS 458"
+   ],
+   "category": "CONSTRUCTION",
+   "keywords": [
+    "hume pipe",
+    "np2 np3 concrete pipe",
+    "culvert pipe"
+   ],
+   "standard_keys": [
+    "IS 458"
+   ]
+  }
+ },
+ "gem_taxonomy_mapping": {
+  "mild steel tubes": {
+   "standards": [
+    "IS 1239 (Part 1)"
+   ],
+   "description": "GeM Category: Mild Steel Tubes and Pipes",
+   "standard_keys": [
+    "IS 1239 (Part 1)"
+   ]
+  },
+  "tmt bars": {
+   "standards": [
+    "IS 1786"
+   ],
+   "description": "GeM Category: High Strength Deformed Steel Bars for Concrete Reinforcement",
+   "standard_keys": [
+    "IS 1786"
+   ]
+  },
+  "hdpe pipes": {
+   "standards": [
+    "IS 4984",
+    "IS 14333"
+   ],
+   "description": "GeM Category: High Density Polyethylene Pipes for Potable Water & Sewerage",
+   "standard_keys": [
+    "IS 4984",
+    "IS 14333"
+   ]
+  },
+  "distribution transformers": {
+   "standards": [
+    "IS 1180 (Part 1)"
+   ],
+   "description": "GeM Category: Outdoor Type Oil Immersed Distribution Transformers Up to 2500 kVA",
+   "standard_keys": [
+    "IS 1180 (Part 1)"
+   ]
+  },
+  "led luminaires": {
+   "standards": [
+    "IS 10322 (Part 5/Sec 3)",
+    "IS 16102 (Part 1)"
+   ],
+   "description": "GeM Category: LED Luminaires & Self-Ballasted Lamps",
+   "standard_keys": [
+    "IS 10322 (Part 5/Sec 3)",
+    "IS 16102 (Part 1)"
+   ]
+  },
+  "fire extinguishers": {
+   "standards": [
+    "IS 15683"
+   ],
+   "description": "GeM Category: Portable Fire Extinguishers (ABC Dry Powder, Foam)",
+   "standard_keys": [
+    "IS 15683"
+   ]
+  },
+  "industrial safety helmets": {
+   "standards": [
+    "IS 2925"
+   ],
+   "description": "GeM Category: Industrial Safety Helmets",
+   "standard_keys": [
+    "IS 2925"
+   ]
+  },
+  "safety footwear": {
+   "standards": [
+    "IS 15298 (Part 2)"
+   ],
+   "description": "GeM Category: Personal Protective Equipment - Safety Footwear",
+   "standard_keys": [
+    "IS 15298 (Part 2)"
+   ]
+  },
+  "solar pv modules": {
+   "standards": [
+    "IS 14286"
+   ],
+   "description": "GeM Category: Crystalline Silicon Terrestrial Photovoltaic (PV) Modules",
+   "standard_keys": [
+    "IS 14286"
+   ]
+  }
+ },
+ "hindi_synonyms": {
+  "पानी": "जल पानी",
+  "सप्लाई": "आपूर्ति सप्लाई",
+  "बिजली": "विद्युत बिजली",
+  "सड़क": "मार्ग सड़क",
+  "रोड": "सड़क रोड",
+  "इमारत": "भवन निर्माण इमारत"
+ }
+}
