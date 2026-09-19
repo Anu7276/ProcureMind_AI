@@ -42,13 +42,13 @@ class Settings(BaseSettings):
         if self.LLM_MODEL_OVERRIDE:
             return self.LLM_MODEL_OVERRIDE
         defaults = {
-            "google": "gemini-1.5-flash",
+            "google": "gemini-2.5-flash",
             "openai": "gpt-4o-mini",
             "anthropic": "claude-3-haiku-20240307",
-            "groq": "llama3-8b-8192",
+            "groq": "qwen/qwen3.8-27b",
             "ollama": self.OLLAMA_MODEL,
         }
-        return defaults.get(self.LLM_PROVIDER, "gemini-1.5-flash")
+        return defaults.get(self.LLM_PROVIDER, "gemini-2.5-flash")
 
     # ── Embeddings ────────────────────────────────────────────────
     EMBEDDING_MODEL: str = "sentence-transformers"
