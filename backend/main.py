@@ -93,9 +93,9 @@ app.add_middleware(
 )
 
 # ── Mount routers (both root and /api prefix for reverse proxy / direct client compatibility) ──
-from backend.api.routes import health, ingest, recommend, standard  # noqa: E402
+from backend.api.routes import health, ingest, recommend, standard, graph  # noqa: E402
 
-for r in [health.router, ingest.router, recommend.router, standard.router]:
+for r in [health.router, ingest.router, recommend.router, standard.router, graph.router]:
     app.include_router(r)
     app.include_router(r, prefix="/api")
 

@@ -16,7 +16,7 @@ from typing import Optional
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 
 from ai.pipeline.document_extractors import extract_text_file
-from ai.pipeline.graph import run_pipeline
+from ai.pipeline.graph import run_extract_only
 from backend.schemas.api_schemas import IngestResponse, StructuredRequirement
 
 router = APIRouter(tags=["Pipeline"])
@@ -121,8 +121,8 @@ async def ingest(
             detail={"code": "UNREADABLE_DOCUMENT", "message": "Provide either a file upload or text content."},
         )
 
-    # Run pipeline Nodes 00–02
-    final_state = await run_pipeline(
+    # Run extraction-only pipeline (Nodes 00–02) — produces structured requirement for human review
+    final_state = await run_extract_only(
         raw_input=raw_input,
         input_type=input_type,
         raw_bytes=raw_bytes,

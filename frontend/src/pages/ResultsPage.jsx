@@ -2,7 +2,8 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import {
   ArrowLeft, Shield, AlertTriangle, CheckCircle, XCircle,
-  Clock, ChevronDown, ChevronUp, ExternalLink, Info, Award
+  Clock, ChevronDown, ChevronUp, ExternalLink, Info, Award,
+  SearchX, HelpCircle, BarChart3, MessageSquareWarning
 } from 'lucide-react'
 import { getStandard } from '../services/api'
 
@@ -37,6 +38,57 @@ function ConfidenceBar({ value }) {
         <div className={`h-full ${color} transition-all duration-700`} style={{ width: `${pct}%` }} />
       </div>
       <span className="text-xs font-mono text-slate-300 w-8 text-right">{pct}%</span>
+    </div>
+  )
+}
+
+// ── Match strength band ────────────────────────────────────────
+function MatchStrengthBand({ matchStrength, coverage }) {
+  if (matchStrength == null) return null
+  const pct = Math.round(matchStrength * 100)
+  const covPct = coverage != null ? Math.round(coverage * 100) : null
+
+  let band, color, label
+  if (matchStrength >= 0.7) { band = 'Strong'; color = 'bg-success-500'; label = 'text-success-300' }
+  else if (matchStrength >= 0.5) { band = 'Good'; color = 'bg-brand-500'; label = 'text-brand-300' }
+  else if (matchStrength >= 0.3) { band = 'Moderate'; color = 'bg-warning-500'; label = 'text-warning-300' }
+  else { band = 'Low'; color = 'bg-orange-600'; label = 'text-orange-300' }
+
+  return (
+    <div className="mt-2 space-y-1">
+      <div className="flex items-center gap-2">
+        <span className="text-[10px] text-slate-500 uppercase tracking-wider w-24">Match Strength</span>
+        <div className="flex-1 h-1 bg-white/10 rounded-full overflow-hidden">
+          <div className={`h-full ${color} transition-all duration-700`} style={{ width: `${pct}%` }} />
+        </div>
+        <span className={`text-[10px] font-mono ${label} w-12 text-right`}>{band} {pct}%</span>
+      </div>
+      {covPct != null && (
+        <div className="flex items-center gap-2">
+          <span className="text-[10px] text-slate-500 uppercase tracking-wider w-24">Term Coverage</span>
+          <div className="flex-1 h-1 bg-white/10 rounded-full overflow-hidden">
+            <div className="h-full bg-slate-500 transition-all duration-700" style={{ width: `${covPct}%` }} />
+          </div>
+          <span className="text-[10px] font-mono text-slate-400 w-12 text-right">{covPct}%</span>
+        </div>
+      )}
+    </div>
+  )
+}
+
+// ── Low-match banner ───────────────────────────────────────────
+function LowMatchBanner({ clarificationPrompt }) {
+  return (
+    <div className="ml-12 mt-3 px-3 py-2 bg-warning-600/10 border border-warning-600/30 rounded-lg">
+      <div className="flex items-start gap-2">
+        <MessageSquareWarning className="w-4 h-4 text-warning-400 flex-shrink-0 mt-0.5" />
+        <div>
+          <p className="text-warning-400 text-xs font-semibold mb-0.5">Low Confidence Match</p>
+          {clarificationPrompt && (
+            <p className="text-warning-300/70 text-xs leading-relaxed">{clarificationPrompt}</p>
+          )}
+        </div>
+      </div>
     </div>
   )
 }
@@ -126,11 +178,9 @@ function RecommendationCard({ rec, rank }) {
   const [expanded, setExpanded] = useState(rank === 0)
   const [modalKey, setModalKey] = useState(null)
 
-  const isProblematic = rec.status !== 'ACTIVE' || rec.flags?.some(f =>
-    f.includes('needs_review') || f.includes('unverified')
-  )
-
-  const cardBorder = rec.status === 'ACTIVE'
+  const cardBorder = rec.low_match
+    ? 'border-warning-600/40'
+    : rec.status === 'ACTIVE'
     ? 'border-white/10'
     : rec.status === 'WITHDRAWN' || rec.status === 'SUPERSEDED'
     ? 'border-danger-600/30'
@@ -153,11 +203,17 @@ function RecommendationCard({ rec, rank }) {
                 <span className="text-brand-400 font-mono font-bold text-base">{rec.is_code}</span>
                 <StatusBadge status={rec.status} />
                 <VerificationBadge level={rec.verification_level} />
+                {rec.low_match && (
+                  <span className="text-[10px] px-2 py-0.5 bg-warning-600/20 border border-warning-600/30 text-warning-400 rounded-full font-medium">
+                    ⚠ Low Confidence
+                  </span>
+                )}
               </div>
               <h3 className="text-white text-sm font-semibold leading-snug mb-2">
                 {rec.title}
               </h3>
               <ConfidenceBar value={rec.confidence} />
+              <MatchStrengthBand matchStrength={rec.match_strength} coverage={rec.coverage} />
             </div>
 
             <button
@@ -195,6 +251,11 @@ function RecommendationCard({ rec, rank }) {
             </div>
           )}
 
+          {/* Low-match clarification prompt */}
+          {rec.low_match && rec.clarification_prompt && (
+            <LowMatchBanner clarificationPrompt={rec.clarification_prompt} />
+          )}
+
           {/* Quality note / flags */}
           {(rec.data_quality_note || rec.flags?.length > 0) && (
             <div className="ml-12 mt-2 flex flex-wrap items-center gap-1.5">
@@ -222,6 +283,22 @@ function RecommendationCard({ rec, rank }) {
               </div>
               <p className="text-slate-300 text-sm leading-relaxed">{rec.reasoning}</p>
             </div>
+
+            {/* Evidence matched terms */}
+            {rec.matched_terms?.length > 0 && (
+              <div>
+                <div className="text-xs text-slate-400 uppercase font-medium tracking-wider mb-2 flex items-center gap-1.5">
+                  <BarChart3 className="w-3.5 h-3.5" /> Matched Terms
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {rec.matched_terms.map((t, i) => (
+                    <span key={i} className="text-[10px] px-2 py-0.5 bg-brand-600/15 border border-brand-600/20 text-brand-300 rounded-full">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Certification */}
             <div>
@@ -272,6 +349,54 @@ function RecommendationCard({ rec, rank }) {
   )
 }
 
+// ── Abstained panel ────────────────────────────────────────────
+function AbstainedPanel({ abstainReason, closestMatches }) {
+  const [showClosest, setShowClosest] = useState(false)
+  return (
+    <div className="glass-card border border-slate-600/40 p-8 text-center animate-fade-in">
+      <SearchX className="w-14 h-14 text-slate-500 mx-auto mb-4" />
+      <h3 className="text-white font-bold text-lg mb-2">No Confident Match Found</h3>
+      <p className="text-slate-400 text-sm leading-relaxed max-w-md mx-auto mb-4">
+        {abstainReason || 'The requirement does not match any standard in the 1,380-standard BIS dataset with sufficient confidence.'}
+      </p>
+      <div className="flex flex-col items-center gap-3">
+        <div className="px-4 py-2 bg-slate-700/30 border border-slate-600/20 rounded-xl text-slate-400 text-xs">
+          💡 Try adding more detail: material grade, product dimensions, or the specific application context.
+        </div>
+        {closestMatches?.length > 0 && (
+          <button
+            onClick={() => setShowClosest(!showClosest)}
+            className="flex items-center gap-2 text-xs text-slate-500 hover:text-slate-300 transition-colors"
+          >
+            <HelpCircle className="w-3.5 h-3.5" />
+            {showClosest ? 'Hide' : 'Show'} closest partial matches ({closestMatches.length})
+          </button>
+        )}
+      </div>
+
+      {showClosest && closestMatches?.length > 0 && (
+        <div className="mt-4 space-y-2 text-left">
+          <p className="text-xs text-slate-500 text-center mb-3">
+            These were the nearest results — they do not meet the confidence threshold:
+          </p>
+          {closestMatches.map((m, i) => (
+            <div key={m.key || i} className="px-4 py-3 bg-white/3 border border-white/8 rounded-xl">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-brand-400 font-mono text-sm font-bold">{m.is_code}</span>
+                <StatusBadge status={m.status} />
+              </div>
+              <p className="text-slate-400 text-xs">{m.title}</p>
+              {m.match_strength != null && (
+                <MatchStrengthBand matchStrength={m.match_strength} coverage={m.coverage} />
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
 // ── Audit banner ──────────────────────────────────────────────
 function AuditBanner({ warnings }) {
   const hasIssues = warnings?.length > 0
@@ -304,7 +429,10 @@ export default function ResultsPage() {
     return null
   }
 
-  const { audit_id, query_summary, recommendations, warnings, pipeline_stages_completed } = result
+  const {
+    audit_id, query_summary, recommendations, warnings,
+    pipeline_stages_completed, abstained, abstain_reason, closest_matches
+  } = result
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -331,17 +459,22 @@ export default function ResultsPage() {
             {pipeline_stages_completed?.map(s => (
               <span key={s} className="badge-verified text-[10px]">{s}</span>
             ))}
+            {abstained && (
+              <span className="text-[10px] px-2 py-0.5 bg-slate-700/40 border border-slate-600/30 text-slate-400 rounded-full">
+                abstained
+              </span>
+            )}
           </div>
         </div>
 
         {/* Degraded warnings */}
-        {warnings?.length > 0 && (
+        {warnings?.filter(w => !w.includes('confidence advisory') && !w.includes('coverage advisory')).length > 0 && (
           <div className="mb-5 glass-card p-4 border-warning-600/20 bg-warning-600/5">
             <div className="flex items-start gap-2">
               <AlertTriangle className="w-4 h-4 text-warning-400 mt-0.5 flex-shrink-0" />
               <div>
                 <p className="text-warning-400 text-sm font-medium mb-1">System Warnings (degraded mode)</p>
-                {warnings.map((w, i) => (
+                {warnings.filter(w => !w.includes('confidence advisory') && !w.includes('coverage advisory')).map((w, i) => (
                   <p key={i} className="text-warning-400/70 text-xs">{w}</p>
                 ))}
               </div>
@@ -350,7 +483,9 @@ export default function ResultsPage() {
         )}
 
         {/* Results */}
-        {recommendations.length === 0 ? (
+        {abstained ? (
+          <AbstainedPanel abstainReason={abstain_reason} closestMatches={closest_matches} />
+        ) : recommendations.length === 0 ? (
           <div className="glass-card p-10 text-center">
             <XCircle className="w-12 h-12 text-slate-500 mx-auto mb-3" />
             <p className="text-slate-300 font-medium">No recommendations found</p>
