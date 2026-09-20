@@ -43,21 +43,31 @@ Public procurement officers across Indian ministries, CPWD, PSUs, and state util
 ## 🌟 Key Features
 
 - 📄 **Multi-Modal Document Parsing (Node 0)**: Ingests unstructured tender PDFs, Word specifications (`.docx`), scanned images (`.png`, `.jpg`), or raw clipboard text with automatic OCR fallback.
+- 📦 **Multi-Item Tender Segmentation**: Parses complex multi-item RFPs (numbered lists, bullet points, markdown tables, semicolons) into discrete `LineItem` instances, executing extraction, retrieval, and verification concurrently per line item.
 - 🇮🇳 **Domain Thesaurus & Vernacular Expansion (Node 01)**: Translates vernacular Hindi procurement terms (e.g., *"sariya"*, *"cement"*, *"taar"*), maps **CPWD DSR 2023** item codes, and aligns with **Government e-Marketplace (GeM)** product categories.
 - 🧠 **Structured Entity Extraction (Node 02)**: Converts raw specifications into a strict JSON schema capturing Product, Material, Technical Specs, Performance Requirements, Safety Parameters, and Intended Application.
 - ⚡ **Tri-Store Hybrid Retrieval (Node 03)**:
   - **Dense Vector Search**: Qdrant vector index using `all-MiniLM-L6-v2` embeddings (384-dimensional cosine similarity).
-  - **Sparse Lexical Search**: PostgreSQL Full-Text Search (`to_tsvector` & `plainto_tsquery`) for exact code numbers and keyword matching.
+  - **Sparse Lexical Search**: PostgreSQL Full-Text Search (`to_tsvector` & `plainto_tsquery`) and field-weighted BM25 with procurement stopword elimination.
   - **Graph-RAG Expansion**: Neo4j Knowledge Graph traversing relationships (`REFERENCES`, `ALLIED`, `REQUIRES_TESTING`, `SUPERSEDED_BY`, etc.).
   - **In-Memory Catalog Fallback**: Fully self-contained in-memory search and relationship graph for zero-setup execution when database containers are offline.
 - 🛡️ **Anti-Hallucination Guardrails & Regulatory Compliance (Node 04)**:
   - **Hard Whitelist Verification**: Automatically filters any candidate not present in the official 2,208 BIS code whitelist.
-  - **Status Resolution**: Flags `ACTIVE`, `WITHDRAWN`, and `SUPERSEDED` standards. Prominently injects successor standards (e.g., `IS 8828` ➔ `IS/IEC 60898`).
-  - **QCO & ISI Mark Integration**: Matches gazetted Quality Control Orders, certifying authority, license schemes, and non-compliance penalties.
-- 🔍 **Explainable AI Reasoning (Node 05)**:
+  - **Status Resolution**: Flags `ACTIVE`, `WITHDRAWN`, and `SUPERSEDED` standards. Prominently promotes active successor standards (e.g., `IS 8828` ➔ `IS/IEC 60898 (Part 1)`).
+  - **Comprehensive 6-Scheme BIS Compliance**: Covers **Scheme-I** (ISI Mark), **Scheme-II** (CRS for electronics/IT), **Scheme-IV** (Certificate of Conformity), **FMCS / Scheme-X** (Foreign Manufacturers), **Eco-Mark**, and **Scheme-HM** (Hallmarking) with statutory marking requirements and testing protocols.
+- 🔍 **Explainable AI & Deterministic Spec Line (Node 05)**:
   - Synthesizes transparent, clause-level justifications explaining *why* each IS code matches the tender.
-  - Produces calibrated confidence scores ($0.0$ to $1.0$).
-  - Generates an immutable cryptographic audit log persisted to PostgreSQL.
+  - Generates copy-paste-ready deterministic tender clauses (`spec_line`) with QCO rejection enforcement notes.
+  - Calibrated dual-gate confidence and abstention scoring ($0.0$ to $1.0$).
+  - Immutable cryptographic SHA-256 audit log persisted to SQLite/PostgreSQL.
+- 📋 **Technical Bid Check Tool (`POST /bid-check`)**:
+  - Automatically evaluates vendor technical bids against tender mandatory and voluntary standards.
+  - Validates **CM/L** (`CM/L-XXXXXXXXXX`) and **CRS** (`R-XXXXXXXX`) license number formats, checks test certificate age ($\le 180$ days), and flags superseded standard submissions.
+- 🔒 **Security & Operational Hardening**:
+  - Trusted-proxy rate limiting (strictly validating `X-Forwarded-For` from configured proxy CIDRs).
+  - Optional API Key authentication (`X-API-Key`) with public bypass for health and OpenAPI documentation.
+  - Kubernetes liveness (`/healthz`) and readiness (`/readyz`) probes.
+  - Hard body size and 20k character input length limits with sanitized 500 error responses.
 - 💻 **Modern Glassmorphic Web Dashboard**:
   - Dark-mode responsive UI built in React 18, Vite, and Tailwind CSS.
   - Live document drop-zone, one-click preset tenders, human-in-the-loop review checkpoint, and interactive graph explorer modal.
@@ -272,6 +282,15 @@ python -m uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
 # Terminal 2: Frontend
 cd frontend
 npm run dev
+```
+
+#### 5. Run Automated Tests
+```bash
+# Run all 86 unit and integration test suites
+pytest -q
+
+# Run end-to-end procurement scenarios specifically
+pytest -q tests/test_procurement_report.py
 ```
 
 ---
