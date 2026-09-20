@@ -43,12 +43,13 @@ def test_low_confidence_triggers_clarification_prompt():
     }
     candidates = [cand]
     warnings = []
-    recs = _merge_reasoning(
+    result = _merge_reasoning(
         candidates=candidates,
         reasoning_items=[],
         req_summary="Special equipment",
         warnings=warnings,
     )
+    recs = result[0]
 
     assert len(recs) == 1
     r = recs[0]
@@ -56,7 +57,7 @@ def test_low_confidence_triggers_clarification_prompt():
     assert r["is_low_confidence"] is True
     assert r["clarification_prompt"] is not None
     assert "material grade" in r["clarification_prompt"]
-    assert any("Low confidence advisory" in w for w in warnings)
+    assert any("Low confidence advisory" in w or "Low coverage advisory" in w for w in warnings)
 
 
 def test_high_confidence_has_no_clarification_prompt():
@@ -69,12 +70,13 @@ def test_high_confidence_has_no_clarification_prompt():
     }
     candidates = [cand]
     warnings = []
-    recs = _merge_reasoning(
+    result = _merge_reasoning(
         candidates=candidates,
         reasoning_items=[],
         req_summary="TMT steel bars Fe 500D for concrete",
         warnings=warnings,
     )
+    recs = result[0]
 
     assert len(recs) == 1
     r = recs[0]

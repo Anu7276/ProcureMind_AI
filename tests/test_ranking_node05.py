@@ -37,7 +37,9 @@ def test_ranking_relevance_first_and_data_quality_independence():
         },
     ]
     warnings = []
-    recs = _merge_reasoning(candidates, [], "test requirement", warnings)
+    result = _merge_reasoning(candidates, [], "test requirement", warnings)
+    # _merge_reasoning returns (recommendations, abstained, abstain_reason, closest_matches)
+    recs = result[0]
     # IS 100 has higher relevance score (0.9 vs 0.6), so it MUST rank #1 despite flags
     assert recs[0]["key"] == "IS 100"
     assert recs[1]["key"] == "IS 200"
@@ -53,7 +55,8 @@ def test_sorting_tie_breaking():
         {"key": "IS 100", "score": 0.8, "is_literal_mention": False},
     ]
     warnings = []
-    recs = _merge_reasoning(candidates, [], "test", warnings)
+    result = _merge_reasoning(candidates, [], "test", warnings)
+    recs = result[0]
     # IS 300 first (literal mention), then IS 100 before IS 200 (alphabetical)
     assert recs[0]["key"] == "IS 300"
     assert recs[1]["key"] == "IS 100"
@@ -71,8 +74,8 @@ def test_llm_validation_drops_hallucinated_codes_and_fills_missing():
         {"key": "IS 9999", "reasoning": "Fabricated standard."},
     ]
     warnings = []
-    recs = _merge_reasoning(candidates, llm_reasoning, "motor specs", warnings)
-
+    result = _merge_reasoning(candidates, llm_reasoning, "motor specs", warnings)
+    recs = result[0]
     rec_keys = [r["key"] for r in recs]
     # IS 9999 must NOT be present
     assert "IS 9999" not in rec_keys

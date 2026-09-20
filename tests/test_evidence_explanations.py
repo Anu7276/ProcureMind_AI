@@ -108,7 +108,7 @@ def test_merge_reasoning_preserves_evidence_in_output():
         req_summary="Steel tubes for structural purposes",
         warnings=warnings,
         req_text="mild steel tubes and pipes",
-    )
+    )[0]  # unpack first element: (recommendations, abstained, abstain_reason, closest_matches)
 
     assert len(recs) == 1
     r = recs[0]

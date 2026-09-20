@@ -1,13 +1,13 @@
 {
   "total": 75,
-  "exact_recall_at_1": 0.5867,
-  "exact_recall_at_3": 0.72,
-  "exact_recall_at_5": 0.7333,
-  "exact_mrr": 0.6522,
-  "family_recall_at_1": 0.72,
-  "family_recall_at_3": 0.8133,
-  "family_recall_at_5": 0.8267,
-  "family_mrr": 0.7656,
+  "exact_recall_at_1": 0.64,
+  "exact_recall_at_3": 0.8,
+  "exact_recall_at_5": 0.84,
+  "exact_mrr": 0.7242,
+  "family_recall_at_1": 0.7733,
+  "family_recall_at_3": 0.92,
+  "family_recall_at_5": 0.96,
+  "family_mrr": 0.8509,
   "hindi_subset": {
     "total": 1,
     "exact_recall@1": 0.0,
@@ -39,8 +39,8 @@
       "total": 4,
       "exact_hits@5": 4,
       "exact_recall@5": 1.0,
-      "family_hits@1": 4,
-      "family_recall@1": 1.0,
+      "family_hits@1": 3,
+      "family_recall@1": 0.75,
       "family_hits@5": 4,
       "family_recall@5": 1.0
     },
@@ -77,8 +77,8 @@
       "exact_recall@5": 0.3333,
       "family_hits@1": 7,
       "family_recall@1": 0.7778,
-      "family_hits@5": 8,
-      "family_recall@5": 0.8889
+      "family_hits@5": 9,
+      "family_recall@5": 1.0
     },
     "Electrical - Appliances": {
       "total": 1,
@@ -100,30 +100,30 @@
     },
     "Electrical - Circuit Breakers": {
       "total": 5,
-      "exact_hits@5": 4,
-      "exact_recall@5": 0.8,
+      "exact_hits@5": 5,
+      "exact_recall@5": 1.0,
       "family_hits@1": 1,
       "family_recall@1": 0.2,
-      "family_hits@5": 4,
-      "family_recall@5": 0.8
+      "family_hits@5": 5,
+      "family_recall@5": 1.0
     },
     "Electrical - Enclosures": {
       "total": 1,
-      "exact_hits@5": 0,
-      "exact_recall@5": 0.0,
+      "exact_hits@5": 1,
+      "exact_recall@5": 1.0,
       "family_hits@1": 0,
       "family_recall@1": 0.0,
-      "family_hits@5": 0,
-      "family_recall@5": 0.0
+      "family_hits@5": 1,
+      "family_recall@5": 1.0
     },
     "Electrical - Motors": {
       "total": 1,
-      "exact_hits@5": 0,
-      "exact_recall@5": 0.0,
-      "family_hits@1": 0,
-      "family_recall@1": 0.0,
-      "family_hits@5": 0,
-      "family_recall@5": 0.0
+      "exact_hits@5": 1,
+      "exact_recall@5": 1.0,
+      "family_hits@1": 1,
+      "family_recall@1": 1.0,
+      "family_hits@5": 1,
+      "family_recall@5": 1.0
     },
     "Electrical - Safety": {
       "total": 1,
@@ -145,21 +145,21 @@
     },
     "Electrical - Wiring": {
       "total": 1,
-      "exact_hits@5": 0,
-      "exact_recall@5": 0.0,
-      "family_hits@1": 0,
-      "family_recall@1": 0.0,
-      "family_hits@5": 0,
-      "family_recall@5": 0.0
+      "exact_hits@5": 1,
+      "exact_recall@5": 1.0,
+      "family_hits@1": 1,
+      "family_recall@1": 1.0,
+      "family_hits@5": 1,
+      "family_recall@5": 1.0
     },
     "Electronics & IT": {
       "total": 3,
       "exact_hits@5": 0,
       "exact_recall@5": 0.0,
-      "family_hits@1": 1,
-      "family_recall@1": 0.3333,
-      "family_hits@5": 1,
-      "family_recall@5": 0.3333
+      "family_hits@1": 2,
+      "family_recall@1": 0.6667,
+      "family_hits@5": 2,
+      "family_recall@5": 0.6667
     },
     "Food & Agriculture": {
       "total": 1,
@@ -190,12 +190,12 @@
     },
     "IT & Information Security": {
       "total": 1,
-      "exact_hits@5": 0,
-      "exact_recall@5": 0.0,
-      "family_hits@1": 0,
-      "family_recall@1": 0.0,
-      "family_hits@5": 0,
-      "family_recall@5": 0.0
+      "exact_hits@5": 1,
+      "exact_recall@5": 1.0,
+      "family_hits@1": 1,
+      "family_recall@1": 1.0,
+      "family_hits@5": 1,
+      "family_recall@5": 1.0
     },
     "Mechanical": {
       "total": 4,
@@ -226,21 +226,21 @@
     },
     "Safety & PPE": {
       "total": 6,
-      "exact_hits@5": 5,
-      "exact_recall@5": 0.8333,
-      "family_hits@1": 5,
-      "family_recall@1": 0.8333,
-      "family_hits@5": 5,
-      "family_recall@5": 0.8333
+      "exact_hits@5": 6,
+      "exact_recall@5": 1.0,
+      "family_hits@1": 6,
+      "family_recall@1": 1.0,
+      "family_hits@5": 6,
+      "family_recall@5": 1.0
     },
     "Solar Energy": {
       "total": 3,
-      "exact_hits@5": 1,
-      "exact_recall@5": 0.3333,
-      "family_hits@1": 2,
-      "family_recall@1": 0.6667,
-      "family_hits@5": 2,
-      "family_recall@5": 0.6667
+      "exact_hits@5": 2,
+      "exact_recall@5": 0.6667,
+      "family_hits@1": 1,
+      "family_recall@1": 0.3333,
+      "family_hits@5": 3,
+      "family_recall@5": 1.0
     },
     "Structural Steel": {
       "total": 3,
@@ -253,12 +253,12 @@
     },
     "Structural Steel - Pipes": {
       "total": 2,
-      "exact_hits@5": 1,
-      "exact_recall@5": 0.5,
-      "family_hits@1": 1,
-      "family_recall@1": 0.5,
-      "family_hits@5": 1,
-      "family_recall@5": 0.5
+      "exact_hits@5": 2,
+      "exact_recall@5": 1.0,
+      "family_hits@1": 2,
+      "family_recall@1": 1.0,
+      "family_hits@5": 2,
+      "family_recall@5": 1.0
     },
     "Uncategorized": {
       "total": 6,
@@ -298,19 +298,9 @@
     }
   },
   "failures": [
-    "Q008",
-    "Q017",
-    "Q020",
-    "Q021",
     "Q024",
     "Q026",
-    "Q031",
-    "Q034",
-    "Q060",
-    "Q070",
-    "Q076",
-    "Q077",
-    "Q091"
+    "Q077"
   ],
   "details": [
     {
@@ -326,7 +316,7 @@
         "IS 432 (Part 1)",
         "IS 8112",
         "IS 456",
-        "IS 269"
+        "IS 2062"
       ],
       "abstained": false,
       "exact_hit@1": true,
@@ -372,21 +362,21 @@
         "IS 8112"
       ],
       "top5": [
-        "IS 8112",
         "IS 269",
+        "IS 8112",
         "IS 12269",
         "IS 456",
         "IS 12330"
       ],
       "abstained": false,
-      "exact_hit@1": true,
+      "exact_hit@1": false,
       "exact_hit@3": true,
       "exact_hit@5": true,
-      "exact_rr": 1.0,
-      "family_hit@1": true,
+      "exact_rr": 0.5,
+      "family_hit@1": false,
       "family_hit@3": true,
       "family_hit@5": true,
-      "family_rr": 1.0
+      "family_rr": 0.5
     },
     {
       "id": "Q004",
@@ -427,8 +417,8 @@
         "IS 2062",
         "IS 4923",
         "IS 7452",
-        "IS 1079",
-        "IS 3954"
+        "IS 3954",
+        "IS 1079"
       ],
       "abstained": false,
       "exact_hit@1": true,
@@ -498,16 +488,22 @@
       "expected": [
         "IS 3589"
       ],
-      "top5": [],
-      "abstained": true,
-      "exact_hit@1": false,
-      "exact_hit@3": false,
-      "exact_hit@5": false,
-      "exact_rr": 0.0,
-      "family_hit@1": false,
-      "family_hit@3": false,
-      "family_hit@5": false,
-      "family_rr": 0.0
+      "top5": [
+        "IS 3589",
+        "IS 15450",
+        "IS 1239 (Part 1)",
+        "IS 6392",
+        "IS 8329"
+      ],
+      "abstained": false,
+      "exact_hit@1": true,
+      "exact_hit@3": true,
+      "exact_hit@5": true,
+      "exact_rr": 1.0,
+      "family_hit@1": true,
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 1.0
     },
     {
       "id": "Q009",
@@ -519,10 +515,10 @@
       ],
       "top5": [
         "IS 383",
-        "IS 1161",
         "IS 456",
+        "IS 1161",
         "IS 8112",
-        "IS 4923"
+        "IS 6579"
       ],
       "abstained": false,
       "exact_hit@1": true,
@@ -545,9 +541,9 @@
       "top5": [
         "IS 456",
         "IS 800",
+        "IS 783",
         "IS 8112",
-        "IS 2185 (Part 1)",
-        "IS 1200 (Part 2)"
+        "IS 2185 (Part 1)"
       ],
       "abstained": false,
       "exact_hit@1": true,
@@ -619,10 +615,10 @@
       ],
       "top5": [
         "IS 15658",
-        "IS 3115",
         "IS 2185 (Part 1)",
-        "IS 4160",
-        "IS 2185 (Part 3)"
+        "IS 3115",
+        "IS 2185 (Part 3)",
+        "IS 4160"
       ],
       "abstained": false,
       "exact_hit@1": true,
@@ -647,7 +643,7 @@
         "IS 1554 (Part 1)",
         "IS 7098 (Part 1)",
         "IS 732",
-        "IS 8783 (Part 4/Sec 1)"
+        "IS 9968 (Part 1)"
       ],
       "abstained": false,
       "exact_hit@1": true,
@@ -671,8 +667,8 @@
         "IS 1554 (Part 1)",
         "IS 7098 (Part 1)",
         "IS 694",
-        "IS 1554 (Part 2)",
-        "IS 1255"
+        "IS 9968 (Part 1)",
+        "IS 1554 (Part 2)"
       ],
       "abstained": false,
       "exact_hit@1": true,
@@ -694,8 +690,8 @@
       ],
       "top5": [
         "IS 8130",
-        "IS 778",
         "IS 694",
+        "IS 778",
         "IS 2501",
         "IS 2963"
       ],
@@ -718,16 +714,22 @@
         "IS 732",
         "IS 3043"
       ],
-      "top5": [],
-      "abstained": true,
-      "exact_hit@1": false,
-      "exact_hit@3": false,
-      "exact_hit@5": false,
-      "exact_rr": 0.0,
-      "family_hit@1": false,
-      "family_hit@3": false,
-      "family_hit@5": false,
-      "family_rr": 0.0
+      "top5": [
+        "IS 732",
+        "IS 3072",
+        "IS 1255",
+        "IS 900",
+        "IS 2412"
+      ],
+      "abstained": false,
+      "exact_hit@1": true,
+      "exact_hit@3": true,
+      "exact_hit@5": true,
+      "exact_rr": 1.0,
+      "family_hit@1": true,
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 1.0
     },
     {
       "id": "Q018",
@@ -765,9 +767,9 @@
       "top5": [
         "IS 13947 (Part 1)",
         "IS/IEC 60947 (Part 2)",
-        "IS 13703 (Part 2/Sec 1)",
         "IS 8623 (Part 1)",
-        "IS 2147"
+        "IS 2147",
+        "IS 13947 (Part 4/Sec 1)"
       ],
       "abstained": false,
       "exact_hit@1": true,
@@ -787,16 +789,22 @@
       "expected": [
         "IS 900"
       ],
-      "top5": [],
-      "abstained": true,
-      "exact_hit@1": false,
-      "exact_hit@3": false,
-      "exact_hit@5": false,
-      "exact_rr": 0.0,
-      "family_hit@1": false,
-      "family_hit@3": false,
-      "family_hit@5": false,
-      "family_rr": 0.0
+      "top5": [
+        "IS 900",
+        "IS 12615",
+        "IS 12802",
+        "IS 7538",
+        "IS 3589"
+      ],
+      "abstained": false,
+      "exact_hit@1": true,
+      "exact_hit@3": true,
+      "exact_hit@5": true,
+      "exact_rr": 1.0,
+      "family_hit@1": true,
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 1.0
     },
     {
       "id": "Q021",
@@ -806,16 +814,22 @@
       "expected": [
         "IS/IEC 60529"
       ],
-      "top5": [],
-      "abstained": true,
+      "top5": [
+        "IS 14772",
+        "IS/IEC 60529",
+        "IS 1180 (Part 1)",
+        "IS 3854",
+        "IS 3419"
+      ],
+      "abstained": false,
       "exact_hit@1": false,
-      "exact_hit@3": false,
-      "exact_hit@5": false,
-      "exact_rr": 0.0,
+      "exact_hit@3": true,
+      "exact_hit@5": true,
+      "exact_rr": 0.5,
       "family_hit@1": false,
-      "family_hit@3": false,
-      "family_hit@5": false,
-      "family_rr": 0.0
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 0.5
     },
     {
       "id": "Q022",
@@ -855,7 +869,7 @@
         "IS 4162",
         "IS 10500",
         "IS 15410",
-        "IS 15450"
+        "IS 13428"
       ],
       "abstained": false,
       "exact_hit@1": false,
@@ -875,8 +889,14 @@
       "expected": [
         "IS 4985"
       ],
-      "top5": [],
-      "abstained": true,
+      "top5": [
+        "IS 14735",
+        "IS 12701",
+        "IS 1879",
+        "IS 9271",
+        "IS 9523"
+      ],
+      "abstained": false,
       "exact_hit@1": false,
       "exact_hit@3": false,
       "exact_hit@5": false,
@@ -943,8 +963,8 @@
         "IS 2925",
         "IS 2206",
         "IS 7943",
-        "IS 1161",
-        "IS 456"
+        "IS/IEC 61730 (Part 1)",
+        "IS 1161"
       ],
       "abstained": false,
       "exact_hit@1": true,
@@ -1039,16 +1059,22 @@
       "expected": [
         "IS 11226"
       ],
-      "top5": [],
-      "abstained": true,
-      "exact_hit@1": false,
-      "exact_hit@3": false,
-      "exact_hit@5": false,
-      "exact_rr": 0.0,
-      "family_hit@1": false,
-      "family_hit@3": false,
-      "family_hit@5": false,
-      "family_rr": 0.0
+      "top5": [
+        "IS 11226",
+        "IS 2925",
+        "IS 1989 (Part 1)",
+        "IS 1989 (Part 2)",
+        "IS 2206"
+      ],
+      "abstained": false,
+      "exact_hit@1": true,
+      "exact_hit@3": true,
+      "exact_hit@5": true,
+      "exact_rr": 1.0,
+      "family_hit@1": true,
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 1.0
     },
     {
       "id": "Q032",
@@ -1062,8 +1088,8 @@
         "IS 15298 (Part 3)",
         "IS 13422",
         "IS 4770",
-        "IS 4148",
-        "IS 8686"
+        "IS 4151",
+        "IS 4148"
       ],
       "abstained": false,
       "exact_hit@1": true,
@@ -1108,16 +1134,22 @@
       "expected": [
         "IS/ISO/IEC 27001"
       ],
-      "top5": [],
-      "abstained": true,
-      "exact_hit@1": false,
-      "exact_hit@3": false,
-      "exact_hit@5": false,
-      "exact_rr": 0.0,
-      "family_hit@1": false,
-      "family_hit@3": false,
-      "family_hit@5": false,
-      "family_rr": 0.0
+      "top5": [
+        "IS/ISO/IEC 27001",
+        "IS 18001",
+        "IS 18000",
+        "IS 10299",
+        "IS 2418 (Part 2)"
+      ],
+      "abstained": false,
+      "exact_hit@1": true,
+      "exact_hit@3": true,
+      "exact_hit@5": true,
+      "exact_rr": 1.0,
+      "family_hit@1": true,
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 1.0
     },
     {
       "id": "Q035",
@@ -1252,16 +1284,22 @@
       "expected": [
         "IS 14286"
       ],
-      "top5": [],
-      "abstained": true,
+      "top5": [
+        "IS/IEC 61730 (Part 1)",
+        "IS 16221 (Part 2)",
+        "IS 1255",
+        "IS/IEC 61730 (Part 2)",
+        "IS 14286"
+      ],
+      "abstained": false,
       "exact_hit@1": false,
       "exact_hit@3": false,
-      "exact_hit@5": false,
-      "exact_rr": 0.0,
+      "exact_hit@5": true,
+      "exact_rr": 0.2,
       "family_hit@1": false,
       "family_hit@3": false,
-      "family_hit@5": false,
-      "family_rr": 0.0
+      "family_hit@5": true,
+      "family_rr": 0.2
     },
     {
       "id": "Q061",
@@ -1377,7 +1415,7 @@
         "IS 2062",
         "IS 1161",
         "IS 4923",
-        "IS 800"
+        "IS 1893 (Part 1)"
       ],
       "abstained": false,
       "exact_hit@1": true,
@@ -1424,10 +1462,10 @@
       ],
       "top5": [
         "IS 1180 (Part 1)",
+        "IS 13032",
         "IS 1180 (Part 3)",
-        "IS 7098 (Part 2)",
-        "IS 2026 (Part 1)",
-        "IS 335"
+        "IS 335",
+        "IS 2026 (Part 1)"
       ],
       "abstained": false,
       "exact_hit@1": false,
@@ -1497,16 +1535,22 @@
       "expected": [
         "IS/IEC 60947"
       ],
-      "top5": [],
-      "abstained": true,
+      "top5": [
+        "IS/IEC 60898 (Part 1)",
+        "IS/IEC 60947 (Part 2)",
+        "IS 13947 (Part 1)",
+        "IS 13032",
+        "IS 12640 (Part 1)"
+      ],
+      "abstained": false,
       "exact_hit@1": false,
       "exact_hit@3": false,
       "exact_hit@5": false,
       "exact_rr": 0.0,
       "family_hit@1": false,
-      "family_hit@3": false,
-      "family_hit@5": false,
-      "family_rr": 0.0
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 0.5
     },
     {
       "id": "Q071",
@@ -1545,7 +1589,7 @@
         "IS 16444 (Part 1)",
         "IS 15884",
         "IS 15959 (Part 2)",
-        "IS 3072",
+        "IS 15959 (Part 1)",
         "IS 16444 (Part 2)"
       ],
       "abstained": false,
@@ -1592,21 +1636,21 @@
         "IS 16221"
       ],
       "top5": [
-        "IS 16221 (Part 2)",
         "IS 16169",
+        "IS 16221 (Part 2)",
         "IS 16242 (Part 1)",
-        "IS 1255",
-        "IS 1651"
+        "IS 1651",
+        "IS 12933 (Part 1)"
       ],
       "abstained": false,
       "exact_hit@1": false,
       "exact_hit@3": false,
       "exact_hit@5": false,
       "exact_rr": 0.0,
-      "family_hit@1": true,
+      "family_hit@1": false,
       "family_hit@3": true,
       "family_hit@5": true,
-      "family_rr": 1.0
+      "family_rr": 0.5
     },
     {
       "id": "Q075",
@@ -1642,16 +1686,22 @@
       "expected": [
         "IS 16242"
       ],
-      "top5": [],
-      "abstained": true,
+      "top5": [
+        "IS 16242 (Part 1)",
+        "IS 18000",
+        "IS 1180 (Part 1)",
+        "IS 15959 (Part 2)",
+        "IS 15959 (Part 1)"
+      ],
+      "abstained": false,
       "exact_hit@1": false,
       "exact_hit@3": false,
       "exact_hit@5": false,
       "exact_rr": 0.0,
-      "family_hit@1": false,
-      "family_hit@3": false,
-      "family_hit@5": false,
-      "family_rr": 0.0
+      "family_hit@1": true,
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 1.0
     },
     {
       "id": "Q077",
@@ -1732,8 +1782,8 @@
       ],
       "top5": [
         "IS 14846",
-        "IS 9338",
         "IS 14845",
+        "IS 9338",
         "IS 1239 (Part 1)",
         "IS 1239 (Part 2)"
       ],
@@ -1807,10 +1857,10 @@
       ],
       "top5": [
         "IS 252",
-        "IS 15450",
         "IS 11673",
-        "IS 1172",
-        "IS 4162"
+        "IS 15450",
+        "IS 4162",
+        "IS 251"
       ],
       "abstained": false,
       "exact_hit@1": true,
@@ -1835,7 +1885,7 @@
         "IS 4162",
         "IS 10500",
         "IS 15410",
-        "IS 15450"
+        "IS 13428"
       ],
       "abstained": false,
       "exact_hit@1": true,
@@ -2015,16 +2065,22 @@
       "expected": [
         "IS/IEC 60947 (Part 2)"
       ],
-      "top5": [],
-      "abstained": true,
+      "top5": [
+        "IS 13032",
+        "IS/IEC 60898 (Part 1)",
+        "IS/IEC 60947 (Part 2)",
+        "IS 13947 (Part 1)",
+        "IS 7987"
+      ],
+      "abstained": false,
       "exact_hit@1": false,
-      "exact_hit@3": false,
-      "exact_hit@5": false,
-      "exact_rr": 0.0,
+      "exact_hit@3": true,
+      "exact_hit@5": true,
+      "exact_rr": 0.3333333333333333,
       "family_hit@1": false,
-      "family_hit@3": false,
-      "family_hit@5": false,
-      "family_rr": 0.0
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 0.3333333333333333
     },
     {
       "id": "Q092",
@@ -2038,8 +2094,8 @@
         "IS/IEC 60898 (Part 1)",
         "IS 13032",
         "IS 732",
-        "IS 13947 (Part 1)",
-        "IS/IEC 60947 (Part 2)"
+        "IS/IEC 60947 (Part 2)",
+        "IS 13947 (Part 1)"
       ],
       "abstained": false,
       "exact_hit@1": true,
@@ -2112,19 +2168,19 @@
       "top5": [
         "IS 13947 (Part 1)",
         "IS 8623 (Part 1)",
-        "IS/IEC 60947 (Part 1)",
         "IS 2147",
-        "IS 13947 (Part 3)"
+        "IS 13947 (Part 3)",
+        "IS/IEC 60947 (Part 1)"
       ],
       "abstained": false,
       "exact_hit@1": false,
-      "exact_hit@3": true,
+      "exact_hit@3": false,
       "exact_hit@5": true,
-      "exact_rr": 0.3333333333333333,
+      "exact_rr": 0.2,
       "family_hit@1": false,
-      "family_hit@3": true,
+      "family_hit@3": false,
       "family_hit@5": true,
-      "family_rr": 0.3333333333333333
+      "family_rr": 0.2
     }
   ]
 }

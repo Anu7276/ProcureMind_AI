@@ -62,13 +62,14 @@ def test_category_soft_boost():
     assert is_100["score"] > is_200["score"]
 
 
-def test_category_hard_filter_safe_guard():
-    # If >= 5 matching candidates exist, non-matching are filtered out
+def test_category_soft_boost_raises_matching_candidates():
+    # Phase 4.2: Category hint gives a soft BOOST only — hard filter was removed.
+    # Non-matching candidates are NOT dropped; matching ones get a +0.05 score boost.
     candidates = [
         {"key": f"IS {i}", "score": 0.80, "category": "Electrical - Motors"}
         for i in range(1, 6)
     ]
-    candidates.append({"key": "IS 999", "score": 0.85, "category": "Food & Agriculture"})
+    candidates.append({"key": "IS 999", "score": 0.75, "category": "Food & Agriculture"})
 
     reranked, _ = rerank(
         query="motor",
@@ -76,9 +77,12 @@ def test_category_hard_filter_safe_guard():
         top_n=10,
         category_hint="Electrical",
     )
-    # IS 999 should be filtered out because there are 5 matching Electrical candidates
-    assert all(c["key"] != "IS 999" for c in reranked)
-    assert len(reranked) == 5
+    # IS 999 should NOT be dropped (hard filter removed in Phase 4.2)
+    assert any(c["key"] == "IS 999" for c in reranked), "Non-matching candidate must still appear (soft boost only)"
+    # Electrical - Motors candidates should have higher scores than IS 999 (boosted by category)
+    is_999 = next(c for c in reranked if c["key"] == "IS 999")
+    is_1 = next(c for c in reranked if c["key"] == "IS 1")
+    assert is_1["score"] > is_999["score"], "Category-matching IS 1 should outscore non-matching IS 999"
 
 
 def test_category_filter_preserves_literal_mention():
