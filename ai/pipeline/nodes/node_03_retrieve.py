@@ -49,27 +49,31 @@ def _build_query_text(state: PipelineState) -> str:
     """
     Compose query string from structured_requirement: product, material, specifications, application,
     performance_requirements, safety_requirements.
-    Structured requirement is the primary source of truth.
-    Does NOT append normalized_text when at least product or material is non-empty.
+    When user_edited is True, structured requirement is the exclusive source of truth.
+    When user_edited is False, normalized_text is included to preserve multi-item tender context.
     """
     req: Dict = state.get("structured_requirement", {}) or {}
     parts = []
-    has_primary = bool((req.get("product") or "").strip() or (req.get("material") or "").strip())
+    user_edited = state.get("user_edited", False)
 
     for field in ["product", "material", "specifications", "performance_requirements", "safety_requirements", "application"]:
         val = req.get(field)
         if val:
-            val_str = str(val).strip()
+            if isinstance(val, (list, tuple)):
+                val_str = " ".join(str(x).strip() for x in val if x)
+            else:
+                val_str = str(val).strip()
             val_lower = val_str.lower()
             if val_lower in GENERIC_FILLER_PHRASES or any(
                 f in val_lower for f in GENERIC_FILLER_PHRASES if len(f) > 10
             ):
                 continue
-            parts.append(val_str)
+            if val_str:
+                parts.append(val_str)
 
-    if not has_primary and not parts:
+    if not user_edited:
         norm = (state.get("normalized_text", "") or "").strip()
-        if norm:
+        if norm and norm not in parts:
             parts.append(norm[:500])
 
     return " ".join(parts).strip() or state.get("raw_input", "").strip()

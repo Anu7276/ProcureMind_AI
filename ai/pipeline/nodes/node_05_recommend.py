@@ -364,8 +364,14 @@ def _merge_reasoning(
     # Dual-gate: abstain only when BOTH match_strength < threshold AND top_coverage < floor.
     # A query that covers >=20% of content-weighted terms is a real procurement requirement
     # even if the absolute BM25 ratio is low (long queries naturally have lower raw/ideal ratio).
-    # Literal IS-code mentions (ms=0.95) are never abstained regardless.
-    has_literal = any(it.get("is_code", "").lower() == it.get("is_code", "").lower() and float(it.get("match_strength", 0)) >= 0.90 for it in items[:1])
+    # Literal IS-code mentions and promoted successors are never abstained
+    has_literal = any(
+        it.get("source") == "literal_mention"
+        or it.get("is_literal_mention")
+        or it.get("is_successor_promotion")
+        or ("successor_of" in str(it.get("source", "")))
+        for it in items
+    )
     should_abstain = (
         not has_literal
         and (not items or top_strength < abstain_thresh)
