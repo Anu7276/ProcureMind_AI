@@ -10,7 +10,6 @@ from ai.knowledge import knowledge_loader as kl
 from ai.pipeline.nodes.node_05_recommend import (
     _candidate_summary_for_prompt,
     _deterministic_fallback_reasoning,
-    _extract_evidence_fields,
     _merge_reasoning,
 )
 

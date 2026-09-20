@@ -10,8 +10,7 @@ from typing import Dict, Any, Optional
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-from ai.pipeline.graph import run_extract_only, run_pipeline_from_requirement
-from backend.schemas.api_schemas import StructuredRequirement
+from ai.pipeline.graph import run_extract_only
 
 router = APIRouter(prefix="/graph", tags=["Graph"])
 

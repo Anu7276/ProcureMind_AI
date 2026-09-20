@@ -12,7 +12,7 @@ from __future__ import annotations
 
 import logging
 import re
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 from ai.knowledge import knowledge_loader as kl
 from ai.pipeline.state import PipelineState

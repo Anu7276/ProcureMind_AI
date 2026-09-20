@@ -1,11 +1,9 @@
 """
 Unit tests for Phase 3: Node 05 ranking, monotonic confidence, and reasoning validation.
 """
-import pytest
 from ai.pipeline.nodes.node_05_recommend import (
     _compute_confidence,
     _merge_reasoning,
-    _build_data_quality_note,
 )
 
 

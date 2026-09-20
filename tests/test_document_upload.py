@@ -12,9 +12,6 @@ import pypdf
 import fitz
 
 from ai.pipeline.document_extractors import (
-    DocumentError,
-    extract_pdf,
-    extract_text_file,
     looks_like_document_text,
 )
 from backend.main import app

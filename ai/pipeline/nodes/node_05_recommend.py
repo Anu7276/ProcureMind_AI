@@ -13,7 +13,7 @@ from __future__ import annotations
 import json
 import logging
 import re
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List, Optional, Set
 
 from ai.knowledge import knowledge_loader as kl
 from ai.knowledge.text_utils import tokenize
@@ -296,7 +296,7 @@ def _merge_reasoning(
 ) -> List[Dict[str, Any]]:
     """
     Merge reasoning and assemble final recommendations.
-    
+
     Ranking rules:
     - Final order is determined purely by:
         1. relevance_score descending

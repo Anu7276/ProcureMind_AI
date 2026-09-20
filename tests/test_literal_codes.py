@@ -2,7 +2,6 @@
 Unit tests for literal code extraction, year preservation, and retrieval separation.
 """
 import pytest
-import asyncio
 from ai.knowledge import knowledge_loader as kl
 from ai.pipeline.nodes.node_01_ingest import extract_literal_codes, node_01_ingest
 from ai.pipeline.nodes.node_03_retrieve import node_03_retrieve

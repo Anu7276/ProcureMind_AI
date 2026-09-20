@@ -32,10 +32,10 @@ async def test_scenario_b_successor_promotion_and_withdrawn_confidence_cap():
     res = await run_pipeline(raw_input=query, input_type="text")
     assert not res.get("abstained")
     recs = res.get("recommendations", [])
-    
+
     succ = next((r for r in recs if "60898" in r["key"]), None)
     withdrawn = next((r for r in recs if r["key"] == "IS 8828"), None)
-    
+
     assert succ is not None, "Promoted successor IS/IEC 60898 (Part 1) must be in recommendations"
     assert withdrawn is not None, "Cited withdrawn IS 8828 must be in recommendations"
     assert succ["match_strength"] >= withdrawn["match_strength"]

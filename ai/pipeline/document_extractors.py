@@ -21,7 +21,7 @@ import io
 import logging
 import re
 import string
-from typing import List, Optional, Tuple
+from typing import Any, List, Tuple
 
 from backend.config.settings import settings
 
@@ -114,7 +114,8 @@ def extract_pdf(file_bytes: bytes) -> ExtractionResult:
     # Optional Docling path if explicitly enabled
     if getattr(settings, "USE_DOCLING", False):
         try:
-            import tempfile, os
+            import tempfile
+            import os
             converter = _get_docling_converter()
             with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
                 tmp.write(file_bytes)

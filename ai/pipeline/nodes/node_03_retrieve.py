@@ -11,7 +11,7 @@ True hybrid retrieval pipeline:
      Normalized to [0, 1] for downstream compatibility.
      Per-source ranks saved to candidate["retrieval_trace"].
   3. Literal code boost (+0.15, injected at 0.9).
-  4. Thesaurus expansions (+0.05, injected at 0.55).
+  4. Thesaurus expansions (curated direct-match boost, injected at 1.00).
   5. Knowledge graph expansion (Neo4j if available, else in-memory relationships).
      Used ONLY for related_standards metadata, NEVER for ranking.
      Ordered: requires_testing > requires_safety > allied > performance > references > others.
@@ -63,7 +63,6 @@ def _build_query_text(state: PipelineState) -> str:
                 val_str = " ".join(str(x).strip() for x in val if x)
             else:
                 val_str = str(val).strip()
-            val_lower = val_str.lower()
             if val_str:
                 parts.append(val_str)
 
@@ -193,9 +192,8 @@ def _apply_thesaurus_hints(
 ) -> List[Dict[str, Any]]:
     """
     Separate small step for thesaurus expansions:
-    - Boost +0.05 if already retrieved
-    - Inject at 0.55 with source='thesaurus_hint' if not retrieved
-    - Thesaurus-injected items must never outrank a candidate with score >= 0.70
+    - Curated direct matches receive a score of 1.00 and match strength of 0.55.
+    - Missing direct matches are injected at the same confidence.
     """
     if not thesaurus_keys:
         return candidates
@@ -204,12 +202,16 @@ def _apply_thesaurus_hints(
     updated = []
     for c in candidates:
         if c.get("key") in thesaurus_keys and not c.get("is_literal_mention"):
-            new_score = round(min(1.0, float(c.get("score", 0.0)) + 0.05), 4)
-            updated.append({**c, "score": new_score})
+            updated.append({
+                **c,
+                "score": 1.0,
+                "match_strength": round(max(0.55, float(c.get("match_strength", 0.0))), 4),
+                "source": "thesaurus_direct_match",
+            })
         else:
             updated.append(c)
 
-    # Inject missing ones at 0.55
+    # Inject missing curated direct matches.
     for key in thesaurus_keys:
         if key not in candidate_keys:
             record = kl.get_standard(key)
@@ -225,8 +227,10 @@ def _apply_thesaurus_hints(
                     "status": record.get("status", "ACTIVE"),
                     "superseded_by": record.get("superseded_by") or [],
                     "flags": dq.get("flags", []),
-                    "score": 0.55,
-                    "source": "thesaurus_hint",
+                    "score": 1.0,
+                    "match_strength": 0.55,
+                    "relevance_score": 0.55,
+                    "source": "thesaurus_direct_match",
                     "retrieval_trace": {"thesaurus_hint": 1},
                     "related_standards": _order_and_cap_relationships(
                         kl.get_related_standards_in_memory(key)
@@ -411,8 +415,6 @@ async def node_03_retrieve(state: PipelineState) -> dict:
     """True hybrid vector + lexical + clause retrieval with RRF and graceful degradation."""
     warnings = list(state.get("pipeline_warnings", []))
     stages = list(state.get("stages_completed", []))
-    top_k = settings.RETRIEVE_TOP_K
-
     query_text = _build_query_text(state)
     literal_codes = state.get("literal_codes", [])
     thesaurus_keys = state.get("thesaurus_expansions", [])

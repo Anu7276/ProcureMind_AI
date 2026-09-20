@@ -99,7 +99,7 @@ PROCUREMENT_BOILERPLATE: Set[str] = {
 def tokenize(text: str) -> List[str]:
     """
     Tokenize query or document text for BM25 retrieval.
-    
+
     Rules:
     1. Lowercase
     2. Split on non-alphanumerics (retaining Unicode letters/numbers)

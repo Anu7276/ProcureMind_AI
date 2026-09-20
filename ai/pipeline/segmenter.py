@@ -146,7 +146,7 @@ def segment_tender(raw_text: str) -> List[LineItem]:
     raw_segments: List[str] = []
 
     # 1. Check for markdown table
-    table_lines = [l for l in lines if l.startswith("|") and l.endswith("|")]
+    table_lines = [line for line in lines if line.startswith("|") and line.endswith("|")]
     if len(table_lines) >= 2:
         parsed_rows = _parse_table_rows(table_lines)
         if len(parsed_rows) >= 1:
@@ -156,41 +156,41 @@ def segment_tender(raw_text: str) -> List[LineItem]:
     if not raw_segments and len(lines) >= 2:
         # Check if there are numbered lines
         numbered_indices = [
-            i for i, l in enumerate(lines) if _NUMBERED_LINE_RE.match(l) or _PAREN_NUMBERED_RE.match(l)
+            i for i, line in enumerate(lines) if _NUMBERED_LINE_RE.match(line) or _PAREN_NUMBERED_RE.match(line)
         ]
         bullet_indices = [
-            i for i, l in enumerate(lines) if _BULLET_LINE_RE.match(l)
+            i for i, line in enumerate(lines) if _BULLET_LINE_RE.match(line)
         ]
 
         if len(numbered_indices) >= 2 or (len(numbered_indices) >= 1 and numbered_indices[0] == 0 and len(lines) == 1):
             # Group lines by numbered item, ignoring any preamble before first numbered item
             current_seg: List[str] = []
-            for i, l in enumerate(lines):
+            for i, line in enumerate(lines):
                 if i < numbered_indices[0]:
                     # Preamble header line before first item
                     continue
-                if _NUMBERED_LINE_RE.match(l) or _PAREN_NUMBERED_RE.match(l):
+                if _NUMBERED_LINE_RE.match(line) or _PAREN_NUMBERED_RE.match(line):
                     if current_seg:
                         raw_segments.append(" ".join(current_seg))
                         current_seg = []
-                    current_seg.append(l)
+                    current_seg.append(line)
                 else:
-                    current_seg.append(l)
+                    current_seg.append(line)
             if current_seg:
                 raw_segments.append(" ".join(current_seg))
 
         elif len(bullet_indices) >= 2 or (len(bullet_indices) >= 1 and bullet_indices[0] == 0 and len(lines) == 1):
             current_seg = []
-            for i, l in enumerate(lines):
+            for i, line in enumerate(lines):
                 if i < bullet_indices[0]:
                     continue
-                if _BULLET_LINE_RE.match(l):
+                if _BULLET_LINE_RE.match(line):
                     if current_seg:
                         raw_segments.append(" ".join(current_seg))
                         current_seg = []
-                    current_seg.append(l)
+                    current_seg.append(line)
                 else:
-                    current_seg.append(l)
+                    current_seg.append(line)
             if current_seg:
                 raw_segments.append(" ".join(current_seg))
 

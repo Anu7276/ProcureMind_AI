@@ -7,7 +7,7 @@ from fastapi.testclient import TestClient
 
 from backend.main import app
 from backend.config.settings import settings
-from backend.middleware.security import _client_ip, _is_trusted_proxy
+from backend.middleware.security import _client_ip
 
 
 client = TestClient(app)

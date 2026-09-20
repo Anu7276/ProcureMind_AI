@@ -10,9 +10,8 @@ import json
 import logging
 import math
 from collections import defaultdict
-from functools import lru_cache
 from pathlib import Path
-from typing import Any, Callable, Dict, List, NamedTuple, Optional, Set, Tuple
+from typing import Any, Dict, List, NamedTuple, Optional, Set, Tuple
 
 from backend.config.settings import settings
 

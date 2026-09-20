@@ -6,7 +6,7 @@ from __future__ import annotations
 import pytest
 
 from ai.knowledge import knowledge_loader as kl
-from ai.pipeline.reranker import _apply_negative_keyword_rules, rerank
+from ai.pipeline.reranker import _apply_negative_keyword_rules
 
 
 @pytest.fixture(scope="module", autouse=True)

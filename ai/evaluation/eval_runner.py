@@ -32,7 +32,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 logging.basicConfig(level=logging.WARNING)
 logger = logging.getLogger("eval")
 
-from backend.config.settings import settings
+from backend.config.settings import settings  # noqa: E402
 
 API_BASE = f"http://{settings.API_HOST}:{settings.API_PORT}"
 
@@ -199,9 +199,7 @@ async def evaluate(
     blind: Optional[str] = None,
     realistic: Optional[str] = None,
 ) -> Dict[str, Any]:
-    dataset_type = "eval"
     if realistic:
-        dataset_type = "realistic"
         real_path = Path("BIS_Sahayak_Clean_Data/clean/evaluation/queries_realistic.json")
         with open(real_path, encoding="utf-8") as f:
             all_queries = json.load(f)
@@ -211,7 +209,6 @@ async def evaluate(
             eval_queries = all_queries
         print(f"Loaded {len(eval_queries)} realistic evaluation queries (split={realistic}) from {real_path.name}")
     elif blind:
-        dataset_type = "blind"
         blind_path = Path("BIS_Sahayak_Clean_Data/clean/evaluation/queries_blind.json")
         with open(blind_path, encoding="utf-8") as f:
             all_queries = json.load(f)
@@ -306,8 +303,6 @@ async def evaluate(
         tp = sum(1 for r in out_of_scope if r.get("abstained") or not r.get("top5"))
         fn = len(out_of_scope) - tp
         fp = sum(1 for r in in_scope if r.get("abstained"))
-        tn = len(in_scope) - fp
-
         abstention_prec = tp / (tp + fp) if (tp + fp) > 0 else 1.0
         abstention_rec = tp / (tp + fn) if (tp + fn) > 0 else 1.0
         abstention_f1 = (2 * abstention_prec * abstention_rec) / (abstention_prec + abstention_rec) if (abstention_prec + abstention_rec) > 0 else 0.0

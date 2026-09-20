@@ -4,7 +4,6 @@ These are separate from the ORM models to keep API contracts stable.
 """
 from __future__ import annotations
 
-import uuid
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 

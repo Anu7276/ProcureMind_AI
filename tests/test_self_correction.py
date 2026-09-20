@@ -7,7 +7,7 @@ import pytest
 
 from ai.knowledge import knowledge_loader as kl
 from ai.pipeline.nodes.node_03_retrieve import _build_fallback_query
-from ai.pipeline.nodes.node_05_recommend import _generate_clarification_prompt, _merge_reasoning
+from ai.pipeline.nodes.node_05_recommend import _merge_reasoning
 
 
 @pytest.fixture(scope="module", autouse=True)

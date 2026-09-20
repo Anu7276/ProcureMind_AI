@@ -6,7 +6,6 @@ import pytest
 from pathlib import Path
 
 from ai.knowledge import knowledge_loader as kl
-from ai.knowledge.version_checker import check_version
 from ai.pipeline.graph import run_pipeline
 from ai.pipeline.nodes.node_04_verify import node_04_verify
 

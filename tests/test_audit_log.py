@@ -4,7 +4,6 @@ Tests for Phase R1 — Audit Logging to PostgreSQL.
 import pytest
 from unittest.mock import AsyncMock, patch
 from ai.pipeline.nodes.node_05_recommend import node_05_recommend
-from backend.services import postgres_service
 
 
 @pytest.mark.asyncio

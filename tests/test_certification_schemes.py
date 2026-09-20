@@ -3,7 +3,7 @@ Unit tests for BIS certification schemes and deterministic spec_line generation 
 """
 import pytest
 from ai.knowledge import knowledge_loader as kl
-from ai.pipeline.nodes.node_04_verify import _get_compliance, SCHEME_METADATA
+from ai.pipeline.nodes.node_04_verify import _get_compliance
 from ai.pipeline.nodes.node_05_recommend import _generate_spec_line
 
 

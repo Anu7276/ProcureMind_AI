@@ -5,12 +5,11 @@ Exposes helper methods used by the pipeline nodes and API routes.
 from __future__ import annotations
 
 import logging
-import uuid
 from contextlib import asynccontextmanager
 from typing import Any, Dict, List, Optional
 
 from sqlalchemy import text
-from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
+from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
 from backend.config.settings import settings
 

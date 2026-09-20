@@ -1,8 +1,7 @@
 """
 Unit tests for text processing, tokenization, and BM25 search.
 """
-import pytest
-from ai.knowledge.text_utils import tokenize, STOPWORDS_EN, STOPWORDS_HI
+from ai.knowledge.text_utils import tokenize
 from ai.knowledge import knowledge_loader as kl
 
 

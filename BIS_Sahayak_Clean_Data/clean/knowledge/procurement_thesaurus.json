@@ -352,7 +352,27 @@
    "description": "GeM Category: High Density Polyethylene Pipes for Potable Water & Sewerage",
    "standard_keys": [
     "IS 4984",
-    "IS 14333"
+   "IS 14333"
+   ]
+  },
+  "upvc pipes": {
+   "standards": [
+    "IS 4985"
+   ],
+   "description": "GeM Category: Unplasticized PVC Pipes for Potable Water Supplies",
+   "standard_keys": [
+    "IS 4985"
+   ]
+  },
+  "water quality testing": {
+   "standards": [
+    "IS 3025 (Part 1)",
+    "IS 10500"
+   ],
+   "description": "Water and wastewater sampling, testing, and drinking-water quality requirements",
+   "standard_keys": [
+    "IS 3025 (Part 1)",
+    "IS 10500"
    ]
   },
   "distribution transformers": {

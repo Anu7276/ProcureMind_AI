@@ -2,7 +2,7 @@
 Unit tests for multi-item tender segmentation and pipeline integration (Phase R5).
 """
 import pytest
-from ai.pipeline.segmenter import segment_tender, LineItem
+from ai.pipeline.segmenter import segment_tender
 from ai.pipeline.graph import run_pipeline
 
 

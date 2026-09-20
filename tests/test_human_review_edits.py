@@ -2,7 +2,7 @@
 Tests for Phase R2 — Human Review flow, edits, and lightweight ingest_codes_only.
 """
 import pytest
-from ai.pipeline.graph import run_pipeline, run_extract_only, run_pipeline_from_requirement
+from ai.pipeline.graph import run_extract_only, run_pipeline_from_requirement
 from ai.knowledge import knowledge_loader as kl
 
 

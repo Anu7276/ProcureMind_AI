@@ -1,7 +1,6 @@
 """
 Unit tests for the Bid Check verification engine and API endpoint (Phase R6).
 """
-import pytest
 from ai.pipeline.bid_check import verify_bid, VendorSubmission
 
 
