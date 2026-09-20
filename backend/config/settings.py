@@ -73,6 +73,7 @@ class Settings(BaseSettings):
     # ── Qdrant ────────────────────────────────────────────────────
     QDRANT_HOST: str = "localhost"
     QDRANT_PORT: int = 6333
+    QDRANT_TIMEOUT_S: float = 5.0
     QDRANT_COLLECTION_STANDARDS: str = "standards_vectors"
     QDRANT_COLLECTION_FULLTEXT: str = "standards_fulltext_chunks"
 
@@ -123,9 +124,17 @@ class Settings(BaseSettings):
         "http://localhost:3000",
     ]
 
-    # ── Retrieval tuning ──────────────────────────────────────────
+    # ── Retrieval & Reranker tuning ───────────────────────────────
+    RETRIEVE_CANDIDATES: int = 20
     RETRIEVE_TOP_K: int = 10
+    FINAL_TOP_K: int = 10
     GRAPH_MAX_HOPS: int = 2
+
+    RERANKER_ENABLED: bool = True
+    RERANKER_MODEL: str = "BAAI/bge-reranker-base"
+    RERANK_WEIGHT_RERANKER: float = 0.7
+    RERANK_WEIGHT_FUSED: float = 0.3
+    CATEGORY_BOOST: float = 0.05
 
     # ── Chunking (for full_text embedding) ────────────────────────
     CHUNK_SIZE: int = 512      # characters

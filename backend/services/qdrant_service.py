@@ -20,6 +20,8 @@ logger = logging.getLogger(__name__)
 
 _async_client: Optional[AsyncQdrantClient] = None
 _sync_client: Optional[QdrantClient] = None
+_last_avail_check_time: float = 0.0
+_last_avail_result: Tuple[bool, Optional[float]] = (False, None)
 
 
 def get_sync_client() -> QdrantClient:
@@ -36,7 +38,9 @@ async def get_async_client() -> AsyncQdrantClient:
     global _async_client
     if _async_client is None:
         _async_client = AsyncQdrantClient(
-            host=settings.QDRANT_HOST, port=settings.QDRANT_PORT, timeout=1.0
+            host=settings.QDRANT_HOST,
+            port=settings.QDRANT_PORT,
+            timeout=settings.QDRANT_TIMEOUT_S,
         )
     return _async_client
 
@@ -44,7 +48,12 @@ async def get_async_client() -> AsyncQdrantClient:
 # ── Availability check ────────────────────────────────────────────────────────
 
 async def is_available() -> Tuple[bool, Optional[float]]:
-    """Returns (available, latency_ms)."""
+    """Returns (available, latency_ms) with 10s caching."""
+    global _last_avail_check_time, _last_avail_result
+    now = time.monotonic()
+    if now - _last_avail_check_time < 10.0:
+        return _last_avail_result
+
     import asyncio
     t0 = time.monotonic()
     try:
@@ -52,12 +61,16 @@ async def is_available() -> Tuple[bool, Optional[float]]:
             client = await get_async_client()
             return await client.get_collections()
 
-        await asyncio.wait_for(_ping(), timeout=1.0)
+        await asyncio.wait_for(_ping(), timeout=settings.QDRANT_TIMEOUT_S)
         latency = (time.monotonic() - t0) * 1000
-        return True, latency
+        _last_avail_result = (True, latency)
+        _last_avail_check_time = now
+        return _last_avail_result
     except Exception as exc:
         logger.warning("Qdrant unavailable: %s", exc)
-        return False, None
+        _last_avail_result = (False, None)
+        _last_avail_check_time = now
+        return _last_avail_result
 
 
 # ── Vector search — standards_vectors ────────────────────────────────────────
@@ -83,13 +96,14 @@ async def search_standards(
                     )
                 ]
             )
-        hits = await client.search(
+        response = await client.query_points(
             collection_name=settings.QDRANT_COLLECTION_STANDARDS,
-            query_vector=query_vector,
+            query=query_vector,
             limit=top_k,
             query_filter=query_filter,
             with_payload=True,
         )
+        hits = response.points
         return [
             {
                 "score": h.score,
@@ -117,12 +131,13 @@ async def search_fulltext_chunks(
     """
     try:
         client = await get_async_client()
-        hits = await client.search(
+        response = await client.query_points(
             collection_name=settings.QDRANT_COLLECTION_FULLTEXT,
-            query_vector=query_vector,
+            query=query_vector,
             limit=top_k,
             with_payload=True,
         )
+        hits = response.points
         return [
             {
                 "score": h.score,

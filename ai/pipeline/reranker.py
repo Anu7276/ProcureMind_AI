@@ -1,0 +1,229 @@
+"""
+Reranker module for Node 03.
+
+Combines:
+  1. Semantic Cross-Encoder (BAAI/bge-reranker-base) or lexical BM25 fallback
+  2. Fused retrieval score (from RRF)
+  3. Domain category soft boost (+0.05) & hard filtering (safe: leaves >= 5 candidates)
+  4. Formula: relevance_score = 0.7 * minmax(rerank) + 0.3 * minmax(fused)
+"""
+from __future__ import annotations
+
+import logging
+import os
+from typing import Any, Dict, List, Optional, Set, Tuple
+
+from ai.knowledge import knowledge_loader as kl
+from ai.knowledge.text_utils import tokenize
+from backend.config.settings import settings
+
+logger = logging.getLogger(__name__)
+
+_cross_encoder = None
+_cross_encoder_attempted = False
+
+
+def _is_model_cached(model_name: str) -> bool:
+    """Check if model exists in local filesystem or HuggingFace hub cache."""
+    if os.path.exists(model_name):
+        return True
+    hf_home = os.getenv("HF_HOME", os.path.expanduser("~/.cache/huggingface/hub"))
+    folder_name = "models--" + model_name.replace("/", "--")
+    return os.path.exists(os.path.join(hf_home, folder_name))
+
+
+def get_cross_encoder():
+    """Lazy load CrossEncoder with offline graceful degradation."""
+    global _cross_encoder, _cross_encoder_attempted
+    if _cross_encoder_attempted:
+        return _cross_encoder
+    _cross_encoder_attempted = True
+
+    if not getattr(settings, "RERANKER_ENABLED", True):
+        return None
+
+    # In mock offline mode, avoid network download hangs if model is not cached
+    if os.getenv("LLM_PROVIDER") == "mock" and not _is_model_cached(settings.RERANKER_MODEL):
+        logger.info("CrossEncoder model %s not cached locally in mock mode — using lexical reranker", settings.RERANKER_MODEL)
+        _cross_encoder = None
+        return None
+
+    try:
+        from sentence_transformers import CrossEncoder
+
+        if os.getenv("LLM_PROVIDER") == "mock":
+            try:
+                _cross_encoder = CrossEncoder(settings.RERANKER_MODEL, max_length=512, local_files_only=True)
+                logger.info("Loaded CrossEncoder from local cache: %s", settings.RERANKER_MODEL)
+            except Exception:
+                logger.info("CrossEncoder local cache not found in mock mode — using lexical reranker")
+                _cross_encoder = None
+        else:
+            _cross_encoder = CrossEncoder(settings.RERANKER_MODEL, max_length=512)
+            logger.info("Loaded CrossEncoder: %s", settings.RERANKER_MODEL)
+    except Exception as exc:
+        logger.info("CrossEncoder unavailable (%s) — using lexical reranker fallback", exc)
+        _cross_encoder = None
+
+    return _cross_encoder
+
+
+def _min_max_scale(scores: List[float]) -> List[float]:
+    """Min-max normalise a list of scores to [0.0, 1.0]."""
+    if not scores:
+        return []
+    min_s = min(scores)
+    max_s = max(scores)
+    if max_s == min_s:
+        return [1.0 for _ in scores]
+    diff = max_s - min_s
+    return [round((s - min_s) / diff, 4) for s in scores]
+
+
+def _lexical_rerank_score(query_tokens: Set[str], std_record: Dict[str, Any]) -> float:
+    """Fast lexical BM25-style scorer over structured standard fields."""
+    if not query_tokens or not std_record:
+        return 0.0
+
+    score = 0.0
+    # Title match (weight 3.0)
+    title_tokens = set(tokenize(std_record.get("title") or ""))
+    overlap_title = query_tokens.intersection(title_tokens)
+    score += len(overlap_title) * 3.0
+
+    # Keywords match (weight 2.0)
+    kw_tokens = set(tokenize(" ".join(std_record.get("keywords") or [])))
+    overlap_kw = query_tokens.intersection(kw_tokens)
+    score += len(overlap_kw) * 2.0
+
+    # Scope match (weight 1.5)
+    scope_tokens = set(tokenize(std_record.get("scope") or ""))
+    overlap_scope = query_tokens.intersection(scope_tokens)
+    score += len(overlap_scope) * 1.5
+
+    # Category match (weight 1.0)
+    cat_str = f"{std_record.get('category') or ''} {std_record.get('subcategory') or ''}"
+    cat_tokens = set(tokenize(cat_str))
+    overlap_cat = query_tokens.intersection(cat_tokens)
+    score += len(overlap_cat) * 1.0
+
+    return score
+
+
+def rerank(
+    query: str,
+    candidates: List[Dict[str, Any]],
+    top_n: int = 10,
+    structured_requirement: Optional[Dict[str, Any]] = None,
+    category_hint: Optional[str] = None,
+    literal_keys: Optional[Set[str]] = None,
+) -> Tuple[List[Dict[str, Any]], List[str]]:
+    """
+    Reranks candidates using CrossEncoder or BM25 fallback, applies category soft boost
+    and safe hard filtering, and returns top_n candidates.
+    """
+    if not candidates:
+        return [], []
+
+    warnings: List[str] = []
+    encoder = get_cross_encoder()
+    raw_rerank_scores: List[float] = []
+
+    if encoder is not None:
+        try:
+            pairs = []
+            for cand in candidates:
+                key = cand.get("key", "")
+                std = kl.get_standard(key) or cand
+                title = std.get("title") or ""
+                scope = (std.get("scope") or "")[:500]
+                keywords = " ".join(std.get("keywords") or [])
+                cand_text = f"{title} {scope} {keywords}".strip()
+                pairs.append([query, cand_text])
+
+            scores = encoder.predict(pairs)
+            raw_rerank_scores = [float(s) for s in scores]
+        except Exception as exc:
+            logger.warning("CrossEncoder prediction failed: %s — falling back to lexical", exc)
+            warnings.append("Cross-encoder unavailable - lexical rerank used")
+            encoder = None
+
+    if encoder is None:
+        warnings.append("Cross-encoder unavailable - lexical rerank used")
+        # Build query tokens from query text + structured requirement
+        req_text_parts = []
+        if structured_requirement:
+            for field in ["product", "material", "specifications", "application"]:
+                val = structured_requirement.get(field)
+                if val:
+                    req_text_parts.append(str(val))
+        rich_query = f"{query} {' '.join(req_text_parts)}"
+        q_tokens = set(tokenize(rich_query))
+
+        for cand in candidates:
+            key = cand.get("key", "")
+            std = kl.get_standard(key) or cand
+            lex_score = _lexical_rerank_score(q_tokens, std)
+            raw_rerank_scores.append(lex_score)
+
+    # Min-max scale rerank scores and fused retrieval scores
+    raw_fused_scores = [float(c.get("score", 0.0)) for c in candidates]
+    norm_rerank = _min_max_scale(raw_rerank_scores)
+    norm_fused = _min_max_scale(raw_fused_scores)
+
+    w_rerank = getattr(settings, "RERANK_WEIGHT_RERANKER", 0.7)
+    w_fused = getattr(settings, "RERANK_WEIGHT_FUSED", 0.3)
+
+    for idx, cand in enumerate(candidates):
+        r_score = norm_rerank[idx]
+        f_score = norm_fused[idx]
+        fused_relevance = round(w_rerank * r_score + w_fused * f_score, 4)
+        cand["relevance_score"] = fused_relevance
+        cand["score"] = fused_relevance
+        cand["raw_rerank_score"] = raw_rerank_scores[idx]
+
+    # Category soft boost and safe hard filter
+    lit_keys = literal_keys or set()
+    if category_hint:
+        catalog_cats = set(kl.map_category_hint_to_catalog(category_hint))
+        if catalog_cats:
+            # 1. Soft boost
+            cat_boost = getattr(settings, "CATEGORY_BOOST", 0.05)
+            for cand in candidates:
+                cand_cat = cand.get("category")
+                if cand_cat and (
+                    cand_cat in catalog_cats
+                    or any(c.lower() in cand_cat.lower() for c in catalog_cats)
+                ):
+                    new_score = round(min(1.0, cand["score"] + cat_boost), 4)
+                    cand["score"] = new_score
+                    cand["relevance_score"] = new_score
+                    cand["category_boosted"] = True
+
+            # 2. Hard filter: only if leaving at least 5 candidates
+            matching = [
+                cand
+                for cand in candidates
+                if cand.get("key") in lit_keys
+                or cand.get("is_literal_mention")
+                or (
+                    cand.get("category")
+                    and (
+                        cand.get("category") in catalog_cats
+                        or any(c.lower() in cand.get("category").lower() for c in catalog_cats)
+                    )
+                )
+            ]
+            if len(matching) >= 5:
+                candidates = matching
+
+    # Sort descending by score, tie-break by key
+    candidates.sort(
+        key=lambda c: (
+            -float(c.get("score", 0.0)),
+            0 if c.get("is_literal_mention") else 1,
+            c.get("key", ""),
+        )
+    )
+
+    return candidates[:top_n], warnings

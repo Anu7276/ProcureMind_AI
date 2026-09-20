@@ -247,5 +247,89 @@
    "dressing",
    "healthcare"
   ]
+ },
+ "domain_to_catalog_categories": {
+  "Electrical": [
+   "Electrical",
+   "ELECTRICAL",
+   "Electrical & Electronics",
+   "Electrical - Appliances",
+   "Electrical - Cables",
+   "Electrical - Circuit Breakers",
+   "Electrical - Enclosures",
+   "Electrical - Motors",
+   "Electrical - Safety",
+   "Electrical - Switchgear",
+   "Electrical - Wiring"
+  ],
+  "Solar Energy": [
+   "Solar Energy"
+  ],
+  "Electronics & IT": [
+   "Electronics & IT",
+   "ELECTRONICS",
+   "Electronics & IT Equipment",
+   "IT & Electronics",
+   "IT & Information Security"
+  ],
+  "Civil & Construction": [
+   "Civil & Construction",
+   "CONSTRUCTION",
+   "Civil & Construction Materials",
+   "Construction Materials - Cement",
+   "Construction Materials - Concrete",
+   "Construction Materials - Masonry",
+   "Construction Materials - Paving",
+   "Structural Engineering & Codes",
+   "Structural Steel",
+   "Structural Steel - Pipes"
+  ],
+  "Plastics, Chemicals & Rubber": [
+   "Plastics, Chemicals & Rubber",
+   "Chemicals",
+   "Chemicals & Consumer Safety"
+  ],
+  "Food & Agriculture": [
+   "Food & Agriculture"
+  ],
+  "Textiles & Garments": [
+   "Textiles & Garments"
+  ],
+  "Pumps & Mechanical Equipment": [
+   "Pumps & Mechanical Equipment",
+   "Mechanical",
+   "MECHANICAL",
+   "General Engineering & Consumer Goods"
+  ],
+  "Mechanical": [
+   "Mechanical",
+   "MECHANICAL",
+   "Pumps & Mechanical Equipment",
+   "General Engineering & Consumer Goods"
+  ],
+  "Medical & Healthcare": [
+   "Medical & Healthcare",
+   "HEALTHCARE",
+   "Medical Devices"
+  ],
+  "Safety & PPE": [
+   "Safety & PPE",
+   "Leather, Footwear & PPE",
+   "Fire Safety & Protection"
+  ],
+  "Water & Environment": [
+   "Water & Environment",
+   "WATER",
+   "Water & Environment - Pipes",
+   "Water & Environment - Testing"
+  ],
+  "Metals & Castings": [
+   "Metals & Castings",
+   "Steel & Metallurgy",
+   "Precious Metals & Hallmarking"
+  ],
+  "Automotive & Transport": [
+   "Automotive & Transport"
+  ]
  }
 }

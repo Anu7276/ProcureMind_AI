@@ -21,9 +21,11 @@ class PipelineState(TypedDict, total=False):
     doc_structure: Optional[Dict]       # sections, tables identified by Docling
 
     # ── Node 01 output — Ingest ───────────────────────────────────────────────
-    normalized_text: str                # after lang-detect + thesaurus expansion
+    normalized_text: str                # cleaned text (without thesaurus pollution)
     language: str                       # detected language code e.g. "en", "hi"
+    literal_codes: List[Dict[str, Any]] # each {raw, key, part, cited_year}
     thesaurus_expansions: List[str]     # IS keys suggested by thesaurus
+    thesaurus_hint: Optional[str]       # optional thesaurus hint passed to Node 02 prompt
 
     # ── Node 02 output — Extract ──────────────────────────────────────────────
     structured_requirement: Dict[str, Any]
@@ -33,7 +35,8 @@ class PipelineState(TypedDict, total=False):
     # ── Node 03 output — Retrieve ─────────────────────────────────────────────
     candidates: List[Dict[str, Any]]
     # Each: key, display_code, title, score, category, verification_level,
-    #       related_standards (from graph), source ("qdrant_vector" | "keyword_fallback")
+    #       related_standards (from graph), source, retrieval_trace, evidence_clause
+    retrieval_sources_used: List[str]  # e.g. ["vector", "lexical", "clause"]
 
     # ── Node 04 output — Verify ───────────────────────────────────────────────
     verified_candidates: List[Dict[str, Any]]

@@ -44,6 +44,10 @@ class RecommendationItem(BaseModel):
     related_standards: List[RelatedStandard] = []
     reasoning: str                            # LLM-generated, clause-level
     evidence_sources: List[str] = []          # e.g. ["IS 1786, BIS", "QCO-ELEC-2024-01"]
+    data_quality_note: Optional[str] = None   # data quality explanation
+    relevance_score: Optional[float] = None   # raw retrieval / rerank score [0.0, 1.0]
+    version_info: Optional[Dict[str, Any]] = None
+    replaced_by: List[str] = []
 
 
 # ── /ingest ───────────────────────────────────────────────────────────────────

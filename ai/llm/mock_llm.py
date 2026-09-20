@@ -18,6 +18,7 @@ from langchain_core.messages import AIMessage, BaseMessage
 from langchain_core.outputs import ChatGeneration, ChatResult
 
 from ai.knowledge import knowledge_loader as kl
+from ai.knowledge.text_utils import tokenize
 
 logger = logging.getLogger(__name__)
 
@@ -124,8 +125,10 @@ def extract_structured_heuristically(text: str) -> dict:
 
 
 def generate_mock_reasoning(requirement_summary: str, candidates: List[dict]) -> List[dict]:
-    """Generate accurate, context-aware reasoning for each candidate standard."""
+    """Generate accurate, context-aware, evidence-grounded reasoning for each candidate standard."""
     reasoning_list = []
+    req_tokens = set(tokenize(requirement_summary)) if requirement_summary else set()
+
     for cand in candidates:
         key = cand.get("key", "")
         code = cand.get("display_code", key)
@@ -135,16 +138,37 @@ def generate_mock_reasoning(requirement_summary: str, candidates: List[dict]) ->
         cert = cand.get("certification") or {}
         mandatory = cert.get("mandatory", False) or cand.get("certification_mandatory", False)
 
+        scope = cand.get("scope") or ""
+        evidence_clause = cand.get("evidence_clause") or ""
+        matched_terms = cand.get("matched_terms") or []
+        if not matched_terms and req_tokens:
+            cand_tokens = set(tokenize(f"{title} {scope}"))
+            matched_terms = [t for t in req_tokens if t in cand_tokens][:4]
+
         reasons = []
-        if status == "WITHDRAWN" or status == "SUPERSEDED":
+        if status in ("WITHDRAWN", "SUPERSEDED"):
             sup_str = ", ".join(superseded) if superseded else "an updated IS edition"
             reasons.append(
                 f"WARNING: {code} is {status}. Procurement specifications must reference {sup_str} instead."
             )
         else:
-            reasons.append(
-                f"{code} is the primary Indian Standard covering '{title}'. It matches the tender requirement parameters."
-            )
+            if matched_terms:
+                term_str = ", ".join(f"'{t}'" for t in matched_terms[:3])
+                reasons.append(
+                    f"{code} ('{title}') directly matches requirement for {term_str}."
+                )
+            else:
+                reasons.append(
+                    f"{code} is the primary Indian Standard covering '{title}'."
+                )
+
+            # Evidence clause or scope snippet (<= 20 words)
+            if evidence_clause:
+                clause_words = evidence_clause.split()[:16]
+                reasons.append(f"Applicable clause specifies: \"{' '.join(clause_words)}...\".")
+            elif scope:
+                scope_words = scope.split()[:16]
+                reasons.append(f"Scope specifies: \"{' '.join(scope_words)}...\".")
 
         if mandatory:
             reasons.append(
@@ -158,7 +182,6 @@ def generate_mock_reasoning(requirement_summary: str, candidates: List[dict]) ->
         reasoning_list.append({
             "key": key,
             "reasoning": " ".join(reasons),
-            "confidence_adjustment": 0.05 if status == "ACTIVE" and not flags else -0.1,
         })
     return reasoning_list
 

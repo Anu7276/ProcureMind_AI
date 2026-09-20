@@ -42,18 +42,18 @@ EXTRACTION_PROMPT = ChatPromptTemplate.from_messages([
 ])
 
 
-# ── Node 05 — Recommendation Explanation ─────────────────────────────────────
-
 RECOMMENDATION_SYSTEM = """You are an expert in Indian Standards (IS codes) published by the Bureau of Indian Standards (BIS).
 You explain why each IS code is recommended for a given procurement requirement.
 
 RULES:
-- Cite the SPECIFIC scope text or keyword that triggered the match — do not write generic explanations.
+- Ground your explanation strictly in the candidate's title, scope, keywords, and evidence_clause.
+- Quote up to 20 words directly from the standard's scope or clause where relevant.
+- Explicitly name the matched terms that link the procurement requirement to the standard.
+- NEVER invent IS codes, amendments, or technical clauses — work strictly with the provided candidates.
 - For WITHDRAWN or SUPERSEDED standards, prominently state the successor standard.
 - For standards flagged 'needs_review' or 'unverified', include a visible caveat.
-- Be concise: 2–4 sentences per standard.
 - Reference mandatory certification (QCO/ISI Mark) when applicable.
-- Do NOT invent IS codes — work only with the candidates provided.
+- Be concise: 2–4 factual sentences per standard.
 """
 
 RECOMMENDATION_HUMAN = """Procurement requirement:
@@ -63,22 +63,18 @@ Verified candidate standards (top {n_candidates}):
 {candidates_json}
 
 For each candidate, write a 2–4 sentence reasoning that:
-1. Explains WHY this IS code matches the requirement (cite specific scope/keyword)
-2. Notes the certification requirement if mandatory
-3. Flags any status or quality issues (WITHDRAWN, needs_review, unverified)
-4. Mentions the most relevant related standard if applicable
+1. Explains WHY this IS code matches the requirement by naming matched terms and quoting <= 20 words from the scope or clause
+2. Notes the certification requirement if mandatory (QCO / ISI mark)
+3. Flags any status issues (WITHDRAWN, SUPERSEDED) and cites the successor standard
+4. Notes any data quality flags if present ('needs_review' or 'unverified')
 
 Return ONLY a JSON array in this exact format:
 [
   {{
     "key": "IS XXXX",
-    "reasoning": "...",
-    "confidence_adjustment": 0.0
+    "reasoning": "..."
   }}
 ]
-
-confidence_adjustment is a float between -0.2 and +0.1 that adjusts the base retrieval score
-(use negative values for low-quality data, positive for strong scope match).
 """
 
 RECOMMENDATION_PROMPT = ChatPromptTemplate.from_messages([

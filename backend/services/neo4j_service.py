@@ -40,9 +40,19 @@ async def get_driver() -> AsyncDriver:
     return _driver
 
 
+_last_avail_check_time: float = 0.0
+_last_avail_result: Tuple[bool, Optional[float]] = (False, None)
+
+
 # ── Availability check ────────────────────────────────────────────────────────
 
 async def is_available() -> Tuple[bool, Optional[float]]:
+    """Returns (available, latency_ms) with 10s caching."""
+    global _last_avail_check_time, _last_avail_result
+    now = time.monotonic()
+    if now - _last_avail_check_time < 10.0:
+        return _last_avail_result
+
     import asyncio
     t0 = time.monotonic()
     try:
@@ -53,10 +63,14 @@ async def is_available() -> Tuple[bool, Optional[float]]:
             return True
 
         await asyncio.wait_for(_ping(), timeout=1.0)
-        return True, (time.monotonic() - t0) * 1000
+        _last_avail_result = (True, (time.monotonic() - t0) * 1000)
+        _last_avail_check_time = now
+        return _last_avail_result
     except Exception as exc:
         logger.warning("Neo4j unavailable: %s", exc)
-        return False, None
+        _last_avail_result = (False, None)
+        _last_avail_check_time = now
+        return _last_avail_result
 
 
 # ── Graph traversal — Node03 ──────────────────────────────────────────────────

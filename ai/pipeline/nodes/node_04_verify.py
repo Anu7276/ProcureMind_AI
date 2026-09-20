@@ -171,13 +171,18 @@ async def node_04_verify(state: PipelineState) -> dict:
             "PostgreSQL unavailable — compliance/QCO data will use in-memory index only"
         )
 
+    literal_codes_list = state.get("literal_codes", [])
+    literal_codes_by_key = {item["key"]: item for item in literal_codes_list if item.get("key")}
+
     verified: List[Dict[str, Any]] = []
+    promoted_candidates: List[Dict[str, Any]] = []
+    candidate_keys = {c.get("key") for c in candidates if c.get("key")}
 
     for cand in candidates:
         key = cand.get("key", "")
-
-        # ── Whitelist validation (hard safety net) ────────────────────────
         display_code = cand.get("display_code", key)
+
+        # ── Whitelist validation (guard against hallucinated/invented codes) ────
         if not kl.validate_whitelist(key) and not kl.validate_whitelist(display_code):
             logger.warning(
                 "Node04: dropping %s — not on whitelist (hallucination guard)", key
@@ -187,53 +192,123 @@ async def node_04_verify(state: PipelineState) -> dict:
             )
             continue
 
-        # ── Status resolution (in-memory, always available) ───────────────
+        # ── Version and status resolution ──────────────────────────────────────
         record = kl.get_standard(key)
+        cited_year = cand.get("cited_year")
+        if cited_year is None and key in literal_codes_by_key:
+            cited_year = literal_codes_by_key[key].get("cited_year")
+
+        version_info = kl.check_standard_version(record or cand, cited_year=cited_year)
+        status = version_info["status"]
+        successors = version_info["successors"]
+
         if record:
             status_info = _resolve_status(record)
         else:
-            # Key in Qdrant but not loaded in memory (edge case)
             status_info = {
-                "status": cand.get("status", "UNKNOWN"),
-                "superseded_by": [],
+                "status": status,
+                "superseded_by": successors,
                 "verification_level": cand.get("verification_level", "single_source_unconfirmed"),
-                "flags": [],
+                "flags": cand.get("flags", []),
                 "has_full_text": False,
             }
 
-        # ── Prominent WITHDRAWN / SUPERSEDED surfacing ────────────────────
-        # IS 8828 pilot case: WITHDRAWN → IS/IEC 60898 (Part 1) & (Part 2)
-        if status_info["status"] in ("WITHDRAWN", "SUPERSEDED"):
-            successors = status_info.get("superseded_by", [])
-            successor_str = ", ".join(successors) if successors else "unknown"
-            logger.info(
-                "Node04: %s is %s → succeeded by %s",
-                key, status_info["status"], successor_str,
-            )
-            # Do NOT drop — surface with prominent flag so Node05 explains it
+        flags = list(status_info.get("flags", []))
+        if any("cites" in m or "mismatch" in m.lower() for m in version_info.get("messages", [])):
+            if "edition_mismatch" not in flags:
+                flags.append("edition_mismatch")
+        if status in ("WITHDRAWN", "SUPERSEDED"):
+            if status.lower() not in flags:
+                flags.append(status.lower())
 
-        # ── Compliance lookup ─────────────────────────────────────────────
+        # ── Successor promotion & demotion ─────────────────────────────────────
+        replaced_by = []
+        if status in ("WITHDRAWN", "SUPERSEDED"):
+            replaced_by = list(successors)
+            old_score = float(cand.get("score", 0.5))
+            # Demote old standard: user-cited literal mentions demoted slightly (-0.03) to rank below promoted successor (+0.02)
+            # but remain clearly visible alongside it. Uncited obsolete standards demoted heavily (0.5x).
+            if cand.get("is_literal_mention"):
+                cand["score"] = round(max(0.1, old_score - 0.03), 4)
+            else:
+                cand["score"] = round(old_score * 0.5, 4)
+            successor_str = ", ".join(successors) if successors else "unknown"
+            logger.info("Node04: %s is %s → promoted successor(s): %s", key, status, successor_str)
+
+            for succ_key in successors:
+                existing = next((c for c in candidates if c.get("key") == succ_key), None)
+                if existing:
+                    existing["score"] = max(float(existing.get("score", 0.0)), round(min(1.0, old_score + 0.02), 4))
+                    existing["is_successor_promotion"] = True
+                else:
+                    succ_rec = kl.get_standard(succ_key)
+                    if succ_rec and succ_key not in candidate_keys:
+                        candidate_keys.add(succ_key)
+                        promoted_candidates.append({
+                            "key": succ_key,
+                            "display_code": succ_rec.get("display_code", succ_key),
+                            "title": succ_rec.get("title", ""),
+                            "category": succ_rec.get("category"),
+                            "subcategory": succ_rec.get("subcategory"),
+                            "score": round(min(1.0, old_score + 0.02), 4),
+                            "source": f"successor_of:{key}",
+                            "is_successor_promotion": True,
+                        })
+
+        # ── Compliance lookup ─────────────────────────────────────────────────
         compliance = await _get_compliance(key, postgres_ok)
 
-        # ── Evidence sources ──────────────────────────────────────────────
+        # ── Evidence sources ──────────────────────────────────────────────────
         evidence = _build_evidence_sources(cand, record, compliance)
 
-        # ── Assemble verified candidate ────────────────────────────────────
+        # ── Assemble verified candidate ────────────────────────────────────────
         verified.append({
             **cand,
-            "status": status_info["status"],
-            "superseded_by": status_info["superseded_by"],
+            "status": status,
+            "superseded_by": successors,
+            "replaced_by": replaced_by,
+            "version_info": version_info,
             "verification_level": status_info["verification_level"],
-            "flags": status_info["flags"],
-            "has_full_text": status_info["has_full_text"],
+            "flags": flags,
+            "has_full_text": status_info.get("has_full_text", False),
             "certification": compliance,
             "evidence_sources": evidence,
             "whitelist_valid": True,
         })
 
+    # ── Process promoted successors ───────────────────────────────────────────
+    for p_cand in promoted_candidates:
+        p_key = p_cand["key"]
+        p_rec = kl.get_standard(p_key)
+        p_version = kl.check_standard_version(p_rec or p_cand, cited_year=None)
+        p_compliance = await _get_compliance(p_key, postgres_ok)
+        p_evidence = _build_evidence_sources(p_cand, p_rec, p_compliance)
+        p_status_info = _resolve_status(p_rec) if p_rec else {
+            "status": p_version["status"],
+            "superseded_by": p_version["successors"],
+            "verification_level": "single_source_unconfirmed",
+            "flags": [],
+            "has_full_text": False,
+        }
+
+        verified.append({
+            **p_cand,
+            "status": p_version["status"],
+            "superseded_by": p_version["successors"],
+            "replaced_by": [],
+            "version_info": p_version,
+            "verification_level": p_status_info["verification_level"],
+            "flags": p_status_info.get("flags", []),
+            "has_full_text": p_status_info.get("has_full_text", False),
+            "certification": p_compliance,
+            "evidence_sources": p_evidence,
+            "whitelist_valid": True,
+            "related_standards": kl.RELATIONSHIPS_BY_KEY.get(p_key, []),
+        })
+
     logger.info(
-        "Node04: %d/%d candidates passed whitelist validation",
-        len(verified), len(candidates),
+        "Node04: %d candidates passed whitelist and verification (including %d promoted successors)",
+        len(verified), len(promoted_candidates),
     )
     stages.append("verify")
     return {

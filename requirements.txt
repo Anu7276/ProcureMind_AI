@@ -24,7 +24,7 @@ asyncpg>=0.29.0                    # async PostgreSQL driver
 psycopg2-binary>=2.9.9             # sync driver (ingestion script)
 
 # ── Database — Vector Store ───────────────────────────────
-qdrant-client>=1.9.0
+qdrant-client>=1.12,<2
 
 # ── Database — Knowledge Graph ────────────────────────────
 neo4j>=5.20.0

@@ -168,21 +168,42 @@ function RecommendationCard({ rec, rank }) {
             </button>
           </div>
 
-          {/* Superseded warning — always visible if applicable */}
-          {rec.superseded_by?.length > 0 && (
-            <div className="ml-12 mt-3 px-3 py-2 bg-danger-600/10 border border-danger-600/25 rounded-lg flex items-start gap-2">
-              <AlertTriangle className="w-3.5 h-3.5 text-danger-400 flex-shrink-0 mt-0.5" />
-              <div className="text-xs text-danger-400">
-                <span className="font-semibold">This standard has been {rec.status.toLowerCase()}.</span>{' '}
-                Successor: {rec.superseded_by.join(', ')}
+          {/* Red banner for WITHDRAWN / SUPERSEDED */}
+          {(rec.status === 'WITHDRAWN' || rec.status === 'SUPERSEDED' || rec.replaced_by?.length > 0) && (
+            <div className="ml-12 mt-3 px-3 py-2 bg-red-950/40 border border-red-500/50 rounded-lg flex items-start gap-2">
+              <AlertTriangle className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" />
+              <div className="text-xs text-red-300">
+                <span className="font-bold uppercase tracking-wide text-red-400">
+                  {rec.status === 'SUPERSEDED' ? 'Superseded' : 'Withdrawn'}
+                </span>
+                {(rec.replaced_by?.length > 0 || rec.superseded_by?.length > 0) && (
+                  <> — use <span className="font-mono font-bold text-white">{(rec.replaced_by?.length ? rec.replaced_by : rec.superseded_by).join(', ')}</span></>
+                )}
               </div>
             </div>
           )}
 
-          {/* Quality flags — always visible */}
-          {rec.flags?.length > 0 && (
-            <div className="ml-12 mt-2 flex flex-wrap gap-1.5">
-              {rec.flags.map(f => (
+          {/* Amber banner for edition mismatch */}
+          {rec.flags?.includes('edition_mismatch') && (
+            <div className="ml-12 mt-2 px-3 py-1.5 bg-amber-950/40 border border-amber-500/50 rounded-lg flex items-start gap-2">
+              <AlertTriangle className="w-3.5 h-3.5 text-amber-400 flex-shrink-0 mt-0.5" />
+              <div className="text-xs text-amber-200">
+                <span className="font-semibold text-amber-300">Edition Mismatch:</span>{' '}
+                {rec.version_info?.messages?.find(m => m.includes('cites')) ||
+                 `Tender cites ${rec.version_info?.cited_year || 'an older edition'}; current dataset edition is ${rec.version_info?.current_edition_year || 'different'}.`}
+              </div>
+            </div>
+          )}
+
+          {/* Quality note / flags */}
+          {(rec.data_quality_note || rec.flags?.length > 0) && (
+            <div className="ml-12 mt-2 flex flex-wrap items-center gap-1.5">
+              {rec.data_quality_note && (
+                <span className="text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 text-slate-400 rounded-full">
+                  ℹ {rec.data_quality_note}
+                </span>
+              )}
+              {rec.flags?.filter(f => f !== 'edition_mismatch' && f !== 'withdrawn' && f !== 'superseded').map(f => (
                 <span key={f} className="text-[10px] px-2 py-0.5 bg-warning-600/10 border border-warning-600/20 text-warning-400/80 rounded-full">
                   {f.replace(/_/g, ' ')}
                 </span>

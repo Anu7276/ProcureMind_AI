@@ -17,6 +17,7 @@ Embedding providers (set EMBEDDING_MODEL in .env):
 """
 from __future__ import annotations
 
+import os
 import logging
 from functools import lru_cache
 from typing import List
@@ -35,7 +36,7 @@ def get_llm() -> BaseChatModel:
     If no valid API key is set, automatically falls back to MockChatModel
     so the system runs fully end-to-end without errors until the user adds their key.
     """
-    provider = settings.LLM_PROVIDER.lower()
+    provider = os.getenv("LLM_PROVIDER", settings.LLM_PROVIDER).lower()
     model_name = settings.llm_model_name
 
     logger.info("Initialising LLM: provider=%s model=%s", provider, model_name)

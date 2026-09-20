@@ -35,10 +35,20 @@ async def get_session():
         yield session
 
 
+_last_avail_check_time: float = 0.0
+_last_avail_result: bool = False
+
+
 # ── Availability check ───────────────────────────────────────────────────────
 
 async def is_available() -> bool:
-    """Ping check — used for health endpoint and degraded-mode detection."""
+    """Ping check — used for health endpoint and degraded-mode detection with 10s caching."""
+    global _last_avail_check_time, _last_avail_result
+    import time
+    now = time.monotonic()
+    if now - _last_avail_check_time < 10.0:
+        return _last_avail_result
+
     import asyncio
     try:
         async def _ping():
@@ -46,9 +56,14 @@ async def is_available() -> bool:
                 await s.execute(text("SELECT 1"))
             return True
 
-        return await asyncio.wait_for(_ping(), timeout=1.0)
+        res = await asyncio.wait_for(_ping(), timeout=1.0)
+        _last_avail_result = res
+        _last_avail_check_time = now
+        return res
     except Exception as exc:
         logger.warning("PostgreSQL unavailable: %s", exc)
+        _last_avail_result = False
+        _last_avail_check_time = now
         return False
 
 

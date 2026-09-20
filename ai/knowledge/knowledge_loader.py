@@ -8,16 +8,122 @@ from __future__ import annotations
 
 import json
 import logging
+import math
+from collections import defaultdict
 from functools import lru_cache
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Set
+from typing import Any, Callable, Dict, List, Optional, Set, Tuple
 
 from backend.config.settings import settings
 
 logger = logging.getLogger(__name__)
 
 
+# ── BM25 Lexical Index ───────────────────────────────────────────────────────
+
+class BM25Index:
+    """
+    Pure Python BM25 lexical index with field weighting (BM25F-style).
+    Weights:
+      - title x 3.0
+      - keywords x 2.0
+      - scope x 1.5
+      - category / subcategory x 1.0
+      - title_hindi x 1.0
+      - key / display_code x 2.0
+    Parameters:
+      k1 = 1.5, b = 0.75
+    """
+    def __init__(self, k1: float = 1.5, b: float = 0.75):
+        self.k1 = k1
+        self.b = b
+        self.doc_len: Dict[str, float] = {}
+        self.avg_doc_len: float = 1.0
+        self.idf: Dict[str, float] = {}
+        self.inverted_index: Dict[str, Dict[str, float]] = defaultdict(dict)
+        self.corpus_size: int = 0
+
+    def build(self, standards_by_key: Dict[str, Dict[str, Any]]) -> None:
+        from ai.knowledge.text_utils import tokenize
+
+        self.corpus_size = len(standards_by_key)
+        if self.corpus_size == 0:
+            return
+
+        self.doc_len.clear()
+        self.inverted_index.clear()
+        self.idf.clear()
+
+        field_specs = [
+            (lambda s: s.get("title") or "", 3.0),
+            (lambda s: " ".join(s.get("keywords") or []), 2.0),
+            (lambda s: s.get("scope") or "", 1.5),
+            (lambda s: f"{s.get('category') or ''} {s.get('subcategory') or ''}", 1.0),
+            (lambda s: s.get("title_hindi") or "", 1.0),
+            (lambda s: f"{s.get('key') or ''} {s.get('display_code') or ''}", 2.0),
+        ]
+
+        doc_frequencies: Dict[str, int] = defaultdict(int)
+        total_length = 0.0
+
+        for key, std in standards_by_key.items():
+            doc_tf: Dict[str, float] = defaultdict(float)
+            length = 0.0
+
+            for extract_fn, weight in field_specs:
+                text = extract_fn(std)
+                tokens = tokenize(text)
+                if not tokens:
+                    continue
+                length += len(tokens) * weight
+                for t in tokens:
+                    doc_tf[t] += weight
+
+            self.doc_len[key] = length
+            total_length += length
+
+            for t, w_tf in doc_tf.items():
+                self.inverted_index[t][key] = w_tf
+                doc_frequencies[t] += 1
+
+        self.avg_doc_len = total_length / self.corpus_size if self.corpus_size > 0 else 1.0
+
+        for term, df in doc_frequencies.items():
+            self.idf[term] = math.log((self.corpus_size - df + 0.5) / (df + 0.5) + 1.0)
+
+    def search(self, query_text: str, top_k: int = 10) -> List[Tuple[float, str]]:
+        from ai.knowledge.text_utils import tokenize
+
+        query_tokens = tokenize(query_text)
+        if not query_tokens:
+            return []
+
+        doc_scores: Dict[str, float] = defaultdict(float)
+
+        for t in query_tokens:
+            if t not in self.inverted_index:
+                continue
+            idf_val = self.idf.get(t, 0.0)
+            if idf_val <= 0:
+                continue
+
+            postings = self.inverted_index[t]
+            for doc_key, w_tf in postings.items():
+                dl = self.doc_len.get(doc_key, self.avg_doc_len)
+                denom = w_tf + self.k1 * (1.0 - self.b + self.b * (dl / self.avg_doc_len))
+                term_score = idf_val * (w_tf * (self.k1 + 1.0)) / denom
+                doc_scores[doc_key] += term_score
+
+        if not doc_scores:
+            return []
+
+        scored = sorted(doc_scores.items(), key=lambda x: x[1], reverse=True)
+        return [(score, doc_key) for doc_key, score in scored[:top_k]]
+
+
 # ── Module-level singletons (populated by load_all()) ────────────────────────
+
+BM25_INDEX = BM25Index(k1=1.5, b=0.75)
 
 # Full standards dict: key → full record
 STANDARDS_BY_KEY: Dict[str, Dict[str, Any]] = {}
@@ -33,6 +139,7 @@ HINDI_SYNONYMS: Dict[str, List[str]] = {}  # hindi_term → [english_terms]
 # Category keyword maps
 DOMAIN_KEYWORDS: Dict[str, List[str]] = {}   # domain → [keywords]
 CATEGORY_KEYWORDS: Dict[str, Any] = {}        # BIS AI category → ...
+DOMAIN_TO_CATALOG_CATEGORIES: Dict[str, List[str]] = {} # domain → [catalog category strings]
 
 # QCO in-memory index: standard_key → qco record (for Node04 fast lookup)
 QCO_BY_STANDARD_KEY: Dict[str, Dict[str, Any]] = {}
@@ -42,6 +149,13 @@ CERT_SCHEMES: Dict[str, Dict[str, Any]] = {}
 
 # Relationships index: standard_key → list of related standards
 RELATIONSHIPS_BY_KEY: Dict[str, List[Dict[str, Any]]] = {}
+
+# Bidirectional successors and predecessors index
+SUCCESSORS_BY_KEY: Dict[str, List[str]] = {}
+PREDECESSORS_BY_KEY: Dict[str, List[str]] = {}
+
+# Amendments index
+AMENDMENTS_BY_KEY: Dict[str, List[Dict[str, Any]]] = {}
 
 _loaded = False
 
@@ -62,17 +176,80 @@ def load_all() -> None:
     _load_qco()
     _load_cert_schemes()
     _load_relationships()
+    _build_bm25_index()
+    _build_version_indices()
 
     logger.info(
         "Knowledge loaded: %d standards, %d whitelist codes, "
-        "%d QCO records, %d cert schemes, %d standards with relationships",
+        "%d QCO records, %d cert schemes, %d standards with relationships, BM25 index built (%d docs)",
         len(STANDARDS_BY_KEY),
         len(IS_CODE_WHITELIST),
         len(QCO_BY_STANDARD_KEY),
         len(CERT_SCHEMES),
         len(RELATIONSHIPS_BY_KEY),
+        BM25_INDEX.corpus_size,
     )
     _loaded = True
+
+
+def _build_version_indices() -> None:
+    global SUCCESSORS_BY_KEY, PREDECESSORS_BY_KEY, AMENDMENTS_BY_KEY
+    succ_map = defaultdict(set)
+    pred_map = defaultdict(set)
+
+    for key, std in STANDARDS_BY_KEY.items():
+        # 1. From superseded_by
+        raw_succ = std.get("superseded_by") or []
+        if isinstance(raw_succ, str):
+            raw_succ = [raw_succ]
+        for s in raw_succ:
+            if s:
+                succ_map[key].add(s)
+                pred_map[s].add(key)
+
+        # 2. From supersedes
+        raw_pred = std.get("supersedes") or []
+        if isinstance(raw_pred, str):
+            raw_pred = [raw_pred]
+        for p in raw_pred:
+            if p:
+                pred_map[key].add(p)
+                succ_map[p].add(key)
+
+        # 3. From relationships
+        for r in RELATIONSHIPS_BY_KEY.get(key, []):
+            rel_type = (r.get("relationship_type") or "").lower()
+            t_key = r.get("key")
+            if not t_key:
+                continue
+            if rel_type == "superseded_by":
+                succ_map[key].add(t_key)
+                pred_map[t_key].add(key)
+            elif rel_type == "supersedes":
+                pred_map[key].add(t_key)
+                succ_map[t_key].add(key)
+
+    SUCCESSORS_BY_KEY = {k: sorted(list(v)) for k, v in succ_map.items()}
+    PREDECESSORS_BY_KEY = {k: sorted(list(v)) for k, v in pred_map.items()}
+
+    # Load optional amendments.json
+    amend_path = Path("BIS_Sahayak_Clean_Data/clean/standards/amendments.json")
+    AMENDMENTS_BY_KEY = defaultdict(list)
+    if amend_path.exists():
+        try:
+            with open(amend_path, encoding="utf-8") as f:
+                data = json.load(f)
+                if isinstance(data, list):
+                    for item in data:
+                        if isinstance(item, dict) and "key" in item:
+                            AMENDMENTS_BY_KEY[item["key"]].append(item)
+        except Exception as exc:
+            logger.warning("Could not load amendments.json: %s", exc)
+
+
+def _build_bm25_index() -> None:
+    global BM25_INDEX
+    BM25_INDEX.build(STANDARDS_BY_KEY)
 
 
 def _load_standards() -> None:
@@ -111,6 +288,7 @@ def _load_category_maps() -> None:
         data = json.load(f)
     DOMAIN_KEYWORDS.update(data.get("sure_domain_taxonomy", {}))
     CATEGORY_KEYWORDS.update(data.get("bis_ai_category_keywords", {}))
+    DOMAIN_TO_CATALOG_CATEGORIES.update(data.get("domain_to_catalog_categories", {}))
 
 
 def _load_qco() -> None:
@@ -221,44 +399,47 @@ def infer_category_from_text(text: str) -> Optional[str]:
     return max(scores, key=scores.__getitem__)
 
 
+def map_category_hint_to_catalog(category_hint: Optional[str]) -> List[str]:
+    """Map a domain category hint (from Node 02) to corresponding catalog category strings."""
+    if not category_hint:
+        return []
+    hint = category_hint.strip()
+    if hint in DOMAIN_TO_CATALOG_CATEGORIES:
+        return DOMAIN_TO_CATALOG_CATEGORIES[hint]
+    for dom, cats in DOMAIN_TO_CATALOG_CATEGORIES.items():
+        if dom.lower() == hint.lower() or dom.lower() in hint.lower():
+            return cats
+    return [hint]
+
+
 def search_standards_in_memory(query_text: str, top_k: int = 10) -> List[Dict[str, Any]]:
     """
     In-memory fallback search when external vector/Postgres stores are unreachable.
-    Scores standards by matching tokens against title, keywords, scope, category, and IS codes.
+    Scores standards using pure Python BM25 over weighted fields with stopword removal.
+    Normalises scores to [0, 1] by dividing by the max score in the result list.
     """
-    import re
-    query_tokens = [t.lower() for t in re.findall(r"[A-Za-z0-9]+", query_text) if len(t) > 2]
-    if not query_tokens:
+    from ai.knowledge.text_utils import tokenize
+
+    tokens = tokenize(query_text)
+    if not tokens:
         return []
 
-    scored = []
-    for key, std in STANDARDS_BY_KEY.items():
-        title = (std.get("title") or "").lower()
-        scope = (std.get("scope") or "").lower()
-        keywords = [k.lower() for k in (std.get("keywords") or [])]
-        category = (std.get("category") or "").lower()
+    global BM25_INDEX
+    if BM25_INDEX.corpus_size == 0 and STANDARDS_BY_KEY:
+        BM25_INDEX.build(STANDARDS_BY_KEY)
 
-        score = 0.0
-        # Title matches are weighted heavily
-        for t in query_tokens:
-            if t in title:
-                score += 0.40
-            if any(t in kw for kw in keywords):
-                score += 0.30
-            if t in scope:
-                score += 0.15
-            if t in category:
-                score += 0.10
-            if t in key.lower():
-                score += 0.60
+    scored = BM25_INDEX.search(query_text, top_k=top_k)
+    if not scored:
+        return []
 
-        if score > 0.3:
-            scored.append((score, std))
-
-    scored.sort(key=lambda x: x[0], reverse=True)
+    max_score = scored[0][0]
     results = []
-    for s, std in scored[:top_k]:
+    for s, key in scored:
+        std = STANDARDS_BY_KEY.get(key)
+        if not std:
+            continue
         dq = std.get("data_quality") or {}
+        norm_score = round(s / max_score, 4) if max_score > 0 else 0.0
         results.append({
             "key": std["key"],
             "display_code": std.get("display_code", std["key"]),
@@ -269,7 +450,7 @@ def search_standards_in_memory(query_text: str, top_k: int = 10) -> List[Dict[st
             "status": std.get("status", "ACTIVE"),
             "superseded_by": std.get("superseded_by") or [],
             "flags": dq.get("flags", []),
-            "score": min(0.95, round(0.55 + min(0.40, s * 0.08), 2)),
+            "score": norm_score,
             "source": "in_memory_catalog",
             "related_standards": RELATIONSHIPS_BY_KEY.get(std["key"], []),
         })
@@ -284,4 +465,19 @@ def get_qco_for_key(standard_key: str) -> Optional[Dict[str, Any]]:
 def get_cert_scheme(scheme_code: str) -> Optional[Dict[str, Any]]:
     """In-memory cert scheme lookup."""
     return CERT_SCHEMES.get(scheme_code)
+
+
+def check_standard_version(candidate_record: Dict[str, Any], cited_year: Optional[int] = None) -> Dict[str, Any]:
+    """Helper to check version, successors, and amendment status for a standard."""
+    from ai.knowledge.version_checker import check_version
+    global SUCCESSORS_BY_KEY, PREDECESSORS_BY_KEY, AMENDMENTS_BY_KEY
+    return check_version(
+        candidate_record=candidate_record,
+        cited_year=cited_year,
+        all_records=STANDARDS_BY_KEY,
+        successors_map=SUCCESSORS_BY_KEY,
+        predecessors_map=PREDECESSORS_BY_KEY,
+        amendments_map=AMENDMENTS_BY_KEY,
+    )
+
 
