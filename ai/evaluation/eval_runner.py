@@ -125,8 +125,8 @@ def compute_hits_and_rr(
 
 async def run_http_query(
     client: httpx.AsyncClient, query: str, api_base: str
-) -> List[str]:
-    """POST /recommend via HTTP client and return top candidate keys."""
+) -> Tuple[List[str], bool]:
+    """POST /recommend, return (top 5 candidate keys, abstained)."""
     try:
         resp = await client.post(
             f"{api_base}/recommend",
@@ -135,13 +135,14 @@ async def run_http_query(
         )
         if resp.status_code != 200:
             logger.warning("API error %d for query: %s", resp.status_code, query[:60])
-            return []
+            return [], True
         data = resp.json()
         recs = data.get("recommendations", [])
-        return [r.get("key") or r.get("is_code", "") for r in recs[:5]]
+        abstained = bool(data.get("abstained", False))
+        return [r.get("key") or r.get("is_code", "") for r in recs[:5]], abstained
     except Exception as exc:
         logger.error("Request failed: %s | query: %s", exc, query[:60])
-        return []
+        return [], True
 
 
 def print_comparison_table(baseline: Dict[str, Any], current: Dict[str, Any]) -> None:
@@ -195,13 +196,23 @@ async def evaluate(
     concurrency: int = 5,
     out_path: Optional[str] = None,
     compare_path: Optional[str] = None,
+    blind: Optional[str] = None,
 ) -> Dict[str, Any]:
-    queries_path = settings.eval_queries_json
-    with open(queries_path, encoding="utf-8") as f:
-        all_queries = json.load(f)
-
-    eval_queries = [q for q in all_queries if q.get("role") == "eval"]
-    print(f"Loaded {len(eval_queries)} evaluation queries from {queries_path.name}")
+    if blind:
+        blind_path = Path("BIS_Sahayak_Clean_Data/clean/evaluation/queries_blind.json")
+        with open(blind_path, encoding="utf-8") as f:
+            all_queries = json.load(f)
+        if blind in ("tune", "holdout"):
+            eval_queries = [q for q in all_queries if q.get("split") == blind]
+        else:
+            eval_queries = all_queries
+        print(f"Loaded {len(eval_queries)} blind evaluation queries (split={blind}) from {blind_path.name}")
+    else:
+        queries_path = settings.eval_queries_json
+        with open(queries_path, encoding="utf-8") as f:
+            all_queries = json.load(f)
+        eval_queries = [q for q in all_queries if q.get("role") == "eval"]
+        print(f"Loaded {len(eval_queries)} evaluation queries from {queries_path.name}")
 
     results: List[Dict[str, Any]] = []
     semaphore = asyncio.Semaphore(concurrency)
@@ -220,7 +231,7 @@ async def evaluate(
         if not direct_mode:
             async def bounded_run(q: Dict) -> Dict[str, Any]:
                 async with semaphore:
-                    top5 = await run_http_query(client, q["query"], api_base)
+                    top5, abstained = await run_http_query(client, q["query"], api_base)
                     metrics = compute_hits_and_rr(top5, q.get("expected_standards", []))
                     return {
                         "id": q.get("id"),
@@ -229,6 +240,7 @@ async def evaluate(
                         "language": q.get("language") or "en",
                         "expected": q.get("expected_standards", []),
                         "top5": top5,
+                        "abstained": abstained,
                         **metrics,
                     }
 
@@ -244,10 +256,12 @@ async def evaluate(
                 try:
                     res = await run_pipeline(q["query"], input_type="text")
                     recs = res.get("recommendations", [])
+                    abstained = bool(res.get("abstained", False))
                     top5 = [r.get("key") or r.get("is_code", "") for r in recs[:5]]
                 except Exception as e:
                     logger.error("Pipeline error on %s: %s", q.get("id"), e)
                     top5 = []
+                    abstained = True
 
                 metrics = compute_hits_and_rr(top5, q.get("expected_standards", []))
                 return {
@@ -257,6 +271,7 @@ async def evaluate(
                     "language": q.get("language") or "en",
                     "expected": q.get("expected_standards", []),
                     "top5": top5,
+                    "abstained": abstained,
                     **metrics,
                 }
 
@@ -268,6 +283,71 @@ async def evaluate(
     if total == 0:
         print("No evaluation queries processed.")
         return {}
+
+    if blind:
+        out_of_scope = [r for r in results if not r["expected"]]
+        in_scope = [r for r in results if r["expected"]]
+
+        tp = sum(1 for r in out_of_scope if r.get("abstained") or not r.get("top5"))
+        fn = len(out_of_scope) - tp
+        fp = sum(1 for r in in_scope if r.get("abstained"))
+        tn = len(in_scope) - fp
+
+        abstention_prec = tp / (tp + fp) if (tp + fp) > 0 else 1.0
+        abstention_rec = tp / (tp + fn) if (tp + fn) > 0 else 1.0
+        abstention_f1 = (2 * abstention_prec * abstention_rec) / (abstention_prec + abstention_rec) if (abstention_prec + abstention_rec) > 0 else 0.0
+
+        in_total = len(in_scope)
+        in_fam1 = sum(1 for r in in_scope if r["family_hit@1"]) / in_total if in_total > 0 else 0.0
+        in_fam5 = sum(1 for r in in_scope if r["family_hit@5"]) / in_total if in_total > 0 else 0.0
+        in_fmrr = sum(r["family_rr"] for r in in_scope) / in_total if in_total > 0 else 0.0
+
+        if hasattr(sys.stdout, "reconfigure"):
+            try:
+                sys.stdout.reconfigure(encoding="utf-8")
+            except Exception:
+                pass
+
+        print("\n" + "=" * 65)
+        print("  BIS STANDARDS ENGINE — BLIND EVALUATION REPORT")
+        print("=" * 65)
+        print(f"  Total Blind Queries  : {total}")
+        print(f"  Split                : {blind}")
+        print(f"  Out-of-Scope Queries : {len(out_of_scope)}")
+        print(f"  In-Scope Queries     : {len(in_scope)}")
+        print("-" * 65)
+        print("  ABSTENTION METRIC        VALUE")
+        print("-" * 65)
+        print(f"  Abstention Precision     {abstention_prec:.1%} ({tp}/{tp + fp})")
+        print(f"  Abstention Recall        {abstention_rec:.1%} ({tp}/{tp + fn})")
+        print(f"  Abstention F1 Score      {abstention_f1:.3f}")
+        print("-" * 65)
+        print("  IN-SCOPE METRICS (Family Level)")
+        print("-" * 65)
+        print(f"  Family Recall@1          {in_fam1:.1%} ({sum(1 for r in in_scope if r['family_hit@1'])}/{in_total})")
+        print(f"  Family Recall@5          {in_fam5:.1%} ({sum(1 for r in in_scope if r['family_hit@5'])}/{in_total})")
+        print(f"  Family MRR               {in_fmrr:.3f}")
+        print("=" * 65)
+
+        summary = {
+            "total": total,
+            "blind_split": blind,
+            "out_of_scope_count": len(out_of_scope),
+            "in_scope_count": len(in_scope),
+            "abstention_precision": round(abstention_prec, 4),
+            "abstention_recall": round(abstention_rec, 4),
+            "abstention_f1": round(abstention_f1, 4),
+            "in_scope_family_recall@1": round(in_fam1, 4),
+            "in_scope_family_recall@5": round(in_fam5, 4),
+            "in_scope_family_mrr": round(in_fmrr, 4),
+            "details": results,
+        }
+        save_file = Path(out_path) if out_path else Path(f"ai/evaluation/eval_blind_{blind}.json")
+        save_file.parent.mkdir(parents=True, exist_ok=True)
+        with open(save_file, "w", encoding="utf-8") as f:
+            json.dump(summary, f, indent=2, ensure_ascii=False)
+        print(f"\nSummary metrics written to {save_file}")
+        return summary
 
     exact_hits1 = sum(1 for r in results if r["exact_hit@1"])
     exact_hits3 = sum(1 for r in results if r["exact_hit@3"])
@@ -421,6 +501,7 @@ if __name__ == "__main__":
     parser.add_argument("--out", default=None, help="Output JSON path (e.g. ai/evaluation/baseline.json)")
     parser.add_argument("--compare", default=None, help="Baseline JSON path to compare against")
     parser.add_argument("--provider", default=None, help="Force LLM_PROVIDER (e.g. mock)")
+    parser.add_argument("--blind", nargs="?", const="holdout", default=None, help="Run blind evaluation ('tune', 'holdout', or 'all')")
     args = parser.parse_args()
 
     if args.provider:
@@ -438,5 +519,6 @@ if __name__ == "__main__":
             concurrency=args.concurrency,
             out_path=args.out,
             compare_path=args.compare,
+            blind=args.blind,
         )
     )

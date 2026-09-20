@@ -92,13 +92,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ── Mount routers ─────────────────────────────────────────────────────────────
+# ── Mount routers (both root and /api prefix for reverse proxy / direct client compatibility) ──
 from backend.api.routes import health, ingest, recommend, standard  # noqa: E402
 
-app.include_router(health.router)
-app.include_router(ingest.router)
-app.include_router(recommend.router)
-app.include_router(standard.router)
+for r in [health.router, ingest.router, recommend.router, standard.router]:
+    app.include_router(r)
+    app.include_router(r, prefix="/api")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,545 @@
+[
+  {
+    "id": "BLIND_TUNE_001",
+    "query": "purple elephant submarine banana",
+    "expected_standards": [],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_TUNE_002",
+    "query": "blockchain based voting machine for municipal elections",
+    "expected_standards": [],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_TUNE_003",
+    "query": "quantum computing qubit refrigeration dilution cryostat chamber",
+    "expected_standards": [],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_TUNE_004",
+    "query": "CRISPR Cas9 gene editing reagents for crop enhancement research",
+    "expected_standards": [],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_TUNE_005",
+    "query": "spacecraft thermal protection ceramic tiles for atmospheric re-entry",
+    "expected_standards": [],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_TUNE_006",
+    "query": "aircraft jet engine titanium alloy turbine blisk disk blades",
+    "expected_standards": [],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_TUNE_007",
+    "query": "virtual reality haptic feedback gloves for metaverse simulation",
+    "expected_standards": [],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_TUNE_008",
+    "query": "semiconductor extreme ultraviolet EUV photolithography scanner mirror",
+    "expected_standards": [],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_TUNE_009",
+    "query": "superconducting magnetic levitation train track electromagnets",
+    "expected_standards": [],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_TUNE_010",
+    "query": "autonomous underwater vehicle acoustic Doppler current profiler sensor",
+    "expected_standards": [],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_TUNE_011",
+    "query": "direct air carbon capture synthetic metal organic framework MOF sorbent",
+    "expected_standards": [],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_TUNE_012",
+    "query": "smart contract automated decentralized cryptocurrency liquidity pool tokens",
+    "expected_standards": [],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_TUNE_013",
+    "query": "bionic robotic hand myoelectric signal surface electrode sensor",
+    "expected_standards": [],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_TUNE_014",
+    "query": "xyzzy plugh 123456 qwerty foobar bazqux nonsense test",
+    "expected_standards": [],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_TUNE_015",
+    "query": "%PDF-1.4 /BaseFont /Helvetica /Encoding /WinAnsiEncoding endobj stream",
+    "expected_standards": [],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_TUNE_016",
+    "query": "Tender for supply of high strength deformed steel bars and wires for concrete reinforcement Grade Fe 500D conforming to IS:1786-2008",
+    "expected_standards": [
+      "IS 1786"
+    ],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Structural Steel"
+  },
+  {
+    "id": "BLIND_TUNE_017",
+    "query": "Supply of 43 Grade Ordinary Portland Cement conforming to IS 269:2015 in 50 kg HDPE bags for construction work",
+    "expected_standards": [
+      "IS 269"
+    ],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Construction Materials - Cement"
+  },
+  {
+    "id": "BLIND_TUNE_018",
+    "query": "Unplasticized polyvinyl chloride pipes for potable water supply with elastomeric sealing ring joints conforming to IS 4985",
+    "expected_standards": [
+      "IS 4985"
+    ],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Water & Environment - Pipes"
+  },
+  {
+    "id": "BLIND_TUNE_019",
+    "query": "PVC insulated copper cables 1100 V grade for fixed electric power wiring conforming to IS 694",
+    "expected_standards": [
+      "IS 694"
+    ],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Electrical - Cables"
+  },
+  {
+    "id": "BLIND_TUNE_020",
+    "query": "Switches for domestic and similar purposes fixed electrical installations conforming to IS 3854:1988",
+    "expected_standards": [
+      "IS 3854"
+    ],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Electrical"
+  },
+  {
+    "id": "BLIND_TUNE_021",
+    "query": "Plain and reinforced concrete construction work conforming to code of practice IS 456-2000",
+    "expected_standards": [
+      "IS 456"
+    ],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Construction Materials - Concrete"
+  },
+  {
+    "id": "BLIND_TUNE_022",
+    "query": "Industrial safety helmets non-metallic for protection of head conforming to IS 2925",
+    "expected_standards": [
+      "IS 2925"
+    ],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Safety & PPE"
+  },
+  {
+    "id": "BLIND_TUNE_023",
+    "query": "Personal protective equipment safety footwear leather boots with steel toe cap as per IS 15298 (Part 2)",
+    "expected_standards": [
+      "IS 15298 (Part 2)"
+    ],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Safety & PPE"
+  },
+  {
+    "id": "BLIND_TUNE_024",
+    "query": "Cross-linked polyethylene insulated PVC sheathed power cables 11 kV XLPE conforming to IS 7098 (Part 2)",
+    "expected_standards": [
+      "IS 7098 (Part 2)"
+    ],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Electrical - Cables"
+  },
+  {
+    "id": "BLIND_TUNE_025",
+    "query": "Corrugated galvanized steel sheets for roofing and wall cladding as per IS 277",
+    "expected_standards": [
+      "IS 277"
+    ],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Structural Steel"
+  },
+  {
+    "id": "BLIND_TUNE_026",
+    "query": "Drinking water packaged natural mineral water in 1 litre bottles conforming to IS 13428",
+    "expected_standards": [
+      "IS 13428"
+    ],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Food & Agriculture"
+  },
+  {
+    "id": "BLIND_TUNE_027",
+    "query": "Packaged drinking water other than packaged natural mineral water conforming to IS 14543",
+    "expected_standards": [
+      "IS 14543"
+    ],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Food & Agriculture"
+  },
+  {
+    "id": "BLIND_TUNE_028",
+    "query": "पीने के पानी की सप्लाई के लिए uPVC पाइप IS 4985",
+    "expected_standards": [
+      "IS 4985"
+    ],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Water & Environment - Pipes"
+  },
+  {
+    "id": "BLIND_TUNE_029",
+    "query": "Ghar ki internal wiring ke liye switches aur sockets chahiye IS 3854",
+    "expected_standards": [
+      "IS 3854"
+    ],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Electrical"
+  },
+  {
+    "id": "BLIND_TUNE_030",
+    "query": "TMT sariya fe500 d for rcc column and beam as per IS:1786-2008",
+    "expected_standards": [
+      "IS 1786"
+    ],
+    "role": "blind_tune",
+    "split": "tune",
+    "category": "Structural Steel"
+  },
+  {
+    "id": "BLIND_HOLD_001",
+    "query": "lithium ion traction battery pack 48V 30Ah for electric scooter",
+    "expected_standards": [],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_HOLD_002",
+    "query": "synthetic diamond high pressure high temperature anvil press reactor",
+    "expected_standards": [],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_HOLD_003",
+    "query": "drone swarm autonomous lidar obstacle avoidance navigation pod",
+    "expected_standards": [],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_HOLD_004",
+    "query": "nuclear fusion tokamak beryllium first wall armor tiles limiter",
+    "expected_standards": [],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_HOLD_005",
+    "query": "holographic 3D volumetric light field display projector for surgery",
+    "expected_standards": [],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_HOLD_006",
+    "query": "rocket propellant hydroxyl-terminated polybutadiene binder HTPB polymer",
+    "expected_standards": [],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_HOLD_007",
+    "query": "graphene oxide dispersion conductive ink for flexible printed electronics",
+    "expected_standards": [],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_HOLD_008",
+    "query": "organic LED fine metal mask evaporation deposition vacuum crucible",
+    "expected_standards": [],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_HOLD_009",
+    "query": "perovskite silicon tandem solar cell spin coater laboratory unit",
+    "expected_standards": [],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_HOLD_010",
+    "query": "industrial 6-axis articulated robot arm harmonic drive actuator motor",
+    "expected_standards": [],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_HOLD_011",
+    "query": "mRNA vaccine lipid nanoparticle microfluidic encapsulation system",
+    "expected_standards": [],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_HOLD_012",
+    "query": "subsea deepwater oil well blowout preventer shear ram hydraulic valve",
+    "expected_standards": [],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_HOLD_013",
+    "query": "space elevator multi-walled carbon nanotube composite tether ribbon",
+    "expected_standards": [],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_HOLD_014",
+    "query": "asdfghjkl zxcvbnm poiuytrewq 9876543210 gibberish input string",
+    "expected_standards": [],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_HOLD_015",
+    "query": "unicorn rainbow cotton candy interstellar telescope gadget device",
+    "expected_standards": [],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Out-of-Scope"
+  },
+  {
+    "id": "BLIND_HOLD_016",
+    "query": "Procurement of miniature circuit breakers MCB 10kA breaking capacity C curve single pole conforming to IS/IEC 60898 (Part 1)",
+    "expected_standards": [
+      "IS/IEC 60898 (Part 1)"
+    ],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Electrical - Circuit Breakers"
+  },
+  {
+    "id": "BLIND_HOLD_017",
+    "query": "Tender for minature ciruit braker conforming to old standard IS 8828",
+    "expected_standards": [
+      "IS/IEC 60898 (Part 1)",
+      "IS 8828"
+    ],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Electrical - Circuit Breakers"
+  },
+  {
+    "id": "BLIND_HOLD_018",
+    "query": "Portland Pozzolana Cement fly ash based in 50 kg paper bags conforming to IS 1489 (Part 1)",
+    "expected_standards": [
+      "IS 1489 (Part 1)"
+    ],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Construction Materials - Cement"
+  },
+  {
+    "id": "BLIND_HOLD_019",
+    "query": "Supply of structural steel standard quality Fe 410 WA plates and sections conforming to IS 2062",
+    "expected_standards": [
+      "IS 2062"
+    ],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Structural Steel"
+  },
+  {
+    "id": "BLIND_HOLD_020",
+    "query": "Cast iron pipes and fittings for drainage and soil waste water conforming to IS 1729",
+    "expected_standards": [
+      "IS 1729"
+    ],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Water & Environment - Pipes"
+  },
+  {
+    "id": "BLIND_HOLD_021",
+    "query": "Supply of stainless steel utensils and kitchenware for hostel mess conforming to IS 14756",
+    "expected_standards": [
+      "IS 14756"
+    ],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Metals & Castings"
+  },
+  {
+    "id": "BLIND_HOLD_022",
+    "query": "Supply and installation of flat plate solar collectors for domestic solar water heaters conforming to IS 12933 (Part 1)",
+    "expected_standards": [
+      "IS 12933 (Part 1)"
+    ],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Solar Energy"
+  },
+  {
+    "id": "BLIND_HOLD_023",
+    "query": "Dry chemical powder for fighting Class B and Class C fires conforming to IS 4308",
+    "expected_standards": [
+      "IS 4308"
+    ],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Safety & PPE"
+  },
+  {
+    "id": "BLIND_HOLD_024",
+    "query": "Portable fire extinguisher carbon dioxide gas type 4.5 kg capacity conforming to IS 15683",
+    "expected_standards": [
+      "IS 15683"
+    ],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Safety & PPE"
+  },
+  {
+    "id": "BLIND_HOLD_025",
+    "query": "Rigid steel conduits for electric wiring installations with screwed couplers conforming to IS 9537 (Part 2)",
+    "expected_standards": [
+      "IS 9537 (Part 2)"
+    ],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Electrical - Wiring"
+  },
+  {
+    "id": "BLIND_HOLD_026",
+    "query": "Porcelain insulators for overhead power lines with nominal voltage greater than 1000 V as per IS 731",
+    "expected_standards": [
+      "IS 731"
+    ],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Electrical"
+  },
+  {
+    "id": "BLIND_HOLD_027",
+    "query": "भवन निर्माण हेतु Fe 500D टीएमटी सरिया IS 1786",
+    "expected_standards": [
+      "IS 1786"
+    ],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Structural Steel"
+  },
+  {
+    "id": "BLIND_HOLD_028",
+    "query": "Pani ki tanki aur domestic supply ke liye HDPE pipe as per IS 4984",
+    "expected_standards": [
+      "IS 4984"
+    ],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Water & Environment - Pipes"
+  },
+  {
+    "id": "BLIND_HOLD_029",
+    "query": "Procurement for civil renovation: (1) TMT steel bars Fe 500D; (2) 43 grade OPC cement; (3) internal wiring switches",
+    "expected_standards": [
+      "IS 1786",
+      "IS 269",
+      "IS 3854"
+    ],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Civil & Construction"
+  },
+  {
+    "id": "BLIND_HOLD_030",
+    "query": "electrik switches for domestic residential home wiring as per IS 3854:1988",
+    "expected_standards": [
+      "IS 3854"
+    ],
+    "role": "blind_holdout",
+    "split": "holdout",
+    "category": "Electrical"
+  }
+]

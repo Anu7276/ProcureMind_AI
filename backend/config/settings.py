@@ -37,6 +37,9 @@ class Settings(BaseSettings):
     # anthropic→claude-3-haiku-20240307, groq→llama3-8b-8192
     LLM_MODEL_OVERRIDE: str = ""
 
+    # Document Parsing
+    USE_DOCLING: bool = False
+
     @property
     def llm_model_name(self) -> str:
         if self.LLM_MODEL_OVERRIDE:
@@ -135,6 +138,10 @@ class Settings(BaseSettings):
     RERANK_WEIGHT_RERANKER: float = 0.7
     RERANK_WEIGHT_FUSED: float = 0.3
     CATEGORY_BOOST: float = 0.05
+
+    # ── Abstention & Match Strength Thresholds ────────────────────
+    ABSTAIN_THRESHOLD: float = 0.30
+    LOW_MATCH_THRESHOLD: float = 0.50
 
     # ── Chunking (for full_text embedding) ────────────────────────
     CHUNK_SIZE: int = 512      # characters

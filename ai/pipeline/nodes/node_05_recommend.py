@@ -20,6 +20,7 @@ from ai.knowledge.text_utils import tokenize
 from ai.llm.llm_factory import get_llm
 from ai.llm.prompts import RECOMMENDATION_PROMPT
 from ai.pipeline.state import PipelineState
+from backend.config.settings import settings
 
 logger = logging.getLogger(__name__)
 
@@ -157,24 +158,21 @@ def _build_data_quality_note(cand: Dict[str, Any]) -> str:
 
 
 def _compute_confidence(
-    relevance_score: float,
+    match_strength: float,
     gap_to_next: float,
 ) -> float:
     """
     Compute a monotonic, calibrated confidence score for a recommendation.
-    
     Formula:
-        confidence = min(0.99, max(0.10, round(0.85 * relevance_score + 0.12 * gap_to_next, 3)))
-        
-    Properties:
-    - Strictly monotonic in relevance_score (higher retrieval/rerank score -> higher baseline confidence).
-    - Rewarded by gap_to_next: when a candidate clearly outdistances the runner-up, confidence increases.
-    - Capped strictly at 0.99: never clips to 1.0, preventing artificial confidence saturation and ties.
-    - Independent of data quality flags (data quality is surfaced via verification_level and data_quality_note).
+        confidence = min(match_strength + 0.05, max(0.01, round(0.85 * match_strength + 0.12 * gap_to_next, 3)))
     """
-    raw_conf = 0.85 * float(relevance_score) + 0.12 * float(gap_to_next)
-    conf = min(0.99, max(0.10, round(raw_conf, 3)))
-    return conf
+    ms = float(match_strength)
+    raw_conf = 0.85 * ms + 0.12 * float(gap_to_next)
+    conf = min(0.99, max(0.01, round(raw_conf, 3)))
+    max_cap = round(ms + 0.05, 3)
+    if conf > max_cap:
+        conf = max_cap
+    return round(max(0.01, conf), 3)
 
 
 def _deterministic_fallback_reasoning(
@@ -292,18 +290,23 @@ def _merge_reasoning(
             f"Node05: LLM reasoning missed {len(missing_keys)} candidate(s) — deterministic fallback applied."
         )
 
-    # 3. Assemble recommendation items with monotonic confidence
-    result = []
+    # 3. Assemble recommendation items with monotonic confidence and match strength
+    items = []
     n = len(sorted_candidates)
+    low_match_thresh = getattr(settings, "LOW_MATCH_THRESHOLD", 0.50)
+    abstain_thresh = getattr(settings, "ABSTAIN_THRESHOLD", 0.30)
+
     for i, cand in enumerate(sorted_candidates):
         key = cand.get("key", "")
-        rel_score = float(cand.get("score", 0.5))
+        match_strength = float(cand.get("match_strength", cand.get("relevance_score", cand.get("score", 0.5))))
 
         # Gap to next candidate
-        next_score = float(sorted_candidates[i + 1].get("score", 0.0)) if i + 1 < n else 0.0
-        gap = max(0.0, rel_score - next_score)
+        next_strength = float(
+            sorted_candidates[i + 1].get("match_strength", sorted_candidates[i + 1].get("relevance_score", sorted_candidates[i + 1].get("score", 0.0)))
+        ) if i + 1 < n else 0.0
+        gap = max(0.0, match_strength - next_strength)
 
-        conf = _compute_confidence(rel_score, gap)
+        conf = _compute_confidence(match_strength, gap)
 
         ev = _extract_evidence_fields(cand, req_tokens)
 
@@ -323,17 +326,19 @@ def _merge_reasoning(
             if r.get("key")
         ]
 
-        is_low_conf = conf < 0.60
+        is_low_conf = (match_strength < low_match_thresh) or (conf < 0.60)
         clarification = _generate_clarification_prompt(cand, req_summary) if is_low_conf else None
 
-        result.append({
+        items.append({
             "is_code": cand.get("display_code", key),
             "key": key,
             "title": cand.get("title", ""),
             "confidence": conf,
+            "match_strength": round(match_strength, 4),
+            "relevance_score": round(match_strength, 4),
+            "low_match": False,
             "is_low_confidence": is_low_conf,
             "clarification_prompt": clarification,
-            "relevance_score": round(rel_score, 4),
             "verification_level": cand.get("verification_level", "single_source_unconfirmed"),
             "status": cand.get("status", "UNKNOWN"),
             "superseded_by": cand.get("superseded_by", []),
@@ -350,12 +355,38 @@ def _merge_reasoning(
             "scope": ev["scope"],
         })
 
-    if result and result[0]["confidence"] < 0.60:
-        warnings.append(
-            "Low confidence advisory: Initial match confidence is moderate. Consider providing material grades or operating specs to refine recommendations."
-        )
+    top_strength = float(items[0]["match_strength"]) if items else 0.0
 
-    return result
+    if not items or top_strength < abstain_thresh:
+        abstained = True
+        abstain_reason = "No confident match in the 1,380-standard dataset for this requirement"
+        closest_matches = []
+        for it in items[:3]:
+            it["low_match"] = True
+            closest_matches.append(it)
+        recommendations = []
+        warnings.append("No confident match in the 1,380-standard dataset for this requirement")
+    elif abstain_thresh <= top_strength < low_match_thresh:
+        abstained = False
+        abstain_reason = ""
+        closest_matches = []
+        for it in items:
+            it["low_match"] = True
+            if not it.get("clarification_prompt"):
+                it["clarification_prompt"] = _generate_clarification_prompt(it, req_summary)
+        recommendations = items
+        warnings.append(
+            "Low confidence advisory: Match strength is low. Consider providing material grades or operating specs to refine recommendations."
+        )
+    else:
+        abstained = False
+        abstain_reason = ""
+        closest_matches = []
+        for it in items:
+            it["low_match"] = (it["match_strength"] < low_match_thresh)
+        recommendations = items
+
+    return recommendations, abstained, abstain_reason, closest_matches
 
 
 async def node_05_recommend(state: PipelineState) -> dict:
@@ -365,10 +396,13 @@ async def node_05_recommend(state: PipelineState) -> dict:
     candidates = state.get("verified_candidates", [])
     audit_id = state.get("audit_id", "")
 
-    if not candidates:
+    if state.get("abstained") or not candidates:
         stages.append("recommend")
         return {
             "recommendations": [],
+            "abstained": True,
+            "abstain_reason": state.get("abstain_reason") or "No confident match in the 1,380-standard dataset for this requirement",
+            "closest_matches": [],
             "stages_completed": stages,
             "pipeline_warnings": warnings,
         }
@@ -404,7 +438,7 @@ async def node_05_recommend(state: PipelineState) -> dict:
         reasoning_items = generate_mock_reasoning(req_summary, candidates)
 
     # ── Merge reasoning + build final list ────────────────────────────────────
-    recommendations = _merge_reasoning(
+    recommendations, abstained, abstain_reason, closest_matches = _merge_reasoning(
         candidates, reasoning_items, req_summary, warnings, req_text=query_text
     )
 
@@ -431,6 +465,9 @@ async def node_05_recommend(state: PipelineState) -> dict:
     stages.append("recommend")
     return {
         "recommendations": recommendations,
+        "abstained": abstained,
+        "abstain_reason": abstain_reason,
+        "closest_matches": closest_matches,
         "stages_completed": stages,
         "pipeline_warnings": warnings,
     }

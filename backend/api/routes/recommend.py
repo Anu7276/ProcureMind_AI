@@ -20,7 +20,9 @@ from backend.schemas.api_schemas import (
     RecommendationItem,
     CertificationInfo,
     RelatedStandard,
+    PipelineMeta,
 )
+from backend.config.settings import settings
 
 router = APIRouter(tags=["Pipeline"])
 
@@ -65,6 +67,17 @@ def _build_recommendation_item(r: dict) -> RecommendationItem:
         related_standards=related,
         reasoning=r.get("reasoning", ""),
         evidence_sources=r.get("evidence_sources", []),
+        data_quality_note=r.get("data_quality_note"),
+        relevance_score=r.get("relevance_score"),
+        version_info=r.get("version_info"),
+        replaced_by=r.get("replaced_by", []),
+        match_strength=r.get("match_strength"),
+        low_match=r.get("low_match"),
+        spec_line=r.get("spec_line"),
+        clarification_prompt=r.get("clarification_prompt"),
+        matched_terms=r.get("matched_terms", []),
+        evidence_clause=r.get("evidence_clause"),
+        scope=r.get("scope"),
     )
 
 
@@ -102,6 +115,12 @@ async def recommend(body: RecommendRequest):
     raw_recs = final_state.get("recommendations", [])
     recommendations = [_build_recommendation_item(r) for r in raw_recs]
 
+    raw_closest = final_state.get("closest_matches", [])
+    closest_matches = [_build_recommendation_item(r) for r in raw_closest]
+
+    abstained = bool(final_state.get("abstained", False))
+    abstain_reason = final_state.get("abstain_reason")
+
     req_data = final_state.get("structured_requirement", {})
     query_summary = (
         req_data.get("product")
@@ -110,10 +129,26 @@ async def recommend(body: RecommendRequest):
         or "Procurement requirement"
     )
 
+    pipeline_meta = PipelineMeta(
+        llm_mode=final_state.get("pipeline_meta", {}).get("llm_mode") or getattr(settings, "LLM_PROVIDER", "mock"),
+        llm_model=getattr(settings, "llm_model_name", ""),
+        embedder=getattr(settings, "EMBEDDING_MODEL_NAME", ""),
+        retrieval_sources_used=final_state.get("retrieval_sources_used", []),
+        reranker_mode="cross_encoder" if final_state.get("cross_encoder_used") else "bm25_lexical",
+        abstained=abstained,
+        abstain_reason=abstain_reason,
+        audit_saved=final_state.get("audit_saved"),
+        warnings=final_state.get("pipeline_warnings", []),
+    )
+
     return RecommendResponse(
         audit_id=audit_id,
         query_summary=str(query_summary),
         recommendations=recommendations,
         warnings=final_state.get("pipeline_warnings", []),
         pipeline_stages_completed=final_state.get("stages_completed", []),
+        abstained=abstained,
+        abstain_reason=abstain_reason,
+        closest_matches=closest_matches,
+        pipeline_meta=pipeline_meta,
     )

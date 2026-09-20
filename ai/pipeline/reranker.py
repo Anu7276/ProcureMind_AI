@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 import logging
+import math
 import os
 from typing import Any, Dict, List, Optional, Set, Tuple
 
@@ -52,16 +53,19 @@ def get_cross_encoder():
     try:
         from sentence_transformers import CrossEncoder
 
-        if os.getenv("LLM_PROVIDER") == "mock":
-            try:
-                _cross_encoder = CrossEncoder(settings.RERANKER_MODEL, max_length=512, local_files_only=True)
-                logger.info("Loaded CrossEncoder from local cache: %s", settings.RERANKER_MODEL)
-            except Exception:
-                logger.info("CrossEncoder local cache not found in mock mode — using lexical reranker")
+        try:
+            _cross_encoder = CrossEncoder(settings.RERANKER_MODEL, max_length=512, local_files_only=True)
+            logger.info("Loaded CrossEncoder from local cache: %s", settings.RERANKER_MODEL)
+        except Exception:
+            if os.getenv("DOWNLOAD_CROSS_ENCODER") == "1":
+                logger.info("Downloading CrossEncoder: %s", settings.RERANKER_MODEL)
+                _cross_encoder = CrossEncoder(settings.RERANKER_MODEL, max_length=512)
+            else:
+                logger.info(
+                    "CrossEncoder weights for %s not cached locally — using fast BM25 lexical reranker (set DOWNLOAD_CROSS_ENCODER=1 to download)",
+                    settings.RERANKER_MODEL,
+                )
                 _cross_encoder = None
-        else:
-            _cross_encoder = CrossEncoder(settings.RERANKER_MODEL, max_length=512)
-            logger.info("Loaded CrossEncoder: %s", settings.RERANKER_MODEL)
     except Exception as exc:
         logger.info("CrossEncoder unavailable (%s) — using lexical reranker fallback", exc)
         _cross_encoder = None
@@ -174,21 +178,54 @@ def rerank(
 
     w_rerank = getattr(settings, "RERANK_WEIGHT_RERANKER", 0.7)
     w_fused = getattr(settings, "RERANK_WEIGHT_FUSED", 0.3)
+    lit_keys = literal_keys or set()
 
     for idx, cand in enumerate(candidates):
         r_score = norm_rerank[idx]
         f_score = norm_fused[idx]
         fused_relevance = round(w_rerank * r_score + w_fused * f_score, 4)
-        cand["relevance_score"] = fused_relevance
-        cand["score"] = fused_relevance
-        cand["raw_rerank_score"] = raw_rerank_scores[idx]
 
-    # Category soft boost and safe hard filter
+        # ── Absolute match strength calculation ──
+        raw_bm25 = cand.get("raw_score")
+        ideal_score = cand.get("ideal_score")
+        coverage = cand.get("coverage")
+        if raw_bm25 is None or ideal_score is None or coverage is None:
+            raw_bm25, ideal_score, coverage = kl.BM25_INDEX.score_document(query, cand.get("key", ""))
+
+        base_bm25_strength = 0.5 * (raw_bm25 / ideal_score if ideal_score > 0 else 0.0) + 0.5 * coverage
+        base_bm25_strength = min(1.0, max(0.0, base_bm25_strength))
+
+        if encoder is not None:
+            raw_logit = raw_rerank_scores[idx]
+            abs_ce = 1.0 / (1.0 + math.exp(-raw_logit))
+            ms = 0.6 * base_bm25_strength + 0.4 * abs_ce
+            match_strength = min(1.0, max(0.0, ms))
+        elif cand.get("vector_score") is not None:
+            abs_vec = min(1.0, max(0.0, float(cand["vector_score"])))
+            ms = 0.6 * base_bm25_strength + 0.4 * abs_vec
+            match_strength = min(1.0, max(0.0, ms))
+        else:
+            match_strength = base_bm25_strength
+
+        # Literal code mentions should have high absolute strength and high score
+        if cand.get("is_literal_mention") or cand.get("key") in lit_keys:
+            match_strength = max(match_strength, 0.95)
+            fused_relevance = max(fused_relevance, 0.95)
+
+        cand["fused_score"] = fused_relevance
+        cand["raw_rerank_score"] = raw_rerank_scores[idx]
+        cand["raw_bm25"] = raw_bm25
+        cand["ideal_score"] = ideal_score
+        cand["coverage"] = coverage
+        cand["match_strength"] = round(match_strength, 4)
+        cand["relevance_score"] = round(match_strength, 4)
+        cand["score"] = fused_relevance
+
+    # Category soft boost (Phase 4.2: hint must never remove candidates, soft boost only)
     lit_keys = literal_keys or set()
     if category_hint:
         catalog_cats = set(kl.map_category_hint_to_catalog(category_hint))
         if catalog_cats:
-            # 1. Soft boost
             cat_boost = getattr(settings, "CATEGORY_BOOST", 0.05)
             for cand in candidates:
                 cand_cat = cand.get("category")
@@ -196,37 +233,21 @@ def rerank(
                     cand_cat in catalog_cats
                     or any(c.lower() in cand_cat.lower() for c in catalog_cats)
                 ):
-                    new_score = round(min(1.0, cand["score"] + cat_boost), 4)
-                    cand["score"] = new_score
-                    cand["relevance_score"] = new_score
+                    cand["score"] = round(min(1.0, cand["score"] + cat_boost), 4)
+                    cand["match_strength"] = round(min(1.0, cand["match_strength"] + cat_boost), 4)
+                    cand["relevance_score"] = cand["match_strength"]
                     cand["category_boosted"] = True
-
-            # 2. Hard filter: only if leaving at least 5 candidates
-            matching = [
-                cand
-                for cand in candidates
-                if cand.get("key") in lit_keys
-                or cand.get("is_literal_mention")
-                or (
-                    cand.get("category")
-                    and (
-                        cand.get("category") in catalog_cats
-                        or any(c.lower() in cand.get("category").lower() for c in catalog_cats)
-                    )
-                )
-            ]
-            if len(matching) >= 5:
-                candidates = matching
 
     # Apply negative keyword suppression
     candidates, neg_warnings = _apply_negative_keyword_rules(query, candidates, lit_keys)
     warnings.extend(neg_warnings)
 
-    # Sort descending by score, tie-break by key
+    # Sort descending: literal mentions first, then by score descending, then match_strength descending
     candidates.sort(
         key=lambda c: (
+            0 if (c.get("is_literal_mention") or c.get("key") in lit_keys) else 1,
             -float(c.get("score", 0.0)),
-            0 if c.get("is_literal_mention") else 1,
+            -float(c.get("match_strength", 0.0)),
             c.get("key", ""),
         )
     )

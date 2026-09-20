@@ -25,28 +25,51 @@ from collections import defaultdict
 from typing import Any, Dict, List, Optional, Tuple
 
 from ai.knowledge import knowledge_loader as kl
+from ai.knowledge.text_utils import tokenize
 from ai.llm.llm_factory import get_embedder
+from ai.pipeline.document_extractors import looks_like_document_text
 from ai.pipeline.state import PipelineState
 from backend.config.settings import settings
 
 logger = logging.getLogger(__name__)
 
+GENERIC_FILLER_PHRASES = {
+    "general public procurement and industrial application",
+    "general public procurement",
+    "industrial application",
+    "general procurement",
+    "not specified",
+    "none",
+    "na",
+    "n/a",
+}
+
 
 def _build_query_text(state: PipelineState) -> str:
-    """Compose a rich query string from the structured requirement."""
+    """
+    Compose query string from product + material + specifications + application only.
+    Drops generic filler such as 'General public procurement and industrial application'.
+    Does not append normalized_text[:500] when it duplicates the product.
+    """
     req: Dict = state.get("structured_requirement", {})
     parts = []
-    for field in [
-        "product", "material", "specifications",
-        "performance_requirements", "safety_requirements", "application"
-    ]:
+    for field in ["product", "material", "specifications", "application"]:
         val = req.get(field)
         if val:
-            parts.append(str(val))
-    norm = state.get("normalized_text", "")
-    if norm:
+            val_str = str(val).strip()
+            val_lower = val_str.lower()
+            if val_lower in GENERIC_FILLER_PHRASES or any(
+                f in val_lower for f in GENERIC_FILLER_PHRASES if len(f) > 10
+            ):
+                continue
+            parts.append(val_str)
+
+    product_val = str(req.get("product") or "").strip().lower()
+    norm = (state.get("normalized_text", "") or "").strip()
+    if norm and norm.lower() != product_val:
         parts.append(norm[:500])
-    return " ".join(parts) or state.get("raw_input", "")
+
+    return " ".join(parts).strip() or state.get("raw_input", "").strip()
 
 
 def _order_and_cap_relationships(
@@ -114,9 +137,12 @@ def _boost_literal_mentions(
         if key in code_map:
             item = code_map[key]
             new_score = round(min(1.0, float(c.get("score", 0.0)) + 0.15), 4)
+            ms = max(float(c.get("match_strength", 0.0) or 0.0), 0.95)
             boosted.append({
                 **c,
                 "score": new_score,
+                "match_strength": ms,
+                "relevance_score": ms,
                 "source": c.get("source") or "literal_mention",
                 "is_literal_mention": True,
                 "cited_year": item.get("cited_year"),
@@ -142,6 +168,8 @@ def _boost_literal_mentions(
                     "superseded_by": record.get("superseded_by") or [],
                     "flags": dq.get("flags", []),
                     "score": 0.9,
+                    "match_strength": 0.95,
+                    "relevance_score": 0.95,
                     "source": "literal_mention",
                     "is_literal_mention": True,
                     "cited_year": item.get("cited_year"),
@@ -223,17 +251,7 @@ async def _fetch_vector(query_vec: Optional[List[float]], top_k: int) -> List[Di
 
 
 async def _fetch_lexical(query_text: str, top_k: int) -> List[Dict[str, Any]]:
-    """Source (b): lexical search via PostgreSQL FTS or in-memory BM25."""
-    try:
-        from backend.services import postgres_service
-        if await postgres_service.is_available():
-            hits = await postgres_service.keyword_search_standards(query_text, limit=top_k)
-            if hits:
-                return hits
-    except Exception as exc:
-        logger.debug("PostgreSQL FTS unavailable: %s", exc)
-
-    # In-memory BM25 fallback
+    """Source (b): lexical search via in-memory BM25 (consistent across eval and prod)."""
     return kl.search_standards_in_memory(query_text, top_k=top_k)
 
 
@@ -328,8 +346,8 @@ def _reciprocal_rank_fusion(
         normalized_score = round(raw_rrf / max_possible, 4) if max_possible > 0 else 0.0
         trace = traces[key]
         source_label = "+".join(sorted(trace.keys()))
-
-        record = kl.get_standard(key) or item_payloads.get(key, {})
+        payload = item_payloads.get(key, {})
+        record = kl.get_standard(key) or payload
         dq = record.get("data_quality") or {}
 
         cand = {
@@ -346,6 +364,10 @@ def _reciprocal_rank_fusion(
             "rrf_score": round(raw_rrf, 6),
             "retrieval_trace": trace,
             "source": source_label,
+            "raw_score": payload.get("raw_score"),
+            "ideal_score": payload.get("ideal_score"),
+            "coverage": payload.get("coverage"),
+            "match_strength": payload.get("match_strength"),
             "related_standards": _order_and_cap_relationships(
                 record.get("related_standards") or kl.get_related_standards_in_memory(key)
             ),
@@ -395,13 +417,30 @@ async def node_03_retrieve(state: PipelineState) -> dict:
     if not kl._loaded:
         kl.load_all()
 
-    from ai.knowledge.text_utils import tokenize
-    if not tokenize(query_text):
+    content_tokens = tokenize(query_text)
+    input_text = state.get("normalized_text") or state.get("raw_input", "")
+    is_doc, _ = looks_like_document_text(input_text)
+
+    if is_doc and len(content_tokens) < 2:
+        warnings.append("Not enough detail to search")
+        stages.append("retrieve")
+        return {
+            "candidates": [],
+            "retrieval_sources_used": [],
+            "abstained": True,
+            "abstain_reason": "Not enough detail to search",
+            "pipeline_warnings": warnings,
+            "stages_completed": stages,
+        }
+
+    if not content_tokens:
         warnings.append("Query has no content terms")
         stages.append("retrieve")
         return {
             "candidates": [],
             "retrieval_sources_used": [],
+            "abstained": True,
+            "abstain_reason": "Query has no content terms",
             "pipeline_warnings": warnings,
             "stages_completed": stages,
         }
@@ -486,20 +525,23 @@ async def node_03_retrieve(state: PipelineState) -> dict:
     # Keep final_top_k after boosts
     candidates = candidates[:final_top_k]
 
-    # ── Step 6: Self-Correction Fallback Expansion (Phase 9) ───────────────────
-    # If initial retrieval yields zero candidates or low confidence (top_score < 0.35),
+    # ── Step 6: Self-Correction Fallback Expansion ───────────────────────────
+    # If initial retrieval yields zero candidates or low confidence (top match_strength < 0.30),
     # trigger broad fallback search using domain keywords or product synonyms.
-    if not candidates or (candidates and float(candidates[0].get("score", 0.0)) < 0.35):
+    top_strength = float(candidates[0].get("match_strength", candidates[0].get("score", 0.0))) if candidates else 0.0
+    if not candidates or top_strength < getattr(settings, "ABSTAIN_THRESHOLD", 0.30):
         fallback_query = _build_fallback_query(query_text, req, category_hint)
         if fallback_query and fallback_query != query_text:
             logger.info("Node03: executing self-correction fallback retrieval for query: '%s'", fallback_query)
-            fallback_candidates = _search_standards_in_memory(fallback_query, top_k=retrieve_top_n)
+            fallback_candidates = kl.search_standards_in_memory(fallback_query, top_k=retrieve_top_n)
             if fallback_candidates:
                 warnings.append("Low-confidence retrieval triggered self-correction fallback expansion")
                 seen = {c.get("key") for c in candidates}
                 for fc in fallback_candidates:
                     if fc.get("key") not in seen:
+                        fc["match_strength"] = round(float(fc.get("match_strength", 0.3)) * 0.8, 4)
                         fc["score"] = round(float(fc.get("score", 0.4)) * 0.8, 4)
+                        fc["relevance_score"] = fc["match_strength"]
                         fc["source"] = "self_correction_fallback"
                         candidates.append(fc)
                         seen.add(fc.get("key"))

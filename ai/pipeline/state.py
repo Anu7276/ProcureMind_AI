@@ -47,6 +47,9 @@ class PipelineState(TypedDict, total=False):
     # ── Node 05 output — Recommend ────────────────────────────────────────────
     recommendations: List[Dict[str, Any]]
     # Final ranked list matching RecommendationItem schema
+    abstained: bool
+    abstain_reason: str
+    closest_matches: List[Dict[str, Any]]
 
     # ── Cross-cutting ──────────────────────────────────────────────────────────
     pipeline_warnings: List[str]

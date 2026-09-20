@@ -35,10 +35,13 @@ sentence-transformers>=3.0.0
 # pip install torch --index-url https://download.pytorch.org/whl/cpu
 
 # ── Document Understanding ────────────────────────────────
-docling>=2.0.0                     # PDF + DOCX parsing, structure extraction
-pytesseract>=0.3.10                # OCR for scanned images
+pymupdf>=1.24.0                     # PDF parsing and table extraction (primary)
+pypdf>=4.0.0                        # PDF parsing fallback
+python-docx>=1.1.0                  # DOCX parsing and table extraction
+pytesseract>=0.3.10                # OCR for scanned images and PDFs
 Pillow>=10.3.0                     # image handling
-# Note: Tesseract binary must be installed separately:
+# Note: Docling is optional and moved to requirements-docling.txt
+# Note: Tesseract binary must be installed separately for OCR:
 #   Windows: https://github.com/UB-Mannheim/tesseract/wiki
 #   Ubuntu:  sudo apt install tesseract-ocr
 

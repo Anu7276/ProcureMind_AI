@@ -45,9 +45,16 @@ class RecommendationItem(BaseModel):
     reasoning: str                            # LLM-generated, clause-level
     evidence_sources: List[str] = []          # e.g. ["IS 1786, BIS", "QCO-ELEC-2024-01"]
     data_quality_note: Optional[str] = None   # data quality explanation
-    relevance_score: Optional[float] = None   # raw retrieval / rerank score [0.0, 1.0]
+    relevance_score: Optional[float] = None   # match_strength [0.0, 1.0]
     version_info: Optional[Dict[str, Any]] = None
     replaced_by: List[str] = []
+    match_strength: Optional[float] = None
+    low_match: Optional[bool] = None
+    spec_line: Optional[str] = None
+    clarification_prompt: Optional[str] = None
+    matched_terms: List[str] = []
+    evidence_clause: Optional[str] = None
+    scope: Optional[str] = None
 
 
 # ── /ingest ───────────────────────────────────────────────────────────────────
@@ -65,6 +72,8 @@ class StructuredRequirement(BaseModel):
     language: str = "en"
     input_type: str = "text"
     thesaurus_expansions: List[str] = []
+    extraction_method: Optional[str] = None
+    pages: Optional[int] = None
 
 
 class IngestResponse(BaseModel):
@@ -85,6 +94,18 @@ class RecommendRequest(BaseModel):
     audit_id: Optional[str] = None          # carry forward from /ingest if available
 
 
+class PipelineMeta(BaseModel):
+    llm_mode: Optional[str] = None
+    llm_model: Optional[str] = None
+    embedder: Optional[str] = None
+    retrieval_sources_used: List[str] = []
+    reranker_mode: Optional[str] = None
+    abstained: bool = False
+    abstain_reason: Optional[str] = None
+    audit_saved: Optional[bool] = None
+    warnings: List[str] = []
+
+
 class RecommendResponse(BaseModel):
     audit_id: str
     query_summary: str
@@ -92,6 +113,10 @@ class RecommendResponse(BaseModel):
     warnings: List[str] = []               # degraded-store warnings
     pipeline_stages_completed: List[str] = []
     timestamp: datetime = Field(default_factory=datetime.utcnow)
+    abstained: Optional[bool] = False
+    abstain_reason: Optional[str] = None
+    closest_matches: Optional[List[RecommendationItem]] = []
+    pipeline_meta: Optional[PipelineMeta] = None
 
 
 # ── GET /standard/{key} ───────────────────────────────────────────────────────
