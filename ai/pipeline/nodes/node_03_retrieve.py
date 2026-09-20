@@ -47,13 +47,16 @@ GENERIC_FILLER_PHRASES = {
 
 def _build_query_text(state: PipelineState) -> str:
     """
-    Compose query string from product + material + specifications + application only.
-    Drops generic filler such as 'General public procurement and industrial application'.
-    Does not append normalized_text[:500] when it duplicates the product.
+    Compose query string from structured_requirement: product, material, specifications, application,
+    performance_requirements, safety_requirements.
+    Structured requirement is the primary source of truth.
+    Does NOT append normalized_text when at least product or material is non-empty.
     """
-    req: Dict = state.get("structured_requirement", {})
+    req: Dict = state.get("structured_requirement", {}) or {}
     parts = []
-    for field in ["product", "material", "specifications", "application"]:
+    has_primary = bool((req.get("product") or "").strip() or (req.get("material") or "").strip())
+
+    for field in ["product", "material", "specifications", "performance_requirements", "safety_requirements", "application"]:
         val = req.get(field)
         if val:
             val_str = str(val).strip()
@@ -64,10 +67,10 @@ def _build_query_text(state: PipelineState) -> str:
                 continue
             parts.append(val_str)
 
-    product_val = str(req.get("product") or "").strip().lower()
-    norm = (state.get("normalized_text", "") or "").strip()
-    if norm and norm.lower() != product_val:
-        parts.append(norm[:500])
+    if not has_primary and not parts:
+        norm = (state.get("normalized_text", "") or "").strip()
+        if norm:
+            parts.append(norm[:500])
 
     return " ".join(parts).strip() or state.get("raw_input", "").strip()
 

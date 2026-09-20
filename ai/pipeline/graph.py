@@ -89,19 +89,46 @@ def _build_extract_only_graph() -> StateGraph:
     return g
 
 
+async def ingest_codes_only(state: PipelineState) -> dict:
+    """
+    Lightweight node for from_requirement graph:
+    Derives literal IS codes (with cited_year) and thesaurus_expansions from normalized_text
+    without invoking an LLM.
+    """
+    from ai.pipeline.nodes.node_01_ingest import extract_literal_codes
+    from ai.knowledge import knowledge_loader as kl
+
+    norm = state.get("normalized_text", "") or state.get("raw_input", "") or ""
+    literal_codes = extract_literal_codes(norm) if norm else []
+    thesaurus_exp = kl.expand_query_with_thesaurus(norm) if norm else []
+    thesaurus_hint = ", ".join(thesaurus_exp) if thesaurus_exp else None
+
+    stages = list(state.get("stages_completed", []))
+    stages.append("ingest_codes_only")
+
+    return {
+        "literal_codes": literal_codes,
+        "thesaurus_expansions": thesaurus_exp,
+        "thesaurus_hint": thesaurus_hint,
+        "stages_completed": stages,
+    }
+
+
 def _build_from_requirement_graph() -> StateGraph:
-    """Retrieval + verify + recommend graph: Node 03 → 04 → 05.
+    """Retrieval + verify + recommend graph: ingest_codes_only → retrieve → verify → recommend.
 
     Used when a structured requirement is already known (e.g. after human
     review on ReviewPage) and we only need to run the retrieval/ranking half.
     """
     g = StateGraph(PipelineState)
 
+    g.add_node("ingest_codes_only", ingest_codes_only)
     g.add_node("retrieve", node_03_retrieve)
     g.add_node("verify", node_04_verify)
     g.add_node("recommend", node_05_recommend)
 
-    g.set_entry_point("retrieve")
+    g.set_entry_point("ingest_codes_only")
+    g.add_edge("ingest_codes_only", "retrieve")
     g.add_edge("retrieve", "verify")
     g.add_edge("verify", "recommend")
     g.add_edge("recommend", END)
@@ -188,9 +215,12 @@ async def run_pipeline_from_requirement(
     structured_requirement: Dict[str, Any],
     normalized_text: str,
     audit_id: str | None = None,
+    language: str = "en",
+    input_type: str = "text",
+    user_edited: bool = False,
 ) -> Dict[str, Any]:
     """
-    Run Nodes 03–05 only using a pre-computed structured requirement.
+    Run ingest_codes_only → Nodes 03–05 using a pre-computed structured requirement.
 
     Used when /recommend receives confirmed output from a prior /ingest call
     (i.e. after the user has reviewed and confirmed on ReviewPage).
@@ -200,13 +230,14 @@ async def run_pipeline_from_requirement(
 
     initial_state: PipelineState = {
         "raw_input": normalized_text,
-        "input_type": "text",
+        "input_type": input_type or "text",
         "audit_id": audit_id,
         "extracted_text": normalized_text,
         "normalized_text": normalized_text,
-        "language": "en",
+        "language": language or "en",
         "thesaurus_expansions": [],
         "structured_requirement": structured_requirement,
+        "user_edited": user_edited,
         "pipeline_warnings": [],
         "stages_completed": [],
     }

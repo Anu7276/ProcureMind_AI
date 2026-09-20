@@ -23,11 +23,14 @@ export const ingestFile = async (file) => {
   return res.data
 }
 
-export const recommend = async ({ rawQuery, structuredRequirement, auditId }) => {
+export const recommend = async ({ rawQuery, structuredRequirement, auditId, userEdited, language, inputType }) => {
   const payload = {}
   if (rawQuery) payload.raw_query = rawQuery
   if (structuredRequirement) payload.structured_requirement = structuredRequirement
   if (auditId) payload.audit_id = auditId
+  if (userEdited !== undefined) payload.user_edited = userEdited
+  if (language) payload.language = language
+  if (inputType) payload.input_type = inputType
   const res = await api.post('/recommend', payload)
   return res.data
 }

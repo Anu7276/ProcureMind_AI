@@ -96,6 +96,9 @@ async def recommend(body: RecommendRequest):
             structured_requirement=req.model_dump(),
             normalized_text=req.normalized_text or "",
             audit_id=audit_id,
+            language=req.language or getattr(body, "language", "en") or "en",
+            input_type=req.input_type or getattr(body, "input_type", "text") or "text",
+            user_edited=getattr(body, "user_edited", False),
         )
 
     # Path B: raw text query — run full pipeline

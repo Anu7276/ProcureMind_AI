@@ -92,6 +92,9 @@ class RecommendRequest(BaseModel):
     raw_query: Optional[str] = None
     structured_requirement: Optional[StructuredRequirement] = None
     audit_id: Optional[str] = None          # carry forward from /ingest if available
+    language: Optional[str] = "en"
+    input_type: Optional[str] = "text"
+    user_edited: Optional[bool] = False
 
 
 class PipelineMeta(BaseModel):
