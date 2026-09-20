@@ -92,15 +92,22 @@ def _build_extract_only_graph() -> StateGraph:
 async def ingest_codes_only(state: PipelineState) -> dict:
     """
     Lightweight node for from_requirement graph:
-    Derives literal IS codes (with cited_year) and thesaurus_expansions from normalized_text
-    without invoking an LLM.
+    Derives literal IS codes (with cited_year) and thesaurus_expansions.
+    When user_edited is True, scans the structured_requirement as the source of truth.
+    When user_edited is False, scans normalized_text.
     """
     from ai.pipeline.nodes.node_01_ingest import extract_literal_codes
     from ai.knowledge import knowledge_loader as kl
 
-    norm = state.get("normalized_text", "") or state.get("raw_input", "") or ""
-    literal_codes = extract_literal_codes(norm) if norm else []
-    thesaurus_exp = kl.expand_query_with_thesaurus(norm) if norm else []
+    user_edited = state.get("user_edited", False)
+    if user_edited:
+        req = state.get("structured_requirement", {}) or {}
+        text_to_scan = " ".join(str(v) for v in req.values() if v)
+    else:
+        text_to_scan = state.get("normalized_text", "") or state.get("raw_input", "") or ""
+
+    literal_codes = extract_literal_codes(text_to_scan) if text_to_scan else []
+    thesaurus_exp = kl.expand_query_with_thesaurus(text_to_scan) if text_to_scan else []
     thesaurus_hint = ", ".join(thesaurus_exp) if thesaurus_exp else None
 
     stages = list(state.get("stages_completed", []))

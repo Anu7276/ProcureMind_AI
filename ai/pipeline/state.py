@@ -14,6 +14,7 @@ class PipelineState(TypedDict, total=False):
     raw_bytes: Optional[bytes]  # file bytes for PDF/DOCX/image inputs
     input_type: str             # "text" | "pdf" | "docx" | "image"
     audit_id: str               # UUID string, set at pipeline entry
+    user_edited: bool           # True when structured requirement was edited by user
 
     # ── Node 00 output — Document Understanding ───────────────────────────────
     # Only populated when input_type != "text"
