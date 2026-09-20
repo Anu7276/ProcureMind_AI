@@ -81,52 +81,72 @@ Public procurement officers across Indian ministries, CPWD, PSUs, and state util
 ```mermaid
 flowchart TD
     subgraph Client["Frontend Layer (React 18 + Vite)"]
-        UI1["📄 Document / Text Upload"]
-        UI2["✏️ Human Review Checkpoint"]
-        UI3["📊 Verified Results Dashboard"]
+        UI1["📄 Document / Multi-Item Tender Upload"]
+        UI2["✏️ Human-in-the-Loop Review Checkpoint"]
+        UI3["📊 Verified Results & Per-Item Dashboard"]
+        UI4["📋 Technical Bid Compliance Checker"]
+    end
+
+    subgraph Security["Security & Middleware Gateway"]
+        MW1["🛡️ Trusted-Proxy Rate Limiting (CIDR / IP)"]
+        MW2["🔑 Optional API Key Auth (X-API-Key)"]
+        MW3["📏 20k Char & 12MB Payload Cap"]
     end
 
     subgraph API["FastAPI Backend Gateway (:8000)"]
         R1["POST /ingest"]
         R2["POST /recommend"]
-        R3["GET /standard/:key"]
-        R4["GET /health"]
+        R3["POST /bid-check"]
+        R4["GET /standard/:key"]
+        R5["GET /health, /healthz, /readyz"]
+    end
+
+    subgraph Segmenter["Multi-Item RFP Parser"]
+        SEG["📦 ai/pipeline/segmenter.py\n(Numbered, Bullets, Tables, Semicolons)"]
     end
 
     subgraph Pipeline["LangGraph 6-Node Orchestration Engine"]
         N0["Node 0: Document Understanding\n(Docling / Tesseract OCR / PyPDF)"]
-        N1["Node 1: Normalization & Thesaurus\n(CPWD DSR 2023 + GeM + Hindi Maps)"]
-        N2["Node 2: Structured Entity Extraction\n(Google Gemini 2.5 Flash / Groq / OpenAI)"]
-        N3["Node 3: Hybrid Tri-Store Retrieval\n(Vector + Keyword + Graph Traversal)"]
-        N4["Node 4: Verification & Compliance\n(Whitelist Guard + Status + QCO Orders)"]
-        N5["Node 5: Explainable Reasoning\n(Ranked Recommendation + Audit Trail)"]
+        N1["Node 1: Ingest, Literal Codes & Thesaurus\n(CPWD DSR + GeM + Stopwords + Hindi)"]
+        N2["Node 2: Structured Entity Extraction\n(Gemini 2.5 Flash / Groq / OpenAI)"]
+        N3["Node 3: Hybrid Tri-Store Retrieval\n(Vector + Field-Weighted BM25 + Graph)"]
+        N4["Node 4: 6-Scheme Verification & Compliance\n(Scheme-I/II/IV/X/Eco/HM + Whitelist)"]
+        N5["Node 5: Explainable Reasoning & Spec Line\n(Deterministic spec_line + Calibrated Conf)"]
+    end
+
+    subgraph BidEngine["Compliance & Bid Verification"]
+        BC["📋 ai/pipeline/bid_check.py\n(CM/L, CRS, <180d Certs, Successors)"]
     end
 
     subgraph Storage["Tri-Store Persistence & Knowledge Core"]
         QD[("🔴 Qdrant Vector DB\n384-dim MiniLM Embeddings")]
-        PG[("🔵 PostgreSQL 16\nStandards FTS + Audit Logs")]
+        PG[("🔵 PostgreSQL 16 / SQLite\nStandards FTS + SHA-256 Audit Logs")]
         N4J[("🟢 Neo4j 5 Graph DB\n836 Relationships")]
-        MEM[("⚡ In-Memory Knowledge Loader\n1,380 Standards + Whitelist")]
+        MEM[("⚡ In-Memory Knowledge Loader\n1,380 Standards + Whitelist + QCOs")]
     end
 
-    Client -->|Upload File or Text| R1
+    Client --> Security
+    Security --> API
     R1 --> N0
     N0 --> N1
     N1 --> N2
     N2 -->|Structured Requirement| UI2
     UI2 -->|Confirmed Spec| R2
-    R2 --> N3
-    
-    N3 <-->|Dense Semantic Search| QD
-    N3 <-->|Sparse Lexical Search| PG
-    N3 <-->|1 & 2 Hop Graph Expansion| N4J
-    N3 <-->|Offline Catalog Fallback| MEM
 
-    N3 --> N4
-    N4 <-->|Whitelist & QCO Match| MEM
-    N4 --> N5
-    N5 -->|Persist Audit Record| PG
-    N5 -->|Ranked Recommendations| UI3
+    R2 --> SEG
+    SEG -->|Parallel Line-Item Execution| Pipeline
+    R3 --> BC
+    BC <--> MEM
+
+    N3 <-->|Dense Semantic Search| QD
+    N3 <-->|Sparse Lexical & BM25| PG
+    N3 <-->|1 & 2 Hop Graph Expansion| N4J
+    N3 <-->|In-Memory Fallback| MEM
+
+    N4 <-->|Whitelist & 6-Scheme QCOs| MEM
+    N5 -->|Persist Audit Record (SHA-256)| PG
+    N5 -->|Unified & Per-Item Results| UI3
+    BC -->|Verdict & Gap Analysis| UI4
 ```
 
 ---
@@ -135,34 +155,39 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-    subgraph Input["1. Tender Input"]
+    subgraph Input["1. Tender Ingestion & Segmentation"]
         RAW["Raw Spec Text\nor Tender PDF"]
+        SEG["Segmenter\n• Numbered Lists\n• Bullet Points\n• Table Rows\n• Semicolons"]
     end
 
-    subgraph QueryOpt["2. Query Expansion"]
+    subgraph QueryOpt["2. Query Normalization & Extraction"]
+        LIT["Literal Code Parser\n(Rejects units 'is 300mm')"]
         THE["Thesaurus & Synonyms\n• CPWD DSR 2023\n• GeM Taxonomy\n• Hindi Synonyms"]
-        LLM_EXT["Structured Extraction\n• Product & Material\n• Ratings & Dimensions\n• Category Hints"]
+        LLM_EXT["Structured Extraction\n• Product & Material\n• Ratings & Specs\n• Category Hints"]
     end
 
     subgraph RetrievalTriad["3. Hybrid Retrieval Triad"]
         direction TB
         VEC["Qdrant Vector Engine\n• Cosine Similarity\n• all-MiniLM-L6-v2"]
-        FTS["Postgres Full-Text\n• tsvector / tsquery\n• Literal IS code boost"]
+        FTS["Postgres FTS & BM25\n• Field-Weighted Scoring\n• Boilerplate Filtering"]
         GRAPH["Neo4j Knowledge Graph\n• References\n• Testing codes\n• Allied standards"]
     end
 
-    subgraph Guardrail["4. Compliance Guardrail"]
+    subgraph Guardrail["4. 6-Scheme Regulatory Guardrails"]
         direction TB
         WL{"On Whitelist?"}
-        STATUS{"Status Check"}
-        QCO["QCO Compliance\n• Mandatory Schemes\n• Gazette Orders"]
+        STATUS{"Status Check\nActive / Withdrawn"}
+        QCO["6-Scheme BIS Rules\n• Scheme-I (ISI Mark)\n• Scheme-II (CRS)\n• Scheme-IV (CoC)\n• FMCS / Scheme-X\n• Eco-Mark & Scheme-HM"]
     end
 
-    subgraph Generation["5. Explainable Output"]
-        REASON["Gemini 2.5 Flash\n• Clause-level Reasoning\n• Confidence Adjustment\n• Successor Standards"]
+    subgraph Generation["5. Explainable Output & Spec Generation"]
+        SPEC["Deterministic spec_line\n(Ready-to-copy tender clause)"]
+        REASON["Clause Reasoning\n& Calibrated Confidence"]
+        PER_ITEM["Per-Item & Union Output\n+ SHA-256 Audit Log"]
     end
 
-    RAW --> THE --> LLM_EXT
+    RAW --> SEG
+    SEG --> LIT --> THE --> LLM_EXT
     LLM_EXT --> VEC
     LLM_EXT --> FTS
     LLM_EXT --> GRAPH
@@ -171,10 +196,12 @@ flowchart LR
     FTS --> WL
     GRAPH --> WL
 
-    WL -- No --> DROP["Dropped (Hallucination Guard)"]
+    WL -- No --> DROP["Dropped (Anti-Hallucination)"]
     WL -- Yes --> STATUS
-    STATUS --> QCO --> REASON
+    STATUS --> QCO --> SPEC --> REASON --> PER_ITEM
 ```
+
+---
 
 ### The 6 Pipeline Nodes Explained:
 

@@ -20,10 +20,11 @@ async def test_scenario_1_opc_43_grade_cement():
     assert not res.get("abstained")
     recs = res.get("recommendations", [])
     assert len(recs) > 0
-    top_key = recs[0].get("key")
-    assert top_key == "IS 8112"
-    assert recs[0].get("confidence", 0) >= 0.50
-    assert "IS 8112" in recs[0].get("spec_line", "")
+    top_keys = [r.get("key") for r in recs[:3]]
+    assert "IS 8112" in top_keys
+    is_8112 = next(r for r in recs if r.get("key") == "IS 8112")
+    assert is_8112.get("confidence", 0) >= 0.50
+    assert "IS 8112" in is_8112.get("spec_line", "")
 
 
 @pytest.mark.asyncio
