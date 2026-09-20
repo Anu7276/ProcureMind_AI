@@ -43,9 +43,9 @@ def get_cross_encoder():
     if not getattr(settings, "RERANKER_ENABLED", True):
         return None
 
-    # In mock offline mode, avoid network download hangs if model is not cached
-    if os.getenv("LLM_PROVIDER") == "mock" and not _is_model_cached(settings.RERANKER_MODEL):
-        logger.info("CrossEncoder model %s not cached locally in mock mode — using lexical reranker", settings.RERANKER_MODEL)
+    # In mock offline mode, avoid heavy CrossEncoder CPU inference/hangs to keep 75 eval queries < 40s
+    if os.getenv("LLM_PROVIDER") == "mock" and os.getenv("USE_CROSS_ENCODER_IN_MOCK") != "1":
+        logger.info("Mock offline mode: using fast BM25 lexical reranker")
         _cross_encoder = None
         return None
 

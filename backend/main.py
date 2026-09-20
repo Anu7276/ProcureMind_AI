@@ -39,14 +39,16 @@ async def lifespan(app: FastAPI):
     kl.load_all()
     logger.info("Knowledge files loaded: %d standards in memory", len(kl.STANDARDS_BY_KEY))
 
-    # 2. Warm up embedder (downloads model on first run, ~90MB for MiniLM)
-    try:
-        from ai.llm.llm_factory import get_embedder
-        embedder = get_embedder()
-        _ = embedder.encode_one("warm-up")
-        logger.info("Embedder warmed up: %s / %s", settings.EMBEDDING_MODEL, settings.EMBEDDING_MODEL_NAME)
-    except Exception as exc:
-        logger.warning("Embedder warm-up failed (non-fatal): %s", exc)
+    # 2. Warm up embedder (skip in mock mode to allow instant offline startup)
+    import os
+    if os.getenv("LLM_PROVIDER") != "mock":
+        try:
+            from ai.llm.llm_factory import get_embedder
+            embedder = get_embedder()
+            _ = embedder.encode_one("warm-up")
+            logger.info("Embedder warmed up: %s / %s", settings.EMBEDDING_MODEL, settings.EMBEDDING_MODEL_NAME)
+        except Exception as exc:
+            logger.warning("Embedder warm-up failed (non-fatal): %s", exc)
 
     # 3. Log LLM provider
     logger.info("LLM provider: %s / %s", settings.LLM_PROVIDER, settings.llm_model_name)

@@ -147,7 +147,10 @@ def get_embedder():
 
     if provider == "sentence-transformers":
         from sentence_transformers import SentenceTransformer
-        _embedder = _STEmbedder(SentenceTransformer(model_name))
+        try:
+            _embedder = _STEmbedder(SentenceTransformer(model_name, local_files_only=True))
+        except Exception:
+            _embedder = _STEmbedder(SentenceTransformer(model_name))
 
     elif provider == "openai":
         from langchain_openai import OpenAIEmbeddings
