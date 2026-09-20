@@ -1,6 +1,5 @@
 -- ═══════════════════════════════════════════════════════════════
--- BIS Standards Recommendation Engine — PostgreSQL Schema
--- Auto-executed by Docker on first container start.
+-- BIS Standards Recommendation Engine — 001 Initial Schema
 -- ═══════════════════════════════════════════════════════════════
 
 -- ── Standards metadata ────────────────────────────────────────
@@ -28,7 +27,6 @@ CREATE INDEX IF NOT EXISTS idx_standards_status          ON standards(status);
 CREATE INDEX IF NOT EXISTS idx_standards_category        ON standards(category);
 CREATE INDEX IF NOT EXISTS idx_standards_verification    ON standards(verification_level);
 CREATE INDEX IF NOT EXISTS idx_standards_display_code    ON standards(display_code);
--- Full-text search index on title for keyword fallback in Node03
 CREATE INDEX IF NOT EXISTS idx_standards_title_fts
     ON standards USING gin(to_tsvector('english', title));
 
@@ -73,7 +71,7 @@ CREATE TABLE IF NOT EXISTS product_rules (
     product      TEXT NOT NULL,
     category     VARCHAR(100),
     subcategory  VARCHAR(100),
-    state        VARCHAR(100),      -- e.g. "Mandatory Certification"
+    state        VARCHAR(100),
     standard_key VARCHAR(150),
     standard_raw VARCHAR(150),
     context      TEXT,
@@ -84,7 +82,6 @@ CREATE INDEX IF NOT EXISTS idx_product_rules_standard_key ON product_rules(stand
 CREATE INDEX IF NOT EXISTS idx_product_rules_product      ON product_rules(product);
 
 -- ── Recommendation audit log ──────────────────────────────────
--- Written by Node05 on every /recommend call.
 CREATE TABLE IF NOT EXISTS recommendation_log (
     id                     SERIAL PRIMARY KEY,
     audit_id               UUID UNIQUE NOT NULL,

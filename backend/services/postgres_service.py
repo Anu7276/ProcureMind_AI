@@ -180,6 +180,50 @@ async def get_certification_scheme(scheme_code: str) -> Optional[Dict[str, Any]]
         return None
 
 
+# ── Migrations ────────────────────────────────────────────────────────────────
+
+async def run_pending_migrations() -> None:
+    """Run pending SQL migrations from database/migrations/."""
+    try:
+        if not await is_available():
+            logger.debug("PostgreSQL not available — skipping migrations")
+            return
+        from pathlib import Path
+        migrations_dir = Path("database/migrations")
+        if not migrations_dir.exists():
+            return
+
+        async with get_session() as s:
+            await s.execute(text("""
+                CREATE TABLE IF NOT EXISTS schema_migrations (
+                    version VARCHAR(100) PRIMARY KEY,
+                    applied_at TIMESTAMPTZ DEFAULT NOW()
+                )
+            """))
+            await s.commit()
+
+            res = await s.execute(text("SELECT version FROM schema_migrations"))
+            applied = {r[0] for r in res.fetchall()}
+
+            for sql_file in sorted(migrations_dir.glob("*.sql")):
+                if sql_file.name not in applied:
+                    logger.info("Applying database migration %s", sql_file.name)
+                    sql_content = sql_file.read_text(encoding="utf-8")
+                    # Split statements carefully
+                    for statement in sql_content.split(";"):
+                        stmt = statement.strip()
+                        if stmt:
+                            await s.execute(text(stmt))
+                    await s.execute(
+                        text("INSERT INTO schema_migrations (version) VALUES (:v)"),
+                        {"v": sql_file.name},
+                    )
+                    await s.commit()
+            logger.info("Database migrations check complete")
+    except Exception as exc:
+        logger.warning("run_pending_migrations failed: %s", exc)
+
+
 # ── Recommendation log ────────────────────────────────────────────────────────
 
 async def write_recommendation_log(
@@ -194,14 +238,10 @@ async def write_recommendation_log(
     abstain_reason: Optional[str] = None,
     top_match_strength: Optional[float] = None,
     closest_matches_codes: Optional[List[str]] = None,
-) -> None:
-    """Write a structured audit row to recommendation_log.
+) -> bool:
+    """Write or update a structured audit row in recommendation_log.
 
-    Columns written (all JSON-serialised where needed):
-        audit_id, query_text, input_type, structured_requirement,
-        returned_codes, pipeline_warnings, top_confidence,
-        abstained, abstain_reason, top_match_strength, closest_matches_codes
-    Falls back gracefully if the extra columns don't exist yet in the schema.
+    Returns True if successfully written/updated, False otherwise.
     """
     import json
     payload = {
@@ -226,16 +266,25 @@ async def write_recommendation_log(
                          returned_codes, pipeline_warnings, top_confidence,
                          abstained, abstain_reason, top_match_strength, closest_matches_codes)
                     VALUES
-                        (:audit_id, :query_text, :input_type, :structured_requirement::jsonb,
-                         :returned_codes::jsonb, :pipeline_warnings::jsonb, :top_confidence,
-                         :abstained, :abstain_reason, :top_match_strength, :closest_matches_codes::jsonb)
-                    ON CONFLICT (audit_id) DO NOTHING
+                        (CAST(:audit_id AS uuid), :query_text, :input_type, CAST(:structured_requirement AS jsonb),
+                         CAST(:returned_codes AS jsonb), CAST(:pipeline_warnings AS jsonb), :top_confidence,
+                         :abstained, :abstain_reason, :top_match_strength, CAST(:closest_matches_codes AS jsonb))
+                    ON CONFLICT (audit_id) DO UPDATE SET
+                        returned_codes = EXCLUDED.returned_codes,
+                        structured_requirement = EXCLUDED.structured_requirement,
+                        pipeline_warnings = EXCLUDED.pipeline_warnings,
+                        top_confidence = EXCLUDED.top_confidence,
+                        abstained = EXCLUDED.abstained,
+                        abstain_reason = EXCLUDED.abstain_reason,
+                        top_match_strength = EXCLUDED.top_match_strength,
+                        closest_matches_codes = EXCLUDED.closest_matches_codes
                 """),
                 payload,
             )
             await s.commit()
+            return True
     except Exception as exc:
-        # Try minimal schema (without new columns) for backward compat
+        # Try fallback for minimal schema if needed
         try:
             async with get_session() as s:
                 await s.execute(
@@ -244,16 +293,22 @@ async def write_recommendation_log(
                             (audit_id, query_text, input_type, structured_requirement,
                              returned_codes, pipeline_warnings, top_confidence)
                         VALUES
-                            (:audit_id, :query_text, :input_type, :structured_requirement::jsonb,
-                             :returned_codes::jsonb, :pipeline_warnings::jsonb, :top_confidence)
-                        ON CONFLICT (audit_id) DO NOTHING
+                            (CAST(:audit_id AS uuid), :query_text, :input_type, CAST(:structured_requirement AS jsonb),
+                             CAST(:returned_codes AS jsonb), CAST(:pipeline_warnings AS jsonb), :top_confidence)
+                        ON CONFLICT (audit_id) DO UPDATE SET
+                            returned_codes = EXCLUDED.returned_codes,
+                            structured_requirement = EXCLUDED.structured_requirement,
+                            pipeline_warnings = EXCLUDED.pipeline_warnings,
+                            top_confidence = EXCLUDED.top_confidence
                     """),
                     {k: payload[k] for k in ["audit_id","query_text","input_type","structured_requirement",
                                               "returned_codes","pipeline_warnings","top_confidence"]},
                 )
                 await s.commit()
+                return True
         except Exception as inner_exc:
-            logger.debug("write_recommendation_log failed (non-fatal): %s | inner: %s", exc, inner_exc)
+            logger.warning("write_recommendation_log failed: %s | inner: %s", exc, inner_exc)
+            return False
 
 
 async def close():

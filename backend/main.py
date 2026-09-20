@@ -56,6 +56,8 @@ async def lifespan(app: FastAPI):
     # 4. Check DB connectivity (non-blocking — warn only)
     from backend.services import postgres_service, qdrant_service, neo4j_service
     pg_ok = await postgres_service.is_available()
+    if pg_ok:
+        await postgres_service.run_pending_migrations()
     qd_ok, _ = await qdrant_service.is_available()
     n4_ok, _ = await neo4j_service.is_available()
     logger.info("Store status — PostgreSQL: %s, Qdrant: %s, Neo4j: %s", pg_ok, qd_ok, n4_ok)

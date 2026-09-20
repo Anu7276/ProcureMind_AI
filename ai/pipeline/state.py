@@ -50,6 +50,7 @@ class PipelineState(TypedDict, total=False):
     abstained: bool
     abstain_reason: str
     closest_matches: List[Dict[str, Any]]
+    audit_saved: bool
 
     # ── Cross-cutting ──────────────────────────────────────────────────────────
     pipeline_warnings: List[str]
