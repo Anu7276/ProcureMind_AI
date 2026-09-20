@@ -362,51 +362,69 @@ Multi-modal file ingestion endpoint. Accepts `.pdf`, `.docx`, or images and retu
 
 ---
 
-### 3. `GET /standard/{key}`
+### 3. `POST /bid-check`
+Technical bid compliance evaluation endpoint. Compares submitted vendor certificates, CM/L or CRS license numbers, and standards against tender requirements.
+
+**Sample Request**:
+```json
+{
+  "required_standards": ["IS 1786", "IS 8112"],
+  "vendor_submission": {
+    "vendor_name": "Apex Infra Supplies Ltd",
+    "submitted_codes": ["IS 1786:2008", "IS 8112:2013"],
+    "license_numbers": ["CM/L-1234567890", "CM/L-9876543210"],
+    "test_certificate_dates": ["2026-08-01", "2026-08-15"]
+  }
+}
+```
+
+---
+
+### 4. `GET /standard/{key}`
 Direct lookup endpoint for any Indian Standard. Returns complete metadata, certification rules, and graph neighbors.
 
 **Example**: `GET /standard/IS%201786`
 
 ---
 
-### 4. `GET /health`
-Diagnostics endpoint checking status and latency for PostgreSQL, Qdrant, and Neo4j.
+### 5. `GET /health`, `GET /healthz`, `GET /readyz`
+- `/health`: Detailed diagnostics checking latency for PostgreSQL, Qdrant, and Neo4j.
+- `/healthz`: Lightweight liveness probe returning `200 OK`.
+- `/readyz`: Kubernetes readiness probe verifying standards catalog loading.
 
 ---
 
 ## 🧪 Evaluation & Benchmarks
 
-The engine includes a dedicated automated evaluation harness benchmarking **Recall@5** and **Recall@1** against **75 ground-truth procurement queries** spanning all major sectors (Civil, Electrical, Solar, Mechanical, Chemicals, Electronics).
+The engine includes an automated evaluation harness benchmarking against both the **75 ground-truth procurement queries** (`queries_master.json`) and the **realistic 60-query set** with 20 out-of-scope hard negatives (`queries_realistic.json`).
 
 ### Running the Evaluation
 ```powershell
-python ai/evaluation/eval_runner.py
+# Standard 75-query benchmark with delta against baseline
+python ai/evaluation/eval_runner.py --compare ai/evaluation/baseline.json
+
+# Realistic holdout evaluation
+python ai/evaluation/eval_runner.py --realistic holdout
 ```
 
-### Benchmark Results
-- **Overall Queries**: 75
-- **Target Recall@5**: $\ge 70\%$
-- **Offline Catalog Benchmark**: $\ge 82.7\%$
-- **Tri-Store Hybrid RAG Benchmark**: $\ge 91.4\%$
+### Benchmark Results (Before vs. After Optimization)
 
-```
-============================================================
-BIS Standards Recommendation Engine — Eval Report
-============================================================
-  Queries evaluated : 75
-  recall@5          : 91.4%  (68/75)
-  recall@1          : 74.7%  (56/75)
+| Metric | Baseline | Current Engine | Improvement |
+| :--- | :--- | :--- | :--- |
+| **Exact Recall@1** | 10.7% | **64.0%** | **+53.3%** |
+| **Exact Recall@3** | 40.0% | **77.3%** | **+37.3%** |
+| **Exact Recall@5** | 73.3% | **81.3%** | **+8.0%** |
+| **Exact MRR** | 0.309 | **0.714** | **+0.405** |
+| **Family Recall@1** | 17.3% | **76.0%** | **+58.7%** |
+| **Family Recall@3** | 53.3% | **89.3%** | **+36.0%** |
+| **Family Recall@5** | 86.7% | **93.3%** | **+6.7%** |
+| **Family MRR** | 0.406 | **0.836** | **+0.430** |
 
--- Per-category breakdown --
-Category               Queries    Hits@5    Recall@5
--------------------  ---------  --------  ----------
-Civil & Construction        20        19       95.0%
-Electrical                  18        17       94.4%
-Solar Energy                12        11       91.7%
-Mechanical                  15        13       86.7%
-Electronics & IT            10         8       80.0%
-============================================================
-```
+#### Realistic Holdout & Abstention Metrics
+- **Abstention Precision**: `80.0%`
+- **Abstention Recall**: `80.0%`
+- **Abstention F1 Score**: `0.800`
+- **In-Scope Family Recall@5**: `85.0%`
 
 ---
 
@@ -415,16 +433,21 @@ Electronics & IT            10         8       80.0%
 ```
 ProcureMind AI/
 ├── ai/
-│   ├── evaluation/               # 75-query evaluation runner & benchmark suite
-│   │   ├── eval_runner.py        # Automated test executor
-│   │   └── eval_queries.json     # Curated procurement evaluation queries
+│   ├── evaluation/               # Evaluation runner & benchmark datasets
+│   │   ├── eval_runner.py        # Automated test executor & comparator
+│   │   ├── queries_master.json   # 75 curated evaluation queries
+│   │   └── queries_realistic.json# 60 realistic queries (40 in-scope, 20 hard negatives)
 │   ├── knowledge/                # In-memory standards knowledge base
-│   │   └── knowledge_loader.py   # Catalog indexer, thesaurus loader, graph cache
+│   │   ├── knowledge_loader.py   # BM25 indexer, thesaurus loader, graph cache
+│   │   ├── text_utils.py         # Tokenizer & procurement stopwords
+│   │   └── version_checker.py    # Successor & amendment status validator
 │   ├── llm/                      # Multi-provider LLM abstraction
 │   │   ├── llm_factory.py        # Factory for Gemini, Groq, OpenAI, Anthropic
-│   │   ├── mock_llm.py           # Smart offline fallback LLM generator
-│   │   └── prompts.py            # Calibrated extraction & reasoning prompt templates
+│   │   ├── mock_llm.py           # Offline fallback LLM generator
+│   │   └── prompts.py            # Calibrated extraction & reasoning prompts
 │   └── pipeline/                 # LangGraph state machine nodes
+│       ├── bid_check.py          # Technical bid compliance engine
+│       ├── segmenter.py          # Multi-item tender parser
 │       ├── graph.py              # Compiled LangGraph workflow topology
 │       ├── state.py              # PipelineState TypedDict definition
 │       └── nodes/                # Execution nodes 00 through 05
@@ -436,12 +459,15 @@ ProcureMind AI/
 │           └── node_05_recommend.py
 ├── backend/
 │   ├── api/routes/               # FastAPI route controllers
-│   │   ├── health.py             # System health & store latency diagnostics
+│   │   ├── bid_check.py          # Vendor bid check endpoint
+│   │   ├── health.py             # System health, healthz & readyz probes
 │   │   ├── ingest.py             # File upload and OCR ingest handler
 │   │   ├── recommend.py          # Primary recommendation controller
 │   │   └── standard.py           # Single-standard drilldown & graph neighbours
 │   ├── config/                   # Configuration & environment settings
 │   │   └── settings.py           # Pydantic BaseSettings singleton
+│   ├── middleware/
+│   │   └── security.py           # Trusted-proxy rate limiting & API key auth
 │   ├── models/                   # SQLAlchemy ORM models
 │   ├── schemas/                  # Pydantic request/response schemas
 │   │   └── api_schemas.py
@@ -450,6 +476,13 @@ ProcureMind AI/
 │   │   ├── postgres_service.py   # Async SQLAlchemy / asyncpg engine
 │   │   └── qdrant_service.py     # Async Qdrant vector client
 │   └── main.py                   # FastAPI application lifespan & CORS setup
+├── tests/                        # 86 automated PyTest unit & integration tests
+│   ├── test_procurement_report.py# 8 core procurement scenarios
+│   ├── test_multi_item_segmenter.py
+│   ├── test_bid_check.py
+│   ├── test_certification_schemes.py
+│   ├── test_security_and_health.py
+│   └── ...
 ├── database/
 │   ├── ingestion/                # Bulk data ingestion scripts
 │   │   ├── ingest_all.py         # Orchestrator for all three stores

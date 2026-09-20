@@ -61,3 +61,22 @@ async def health_check():
         embedding_model=f"{settings.EMBEDDING_MODEL}/{settings.EMBEDDING_MODEL_NAME}",
         standards_loaded=len(kl.STANDARDS_BY_KEY),
     )
+
+
+@router.get("/healthz")
+async def healthz():
+    """Liveness probe: returns 200 OK immediately if the service process is up."""
+    return {"status": "alive"}
+
+
+@router.get("/readyz")
+async def readyz():
+    """Readiness probe: returns 200 OK if in-memory knowledge is loaded, 503 otherwise."""
+    from fastapi.responses import JSONResponse
+    standards_count = len(kl.STANDARDS_BY_KEY)
+    if standards_count > 0:
+        return {"status": "ready", "standards_loaded": standards_count}
+    return JSONResponse(
+        status_code=503,
+        content={"status": "not_ready", "error": "Standards catalog is not loaded into memory."},
+    )

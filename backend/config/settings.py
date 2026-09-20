@@ -127,6 +127,18 @@ class Settings(BaseSettings):
         "http://localhost:3000",
     ]
 
+    # ── Security & Authentication ─────────────────────────────────
+    API_KEY: str = ""
+    TRUSTED_PROXIES: List[str] = [
+        "127.0.0.1",
+        "::1",
+        "localhost",
+        "10.0.0.0/8",
+        "172.16.0.0/12",
+        "192.168.0.0/16",
+    ]
+    MAX_QUERY_CHARS: int = 20_000
+
     # ── Retrieval & Reranker tuning ───────────────────────────────
     RETRIEVE_CANDIDATES: int = 20
     RETRIEVE_TOP_K: int = 10
