@@ -102,27 +102,27 @@ flowchart TD
     end
 
     subgraph Segmenter["Multi-Item RFP Parser"]
-        SEG["📦 ai/pipeline/segmenter.py\n(Numbered, Bullets, Tables, Semicolons)"]
+        SEG["📦 ai/pipeline/segmenter.py<br/>(Numbered, Bullets, Tables, Semicolons)"]
     end
 
     subgraph Pipeline["LangGraph 6-Node Orchestration Engine"]
-        N0["Node 0: Document Understanding\n(Docling / Tesseract OCR / PyPDF)"]
-        N1["Node 1: Ingest, Literal Codes & Thesaurus\n(CPWD DSR + GeM + Stopwords + Hindi)"]
-        N2["Node 2: Structured Entity Extraction\n(Gemini 2.5 Flash / Groq / OpenAI)"]
-        N3["Node 3: Hybrid Tri-Store Retrieval\n(Vector + Field-Weighted BM25 + Graph)"]
-        N4["Node 4: 6-Scheme Verification & Compliance\n(Scheme-I/II/IV/X/Eco/HM + Whitelist)"]
-        N5["Node 5: Explainable Reasoning & Spec Line\n(Deterministic spec_line + Calibrated Conf)"]
+        N0["Node 0: Document Understanding<br/>(Docling / Tesseract OCR / PyPDF)"]
+        N1["Node 1: Ingest, Literal Codes & Thesaurus<br/>(CPWD DSR + GeM + Stopwords + Hindi)"]
+        N2["Node 2: Structured Entity Extraction<br/>(Gemini 2.5 Flash / Groq / OpenAI)"]
+        N3["Node 3: Hybrid Tri-Store Retrieval<br/>(Vector + Field-Weighted BM25 + Graph)"]
+        N4["Node 4: 6-Scheme Verification & Compliance<br/>(Scheme-I/II/IV/X/Eco/HM + Whitelist)"]
+        N5["Node 5: Explainable Reasoning & Spec Line<br/>(Deterministic spec_line + Calibrated Conf)"]
     end
 
     subgraph BidEngine["Compliance & Bid Verification"]
-        BC["📋 ai/pipeline/bid_check.py\n(CM/L, CRS, <180d Certs, Successors)"]
+        BC["📋 ai/pipeline/bid_check.py<br/>(CM/L, CRS, <180d Certs, Successors)"]
     end
 
     subgraph Storage["Tri-Store Persistence & Knowledge Core"]
-        QD[("🔴 Qdrant Vector DB\n384-dim MiniLM Embeddings")]
-        PG[("🔵 PostgreSQL 16 / SQLite\nStandards FTS + SHA-256 Audit Logs")]
-        N4J[("🟢 Neo4j 5 Graph DB\n836 Relationships")]
-        MEM[("⚡ In-Memory Knowledge Loader\n1,380 Standards + Whitelist + QCOs")]
+        QD[("🔴 Qdrant Vector DB<br/>384-dim MiniLM Embeddings")]
+        PG[("🔵 PostgreSQL 16 / SQLite<br/>Standards FTS + SHA-256 Audit Logs")]
+        N4J[("🟢 Neo4j 5 Graph DB<br/>836 Relationships")]
+        MEM[("⚡ In-Memory Knowledge Loader<br/>1,380 Standards + Whitelist + QCOs")]
     end
 
     Client --> Security
@@ -130,23 +130,23 @@ flowchart TD
     R1 --> N0
     N0 --> N1
     N1 --> N2
-    N2 -->|Structured Requirement| UI2
-    UI2 -->|Confirmed Spec| R2
+    N2 -->|"Structured Requirement"| UI2
+    UI2 -->|"Confirmed Spec"| R2
 
     R2 --> SEG
-    SEG -->|Parallel Line-Item Execution| Pipeline
+    SEG -->|"Parallel Item Processing"| N0
     R3 --> BC
     BC <--> MEM
 
-    N3 <-->|Dense Semantic Search| QD
-    N3 <-->|Sparse Lexical & BM25| PG
-    N3 <-->|1 & 2 Hop Graph Expansion| N4J
-    N3 <-->|In-Memory Fallback| MEM
+    N3 <-->|"Dense Semantic Search"| QD
+    N3 <-->|"Sparse Lexical & BM25"| PG
+    N3 <-->|"1 & 2 Hop Graph Expansion"| N4J
+    N3 <-->|"In-Memory Fallback"| MEM
 
-    N4 <-->|Whitelist & 6-Scheme QCOs| MEM
-    N5 -->|Persist Audit Record (SHA-256)| PG
-    N5 -->|Unified & Per-Item Results| UI3
-    BC -->|Verdict & Gap Analysis| UI4
+    N4 <-->|"Whitelist & 6-Scheme QCOs"| MEM
+    N5 -->|"Persist Audit Record"| PG
+    N5 -->|"Unified & Per-Item Results"| UI3
+    BC -->|"Verdict & Gap Analysis"| UI4
 ```
 
 ---
@@ -156,34 +156,34 @@ flowchart TD
 ```mermaid
 flowchart LR
     subgraph Input["1. Tender Ingestion & Segmentation"]
-        RAW["Raw Spec Text\nor Tender PDF"]
-        SEG["Segmenter\n• Numbered Lists\n• Bullet Points\n• Table Rows\n• Semicolons"]
+        RAW["Raw Spec Text<br/>or Tender PDF"]
+        SEG["Segmenter<br/>• Numbered Lists<br/>• Bullet Points<br/>• Table Rows<br/>• Semicolons"]
     end
 
     subgraph QueryOpt["2. Query Normalization & Extraction"]
-        LIT["Literal Code Parser\n(Rejects units 'is 300mm')"]
-        THE["Thesaurus & Synonyms\n• CPWD DSR 2023\n• GeM Taxonomy\n• Hindi Synonyms"]
-        LLM_EXT["Structured Extraction\n• Product & Material\n• Ratings & Specs\n• Category Hints"]
+        LIT["Literal Code Parser<br/>(Rejects units 'is 300mm')"]
+        THE["Thesaurus & Synonyms<br/>• CPWD DSR 2023<br/>• GeM Taxonomy<br/>• Hindi Synonyms"]
+        LLM_EXT["Structured Extraction<br/>• Product & Material<br/>• Ratings & Specs<br/>• Category Hints"]
     end
 
     subgraph RetrievalTriad["3. Hybrid Retrieval Triad"]
         direction TB
-        VEC["Qdrant Vector Engine\n• Cosine Similarity\n• all-MiniLM-L6-v2"]
-        FTS["Postgres FTS & BM25\n• Field-Weighted Scoring\n• Boilerplate Filtering"]
-        GRAPH["Neo4j Knowledge Graph\n• References\n• Testing codes\n• Allied standards"]
+        VEC["Qdrant Vector Engine<br/>• Cosine Similarity<br/>• all-MiniLM-L6-v2"]
+        FTS["Postgres FTS & BM25<br/>• Field-Weighted Scoring<br/>• Boilerplate Filtering"]
+        GRAPH["Neo4j Knowledge Graph<br/>• References<br/>• Testing codes<br/>• Allied standards"]
     end
 
     subgraph Guardrail["4. 6-Scheme Regulatory Guardrails"]
         direction TB
         WL{"On Whitelist?"}
-        STATUS{"Status Check\nActive / Withdrawn"}
-        QCO["6-Scheme BIS Rules\n• Scheme-I (ISI Mark)\n• Scheme-II (CRS)\n• Scheme-IV (CoC)\n• FMCS / Scheme-X\n• Eco-Mark & Scheme-HM"]
+        STATUS{"Status Check<br/>Active / Withdrawn"}
+        QCO["6-Scheme BIS Rules<br/>• Scheme-I (ISI Mark)<br/>• Scheme-II (CRS)<br/>• Scheme-IV (CoC)<br/>• FMCS / Scheme-X<br/>• Eco-Mark & Scheme-HM"]
     end
 
     subgraph Generation["5. Explainable Output & Spec Generation"]
-        SPEC["Deterministic spec_line\n(Ready-to-copy tender clause)"]
-        REASON["Clause Reasoning\n& Calibrated Confidence"]
-        PER_ITEM["Per-Item & Union Output\n+ SHA-256 Audit Log"]
+        SPEC["Deterministic spec_line<br/>(Ready-to-copy tender clause)"]
+        REASON["Clause Reasoning<br/>& Calibrated Confidence"]
+        PER_ITEM["Per-Item & Union Output<br/>+ SHA-256 Audit Log"]
     end
 
     RAW --> SEG
@@ -196,8 +196,8 @@ flowchart LR
     FTS --> WL
     GRAPH --> WL
 
-    WL -- No --> DROP["Dropped (Anti-Hallucination)"]
-    WL -- Yes --> STATUS
+    WL -- "No" --> DROP["Dropped (Anti-Hallucination)"]
+    WL -- "Yes" --> STATUS
     STATUS --> QCO --> SPEC --> REASON --> PER_ITEM
 ```
 
@@ -211,8 +211,8 @@ flowchart LR
 | **01** | **Ingest & Thesaurus** | Normalizes whitespace, detects input language, expands procurement terms using CPWD DSR 2023, GeM classification, and Hindi vernacular dictionaries. | Uses standard regex normalization if thesaurus files are missing. |
 | **02** | **Structured Extraction** | Prompts LLM to extract JSON: `product`, `material`, `specifications`, `performance_requirements`, `safety_requirements`, `application`, `category_hint`. | Rule-based regex and keyword entity extractor when LLM key is pending or network is down. |
 | **03** | **Hybrid Retrieve** | Executes parallel vector search (Qdrant), keyword search (PostgreSQL FTS), and graph expansion (Neo4j). Boosts explicitly mentioned IS codes. | Seamlessly falls back to pre-indexed in-memory catalog search across all 1,380 standards. |
-| **04** | **Verify & Comply** | Validates candidates against `is_code_whitelist_clean.json`. Resolves status (`ACTIVE`, `WITHDRAWN`, `SUPERSEDED`). Matches gazetted QCO rules. | In-memory QCO and whitelist indices ensure 100% operation without PostgreSQL. |
-| **05** | **Recommend & Audit** | LLM ranks candidates, computes calibrated confidence scores, and synthesizes 2–4 sentence clause-level explanations. Logs audit entry to DB. | Rule-based justification generator citing matched scope, grade, and mandatory certification. |
+| **04** | **Verify & Comply** | Validates candidates against `is_code_whitelist_clean.json`. Resolves status (`ACTIVE`, `WITHDRAWN`, `SUPERSEDED`). Matches gazetted QCO rules across all 6 BIS schemes. | In-memory QCO and whitelist indices ensure 100% operation without PostgreSQL. |
+| **05** | **Recommend & Audit** | LLM ranks candidates, computes calibrated confidence scores, generates deterministic `spec_line` tender clauses, and synthesizes clause-level explanations. Logs audit entry to DB. | Rule-based justification generator citing matched scope, grade, and mandatory certification. |
 
 ---
 
@@ -222,12 +222,12 @@ The Neo4j graph connects standards and their testing, safety, and regulatory dep
 
 ```mermaid
 graph TD
-    A["IS 1786:2008\n(High Strength Deformed Steel Bars)"]
-    B["IS 456:2000\n(Plain and Reinforced Concrete)"]
-    C["IS 1608 (Part 1):2018\n(Metallic Materials Tensile Testing)"]
-    D["IS 13920:2016\n(Ductile Design of Reinforced Concrete)"]
-    E["IS 8828:1996\n(Circuit Breakers - WITHDRAWN)"]
-    F["IS/IEC 60898 (Part 1)\n(Circuit Breakers - ACTIVE)"]
+    A["IS 1786:2008<br/>(High Strength Deformed Steel Bars)"]
+    B["IS 456:2000<br/>(Plain and Reinforced Concrete)"]
+    C["IS 1608 (Part 1):2018<br/>(Metallic Materials Tensile Testing)"]
+    D["IS 13920:2016<br/>(Ductile Design of Reinforced Concrete)"]
+    E["IS 8828:1996<br/>(Circuit Breakers - WITHDRAWN)"]
+    F["IS/IEC 60898 (Part 1)<br/>(Circuit Breakers - ACTIVE)"]
 
     A -- "ALLIED_TO" --> B
     A -- "REQUIRES_TESTING" --> C
