@@ -232,6 +232,17 @@ def _deterministic_fallback_reasoning(
     return " ".join(reasons)
 
 
+def _generate_clarification_prompt(cand: Dict[str, Any], req_summary: str) -> str:
+    """Generate a helpful clarification question when confidence is below 0.60."""
+    category = cand.get("category") or "General"
+    title = cand.get("title") or "the item"
+    return (
+        f"Recommendation confidence is moderate. To refine results for '{title}', "
+        f"please specify: (1) exact material grade/type, (2) dimensions, voltage, or capacity ratings, "
+        f"or (3) operating application ({category})."
+    )
+
+
 def _merge_reasoning(
     candidates: List[Dict],
     reasoning_items: List[Dict],
@@ -312,11 +323,16 @@ def _merge_reasoning(
             if r.get("key")
         ]
 
+        is_low_conf = conf < 0.60
+        clarification = _generate_clarification_prompt(cand, req_summary) if is_low_conf else None
+
         result.append({
             "is_code": cand.get("display_code", key),
             "key": key,
             "title": cand.get("title", ""),
             "confidence": conf,
+            "is_low_confidence": is_low_conf,
+            "clarification_prompt": clarification,
             "relevance_score": round(rel_score, 4),
             "verification_level": cand.get("verification_level", "single_source_unconfirmed"),
             "status": cand.get("status", "UNKNOWN"),
@@ -333,6 +349,11 @@ def _merge_reasoning(
             "evidence_clause": ev["evidence_clause"],
             "scope": ev["scope"],
         })
+
+    if result and result[0]["confidence"] < 0.60:
+        warnings.append(
+            "Low confidence advisory: Initial match confidence is moderate. Consider providing material grades or operating specs to refine recommendations."
+        )
 
     return result
 

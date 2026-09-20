@@ -331,5 +331,206 @@
   "Automotive & Transport": [
    "Automotive & Transport"
   ]
- }
+ },
+ "negative_keyword_rules": [
+  {
+   "trigger_keywords": [
+    "drinking water",
+    "potable water",
+    "drinking"
+   ],
+   "penalize_standards": [
+    "IS 14333",
+    "IS 14885"
+   ],
+   "penalty": 0.25,
+   "reason": "Drinking/potable water query penalizes sewerage or gas pipe standards."
+  },
+  {
+   "trigger_keywords": [
+    "sewerage",
+    "sewage",
+    "effluent",
+    "stormwater",
+    "drainage",
+    "culvert"
+   ],
+   "penalize_standards": [
+    "IS 4984",
+    "IS 4985"
+   ],
+   "penalty": 0.25,
+   "reason": "Sewerage/drainage query penalizes potable water pipe standards."
+  },
+  {
+   "trigger_keywords": [
+    "fuel gas",
+    "gas distribution",
+    "cng",
+    "png",
+    "lpg"
+   ],
+   "penalize_standards": [
+    "IS 4984",
+    "IS 4985",
+    "IS 14333"
+   ],
+   "penalty": 0.25,
+   "reason": "Fuel gas query penalizes water and sewage pipe standards."
+  },
+  {
+   "trigger_keywords": [
+    "galvanized iron",
+    "gi pipe",
+    "gi pipes",
+    "mild steel tube",
+    "mild steel tubes",
+    "steel pipe",
+    "steel pipes",
+    "welded steel",
+    "wrought steel"
+   ],
+   "penalize_standards": [
+    "IS 4984",
+    "IS 4985",
+    "IS 14333",
+    "IS 14885"
+   ],
+   "penalty": 0.20,
+   "reason": "Steel/GI metallic pipe query penalizes plastic/polyethylene pipe standards."
+  },
+  {
+   "trigger_keywords": [
+    "hdpe",
+    "upvc",
+    "cpvc",
+    "pvc pipe",
+    "pvc pipes",
+    "polyethylene pipe",
+    "polyethylene pipes"
+   ],
+   "penalize_standards": [
+    "IS 1239 (Part 1)",
+    "IS 1239 (Part 2)",
+    "IS 3589",
+    "IS 2062",
+    "IS 1538"
+   ],
+   "penalty": 0.20,
+   "reason": "Polymer/plastic pipe query penalizes metallic steel/iron pipe and fitting standards."
+  },
+  {
+   "trigger_keywords": [
+    "upvc",
+    "unplasticized pvc"
+   ],
+   "penalize_standards": [
+    "IS 15450",
+    "IS 1538"
+   ],
+   "penalty": 0.25,
+   "reason": "uPVC query penalizes CPVC and cast iron fittings."
+  },
+  {
+   "trigger_keywords": [
+    "cpvc",
+    "chlorinated polyvinyl"
+   ],
+   "penalize_standards": [
+    "IS 4985",
+    "IS 1538"
+   ],
+   "penalty": 0.25,
+   "reason": "CPVC query penalizes uPVC and cast iron fittings."
+  },
+  {
+   "trigger_keywords": [
+    "portland pozzolana",
+    "pozzolana",
+    "ppc",
+    "fly ash based",
+    "fly ash"
+   ],
+   "penalize_standards": [
+    "IS 8112",
+    "IS 12269",
+    "IS 269"
+   ],
+   "penalty": 0.20,
+   "reason": "PPC/pozzolana query penalizes OPC cement standards."
+  },
+  {
+   "trigger_keywords": [
+    "ordinary portland",
+    "opc 43",
+    "opc 53",
+    "opc 33",
+    "43 grade",
+    "53 grade",
+    "33 grade"
+   ],
+   "penalize_standards": [
+    "IS 1489 (Part 1)",
+    "IS 1489 (Part 2)"
+   ],
+   "penalty": 0.20,
+   "reason": "OPC grade query penalizes PPC cement standards."
+  },
+  {
+   "trigger_keywords": [
+    "luminaire",
+    "street lighting",
+    "led lamp",
+    "led luminaire",
+    "bulb",
+    "lamp"
+   ],
+   "penalize_standards": [
+    "IS 694",
+    "IS 7098 (Part 1)",
+    "IS 1554 (Part 1)"
+   ],
+   "penalty": 0.20,
+   "reason": "Lighting/luminaire query penalizes building wire/cable standards."
+  },
+  {
+   "trigger_keywords": [
+    "photovoltaic",
+    "pv module",
+    "solar panel",
+    "solar cell",
+    "solar pv"
+   ],
+   "penalize_standards": [
+    "IS 12933",
+    "IS 13129"
+   ],
+   "penalty": 0.20,
+   "reason": "Solar PV query penalizes solar thermal/water heating standards."
+  },
+  {
+   "trigger_keywords": [
+    "landing valve",
+    "internal fire hydrant",
+    "fire hydrant"
+   ],
+   "penalize_standards": [
+    "IS 15683"
+   ],
+   "penalty": 0.20,
+   "reason": "Fire hydrant/landing valve query penalizes portable fire extinguisher standards."
+  },
+  {
+   "trigger_keywords": [
+    "portable fire extinguisher",
+    "fire extinguisher",
+    "extinguishers dry powder"
+   ],
+   "penalize_standards": [
+    "IS 5290"
+   ],
+   "penalty": 0.20,
+   "reason": "Portable fire extinguisher query penalizes landing valve standards."
+  }
+ ]
 }

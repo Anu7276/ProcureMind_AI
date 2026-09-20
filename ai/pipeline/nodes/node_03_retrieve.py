@@ -358,6 +358,28 @@ def _reciprocal_rank_fusion(
     return fused_candidates, active_sources
 
 
+def _build_fallback_query(query_text: str, req: Dict[str, Any], category_hint: Optional[str]) -> str:
+    """Build a broader fallback query when initial retrieval confidence is low."""
+    parts = []
+    prod = req.get("product")
+    if prod:
+        parts.append(str(prod))
+    mat = req.get("material")
+    if mat:
+        parts.append(str(mat))
+    app = req.get("application")
+    if app:
+        parts.append(str(app))
+    if category_hint:
+        domain_kws = kl.DOMAIN_KEYWORDS.get(category_hint, [])
+        if domain_kws:
+            parts.extend(domain_kws[:3])
+    if not parts:
+        tokens = tokenize(query_text)
+        parts = tokens[:5]
+    return " ".join(parts)
+
+
 # ── Node 03 Main Entrypoint ──────────────────────────────────────────────────
 
 async def node_03_retrieve(state: PipelineState) -> dict:
@@ -463,6 +485,25 @@ async def node_03_retrieve(state: PipelineState) -> dict:
 
     # Keep final_top_k after boosts
     candidates = candidates[:final_top_k]
+
+    # ── Step 6: Self-Correction Fallback Expansion (Phase 9) ───────────────────
+    # If initial retrieval yields zero candidates or low confidence (top_score < 0.35),
+    # trigger broad fallback search using domain keywords or product synonyms.
+    if not candidates or (candidates and float(candidates[0].get("score", 0.0)) < 0.35):
+        fallback_query = _build_fallback_query(query_text, req, category_hint)
+        if fallback_query and fallback_query != query_text:
+            logger.info("Node03: executing self-correction fallback retrieval for query: '%s'", fallback_query)
+            fallback_candidates = _search_standards_in_memory(fallback_query, top_k=retrieve_top_n)
+            if fallback_candidates:
+                warnings.append("Low-confidence retrieval triggered self-correction fallback expansion")
+                seen = {c.get("key") for c in candidates}
+                for fc in fallback_candidates:
+                    if fc.get("key") not in seen:
+                        fc["score"] = round(float(fc.get("score", 0.4)) * 0.8, 4)
+                        fc["source"] = "self_correction_fallback"
+                        candidates.append(fc)
+                        seen.add(fc.get("key"))
+                candidates = candidates[:final_top_k]
 
     # ── Step 5: Knowledge Graph Expansion (Neo4j / in-memory) ─────────────────
     if candidates:

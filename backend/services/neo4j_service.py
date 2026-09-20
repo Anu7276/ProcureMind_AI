@@ -46,11 +46,34 @@ _last_avail_result: Tuple[bool, Optional[float]] = (False, None)
 
 # ── Availability check ────────────────────────────────────────────────────────
 
+def _is_neo4j_port_open(timeout: float = 0.1) -> bool:
+    import socket
+    from urllib.parse import urlparse
+    try:
+        url = settings.NEO4J_URI.replace("bolt://", "http://").replace("neo4j://", "http://")
+        parsed = urlparse(url)
+        host = parsed.hostname or "127.0.0.1"
+        if host in ("localhost", "0.0.0.0"):
+            host = "127.0.0.1"
+        port = parsed.port or 7687
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.settimeout(timeout)
+            return s.connect_ex((host, port)) == 0
+    except Exception:
+        return False
+
+
 async def is_available() -> Tuple[bool, Optional[float]]:
     """Returns (available, latency_ms) with 10s caching."""
     global _last_avail_check_time, _last_avail_result
     now = time.monotonic()
     if now - _last_avail_check_time < 10.0:
+        return _last_avail_result
+
+    # Fast probe to prevent connection timeout hangs when Neo4j is offline
+    if not _is_neo4j_port_open():
+        _last_avail_result = (False, None)
+        _last_avail_check_time = now
         return _last_avail_result
 
     import asyncio

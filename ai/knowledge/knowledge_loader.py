@@ -140,6 +140,7 @@ HINDI_SYNONYMS: Dict[str, List[str]] = {}  # hindi_term → [english_terms]
 DOMAIN_KEYWORDS: Dict[str, List[str]] = {}   # domain → [keywords]
 CATEGORY_KEYWORDS: Dict[str, Any] = {}        # BIS AI category → ...
 DOMAIN_TO_CATALOG_CATEGORIES: Dict[str, List[str]] = {} # domain → [catalog category strings]
+NEGATIVE_KEYWORD_RULES: List[Dict[str, Any]] = []      # trigger_keywords → penalize_standards
 
 # QCO in-memory index: standard_key → qco record (for Node04 fast lookup)
 QCO_BY_STANDARD_KEY: Dict[str, Dict[str, Any]] = {}
@@ -289,6 +290,8 @@ def _load_category_maps() -> None:
     DOMAIN_KEYWORDS.update(data.get("sure_domain_taxonomy", {}))
     CATEGORY_KEYWORDS.update(data.get("bis_ai_category_keywords", {}))
     DOMAIN_TO_CATALOG_CATEGORIES.update(data.get("domain_to_catalog_categories", {}))
+    NEGATIVE_KEYWORD_RULES.clear()
+    NEGATIVE_KEYWORD_RULES.extend(data.get("negative_keyword_rules", []))
 
 
 def _load_qco() -> None:

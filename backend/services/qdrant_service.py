@@ -47,11 +47,28 @@ async def get_async_client() -> AsyncQdrantClient:
 
 # ── Availability check ────────────────────────────────────────────────────────
 
+def _is_port_open(host: str, port: int, timeout: float = 0.1) -> bool:
+    import socket
+    try:
+        resolved_host = "127.0.0.1" if host in ("localhost", "0.0.0.0") else host
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.settimeout(timeout)
+            return s.connect_ex((resolved_host, port)) == 0
+    except Exception:
+        return False
+
+
 async def is_available() -> Tuple[bool, Optional[float]]:
     """Returns (available, latency_ms) with 10s caching."""
     global _last_avail_check_time, _last_avail_result
     now = time.monotonic()
     if now - _last_avail_check_time < 10.0:
+        return _last_avail_result
+
+    # Fast probe to prevent async connection hangs when daemon is offline
+    if not _is_port_open(settings.QDRANT_HOST, settings.QDRANT_PORT):
+        _last_avail_result = (False, None)
+        _last_avail_check_time = now
         return _last_avail_result
 
     import asyncio

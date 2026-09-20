@@ -9,6 +9,7 @@ Combines:
 """
 from __future__ import annotations
 
+from collections import defaultdict
 import logging
 import os
 from typing import Any, Dict, List, Optional, Set, Tuple
@@ -217,6 +218,10 @@ def rerank(
             if len(matching) >= 5:
                 candidates = matching
 
+    # Apply negative keyword suppression
+    candidates, neg_warnings = _apply_negative_keyword_rules(query, candidates, lit_keys)
+    warnings.extend(neg_warnings)
+
     # Sort descending by score, tie-break by key
     candidates.sort(
         key=lambda c: (
@@ -227,3 +232,54 @@ def rerank(
     )
 
     return candidates[:top_n], warnings
+
+
+def _apply_negative_keyword_rules(
+    query: str,
+    candidates: List[Dict[str, Any]],
+    literal_keys: Set[str],
+) -> Tuple[List[Dict[str, Any]], List[str]]:
+    """
+    Apply domain-specific negative keyword suppression rules.
+    If query matches any trigger keyword, penalize specified standards by reducing their score.
+    NEVER penalizes literal mentions or standards in literal_keys.
+    """
+    rules = getattr(kl, "NEGATIVE_KEYWORD_RULES", [])
+    if not rules:
+        return candidates, []
+
+    query_lower = query.lower()
+    warnings = []
+    penalized_counts: Dict[str, float] = defaultdict(float)
+    reasons: Dict[str, str] = {}
+
+    for rule in rules:
+        triggers = rule.get("trigger_keywords", [])
+        if any(trig in query_lower for trig in triggers):
+            penalize_keys = set(rule.get("penalize_standards", []))
+            penalty = float(rule.get("penalty", 0.20))
+            reason = rule.get("reason", "")
+            for p_key in penalize_keys:
+                penalized_counts[p_key] = max(penalized_counts[p_key], penalty)
+                if reason and p_key not in reasons:
+                    reasons[p_key] = reason
+
+    if not penalized_counts:
+        return candidates, []
+
+    for c in candidates:
+        key = c.get("key", "")
+        # Hard rule: NEVER penalize literal mentions
+        if c.get("is_literal_mention") or key in literal_keys:
+            continue
+        if key in penalized_counts:
+            p_val = penalized_counts[key]
+            old_score = float(c.get("relevance_score", c.get("score", 0.0)))
+            new_score = round(max(0.01, old_score - p_val), 4)
+            c["relevance_score"] = new_score
+            c["score"] = new_score
+            c["negative_penalty_applied"] = p_val
+            c["negative_rule_reason"] = reasons.get(key, "")
+            warnings.append(f"Standard {key} demoted by {p_val:.2f}: {reasons.get(key)}")
+
+    return candidates, warnings

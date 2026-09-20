@@ -41,6 +41,23 @@ _last_avail_result: bool = False
 
 # ── Availability check ───────────────────────────────────────────────────────
 
+def _is_postgres_port_open(timeout: float = 0.1) -> bool:
+    import socket
+    from urllib.parse import urlparse
+    try:
+        url = settings.POSTGRES_URL.replace("postgresql+asyncpg://", "http://").replace("postgresql://", "http://")
+        parsed = urlparse(url)
+        host = parsed.hostname or "127.0.0.1"
+        if host in ("localhost", "0.0.0.0"):
+            host = "127.0.0.1"
+        port = parsed.port or 5432
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.settimeout(timeout)
+            return s.connect_ex((host, port)) == 0
+    except Exception:
+        return False
+
+
 async def is_available() -> bool:
     """Ping check — used for health endpoint and degraded-mode detection with 10s caching."""
     global _last_avail_check_time, _last_avail_result
@@ -48,6 +65,12 @@ async def is_available() -> bool:
     now = time.monotonic()
     if now - _last_avail_check_time < 10.0:
         return _last_avail_result
+
+    # Fast probe to prevent connection timeout hangs when PostgreSQL is offline
+    if not _is_postgres_port_open():
+        _last_avail_result = False
+        _last_avail_check_time = now
+        return False
 
     import asyncio
     try:
