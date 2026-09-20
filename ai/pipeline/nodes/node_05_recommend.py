@@ -336,6 +336,7 @@ def _merge_reasoning(
             "confidence": conf,
             "match_strength": round(match_strength, 4),
             "relevance_score": round(match_strength, 4),
+            "coverage": round(float(cand.get("coverage") or 0.0), 4),
             "low_match": False,
             "is_low_confidence": is_low_conf,
             "clarification_prompt": clarification,
@@ -356,8 +357,22 @@ def _merge_reasoning(
         })
 
     top_strength = float(items[0]["match_strength"]) if items else 0.0
+    top_coverage = float(items[0].get("coverage", 0.0)) if items else 0.0
 
-    if not items or top_strength < abstain_thresh:
+    coverage_floor = getattr(settings, "ABSTAIN_COVERAGE_FLOOR", 0.20)
+
+    # Dual-gate: abstain only when BOTH match_strength < threshold AND top_coverage < floor.
+    # A query that covers >=20% of content-weighted terms is a real procurement requirement
+    # even if the absolute BM25 ratio is low (long queries naturally have lower raw/ideal ratio).
+    # Literal IS-code mentions (ms=0.95) are never abstained regardless.
+    has_literal = any(it.get("is_code", "").lower() == it.get("is_code", "").lower() and float(it.get("match_strength", 0)) >= 0.90 for it in items[:1])
+    should_abstain = (
+        not has_literal
+        and (not items or top_strength < abstain_thresh)
+        and top_coverage < coverage_floor
+    )
+
+    if should_abstain:
         abstained = True
         abstain_reason = "No confident match in the 1,380-standard dataset for this requirement"
         closest_matches = []
@@ -366,7 +381,7 @@ def _merge_reasoning(
             closest_matches.append(it)
         recommendations = []
         warnings.append("No confident match in the 1,380-standard dataset for this requirement")
-    elif abstain_thresh <= top_strength < low_match_thresh:
+    elif not has_literal and abstain_thresh <= top_strength < low_match_thresh:
         abstained = False
         abstain_reason = ""
         closest_matches = []
@@ -377,6 +392,19 @@ def _merge_reasoning(
         recommendations = items
         warnings.append(
             "Low confidence advisory: Match strength is low. Consider providing material grades or operating specs to refine recommendations."
+        )
+    elif not has_literal and top_coverage < coverage_floor and top_strength < low_match_thresh:
+        # Coverage below floor but strength above abstain threshold: show low_match
+        abstained = False
+        abstain_reason = ""
+        closest_matches = []
+        for it in items:
+            it["low_match"] = True
+            if not it.get("clarification_prompt"):
+                it["clarification_prompt"] = _generate_clarification_prompt(it, req_summary)
+        recommendations = items
+        warnings.append(
+            "Low coverage advisory: Query terms poorly represented in dataset. Provide more specific product details."
         )
     else:
         abstained = False

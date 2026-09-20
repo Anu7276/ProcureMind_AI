@@ -100,14 +100,14 @@ def extract_structured_heuristically(text: str) -> dict:
         ).strip()
         product = clean_name[:60]
 
-    # Application
+    # Application — check electrical BEFORE construction (electrical is often in buildings)
     app = None
-    if "construction" in text_lower or "building" in text_lower or "rcc" in text_lower:
-        app = "Civil structural construction and RCC framework"
-    elif "electri" in text_lower or "wiring" in text_lower or "distribution" in text_lower:
+    if "electri" in text_lower or "wiring" in text_lower or "distribution" in text_lower or "switchgear" in text_lower:
         app = "Electrical installation, transmission and distribution"
-    elif "solar" in text_lower:
+    elif "solar" in text_lower or "photovoltaic" in text_lower or "pv module" in text_lower:
         app = "Solar power generation and PV installation"
+    elif "construction" in text_lower or "building" in text_lower or "rcc" in text_lower or "civil" in text_lower:
+        app = "Civil structural construction and RCC framework"
     elif "water" in text_lower or "plumbing" in text_lower or "drainage" in text_lower:
         app = "Water supply, plumbing and municipal drainage"
     else:
