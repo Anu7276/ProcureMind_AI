@@ -473,6 +473,10 @@ async def node_05_recommend(state: PipelineState) -> dict:
     # ── Write audit log to PostgreSQL ────────────────────────────────────────
     returned_codes = [r["is_code"] for r in recommendations]
     top_conf = recommendations[0]["confidence"] if recommendations else None
+    top_ms = recommendations[0].get("match_strength") if recommendations else (
+        closest_matches[0].get("match_strength") if closest_matches else None
+    )
+    closest_codes = [m["is_code"] for m in closest_matches] if closest_matches else []
 
     try:
         from backend.services import postgres_service
@@ -484,11 +488,16 @@ async def node_05_recommend(state: PipelineState) -> dict:
             returned_codes=returned_codes,
             pipeline_warnings=warnings,
             top_confidence=top_conf,
+            abstained=abstained,
+            abstain_reason=abstain_reason,
+            top_match_strength=top_ms,
+            closest_matches_codes=closest_codes,
         )
-        logger.info("Node05: audit log written for audit_id=%s", audit_id)
+        logger.info("Node05: audit log written for audit_id=%s (abstained=%s)", audit_id, abstained)
     except Exception as exc:
         logger.warning("Node05: audit log write failed (non-fatal): %s", exc)
         warnings.append(f"Audit log not persisted ({exc}) — result still valid")
+
 
     stages.append("recommend")
     return {

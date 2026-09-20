@@ -190,34 +190,70 @@ async def write_recommendation_log(
     returned_codes: List[str],
     pipeline_warnings: List[str],
     top_confidence: Optional[float],
+    abstained: bool = False,
+    abstain_reason: Optional[str] = None,
+    top_match_strength: Optional[float] = None,
+    closest_matches_codes: Optional[List[str]] = None,
 ) -> None:
+    """Write a structured audit row to recommendation_log.
+
+    Columns written (all JSON-serialised where needed):
+        audit_id, query_text, input_type, structured_requirement,
+        returned_codes, pipeline_warnings, top_confidence,
+        abstained, abstain_reason, top_match_strength, closest_matches_codes
+    Falls back gracefully if the extra columns don't exist yet in the schema.
+    """
+    import json
+    payload = {
+        "audit_id": audit_id,
+        "query_text": query_text[:4096],          # guard against oversized text
+        "input_type": input_type,
+        "structured_requirement": json.dumps(structured_requirement or {}),
+        "returned_codes": json.dumps(returned_codes),
+        "pipeline_warnings": json.dumps(pipeline_warnings),
+        "top_confidence": top_confidence,
+        "abstained": abstained,
+        "abstain_reason": (abstain_reason or "")[:512],
+        "top_match_strength": top_match_strength,
+        "closest_matches_codes": json.dumps(closest_matches_codes or []),
+    }
     try:
         async with get_session() as s:
             await s.execute(
                 text("""
                     INSERT INTO recommendation_log
                         (audit_id, query_text, input_type, structured_requirement,
-                         returned_codes, pipeline_warnings, top_confidence)
+                         returned_codes, pipeline_warnings, top_confidence,
+                         abstained, abstain_reason, top_match_strength, closest_matches_codes)
                     VALUES
                         (:audit_id, :query_text, :input_type, :structured_requirement::jsonb,
-                         :returned_codes::jsonb, :pipeline_warnings::jsonb, :top_confidence)
+                         :returned_codes::jsonb, :pipeline_warnings::jsonb, :top_confidence,
+                         :abstained, :abstain_reason, :top_match_strength, :closest_matches_codes::jsonb)
                     ON CONFLICT (audit_id) DO NOTHING
                 """),
-                {
-                    "audit_id": audit_id,
-                    "query_text": query_text,
-                    "input_type": input_type,
-                    "structured_requirement": __import__("json").dumps(
-                        structured_requirement or {}
-                    ),
-                    "returned_codes": __import__("json").dumps(returned_codes),
-                    "pipeline_warnings": __import__("json").dumps(pipeline_warnings),
-                    "top_confidence": top_confidence,
-                },
+                payload,
             )
             await s.commit()
     except Exception as exc:
-        logger.debug("write_recommendation_log failed (non-fatal): %s", exc)
+        # Try minimal schema (without new columns) for backward compat
+        try:
+            async with get_session() as s:
+                await s.execute(
+                    text("""
+                        INSERT INTO recommendation_log
+                            (audit_id, query_text, input_type, structured_requirement,
+                             returned_codes, pipeline_warnings, top_confidence)
+                        VALUES
+                            (:audit_id, :query_text, :input_type, :structured_requirement::jsonb,
+                             :returned_codes::jsonb, :pipeline_warnings::jsonb, :top_confidence)
+                        ON CONFLICT (audit_id) DO NOTHING
+                    """),
+                    {k: payload[k] for k in ["audit_id","query_text","input_type","structured_requirement",
+                                              "returned_codes","pipeline_warnings","top_confidence"]},
+                )
+                await s.commit()
+        except Exception as inner_exc:
+            logger.debug("write_recommendation_log failed (non-fatal): %s | inner: %s", exc, inner_exc)
 
 
 async def close():

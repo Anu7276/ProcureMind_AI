@@ -92,6 +92,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Security: rate limiting + body-size cap + sanitised 500 errors
+from backend.middleware.security import SecurityMiddleware  # noqa: E402
+app.add_middleware(SecurityMiddleware)
+
 # ── Mount routers (both root and /api prefix for reverse proxy / direct client compatibility) ──
 from backend.api.routes import health, ingest, recommend, standard, graph  # noqa: E402
 
