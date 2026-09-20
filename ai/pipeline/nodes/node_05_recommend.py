@@ -230,6 +230,52 @@ def _deterministic_fallback_reasoning(
     return " ".join(reasons)
 
 
+def _generate_spec_line(cand: Dict[str, Any], req_summary: str) -> str:
+    """
+    Generate exact, copy-paste-ready tender clause for every recommendation:
+    Format:
+    "The [product] shall conform to [IS code] (or latest revision) with valid BIS [Scheme Name] [Registration/License/Certification]. The vendor shall provide [Type of proof] prior to dispatch. [Mandatory/Voluntary note]"
+    """
+    title = cand.get("title", "")
+    code = cand.get("is_code") or cand.get("display_code") or cand.get("key", "")
+    cert = cand.get("certification") or {}
+    mandatory = cert.get("mandatory", False)
+    scheme_name = cert.get("scheme_name") or "Scheme-I / ISI Mark"
+    scheme_code = cert.get("scheme_code") or "Scheme-I"
+    gazette_ref = cert.get("gazette_reference")
+
+    product = req_summary or title or "materials/equipment"
+
+    if "Scheme-II" in scheme_code or "CRS" in scheme_name:
+        cert_term = "Registration"
+        proof_term = "valid BIS Registration Certificate (CRS)"
+    elif "Scheme-IV" in scheme_code or "CoC" in scheme_name or "Certificate of Conformity" in scheme_name:
+        cert_term = "Certificate of Conformity"
+        proof_term = "Certificate of Conformity (CoC) / Type Test Report"
+    elif "FMCS" in scheme_code or "Scheme-X" in scheme_code:
+        cert_term = "Foreign Manufacturers Certification"
+        proof_term = "valid BIS FMCS License"
+    elif "Eco" in scheme_name or "Eco" in scheme_code:
+        cert_term = "Eco Mark Certification"
+        proof_term = "valid BIS Eco Mark License"
+    elif "HM" in scheme_code or "Hallmark" in scheme_name:
+        cert_term = "Hallmarking Registration"
+        proof_term = "BIS Hallmarking Registration and HUID verification"
+    else:
+        cert_term = "License"
+        proof_term = "valid BIS Certification Marks License (ISI Mark)"
+
+    spec = f"The {product} shall conform to {code} (or latest revision) with valid BIS {scheme_name} {cert_term}. The vendor shall provide {proof_term} prior to dispatch."
+
+    if mandatory:
+        qco_clause = f"Under QCO ({gazette_ref}), this" if gazette_ref else "Under statutory Quality Control Orders (QCO), this"
+        spec += f" {qco_clause} is mandatory for supply and non-compliant bids shall be rejected at technical stage."
+    else:
+        spec += " Compliance is recommended for quality assurance."
+
+    return spec
+
+
 def _generate_clarification_prompt(cand: Dict[str, Any], req_summary: str) -> str:
     """Generate a helpful clarification question when confidence is below 0.60."""
     category = cand.get("category") or "General"
@@ -350,6 +396,7 @@ def _merge_reasoning(
             "related_standards": related,
             "reasoning": reasoning_text,
             "evidence_sources": cand.get("evidence_sources", []),
+            "spec_line": _generate_spec_line(cand, req_summary),
             "data_quality_note": _build_data_quality_note(cand),
             "matched_terms": ev["matched_terms"],
             "evidence_clause": ev["evidence_clause"],

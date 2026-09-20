@@ -99,9 +99,9 @@ from backend.middleware.security import SecurityMiddleware  # noqa: E402
 app.add_middleware(SecurityMiddleware)
 
 # ── Mount routers (both root and /api prefix for reverse proxy / direct client compatibility) ──
-from backend.api.routes import health, ingest, recommend, standard, graph  # noqa: E402
+from backend.api.routes import health, ingest, recommend, standard, graph, bid_check  # noqa: E402
 
-for r in [health.router, ingest.router, recommend.router, standard.router, graph.router]:
+for r in [health.router, ingest.router, recommend.router, standard.router, graph.router, bid_check.router]:
     app.include_router(r)
     app.include_router(r, prefix="/api")
 

@@ -53,25 +53,114 @@ def _resolve_status(record: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
+SCHEME_METADATA = {
+    "Scheme-I": {
+        "scheme_code": "Scheme-I",
+        "scheme_name": "Scheme-I / ISI Mark",
+        "marking_requirements": "ISI Monogram with valid CM/L (Certification Marks License Number)",
+        "testing_frequency": "Routine factory testing per BIS Scheme of Inspection and Testing (SIT)",
+        "lead_time_weeks": 8,
+    },
+    "Scheme-II": {
+        "scheme_code": "Scheme-II",
+        "scheme_name": "Scheme-II / CRS (Compulsory Registration Scheme)",
+        "marking_requirements": "Standard Mark with Registration Number R-XXXXXXXX and statement IS ...",
+        "testing_frequency": "Type testing in BIS-recognized laboratory every 2 years / per batch",
+        "lead_time_weeks": 4,
+    },
+    "Scheme-IV": {
+        "scheme_code": "Scheme-IV",
+        "scheme_name": "Scheme-IV / Certificate of Conformity",
+        "marking_requirements": "Certificate of Conformity (CoC) issued by BIS",
+        "testing_frequency": "Design verification & site inspection protocol",
+        "lead_time_weeks": 0,
+    },
+    "FMCS": {
+        "scheme_code": "FMCS",
+        "scheme_name": "Foreign Manufacturers Certification Scheme (FMCS) / Scheme-X",
+        "marking_requirements": "ISI Mark with Foreign CM/L License Number",
+        "testing_frequency": "Pre-shipment inspection and BIS overseas audit protocol",
+        "lead_time_weeks": 16,
+    },
+    "Scheme-X": {
+        "scheme_code": "Scheme-X",
+        "scheme_name": "Scheme-X / Foreign Manufacturers & Capital Goods",
+        "marking_requirements": "ISI Mark with Foreign CM/L License Number",
+        "testing_frequency": "Pre-shipment inspection and BIS overseas audit protocol",
+        "lead_time_weeks": 16,
+    },
+    "Eco-Mark": {
+        "scheme_code": "Eco-Mark",
+        "scheme_name": "Eco Mark (Scheme-I)",
+        "marking_requirements": "Eco Mark logo (Earthen Pot) alongside ISI monogram",
+        "testing_frequency": "Environmental criteria testing + SIT routine audits",
+        "lead_time_weeks": 8,
+    },
+    "Scheme-HM": {
+        "scheme_code": "Scheme-HM",
+        "scheme_name": "Hallmarking Scheme",
+        "marking_requirements": "BIS Hallmark logo, Purity/Fineness grade, and 6-digit alphanumeric HUID",
+        "testing_frequency": "XRF Assay / Fire Assay per article at Assaying and Hallmarking Centre",
+        "lead_time_weeks": 2,
+    },
+}
+
+
+def _infer_scheme_code(
+    cert_text: str = "",
+    ministry: str = "",
+    category: str = "",
+    title: str = "",
+    key: str = "",
+) -> str:
+    """Infer one of the 6 BIS schemes from metadata and text clues."""
+    combined = f"{cert_text} {ministry} {category} {title} {key}".lower()
+    if "scheme-ii" in combined or "crs" in combined or "meity" in combined or "electronics" in combined or "it equipment" in combined or "13252" in combined:
+        return "Scheme-II"
+    if "hallmark" in combined or "jewellery" in combined or "gold" in combined or "silver" in combined or "huid" in combined:
+        return "Scheme-HM"
+    if "eco mark" in combined or "ecomark" in combined:
+        return "Eco-Mark"
+    if "scheme-iv" in combined or "certificate of conformity" in combined or "coc" in combined or "code of practice" in combined or "method of test" in combined:
+        return "Scheme-IV"
+    if "scheme-x" in combined or "capital goods" in combined:
+        return "Scheme-X"
+    if "fmcs" in combined or "foreign manufacturer" in combined:
+        return "FMCS"
+    return "Scheme-I"
+
+
 async def _get_compliance(
     standard_key: str, postgres_ok: bool
 ) -> Optional[Dict[str, Any]]:
     """
-    Build compliance block.
+    Build compliance block supporting all 6 BIS schemes.
     Primary: QCO in-memory index (always available).
     Supplement: PostgreSQL for scheme details and product rules.
     """
-    # In-memory QCO lookup (always works, even with Postgres down)
+    record = kl.get_standard(standard_key) or {}
+    title = record.get("title", "")
+    category = record.get("category", "")
     qco = kl.get_qco_for_key(standard_key)
 
     if qco:
-        scheme_code = _extract_scheme_code(qco.get("certification_required", ""))
-        scheme = kl.get_cert_scheme(scheme_code) if scheme_code else None
+        raw_cert = qco.get("certification_required", "")
+        ministry = qco.get("ministry", "")
+        scheme_code = _infer_scheme_code(
+            cert_text=raw_cert,
+            ministry=ministry,
+            category=category,
+            title=title,
+            key=standard_key,
+        )
+        meta = SCHEME_METADATA.get(scheme_code, SCHEME_METADATA["Scheme-I"])
         return {
             "mandatory": qco.get("enforcement_status") == "MANDATORY_ENFORCED",
-            "scheme_name": scheme.get("name") if scheme else qco.get("certification_required"),
-            "scheme_code": scheme_code,
-            "lead_time_weeks": scheme.get("lead_time_weeks") if scheme else None,
+            "scheme_name": meta["scheme_name"],
+            "scheme_code": meta["scheme_code"],
+            "lead_time_weeks": meta["lead_time_weeks"],
+            "marking_requirements": meta["marking_requirements"],
+            "testing_frequency": meta["testing_frequency"],
             "penalty": qco.get("penalty"),
             "gazette_reference": qco.get("gazette_reference"),
             "enforcement_status": qco.get("enforcement_status"),
@@ -84,10 +173,23 @@ async def _get_compliance(
             from backend.services import postgres_service
             qco_row = await postgres_service.get_qco_for_standard(standard_key)
             if qco_row:
+                raw_cert = qco_row.get("certification_required", "")
+                ministry = qco_row.get("ministry", "")
+                scheme_code = _infer_scheme_code(
+                    cert_text=raw_cert,
+                    ministry=ministry,
+                    category=category,
+                    title=title,
+                    key=standard_key,
+                )
+                meta = SCHEME_METADATA.get(scheme_code, SCHEME_METADATA["Scheme-I"])
                 return {
                     "mandatory": qco_row.get("enforcement_status") == "MANDATORY_ENFORCED",
-                    "scheme_name": qco_row.get("certification_required"),
-                    "scheme_code": None,
+                    "scheme_name": meta["scheme_name"],
+                    "scheme_code": meta["scheme_code"],
+                    "lead_time_weeks": meta["lead_time_weeks"],
+                    "marking_requirements": meta["marking_requirements"],
+                    "testing_frequency": meta["testing_frequency"],
                     "penalty": qco_row.get("penalty"),
                     "gazette_reference": qco_row.get("gazette_reference"),
                     "enforcement_status": qco_row.get("enforcement_status"),
@@ -97,38 +199,47 @@ async def _get_compliance(
             logger.debug("Postgres compliance lookup failed for %s: %s", standard_key, exc)
 
     # Check product_rules in-memory (via standards compliance field)
-    record = kl.get_standard(standard_key)
     if record:
         compliance = record.get("compliance", {}) or {}
         mandatory = compliance.get("mandatory_certification")
         schemes = compliance.get("schemes", [])
         if mandatory is not None or schemes:
+            raw_cert = schemes[0] if schemes else ""
+            scheme_code = _infer_scheme_code(
+                cert_text=raw_cert,
+                category=category,
+                title=title,
+                key=standard_key,
+            )
+            meta = SCHEME_METADATA.get(scheme_code, SCHEME_METADATA["Scheme-I"])
             return {
-                "mandatory": mandatory,
-                "scheme_name": schemes[0] if schemes else None,
-                "scheme_code": None,
+                "mandatory": bool(mandatory),
+                "scheme_name": meta["scheme_name"],
+                "scheme_code": meta["scheme_code"],
+                "lead_time_weeks": meta["lead_time_weeks"],
+                "marking_requirements": meta["marking_requirements"],
+                "testing_frequency": meta["testing_frequency"],
                 "penalty": None,
                 "gazette_reference": None,
-                "enforcement_status": None,
+                "enforcement_status": "MANDATORY_ENFORCED" if mandatory else "VOLUNTARY",
                 "evidence_source": "standards_clean.json (compliance field)",
             }
 
-    return None
-
-
-def _extract_scheme_code(cert_text: str) -> Optional[str]:
-    """Extract scheme code from strings like 'Scheme-I / ISI Mark'."""
-    if not cert_text:
-        return None
-    if "Scheme-I" in cert_text or "ISI" in cert_text:
-        return "Scheme-I"
-    if "Scheme-IV" in cert_text:
-        return "Scheme-IV"
-    if "CRS" in cert_text:
-        return "CRS"
-    if "FMCS" in cert_text:
-        return "FMCS"
-    return None
+    # Default fallback scheme for active standard
+    scheme_code = _infer_scheme_code(category=category, title=title, key=standard_key)
+    meta = SCHEME_METADATA.get(scheme_code, SCHEME_METADATA["Scheme-I"])
+    return {
+        "mandatory": False,
+        "scheme_name": meta["scheme_name"],
+        "scheme_code": meta["scheme_code"],
+        "lead_time_weeks": meta["lead_time_weeks"],
+        "marking_requirements": meta["marking_requirements"],
+        "testing_frequency": meta["testing_frequency"],
+        "penalty": None,
+        "gazette_reference": None,
+        "enforcement_status": "VOLUNTARY",
+        "evidence_source": "BIS Standard Catalog",
+    }
 
 
 def _build_evidence_sources(

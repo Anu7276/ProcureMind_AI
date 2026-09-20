@@ -40,6 +40,8 @@ def _build_recommendation_item(r: dict) -> RecommendationItem:
             gazette_reference=cert.get("gazette_reference"),
             enforcement_status=cert.get("enforcement_status"),
             evidence_source=cert.get("evidence_source", "qco_orders.json"),
+            marking_requirements=cert.get("marking_requirements"),
+            testing_frequency=cert.get("testing_frequency"),
         )
         if cert
         else None

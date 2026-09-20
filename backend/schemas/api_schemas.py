@@ -22,6 +22,8 @@ class CertificationInfo(BaseModel):
     gazette_reference: Optional[str] = None
     enforcement_status: Optional[str] = None
     evidence_source: str = "qco_orders.json"
+    marking_requirements: Optional[str] = None
+    testing_frequency: Optional[str] = None
 
 
 class RelatedStandard(BaseModel):
