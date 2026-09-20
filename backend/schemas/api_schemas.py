@@ -109,10 +109,22 @@ class PipelineMeta(BaseModel):
     warnings: List[str] = []
 
 
+class LineItemRecommendation(BaseModel):
+    item_index: int
+    item_text: str
+    estimated_quantity: Optional[str] = None
+    recommendations: List[RecommendationItem] = []
+    cited_codes_found: List[str] = []
+    warnings: List[str] = []
+    abstained: Optional[bool] = False
+    abstain_reason: Optional[str] = None
+
+
 class RecommendResponse(BaseModel):
     audit_id: str
     query_summary: str
     recommendations: List[RecommendationItem]
+    per_item_results: Optional[List[LineItemRecommendation]] = None
     warnings: List[str] = []               # degraded-store warnings
     pipeline_stages_completed: List[str] = []
     timestamp: datetime = Field(default_factory=datetime.utcnow)

@@ -18,6 +18,7 @@ from backend.schemas.api_schemas import (
     RecommendRequest,
     RecommendResponse,
     RecommendationItem,
+    LineItemRecommendation,
     CertificationInfo,
     RelatedStandard,
     PipelineMeta,
@@ -144,10 +145,28 @@ async def recommend(body: RecommendRequest):
         warnings=final_state.get("pipeline_warnings", []),
     )
 
+    raw_per_item = final_state.get("per_item_results")
+    per_item_results = None
+    if raw_per_item and isinstance(raw_per_item, list):
+        per_item_results = [
+            LineItemRecommendation(
+                item_index=item.get("item_index", i + 1),
+                item_text=item.get("item_text", ""),
+                estimated_quantity=item.get("estimated_quantity"),
+                recommendations=[_build_recommendation_item(r) for r in item.get("recommendations", [])],
+                cited_codes_found=item.get("cited_codes_found", []),
+                warnings=item.get("warnings", []),
+                abstained=item.get("abstained", False),
+                abstain_reason=item.get("abstain_reason"),
+            )
+            for i, item in enumerate(raw_per_item)
+        ]
+
     return RecommendResponse(
         audit_id=audit_id,
         query_summary=str(query_summary),
         recommendations=recommendations,
+        per_item_results=per_item_results,
         warnings=final_state.get("pipeline_warnings", []),
         pipeline_stages_completed=final_state.get("stages_completed", []),
         abstained=abstained,

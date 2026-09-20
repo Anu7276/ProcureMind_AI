@@ -192,13 +192,26 @@ def print_comparison_table(baseline: Dict[str, Any], current: Dict[str, Any]) ->
 
 
 async def evaluate(
-    api_base: str,
-    concurrency: int = 5,
+    api_base: str = API_BASE,
+    concurrency: int = 3,
     out_path: Optional[str] = None,
     compare_path: Optional[str] = None,
     blind: Optional[str] = None,
+    realistic: Optional[str] = None,
 ) -> Dict[str, Any]:
-    if blind:
+    dataset_type = "eval"
+    if realistic:
+        dataset_type = "realistic"
+        real_path = Path("BIS_Sahayak_Clean_Data/clean/evaluation/queries_realistic.json")
+        with open(real_path, encoding="utf-8") as f:
+            all_queries = json.load(f)
+        if realistic in ("tune", "holdout"):
+            eval_queries = [q for q in all_queries if q.get("split") == realistic]
+        else:
+            eval_queries = all_queries
+        print(f"Loaded {len(eval_queries)} realistic evaluation queries (split={realistic}) from {real_path.name}")
+    elif blind:
+        dataset_type = "blind"
         blind_path = Path("BIS_Sahayak_Clean_Data/clean/evaluation/queries_blind.json")
         with open(blind_path, encoding="utf-8") as f:
             all_queries = json.load(f)
@@ -206,7 +219,7 @@ async def evaluate(
             eval_queries = [q for q in all_queries if q.get("split") == blind]
         else:
             eval_queries = all_queries
-        print(f"Loaded {len(eval_queries)} blind evaluation queries (split={blind}) from {blind_path.name}")
+        print(f"Loaded {len(eval_queries)} cited-code blind evaluation queries (split={blind}) from {blind_path.name}")
     else:
         queries_path = settings.eval_queries_json
         with open(queries_path, encoding="utf-8") as f:
@@ -284,7 +297,9 @@ async def evaluate(
         print("No evaluation queries processed.")
         return {}
 
-    if blind:
+    if blind or realistic:
+        mode_name = "REALISTIC" if realistic else "CITED-CODE BLIND"
+        split_name = realistic if realistic else blind
         out_of_scope = [r for r in results if not r["expected"]]
         in_scope = [r for r in results if r["expected"]]
 
@@ -296,6 +311,7 @@ async def evaluate(
         abstention_prec = tp / (tp + fp) if (tp + fp) > 0 else 1.0
         abstention_rec = tp / (tp + fn) if (tp + fn) > 0 else 1.0
         abstention_f1 = (2 * abstention_prec * abstention_rec) / (abstention_prec + abstention_rec) if (abstention_prec + abstention_rec) > 0 else 0.0
+        false_abstention_rate = fp / len(in_scope) if in_scope else 0.0
 
         in_total = len(in_scope)
         in_fam1 = sum(1 for r in in_scope if r["family_hit@1"]) / in_total if in_total > 0 else 0.0
@@ -309,10 +325,10 @@ async def evaluate(
                 pass
 
         print("\n" + "=" * 65)
-        print("  BIS STANDARDS ENGINE — BLIND EVALUATION REPORT")
+        print(f"  BIS STANDARDS ENGINE — {mode_name} EVALUATION REPORT")
         print("=" * 65)
-        print(f"  Total Blind Queries  : {total}")
-        print(f"  Split                : {blind}")
+        print(f"  Total Queries        : {total}")
+        print(f"  Split                : {split_name}")
         print(f"  Out-of-Scope Queries : {len(out_of_scope)}")
         print(f"  In-Scope Queries     : {len(in_scope)}")
         print("-" * 65)
@@ -321,6 +337,7 @@ async def evaluate(
         print(f"  Abstention Precision     {abstention_prec:.1%} ({tp}/{tp + fp})")
         print(f"  Abstention Recall        {abstention_rec:.1%} ({tp}/{tp + fn})")
         print(f"  Abstention F1 Score      {abstention_f1:.3f}")
+        print(f"  False Abstention Rate    {false_abstention_rate:.1%} ({fp}/{len(in_scope)})")
         print("-" * 65)
         print("  IN-SCOPE METRICS (Family Level)")
         print("-" * 65)
@@ -331,18 +348,21 @@ async def evaluate(
 
         summary = {
             "total": total,
-            "blind_split": blind,
+            "eval_type": "realistic" if realistic else "blind",
+            "split": split_name,
             "out_of_scope_count": len(out_of_scope),
             "in_scope_count": len(in_scope),
             "abstention_precision": round(abstention_prec, 4),
             "abstention_recall": round(abstention_rec, 4),
             "abstention_f1": round(abstention_f1, 4),
+            "false_abstention_rate": round(false_abstention_rate, 4),
             "in_scope_family_recall@1": round(in_fam1, 4),
             "in_scope_family_recall@5": round(in_fam5, 4),
             "in_scope_family_mrr": round(in_fmrr, 4),
             "details": results,
         }
-        save_file = Path(out_path) if out_path else Path(f"ai/evaluation/eval_blind_{blind}.json")
+        prefix = "eval_realistic" if realistic else "eval_blind"
+        save_file = Path(out_path) if out_path else Path(f"ai/evaluation/{prefix}_{split_name}.json")
         save_file.parent.mkdir(parents=True, exist_ok=True)
         with open(save_file, "w", encoding="utf-8") as f:
             json.dump(summary, f, indent=2, ensure_ascii=False)
@@ -501,7 +521,8 @@ if __name__ == "__main__":
     parser.add_argument("--out", default=None, help="Output JSON path (e.g. ai/evaluation/baseline.json)")
     parser.add_argument("--compare", default=None, help="Baseline JSON path to compare against")
     parser.add_argument("--provider", default=None, help="Force LLM_PROVIDER (e.g. mock)")
-    parser.add_argument("--blind", nargs="?", const="holdout", default=None, help="Run blind evaluation ('tune', 'holdout', or 'all')")
+    parser.add_argument("--blind", nargs="?", const="holdout", default=None, help="Run cited-code blind evaluation ('tune', 'holdout', or 'all')")
+    parser.add_argument("--realistic", nargs="?", const="holdout", default=None, help="Run realistic evaluation ('tune', 'holdout', or 'all')")
     args = parser.parse_args()
 
     if args.provider:
@@ -520,5 +541,6 @@ if __name__ == "__main__":
             out_path=args.out,
             compare_path=args.compare,
             blind=args.blind,
+            realistic=args.realistic,
         )
     )

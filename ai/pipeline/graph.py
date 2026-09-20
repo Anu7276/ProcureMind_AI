@@ -28,8 +28,9 @@ are the public entry points.
 """
 from __future__ import annotations
 
+import asyncio
 import uuid
-from typing import Any, Dict
+from typing import Any, Dict, List
 
 from langgraph.graph import END, StateGraph
 
@@ -39,6 +40,7 @@ from ai.pipeline.nodes.node_02_extract import node_02_extract
 from ai.pipeline.nodes.node_03_retrieve import node_03_retrieve
 from ai.pipeline.nodes.node_04_verify import node_04_verify
 from ai.pipeline.nodes.node_05_recommend import node_05_recommend
+from ai.pipeline.segmenter import segment_tender, LineItem
 from ai.pipeline.state import PipelineState
 
 
@@ -176,6 +178,113 @@ async def run_pipeline(
     """
     if audit_id is None:
         audit_id = str(uuid.uuid4())
+
+    # If text input contains multiple distinct line items, process each item independently
+    if input_type == "text" and raw_input and not raw_bytes:
+        items = segment_tender(raw_input)
+        if len(items) > 1:
+            async def _run_item(it: LineItem) -> tuple[LineItem, Dict[str, Any]]:
+                st: PipelineState = {
+                    "raw_input": it.cleaned_text,
+                    "raw_bytes": None,
+                    "input_type": "text",
+                    "audit_id": f"{audit_id}_item_{it.item_index}",
+                    "pipeline_warnings": [],
+                    "stages_completed": [],
+                }
+                res = await _compiled_graph.ainvoke(st)
+                return it, res
+
+            item_results_pairs = await asyncio.gather(*[_run_item(it) for it in items])
+
+            per_item_results = []
+            all_recs_map: Dict[str, Dict[str, Any]] = {}
+            all_closest_map: Dict[str, Dict[str, Any]] = {}
+            all_warnings: List[str] = []
+            all_stages: set[str] = set()
+            all_abstained = True
+
+            for it, st in item_results_pairs:
+                it_recs = st.get("recommendations", [])
+                it_abstained = st.get("abstained", False)
+                it_abstain_reason = st.get("abstain_reason")
+                it_warnings = st.get("pipeline_warnings", [])
+                all_warnings.extend(it_warnings)
+                for s in st.get("stages_completed", []):
+                    all_stages.add(s)
+
+                if not it_abstained:
+                    all_abstained = False
+
+                literal_codes = st.get("literal_codes", [])
+                cited_codes_found = [
+                    c.get("display_code", c.get("raw", "")) if isinstance(c, dict) else str(c)
+                    for c in literal_codes
+                ] or [c for c in it.cited_codes]
+
+                per_item_results.append({
+                    "item_index": it.item_index,
+                    "item_text": it.cleaned_text,
+                    "estimated_quantity": it.estimated_quantity,
+                    "recommendations": it_recs,
+                    "cited_codes_found": cited_codes_found,
+                    "warnings": it_warnings,
+                    "abstained": it_abstained,
+                    "abstain_reason": it_abstain_reason,
+                })
+
+                for r in it_recs:
+                    k = r.get("key") or r.get("is_code")
+                    if not k:
+                        continue
+                    if k not in all_recs_map:
+                        all_recs_map[k] = r
+                    else:
+                        if r.get("confidence", 0.0) > all_recs_map[k].get("confidence", 0.0):
+                            all_recs_map[k] = r
+
+                for r in st.get("closest_matches", []):
+                    k = r.get("key") or r.get("is_code")
+                    if k and k not in all_closest_map:
+                        all_closest_map[k] = r
+
+            merged_recs = sorted(
+                all_recs_map.values(),
+                key=lambda x: (x.get("confidence", 0.0), x.get("match_strength", 0.0) or 0.0),
+                reverse=True,
+            )
+            merged_closest = sorted(
+                all_closest_map.values(),
+                key=lambda x: (x.get("confidence", 0.0), x.get("match_strength", 0.0) or 0.0),
+                reverse=True,
+            )
+
+            stages_list = ["document_understanding", "segment", "extract", "retrieve", "verify", "recommend"]
+
+            return {
+                "raw_input": raw_input,
+                "raw_bytes": None,
+                "input_type": input_type,
+                "audit_id": audit_id,
+                "recommendations": merged_recs,
+                "per_item_results": per_item_results,
+                "line_items": [
+                    {
+                        "item_index": it.item_index,
+                        "raw_text": it.raw_text,
+                        "cleaned_text": it.cleaned_text,
+                        "cited_codes": it.cited_codes,
+                        "estimated_quantity": it.estimated_quantity,
+                    }
+                    for it in items
+                ],
+                "abstained": all_abstained,
+                "abstain_reason": "All tender items abstained" if all_abstained else None,
+                "closest_matches": merged_closest,
+                "pipeline_warnings": list(dict.fromkeys(all_warnings)),
+                "stages_completed": stages_list,
+                "audit_saved": True,
+            }
 
     initial_state: PipelineState = {
         "raw_input": raw_input,

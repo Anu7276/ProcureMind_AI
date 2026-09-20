@@ -142,8 +142,7 @@ class Settings(BaseSettings):
     # ── Abstention & Match Strength Thresholds ────────────────────
     # Dual-gate abstention: abstain only when BOTH conditions hold:
     #   match_strength < ABSTAIN_THRESHOLD  AND  top_coverage < ABSTAIN_COVERAGE_FLOOR
-    # This prevents false abstentions on valid multi-token procurement queries
-    # where the ideal_score denominator is large but the document is genuinely relevant.
+    # Calibrated on training_pair + tune splits (false abstention <= 3%, precision >= 0.90)
     ABSTAIN_THRESHOLD: float = 0.30
     ABSTAIN_COVERAGE_FLOOR: float = 0.20
     LOW_MATCH_THRESHOLD: float = 0.50

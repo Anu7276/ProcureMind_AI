@@ -80,6 +80,21 @@ ALLOWED_SHORT_TOKENS: Set[str] = {
     "ip",
 }
 
+# ── Boilerplate tokens excluded only from match strength denominator / coverage ─
+PROCUREMENT_BOILERPLATE: Set[str] = {
+    "government", "project", "projects", "tender", "tenders", "supply", "supplies",
+    "installation", "install", "installed", "procure", "procurement", "procuring",
+    "need", "needs", "needed", "require", "required", "requires", "requirement", "requirements",
+    "quantity", "nos", "qty", "number", "numbers", "office", "building", "buildings",
+    "residential", "commercial", "department", "clause", "conforming", "conforms",
+    "conform", "confirming", "accordance", "strictly", "latest", "spec", "specs",
+    "specification", "specifications", "etc", "details", "approx", "approximate",
+    "rate", "rates", "cost", "estimate", "work", "works", "item", "items",
+    "contractor", "site", "purpose", "purposes", "shall", "applicable",
+    "including", "includes", "various", "general", "type", "types", "standard",
+    "standards", "unit", "units", "complex", "centre", "center", "state", "national"
+}
+
 
 def tokenize(text: str) -> List[str]:
     """

@@ -107,7 +107,7 @@ class BM25Index:
             self.idf[term] = math.log((self.corpus_size - df + 0.5) / (df + 0.5) + 1.0)
 
     def search(self, query_text: str, top_k: int = 10) -> List[BM25Hit]:
-        from ai.knowledge.text_utils import tokenize
+        from ai.knowledge.text_utils import tokenize, PROCUREMENT_BOILERPLATE
 
         query_tokens = tokenize(query_text)
         if not query_tokens:
@@ -118,9 +118,16 @@ class BM25Index:
         # Default IDF for OOV tokens (when df=0)
         default_idf = math.log((self.corpus_size + 0.5) / 0.5 + 1.0) if self.corpus_size > 0 else 1.0
 
-        # ideal_score: sum over query tokens of the best possible single-term score for that token given idf and k1
+        # Filter query tokens to salient content tokens for ideal score and coverage calculation
+        salient_tokens = [t for t in query_tokens if t not in PROCUREMENT_BOILERPLATE]
+        if not salient_tokens:
+            salient_tokens = query_tokens
+        unique_salient = set(salient_tokens)
+
         token_idfs = {t: self.idf.get(t, default_idf) for t in query_tokens}
-        ideal_score = sum((self.k1 + 1.0) * token_idfs[t] for t in query_tokens)
+        # Realistic maximum term factor for field-weighted match on unique salient concepts:
+        # (3.0 * (k1 + 1.0)) / (3.0 + k1) = 7.5 / 4.5 = 1.667
+        ideal_score = sum(1.667 * token_idfs.get(t, default_idf) for t in unique_salient)
         if ideal_score <= 0.0:
             ideal_score = 1.0
 
@@ -141,18 +148,18 @@ class BM25Index:
         if not doc_scores:
             return []
 
-        unique_tokens = set(query_tokens)
-        total_token_idf = sum(token_idfs[t] for t in unique_tokens)
-        if total_token_idf <= 0:
-            total_token_idf = 1.0
+        unique_salient = set(salient_tokens)
+        total_salient_idf = sum(token_idfs.get(t, default_idf) for t in unique_salient)
+        if total_salient_idf <= 0:
+            total_salient_idf = 1.0
 
         scored = sorted(doc_scores.items(), key=lambda x: x[1], reverse=True)
         hits: List[BM25Hit] = []
         for doc_key, score in scored[:top_k]:
-            matched_idf = sum(
-                token_idfs[t] for t in unique_tokens if doc_key in self.inverted_index.get(t, {})
+            matched_salient_idf = sum(
+                token_idfs.get(t, default_idf) for t in unique_salient if doc_key in self.inverted_index.get(t, {})
             )
-            coverage = matched_idf / total_token_idf
+            coverage = matched_salient_idf / total_salient_idf
             hits.append(BM25Hit(
                 score=score,
                 doc_key=doc_key,
@@ -165,15 +172,20 @@ class BM25Index:
         """
         Compute (raw_score, ideal_score, coverage) for a single document key against query_text.
         """
-        from ai.knowledge.text_utils import tokenize
+        from ai.knowledge.text_utils import tokenize, PROCUREMENT_BOILERPLATE
 
         query_tokens = tokenize(query_text)
         if not query_tokens:
             return (0.0, 1.0, 0.0)
 
         default_idf = math.log((self.corpus_size + 0.5) / 0.5 + 1.0) if self.corpus_size > 0 else 1.0
+        salient_tokens = [t for t in query_tokens if t not in PROCUREMENT_BOILERPLATE]
+        if not salient_tokens:
+            salient_tokens = query_tokens
+        unique_salient = set(salient_tokens)
+
         token_idfs = {t: self.idf.get(t, default_idf) for t in query_tokens}
-        ideal_score = sum((self.k1 + 1.0) * token_idfs[t] for t in query_tokens)
+        ideal_score = sum(1.667 * token_idfs.get(t, default_idf) for t in unique_salient)
         if ideal_score <= 0.0:
             ideal_score = 1.0
 
@@ -190,14 +202,13 @@ class BM25Index:
                 denom = w_tf + self.k1 * (1.0 - self.b + self.b * (dl / self.avg_doc_len))
                 raw_score += idf_val * (w_tf * (self.k1 + 1.0)) / denom
 
-        unique_tokens = set(query_tokens)
-        total_token_idf = sum(token_idfs[t] for t in unique_tokens)
-        if total_token_idf <= 0:
-            total_token_idf = 1.0
-        matched_idf = sum(
-            token_idfs[t] for t in unique_tokens if doc_key in self.inverted_index.get(t, {})
+        total_salient_idf = sum(token_idfs.get(t, default_idf) for t in unique_salient)
+        if total_salient_idf <= 0:
+            total_salient_idf = 1.0
+        matched_salient_idf = sum(
+            token_idfs.get(t, default_idf) for t in unique_salient if doc_key in self.inverted_index.get(t, {})
         )
-        coverage = matched_idf / total_token_idf
+        coverage = matched_salient_idf / total_salient_idf
         return (raw_score, ideal_score, coverage)
 
 

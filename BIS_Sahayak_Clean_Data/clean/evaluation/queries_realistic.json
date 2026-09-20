@@ -1,0 +1,640 @@
+[
+  {
+    "id": "REAL_TUNE_001",
+    "query": "We need switches for fixed domestic electrical wiring in a residential government housing project.",
+    "expected_standards": [
+      "IS 3854"
+    ],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Electrical - Wiring",
+    "scenario": "A",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_002",
+    "query": "Miniature Circuit Breakers (MCB) 10kA breaking capacity conforming to IS 8828",
+    "expected_standards": [
+      "IS/IEC 60898 (Part 1)",
+      "IS 8828"
+    ],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Electrical - Circuit Breakers",
+    "scenario": "B",
+    "has_code": true
+  },
+  {
+    "id": "REAL_TUNE_003",
+    "query": "Electrical works at a government primary health centre: (1) Supply of 500m TMT steel bars Fe 500D for structural reinforcement. (2) Supply and installation of point wiring with 1.5 sq mm PVC insulated copper conductor wire in concealed conduit. (3) Supply of 50 nos 6A 240V flush type piano switches with indicator.",
+    "expected_standards": [
+      "IS 1786",
+      "IS 732",
+      "IS 3854"
+    ],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Multi-Item",
+    "scenario": "C",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_004",
+    "query": "Notice Inviting Tender for execution of structural works. The contractor shall supply thermo-mechanically treated bars of grade Fe 550D for construction of RCC bridge piers and deck slab.",
+    "expected_standards": [
+      "IS 1786"
+    ],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Structural Steel",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_005",
+    "query": "Procurement of 43 grade Ordinary Portland Cement in 50 kg bags for masonry and reinforced concrete construction works at district court complex.",
+    "expected_standards": [
+      "IS 8112"
+    ],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Construction Materials - Cement",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_006",
+    "query": "Supply of Cross-linked Polyethylene insulated PVC sheathed aluminium power cables 3.5 core 185 sq mm 1100V working voltage for underground distribution.",
+    "expected_standards": [
+      "IS 7098 (Part 1)"
+    ],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Electrical - Cables",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_007",
+    "query": "High density polyethylene piping for rural drinking water distribution network PE-100 PN-10 rating with butt fusion joints.",
+    "expected_standards": [
+      "IS 4984"
+    ],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Water & Environment - Pipes",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_008",
+    "query": "Design, manufacture and delivery of three phase squirrel cage induction electric motor 11 kW 415V 4 pole foot mounted for effluent treatment plant aeration pump.",
+    "expected_standards": [
+      "IS 12615",
+      "IS 325"
+    ],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Electrical - Motors",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_009",
+    "query": "Centrifugal monoset pump sets for open well irrigation 5 HP single phase 230V 50Hz with cast iron pump casing and gunmetal impeller.",
+    "expected_standards": [
+      "IS 9079"
+    ],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Mechanical",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_010",
+    "query": "Supply of ABC dry chemical powder stored pressure type portable fire extinguisher 6 kg capacity with pressure gauge and discharge hose.",
+    "expected_standards": [
+      "IS 15683"
+    ],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Safety & PPE",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_011",
+    "query": "Crystalline silicon terrestrial photovoltaic PV modules 540 Wp monocrystalline PERC for grid tied rooftop solar installation under PM Surya Ghar Yojana.",
+    "expected_standards": [
+      "IS 14286",
+      "IS/IEC 61215",
+      "IS/IEC 61730 (Part 1)"
+    ],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Solar Energy",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_012",
+    "query": "Unplasticized PVC pipes for potable water supply in urban water distribution system Class 3 6 kgf/cm2 110 mm outer diameter.",
+    "expected_standards": [
+      "IS 4985"
+    ],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Water & Environment - Pipes",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_013",
+    "query": "Mild steel tubular poles swaged type 410 SP-31 stepped steel poles 9 meter length for street lighting installation in municipal corporation area.",
+    "expected_standards": [
+      "IS 2713"
+    ],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Structural Steel",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_014",
+    "query": "Fly ash based Portland Pozzolana Cement conforming to IS 1489 Part 1 for plastering and structural brickwork in hospital building.",
+    "expected_standards": [
+      "IS 1489 (Part 1)"
+    ],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Construction Materials - Cement",
+    "has_code": true
+  },
+  {
+    "id": "REAL_TUNE_015",
+    "query": "Supply of residual current operated circuit breakers RCCB 4 pole 40A 30mA sensitivity for human shock and earth leakage protection in residential switchboards.",
+    "expected_standards": [
+      "IS 12640 (Part 1)"
+    ],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Electrical - Circuit Breakers",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_016",
+    "query": "galvanised iron GI pipes medium class B grade 50 mm NB nominal bore with screwed sockets for internal water supply and plumbing works.",
+    "expected_standards": [
+      "IS 1239 (Part 1)"
+    ],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Structural Steel - Pipes",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_017",
+    "query": "hospital ke liye single use sterile hypodermic syringes 5 ml with needle without pyrogen disposable grade.",
+    "expected_standards": [
+      "IS 10245 (Part 1)",
+      "IS 10245 (Part 2)"
+    ],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Medical Devices",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_018",
+    "query": "Supply of autoclaved aerated concrete AAC blocks 600x200x150 mm for non-load bearing external and internal partition walls in multistory complex.",
+    "expected_standards": [
+      "IS 2185 (Part 3)"
+    ],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Construction Materials - Masonry",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_019",
+    "query": "Cast iron manhole covers and frames heavy duty HD circular 560 mm clear opening for municipal stormwater and sewerage network as per IS 1726.",
+    "expected_standards": [
+      "IS 1726"
+    ],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Metals & Castings",
+    "has_code": true
+  },
+  {
+    "id": "REAL_TUNE_020",
+    "query": "Submersible borewell pump sets 100 mm 4 inch multi-stage water lubricated with energy efficient motor for rural piped water supply scheme.",
+    "expected_standards": [
+      "IS 8034"
+    ],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Mechanical",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_021",
+    "query": "Titanium endosseous dental implants sterile with surgical drills and prosthetic abutments for dental college hospital.",
+    "expected_standards": [],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Out-of-Scope",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_022",
+    "query": "Automated external defibrillators AED biphasic portable with voice prompt for emergency medical ambulance fleet.",
+    "expected_standards": [],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Out-of-Scope",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_023",
+    "query": "Surgical sutures absorbable braided polyglycolic acid size 2-0 with round bodied needle for general surgery ward.",
+    "expected_standards": [],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Out-of-Scope",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_024",
+    "query": "Titanium alloy orthopedic bone plates dynamic compression and cortical bone screws for trauma care center.",
+    "expected_standards": [],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Out-of-Scope",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_025",
+    "query": "Prilled urea chemical fertilizer 46 percent nitrogen in 45 kg HDPE woven bags for state agriculture department.",
+    "expected_standards": [],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Out-of-Scope",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_026",
+    "query": "Diammonium phosphate DAP water soluble complex fertilizer 18-46-0 for soil nutrient application in government farm.",
+    "expected_standards": [],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Out-of-Scope",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_027",
+    "query": "Glyphosate 41 percent SL non-selective post-emergence herbicide formulation for tea garden weed management.",
+    "expected_standards": [],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Out-of-Scope",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_028",
+    "query": "Combed cotton yarn 40s count single ring spun on cones for weaving uniform shirting fabric in handloom cooperative.",
+    "expected_standards": [],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Out-of-Scope",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_029",
+    "query": "Polyester staple fibre semi-dull 1.4 denier 38 mm cut length for textile spinning mills.",
+    "expected_standards": [],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Out-of-Scope",
+    "has_code": false
+  },
+  {
+    "id": "REAL_TUNE_030",
+    "query": "Mulberry pure silk sarees with golden zari pallu and border for state tourism emporium inventory.",
+    "expected_standards": [],
+    "role": "realistic_tune",
+    "split": "tune",
+    "category": "Out-of-Scope",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_001",
+    "query": "Supply and laying of PVC insulated single core unsheathed copper wires 2.5 sq mm for lighting circuits in residential quarters.",
+    "expected_standards": [
+      "IS 694"
+    ],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Electrical - Cables",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_002",
+    "query": "53 grade Ordinary Portland Cement OPC bulk supply for high strength precast concrete culverts and girders.",
+    "expected_standards": [
+      "IS 12269",
+      "IS 269"
+    ],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Construction Materials - Cement",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_003",
+    "query": "High tensile structural steel plates E 250 grade B fully killed for fabrication of overhead railway bridge trusses.",
+    "expected_standards": [
+      "IS 2062"
+    ],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Structural Steel",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_004",
+    "query": "Moulded case circuit breaker MCCB 400A 4 pole 50kA breaking capacity with adjustable thermal magnetic release for main power panel.",
+    "expected_standards": [
+      "IS/IEC 60947-2",
+      "IS 13947 (Part 2)"
+    ],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Electrical - Circuit Breakers",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_005",
+    "query": "Precast solid concrete paving blocks interlocking 80 mm thickness M-40 grade for heavy vehicle parking bay and toll plaza pavement.",
+    "expected_standards": [
+      "IS 15658"
+    ],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Construction Materials - Paving",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_006",
+    "query": "Supply of solar inverter grid tied 50 kW 3-phase string inverter with MPPT efficiency for institutional rooftop installation.",
+    "expected_standards": [
+      "IS 16221 (Part 2)",
+      "IS 16169"
+    ],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Solar Energy",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_007",
+    "query": "Distribution boards sheet steel enclosure IP42 double door 8-way TPN for miniature circuit breakers.",
+    "expected_standards": [
+      "IS 13032",
+      "IS/IEC 61439-3"
+    ],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Electrical - Enclosures",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_008",
+    "query": "Drinking water supply pipes unplasticized PVC 90 mm diameter Class 4 conforming to IS 4985:2000 with elastomeric sealing ring joints.",
+    "expected_standards": [
+      "IS 4985"
+    ],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Water & Environment - Pipes",
+    "has_code": true
+  },
+  {
+    "id": "REAL_HOLD_009",
+    "query": "Safety footwear for engineering workshop industrial workers with steel toe cap 200J impact resistant PU sole as per IS 15298.",
+    "expected_standards": [
+      "IS 15298 (Part 2)"
+    ],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Safety & PPE",
+    "has_code": true
+  },
+  {
+    "id": "REAL_HOLD_010",
+    "query": "Low voltage switchgear and controlgear assemblies air circuit breaker ACB 1600A 4 pole 65kA drawout type with microprocessor release.",
+    "expected_standards": [
+      "IS/IEC 60947-2",
+      "IS/IEC 61439-1",
+      "IS/IEC 61439-2"
+    ],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Electrical - Switchgear",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_011",
+    "query": "Supply of ceiling mounted indoor LED luminaire 36W 2x2 feet cool day light for administrative office lighting fixtures.",
+    "expected_standards": [
+      "IS 10322 (Part 5/Sec 1)",
+      "IS 16107 (Part 2/Sec 1)"
+    ],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Electrical - Appliances",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_012",
+    "query": "Ductile iron pressure pipes centrifugally cast class K9 200 mm diameter with socket and spigot ends for raw water transmission main.",
+    "expected_standards": [
+      "IS 8329"
+    ],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Structural Steel - Pipes",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_013",
+    "query": "Single phase electronic electricity energy meters static 5-30A accuracy class 1.0 with optical port for smart metering roll out.",
+    "expected_standards": [
+      "IS 13779",
+      "IS 16444 (Part 1)"
+    ],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Electrical",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_014",
+    "query": "Water storage tanks polyethylene rotationally moulded cylindrical vertical 2000 litre triple layer UV stabilized for residential building rooftop.",
+    "expected_standards": [
+      "IS 12701"
+    ],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Water & Environment",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_015",
+    "query": "Ready mixed concrete RMC M25 design mix with fly ash blend supplied in transit mixers for foundation rafting at metro station site.",
+    "expected_standards": [
+      "IS 4926"
+    ],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Construction Materials - Concrete",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_016",
+    "query": "pvc sheathed submersible flat cables 3 core 4 sq mm copper conductor for connecting borehole pumps in municipal deep tubewells.",
+    "expected_standards": [
+      "IS 694"
+    ],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Electrical - Cables",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_017",
+    "query": "Aluminium conductor steel reinforced ACSR Weasel conductor for 11kV rural electrical overhead power transmission network.",
+    "expected_standards": [
+      "IS 398 (Part 2)"
+    ],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Electrical",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_018",
+    "query": "Burnt clay solid building bricks common quality compressive strength class 7.5 for foundation and superstructure load bearing walls.",
+    "expected_standards": [
+      "IS 1077"
+    ],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Construction Materials - Masonry",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_019",
+    "query": "3 phase oil immersed natural cooled outdoor distribution transformer 100 kVA 11/0.433 kV with energy efficiency level 2.",
+    "expected_standards": [
+      "IS 1180 (Part 1)"
+    ],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Electrical",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_020",
+    "query": "supply of 3 pin shuttered electrical plug sockets 6A and 16A modular type with flame retardant polycarbonate body.",
+    "expected_standards": [
+      "IS 1293"
+    ],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Electrical - Wiring",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_021",
+    "query": "Synthetic turf shock-absorbing artificial grass system 40 mm pile height for international standard field hockey stadium.",
+    "expected_standards": [],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Out-of-Scope",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_022",
+    "query": "Aviation turbine fuel Jet A-1 kerosene grade for civil aircraft refueling at international airport terminal.",
+    "expected_standards": [],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Out-of-Scope",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_023",
+    "query": "High pressure seamless steel CNG cylinders 60 litre water capacity for automotive passenger vehicle retrofit.",
+    "expected_standards": [],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Out-of-Scope",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_024",
+    "query": "Marine distress signals red handheld rocket parachute flares for passenger vessel lifeboat emergency survival kit.",
+    "expected_standards": [],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Out-of-Scope",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_025",
+    "query": "Automotive engine crankcase lubricating oil SAE 15W-40 API CI-4 multigrade for state transport diesel buses.",
+    "expected_standards": [],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Out-of-Scope",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_026",
+    "query": "Hydraulic brake fluid DOT 4 polyglycol based high boiling point for automobile disc and drum braking systems.",
+    "expected_standards": [],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Out-of-Scope",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_027",
+    "query": "Commercial induction cooktop 3500W heavy duty glass ceramic top with digital temperature control for hotel kitchen.",
+    "expected_standards": [],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Out-of-Scope",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_028",
+    "query": "Manual adult toothbrushes with soft end-rounded nylon bristles for community dental health kit distribution.",
+    "expected_standards": [],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Out-of-Scope",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_029",
+    "query": "Ball point pens blue and black ink with tungsten carbide ball tip for government school student stationery supply.",
+    "expected_standards": [],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Out-of-Scope",
+    "has_code": false
+  },
+  {
+    "id": "REAL_HOLD_030",
+    "query": "Refractory high alumina fireclay bricks 60 percent alumina content for high temperature steel furnace lining.",
+    "expected_standards": [],
+    "role": "realistic_holdout",
+    "split": "holdout",
+    "category": "Out-of-Scope",
+    "has_code": false
+  }
+]

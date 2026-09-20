@@ -27,14 +27,33 @@ def extract_structured_heuristically(text: str) -> dict:
     """Extract procurement requirements using regex and vocabulary matching."""
     text_lower = text.lower()
 
+    # Hindi Devanagari translation for mock offline pipeline
+    hindi_translations = {
+        "पानी": "water",
+        "स्टील": "steel",
+        "पाइप": "pipes",
+        "बिजली": "electricity",
+        "तार": "wire",
+        "सीमेंट": "cement",
+        "लोहा": "iron",
+        "स्विच": "switches",
+        "मोटर": "motor",
+        "पंप": "pump",
+        "सड़क": "road",
+        "ईंट": "bricks",
+    }
+    for h_word, en_word in hindi_translations.items():
+        if h_word in text:
+            text_lower += f" {en_word}"
+
     # Inferred category
-    category_hint = kl.infer_category_from_text(text) or "Civil & Construction"
+    category_hint = kl.infer_category_from_text(text_lower) or "Civil & Construction"
 
     # Material pattern matching
     materials = []
     mat_patterns = [
         r"\b(fe\s*\d{3}[a-z]?)\b",
-        r"\b(pvc|upvc|cpvc|hdpe|ppr|gi|ms|stainless\s*steel|ss\s*304|ss\s*316)\b",
+        r"\b(pvc|upvc|cpvc|hdpe|ppr|gi|ms|stainless\s*steel|ss\s*304|ss\s*316|steel)\b",
         r"\b(copper|aluminium|aluminum|concrete|cement|bitumen|timber|glass)\b",
         r"\b(ordinary\s*portland\s*cement|opc|ppc|fly\s*ash)\b",
         r"\b(high\s*strength\s*deformed\s*steel|tmt)\b",

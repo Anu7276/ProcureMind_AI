@@ -1,0 +1,694 @@
+{
+  "total": 30,
+  "eval_type": "realistic",
+  "split": "holdout",
+  "out_of_scope_count": 10,
+  "in_scope_count": 20,
+  "abstention_precision": 0.8,
+  "abstention_recall": 0.8,
+  "abstention_f1": 0.8,
+  "false_abstention_rate": 0.1,
+  "in_scope_family_recall@1": 0.7,
+  "in_scope_family_recall@5": 0.85,
+  "in_scope_family_mrr": 0.775,
+  "details": [
+    {
+      "id": "REAL_HOLD_001",
+      "query": "Supply and laying of PVC insulated single core unsheathed copper wires 2.5 sq mm for lighting circuits in residential quarters.",
+      "category": "Electrical - Cables",
+      "language": "en",
+      "expected": [
+        "IS 694"
+      ],
+      "top5": [
+        "IS 694",
+        "IS 1554 (Part 1)",
+        "IS 7098 (Part 1)",
+        "IS 1554 (Part 2)",
+        "IS 8783 (Part 4/Sec 1)"
+      ],
+      "abstained": false,
+      "exact_hit@1": true,
+      "exact_hit@3": true,
+      "exact_hit@5": true,
+      "exact_rr": 1.0,
+      "family_hit@1": true,
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 1.0
+    },
+    {
+      "id": "REAL_HOLD_002",
+      "query": "53 grade Ordinary Portland Cement OPC bulk supply for high strength precast concrete culverts and girders.",
+      "category": "Construction Materials - Cement",
+      "language": "en",
+      "expected": [
+        "IS 12269",
+        "IS 269"
+      ],
+      "top5": [
+        "IS 12269",
+        "IS 8112",
+        "IS 269",
+        "IS 456",
+        "IS 12330"
+      ],
+      "abstained": false,
+      "exact_hit@1": true,
+      "exact_hit@3": true,
+      "exact_hit@5": true,
+      "exact_rr": 1.0,
+      "family_hit@1": true,
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 1.0
+    },
+    {
+      "id": "REAL_HOLD_003",
+      "query": "High tensile structural steel plates E 250 grade B fully killed for fabrication of overhead railway bridge trusses.",
+      "category": "Structural Steel",
+      "language": "en",
+      "expected": [
+        "IS 2062"
+      ],
+      "top5": [
+        "IS 2062",
+        "IS 1977",
+        "IS 800",
+        "IS 1149",
+        "IS 2090"
+      ],
+      "abstained": false,
+      "exact_hit@1": true,
+      "exact_hit@3": true,
+      "exact_hit@5": true,
+      "exact_rr": 1.0,
+      "family_hit@1": true,
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 1.0
+    },
+    {
+      "id": "REAL_HOLD_004",
+      "query": "Moulded case circuit breaker MCCB 400A 4 pole 50kA breaking capacity with adjustable thermal magnetic release for main power panel.",
+      "category": "Electrical - Circuit Breakers",
+      "language": "en",
+      "expected": [
+        "IS/IEC 60947-2",
+        "IS 13947 (Part 2)"
+      ],
+      "top5": [],
+      "abstained": true,
+      "exact_hit@1": false,
+      "exact_hit@3": false,
+      "exact_hit@5": false,
+      "exact_rr": 0.0,
+      "family_hit@1": false,
+      "family_hit@3": false,
+      "family_hit@5": false,
+      "family_rr": 0.0
+    },
+    {
+      "id": "REAL_HOLD_005",
+      "query": "Precast solid concrete paving blocks interlocking 80 mm thickness M-40 grade for heavy vehicle parking bay and toll plaza pavement.",
+      "category": "Construction Materials - Paving",
+      "language": "en",
+      "expected": [
+        "IS 15658"
+      ],
+      "top5": [
+        "IS 15658",
+        "IS 2185 (Part 1)",
+        "IS 12269",
+        "IS 9893",
+        "IS 12440"
+      ],
+      "abstained": false,
+      "exact_hit@1": true,
+      "exact_hit@3": true,
+      "exact_hit@5": true,
+      "exact_rr": 1.0,
+      "family_hit@1": true,
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 1.0
+    },
+    {
+      "id": "REAL_HOLD_006",
+      "query": "Supply of solar inverter grid tied 50 kW 3-phase string inverter with MPPT efficiency for institutional rooftop installation.",
+      "category": "Solar Energy",
+      "language": "en",
+      "expected": [
+        "IS 16221 (Part 2)",
+        "IS 16169"
+      ],
+      "top5": [
+        "IS 16221 (Part 2)",
+        "IS 16169",
+        "IS 16242 (Part 1)",
+        "IS 12615",
+        "IS 12824"
+      ],
+      "abstained": false,
+      "exact_hit@1": true,
+      "exact_hit@3": true,
+      "exact_hit@5": true,
+      "exact_rr": 1.0,
+      "family_hit@1": true,
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 1.0
+    },
+    {
+      "id": "REAL_HOLD_007",
+      "query": "Distribution boards sheet steel enclosure IP42 double door 8-way TPN for miniature circuit breakers.",
+      "category": "Electrical - Enclosures",
+      "language": "en",
+      "expected": [
+        "IS 13032",
+        "IS/IEC 61439-3"
+      ],
+      "top5": [
+        "IS/IEC 60898 (Part 1)",
+        "IS 13032",
+        "IS/IEC 60947 (Part 2)",
+        "IS 13947 (Part 1)",
+        "IS 648"
+      ],
+      "abstained": false,
+      "exact_hit@1": false,
+      "exact_hit@3": true,
+      "exact_hit@5": true,
+      "exact_rr": 0.5,
+      "family_hit@1": false,
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 0.5
+    },
+    {
+      "id": "REAL_HOLD_008",
+      "query": "Drinking water supply pipes unplasticized PVC 90 mm diameter Class 4 conforming to IS 4985:2000 with elastomeric sealing ring joints.",
+      "category": "Water & Environment - Pipes",
+      "language": "en",
+      "expected": [
+        "IS 4985"
+      ],
+      "top5": [
+        "IS 4985",
+        "IS 3589",
+        "IS 12818",
+        "IS 16647",
+        "IS 13592"
+      ],
+      "abstained": false,
+      "exact_hit@1": true,
+      "exact_hit@3": true,
+      "exact_hit@5": true,
+      "exact_rr": 1.0,
+      "family_hit@1": true,
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 1.0
+    },
+    {
+      "id": "REAL_HOLD_009",
+      "query": "Safety footwear for engineering workshop industrial workers with steel toe cap 200J impact resistant PU sole as per IS 15298.",
+      "category": "Safety & PPE",
+      "language": "en",
+      "expected": [
+        "IS 15298 (Part 2)"
+      ],
+      "top5": [
+        "IS 15298 (Part 2)",
+        "IS 15298 (Part 3)",
+        "IS 15298 (Part 4)",
+        "IS 11226",
+        "IS 2925"
+      ],
+      "abstained": false,
+      "exact_hit@1": true,
+      "exact_hit@3": true,
+      "exact_hit@5": true,
+      "exact_rr": 1.0,
+      "family_hit@1": true,
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 1.0
+    },
+    {
+      "id": "REAL_HOLD_010",
+      "query": "Low voltage switchgear and controlgear assemblies air circuit breaker ACB 1600A 4 pole 65kA drawout type with microprocessor release.",
+      "category": "Electrical - Switchgear",
+      "language": "en",
+      "expected": [
+        "IS/IEC 60947-2",
+        "IS/IEC 61439-1",
+        "IS/IEC 61439-2"
+      ],
+      "top5": [
+        "IS 13947 (Part 1)",
+        "IS/IEC 60947 (Part 2)",
+        "IS 8623 (Part 1)",
+        "IS 2147",
+        "IS 13947 (Part 3)"
+      ],
+      "abstained": false,
+      "exact_hit@1": false,
+      "exact_hit@3": false,
+      "exact_hit@5": false,
+      "exact_rr": 0.0,
+      "family_hit@1": false,
+      "family_hit@3": false,
+      "family_hit@5": false,
+      "family_rr": 0.0
+    },
+    {
+      "id": "REAL_HOLD_011",
+      "query": "Supply of ceiling mounted indoor LED luminaire 36W 2x2 feet cool day light for administrative office lighting fixtures.",
+      "category": "Electrical - Appliances",
+      "language": "en",
+      "expected": [
+        "IS 10322 (Part 5/Sec 1)",
+        "IS 16107 (Part 2/Sec 1)"
+      ],
+      "top5": [
+        "IS 10322 (Part 5/Sec 1)",
+        "IS 16102 (Part 1)",
+        "IS 10322 (Part 5/Sec 3)",
+        "IS 16103 (Part 1)",
+        "IS 616"
+      ],
+      "abstained": false,
+      "exact_hit@1": true,
+      "exact_hit@3": true,
+      "exact_hit@5": true,
+      "exact_rr": 1.0,
+      "family_hit@1": true,
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 1.0
+    },
+    {
+      "id": "REAL_HOLD_012",
+      "query": "Ductile iron pressure pipes centrifugally cast class K9 200 mm diameter with socket and spigot ends for raw water transmission main.",
+      "category": "Structural Steel - Pipes",
+      "language": "en",
+      "expected": [
+        "IS 8329"
+      ],
+      "top5": [
+        "IS 1536",
+        "IS 8329",
+        "IS 1538",
+        "IS 1729",
+        "IS 3989"
+      ],
+      "abstained": false,
+      "exact_hit@1": false,
+      "exact_hit@3": true,
+      "exact_hit@5": true,
+      "exact_rr": 0.5,
+      "family_hit@1": false,
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 0.5
+    },
+    {
+      "id": "REAL_HOLD_013",
+      "query": "Single phase electronic electricity energy meters static 5-30A accuracy class 1.0 with optical port for smart metering roll out.",
+      "category": "Electrical",
+      "language": "en",
+      "expected": [
+        "IS 13779",
+        "IS 16444 (Part 1)"
+      ],
+      "top5": [
+        "IS 16444 (Part 1)",
+        "IS 14697",
+        "IS 13779",
+        "IS 15884",
+        "IS 15959 (Part 1)"
+      ],
+      "abstained": false,
+      "exact_hit@1": true,
+      "exact_hit@3": true,
+      "exact_hit@5": true,
+      "exact_rr": 1.0,
+      "family_hit@1": true,
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 1.0
+    },
+    {
+      "id": "REAL_HOLD_014",
+      "query": "Water storage tanks polyethylene rotationally moulded cylindrical vertical 2000 litre triple layer UV stabilized for residential building rooftop.",
+      "category": "Water & Environment",
+      "language": "en",
+      "expected": [
+        "IS 12701"
+      ],
+      "top5": [
+        "IS 12701",
+        "IS 4984",
+        "IS 8008 (Part 1)",
+        "IS 14333",
+        "IS 13356"
+      ],
+      "abstained": false,
+      "exact_hit@1": true,
+      "exact_hit@3": true,
+      "exact_hit@5": true,
+      "exact_rr": 1.0,
+      "family_hit@1": true,
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 1.0
+    },
+    {
+      "id": "REAL_HOLD_015",
+      "query": "Ready mixed concrete RMC M25 design mix with fly ash blend supplied in transit mixers for foundation rafting at metro station site.",
+      "category": "Construction Materials - Concrete",
+      "language": "en",
+      "expected": [
+        "IS 4926"
+      ],
+      "top5": [
+        "IS 3812 (Part 1)",
+        "IS 4926",
+        "IS 1489 (Part 1)",
+        "IS 456",
+        "IS 12894"
+      ],
+      "abstained": false,
+      "exact_hit@1": false,
+      "exact_hit@3": true,
+      "exact_hit@5": true,
+      "exact_rr": 0.5,
+      "family_hit@1": false,
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 0.5
+    },
+    {
+      "id": "REAL_HOLD_016",
+      "query": "pvc sheathed submersible flat cables 3 core 4 sq mm copper conductor for connecting borehole pumps in municipal deep tubewells.",
+      "category": "Electrical - Cables",
+      "language": "en",
+      "expected": [
+        "IS 694"
+      ],
+      "top5": [
+        "IS 694",
+        "IS 7098 (Part 1)",
+        "IS 1554 (Part 1)",
+        "IS 7098 (Part 2)",
+        "IS 8130"
+      ],
+      "abstained": false,
+      "exact_hit@1": true,
+      "exact_hit@3": true,
+      "exact_hit@5": true,
+      "exact_rr": 1.0,
+      "family_hit@1": true,
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 1.0
+    },
+    {
+      "id": "REAL_HOLD_017",
+      "query": "Aluminium conductor steel reinforced ACSR Weasel conductor for 11kV rural electrical overhead power transmission network.",
+      "category": "Electrical",
+      "language": "en",
+      "expected": [
+        "IS 398 (Part 2)"
+      ],
+      "top5": [
+        "IS 398 (Part 2)",
+        "IS 398 (Part 4)",
+        "IS 398 (Part 5)",
+        "IS 2713",
+        "IS 8130"
+      ],
+      "abstained": false,
+      "exact_hit@1": true,
+      "exact_hit@3": true,
+      "exact_hit@5": true,
+      "exact_rr": 1.0,
+      "family_hit@1": true,
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 1.0
+    },
+    {
+      "id": "REAL_HOLD_018",
+      "query": "Burnt clay solid building bricks common quality compressive strength class 7.5 for foundation and superstructure load bearing walls.",
+      "category": "Construction Materials - Masonry",
+      "language": "en",
+      "expected": [
+        "IS 1077"
+      ],
+      "top5": [
+        "IS 1077",
+        "IS 13757",
+        "IS 3495 (Part 1 to 4)",
+        "IS 3952",
+        "IS 2222"
+      ],
+      "abstained": false,
+      "exact_hit@1": true,
+      "exact_hit@3": true,
+      "exact_hit@5": true,
+      "exact_rr": 1.0,
+      "family_hit@1": true,
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 1.0
+    },
+    {
+      "id": "REAL_HOLD_019",
+      "query": "3 phase oil immersed natural cooled outdoor distribution transformer 100 kVA 11/0.433 kV with energy efficiency level 2.",
+      "category": "Electrical",
+      "language": "en",
+      "expected": [
+        "IS 1180 (Part 1)"
+      ],
+      "top5": [
+        "IS 1180 (Part 1)",
+        "IS 1180 (Part 3)",
+        "IS 1554 (Part 2)",
+        "IS 12615",
+        "IS 7098 (Part 2)"
+      ],
+      "abstained": false,
+      "exact_hit@1": true,
+      "exact_hit@3": true,
+      "exact_hit@5": true,
+      "exact_rr": 1.0,
+      "family_hit@1": true,
+      "family_hit@3": true,
+      "family_hit@5": true,
+      "family_rr": 1.0
+    },
+    {
+      "id": "REAL_HOLD_020",
+      "query": "supply of 3 pin shuttered electrical plug sockets 6A and 16A modular type with flame retardant polycarbonate body.",
+      "category": "Electrical - Wiring",
+      "language": "en",
+      "expected": [
+        "IS 1293"
+      ],
+      "top5": [],
+      "abstained": true,
+      "exact_hit@1": false,
+      "exact_hit@3": false,
+      "exact_hit@5": false,
+      "exact_rr": 0.0,
+      "family_hit@1": false,
+      "family_hit@3": false,
+      "family_hit@5": false,
+      "family_rr": 0.0
+    },
+    {
+      "id": "REAL_HOLD_021",
+      "query": "Synthetic turf shock-absorbing artificial grass system 40 mm pile height for international standard field hockey stadium.",
+      "category": "Out-of-Scope",
+      "language": "en",
+      "expected": [],
+      "top5": [],
+      "abstained": true,
+      "exact_hit@1": false,
+      "exact_hit@3": false,
+      "exact_hit@5": false,
+      "exact_rr": 0.0,
+      "family_hit@1": false,
+      "family_hit@3": false,
+      "family_hit@5": false,
+      "family_rr": 0.0
+    },
+    {
+      "id": "REAL_HOLD_022",
+      "query": "Aviation turbine fuel Jet A-1 kerosene grade for civil aircraft refueling at international airport terminal.",
+      "category": "Out-of-Scope",
+      "language": "en",
+      "expected": [],
+      "top5": [],
+      "abstained": true,
+      "exact_hit@1": false,
+      "exact_hit@3": false,
+      "exact_hit@5": false,
+      "exact_rr": 0.0,
+      "family_hit@1": false,
+      "family_hit@3": false,
+      "family_hit@5": false,
+      "family_rr": 0.0
+    },
+    {
+      "id": "REAL_HOLD_023",
+      "query": "High pressure seamless steel CNG cylinders 60 litre water capacity for automotive passenger vehicle retrofit.",
+      "category": "Out-of-Scope",
+      "language": "en",
+      "expected": [],
+      "top5": [
+        "IS 7285 (Part 2)",
+        "IS 1239 (Part 1)",
+        "IS 3589",
+        "IS 3196 (Part 1)",
+        "IS 5382"
+      ],
+      "abstained": false,
+      "exact_hit@1": false,
+      "exact_hit@3": false,
+      "exact_hit@5": false,
+      "exact_rr": 0.0,
+      "family_hit@1": false,
+      "family_hit@3": false,
+      "family_hit@5": false,
+      "family_rr": 0.0
+    },
+    {
+      "id": "REAL_HOLD_024",
+      "query": "Marine distress signals red handheld rocket parachute flares for passenger vessel lifeboat emergency survival kit.",
+      "category": "Out-of-Scope",
+      "language": "en",
+      "expected": [],
+      "top5": [],
+      "abstained": true,
+      "exact_hit@1": false,
+      "exact_hit@3": false,
+      "exact_hit@5": false,
+      "exact_rr": 0.0,
+      "family_hit@1": false,
+      "family_hit@3": false,
+      "family_hit@5": false,
+      "family_rr": 0.0
+    },
+    {
+      "id": "REAL_HOLD_025",
+      "query": "Automotive engine crankcase lubricating oil SAE 15W-40 API CI-4 multigrade for state transport diesel buses.",
+      "category": "Out-of-Scope",
+      "language": "en",
+      "expected": [],
+      "top5": [],
+      "abstained": true,
+      "exact_hit@1": false,
+      "exact_hit@3": false,
+      "exact_hit@5": false,
+      "exact_rr": 0.0,
+      "family_hit@1": false,
+      "family_hit@3": false,
+      "family_hit@5": false,
+      "family_rr": 0.0
+    },
+    {
+      "id": "REAL_HOLD_026",
+      "query": "Hydraulic brake fluid DOT 4 polyglycol based high boiling point for automobile disc and drum braking systems.",
+      "category": "Out-of-Scope",
+      "language": "en",
+      "expected": [],
+      "top5": [],
+      "abstained": true,
+      "exact_hit@1": false,
+      "exact_hit@3": false,
+      "exact_hit@5": false,
+      "exact_rr": 0.0,
+      "family_hit@1": false,
+      "family_hit@3": false,
+      "family_hit@5": false,
+      "family_rr": 0.0
+    },
+    {
+      "id": "REAL_HOLD_027",
+      "query": "Commercial induction cooktop 3500W heavy duty glass ceramic top with digital temperature control for hotel kitchen.",
+      "category": "Out-of-Scope",
+      "language": "en",
+      "expected": [],
+      "top5": [
+        "IS 1554 (Part 1)",
+        "IS 2180",
+        "IS 12824",
+        "IS 3438",
+        "IS 12109"
+      ],
+      "abstained": false,
+      "exact_hit@1": false,
+      "exact_hit@3": false,
+      "exact_hit@5": false,
+      "exact_rr": 0.0,
+      "family_hit@1": false,
+      "family_hit@3": false,
+      "family_hit@5": false,
+      "family_rr": 0.0
+    },
+    {
+      "id": "REAL_HOLD_028",
+      "query": "Manual adult toothbrushes with soft end-rounded nylon bristles for community dental health kit distribution.",
+      "category": "Out-of-Scope",
+      "language": "en",
+      "expected": [],
+      "top5": [],
+      "abstained": true,
+      "exact_hit@1": false,
+      "exact_hit@3": false,
+      "exact_hit@5": false,
+      "exact_rr": 0.0,
+      "family_hit@1": false,
+      "family_hit@3": false,
+      "family_hit@5": false,
+      "family_rr": 0.0
+    },
+    {
+      "id": "REAL_HOLD_029",
+      "query": "Ball point pens blue and black ink with tungsten carbide ball tip for government school student stationery supply.",
+      "category": "Out-of-Scope",
+      "language": "en",
+      "expected": [],
+      "top5": [],
+      "abstained": true,
+      "exact_hit@1": false,
+      "exact_hit@3": false,
+      "exact_hit@5": false,
+      "exact_rr": 0.0,
+      "family_hit@1": false,
+      "family_hit@3": false,
+      "family_hit@5": false,
+      "family_rr": 0.0
+    },
+    {
+      "id": "REAL_HOLD_030",
+      "query": "Refractory high alumina fireclay bricks 60 percent alumina content for high temperature steel furnace lining.",
+      "category": "Out-of-Scope",
+      "language": "en",
+      "expected": [],
+      "top5": [],
+      "abstained": true,
+      "exact_hit@1": false,
+      "exact_hit@3": false,
+      "exact_hit@5": false,
+      "exact_rr": 0.0,
+      "family_hit@1": false,
+      "family_hit@3": false,
+      "family_hit@5": false,
+      "family_rr": 0.0
+    }
+  ]
+}

@@ -356,6 +356,21 @@ def _merge_reasoning(
             "scope": ev["scope"],
         })
 
+    # Ensure successor match strength and confidence cap on withdrawn/superseded standards
+    item_by_key = {it["key"]: it for it in items}
+    for it in items:
+        if it.get("status") in ("WITHDRAWN", "SUPERSEDED"):
+            succ_keys = it.get("replaced_by") or it.get("superseded_by") or []
+            succ_items = [item_by_key[k] for k in succ_keys if k in item_by_key]
+            if succ_items:
+                for s_it in succ_items:
+                    if s_it["match_strength"] < it["match_strength"]:
+                        s_it["match_strength"] = it["match_strength"]
+                        s_it["relevance_score"] = it["match_strength"]
+                        s_it["confidence"] = max(s_it["confidence"], _compute_confidence(s_it["match_strength"], 0.05))
+                max_succ_conf = max(s_it["confidence"] for s_it in succ_items)
+                it["confidence"] = max(0.10, round(max_succ_conf - 0.05, 3))
+
     top_strength = float(items[0]["match_strength"]) if items else 0.0
     top_coverage = float(items[0].get("coverage", 0.0)) if items else 0.0
 

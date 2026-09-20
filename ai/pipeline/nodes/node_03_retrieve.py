@@ -64,10 +64,6 @@ def _build_query_text(state: PipelineState) -> str:
             else:
                 val_str = str(val).strip()
             val_lower = val_str.lower()
-            if val_lower in GENERIC_FILLER_PHRASES or any(
-                f in val_lower for f in GENERIC_FILLER_PHRASES if len(f) > 10
-            ):
-                continue
             if val_str:
                 parts.append(val_str)
 
