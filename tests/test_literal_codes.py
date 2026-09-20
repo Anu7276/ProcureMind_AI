@@ -64,3 +64,36 @@ async def test_ingest_and_retrieve_separation():
     assert is_1786_cand is not None
     assert is_1786_cand.get("source") != "literal_mention"
     assert is_1786_cand.get("is_literal_mention") is not True
+
+
+def test_false_positive_lowercase_is_with_units():
+    # 'is 800 mm' or 'is 1786 volts' must NEVER match IS 800 or IS 1786
+    res1 = extract_literal_codes("The GI conduit is 800 mm long and 25 mm diameter")
+    assert res1 == []
+
+    res2 = extract_literal_codes("The operating voltage rating is 1786 volts AC")
+    assert res2 == []
+
+    res3 = extract_literal_codes("Weight of the motor is 325 kg approximately")
+    assert res3 == []
+
+
+def test_literal_code_format_variants():
+    v1 = extract_literal_codes("Conforming to IS:1786-2008")
+    assert len(v1) == 1 and v1[0]["key"] == "IS 1786" and v1[0]["cited_year"] == 2008
+
+    v2 = extract_literal_codes("Cables conforming to IS-694")
+    assert len(v2) == 1 and v2[0]["key"] == "IS 694"
+
+    v3 = extract_literal_codes("Design as per IS: 456")
+    assert len(v3) == 1 and v3[0]["key"] == "IS 456"
+
+    v4 = extract_literal_codes("Steel conforming to IS 1786 (2008)")
+    assert len(v4) == 1 and v4[0]["key"] == "IS 1786" and v4[0]["cited_year"] == 2008
+
+    v5 = extract_literal_codes("IS 1786 : 2008 (Reaffirmed 2021)")
+    assert len(v5) == 1 and v5[0]["key"] == "IS 1786" and v5[0]["cited_year"] == 2008
+
+    v6 = extract_literal_codes("Steel tubes conforming to IS 1239 Pt 1")
+    assert len(v6) == 1 and v6[0]["key"] == "IS 1239 (Part 1)"
+

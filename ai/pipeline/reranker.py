@@ -13,6 +13,7 @@ from collections import defaultdict
 import logging
 import math
 import os
+import re
 from typing import Any, Dict, List, Optional, Set, Tuple
 
 from ai.knowledge import knowledge_loader as kl
@@ -255,6 +256,12 @@ def rerank(
     return candidates[:top_n], warnings
 
 
+def _matches_trigger_word_boundary(trigger: str, text: str) -> bool:
+    """Match trigger using word boundaries, avoiding substring collisions like 'lamp' in 'clamp'."""
+    pattern = r"\b" + re.escape(trigger.lower().strip()) + r"\b"
+    return bool(re.search(pattern, text.lower()))
+
+
 def _apply_negative_keyword_rules(
     query: str,
     candidates: List[Dict[str, Any]],
@@ -262,30 +269,30 @@ def _apply_negative_keyword_rules(
 ) -> Tuple[List[Dict[str, Any]], List[str]]:
     """
     Apply domain-specific negative keyword suppression rules.
-    If query matches any trigger keyword, penalize specified standards by reducing their score.
+    If query matches any trigger keyword (word boundary), penalize specified standards.
+    Total penalty per candidate is capped at 0.25.
     NEVER penalizes literal mentions or standards in literal_keys.
     """
     rules = getattr(kl, "NEGATIVE_KEYWORD_RULES", [])
     if not rules:
         return candidates, []
 
-    query_lower = query.lower()
     warnings = []
-    penalized_counts: Dict[str, float] = defaultdict(float)
+    penalized_penalties: Dict[str, float] = defaultdict(float)
     reasons: Dict[str, str] = {}
 
     for rule in rules:
         triggers = rule.get("trigger_keywords", [])
-        if any(trig in query_lower for trig in triggers):
+        if any(_matches_trigger_word_boundary(trig, query) for trig in triggers):
             penalize_keys = set(rule.get("penalize_standards", []))
             penalty = float(rule.get("penalty", 0.20))
             reason = rule.get("reason", "")
             for p_key in penalize_keys:
-                penalized_counts[p_key] = max(penalized_counts[p_key], penalty)
+                penalized_penalties[p_key] += penalty
                 if reason and p_key not in reasons:
                     reasons[p_key] = reason
 
-    if not penalized_counts:
+    if not penalized_penalties:
         return candidates, []
 
     for c in candidates:
@@ -293,8 +300,8 @@ def _apply_negative_keyword_rules(
         # Hard rule: NEVER penalize literal mentions
         if c.get("is_literal_mention") or key in literal_keys:
             continue
-        if key in penalized_counts:
-            p_val = penalized_counts[key]
+        if key in penalized_penalties:
+            p_val = min(0.25, round(penalized_penalties[key], 4))  # Capped at 0.25
             old_score = float(c.get("relevance_score", c.get("score", 0.0)))
             new_score = round(max(0.01, old_score - p_val), 4)
             c["relevance_score"] = new_score

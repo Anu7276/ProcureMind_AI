@@ -243,6 +243,9 @@ async def write_recommendation_log(
 
     Returns True if successfully written/updated, False otherwise.
     """
+    if not await is_available():
+        return False
+
     import json
     payload = {
         "audit_id": audit_id,

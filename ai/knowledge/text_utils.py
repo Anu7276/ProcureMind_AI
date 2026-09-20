@@ -31,38 +31,37 @@ STOPWORDS_EN: Set[str] = {
     "wasn't", "we", "were", "weren't", "what", "when", "where", "which", "while",
     "who", "whom", "why", "with", "won't", "would", "wouldn't", "you", "your",
     "yours", "yourself", "yourselves",
-    # Procurement / tender boilerplate words that skew lexical matching across standards
-    "supply", "supplies", "supplied", "supplier", "suppliers",
+    # Procurement / tender boilerplate words (excluding content words like supply, type, work, general, standard)
+    "supplies", "supplied", "supplier", "suppliers",
     "procure", "procurement", "procuring",
     "tender", "tenders", "tendered",
-    "work", "works",
     "provision", "provisions",
     "item", "items",
     "require", "required", "requires", "requirement", "requirements",
-    "shall", "standard", "standards",
+    "shall",
     "spec", "specs", "specification", "specifications",
     "conforming", "conforms", "conform", "confirming",
     "strictly", "accordance", "relevant", "latest",
     "amendment", "amendments", "applicable", "per",
     "use", "used", "using", "etc", "also", "including", "includes",
-    "type", "types", "purpose", "purposes", "general", "various",
+    "purpose", "purposes", "various",
     "details", "detailed", "available", "good", "goods",
 }
 
 # ── Stopwords: Hindi (Devanagari & Transliterated / Hinglish) ────────────────
 STOPWORDS_HI: Set[str] = {
-    # Devanagari
+    # Devanagari (kept complete)
     "का", "के", "की", "को", "में", "से", "पर", "लिए", "और", "या", "था", "थे", "थी",
     "है", "हैं", "हो", "होता", "होते", "होती", "किया", "किए", "गया", "गए", "गई",
     "ने", "एक", "यह", "वह", "जो", "तो", "भी", "तक", "साथ", "द्वारा", "इस", "उस",
     "इन", "उन", "पे", "रहे", "रहा", "रही", "सकते", "सकता", "सकती", "वाले", "वाला",
     "वाली", "चाहिए", "देना", "लेना", "सप्लाई", "सहित", "तथा", "एवं", "अथवा", "कर",
     "करें", "करना", "होगा", "होगी", "होंगे",
-    # Transliterated / Romanized
-    "ka", "ke", "ki", "ko", "mein", "me", "se", "par", "liye", "aur", "ya",
-    "tha", "the", "thi", "hai", "hain", "ho", "hota", "hote", "hoti",
-    "kiya", "kiye", "gaya", "gaye", "gayi", "ne", "ek", "yeh", "voh", "woh",
-    "jo", "to", "bhi", "tak", "saath", "dwara", "us", "un", "pe",
+    # Transliterated / Romanized (excluding ka, me, to, the, ne, se, ki to prevent unit/English collisions)
+    "ke", "ko", "mein", "par", "liye", "aur", "ya",
+    "tha", "thi", "hai", "hain", "ho", "hota", "hote", "hoti",
+    "kiya", "kiye", "gaya", "gaye", "gayi", "ek", "yeh", "voh", "woh",
+    "jo", "bhi", "tak", "saath", "dwara", "us", "un", "pe",
     "rahe", "raha", "rahi", "sakte", "sakta", "sakti", "wale", "wala", "wali",
     "chahiye", "dena", "lena", "karna", "hoga", "hogi", "honge",
 }

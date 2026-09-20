@@ -81,3 +81,35 @@ def test_negative_rules_never_penalize_literal_mention():
     assert is_14333["score"] == 0.90
     assert "negative_penalty_applied" not in is_14333
     assert len(warnings) == 0
+
+
+def test_word_boundary_avoids_substring_collision(monkeypatch):
+    test_rules = [
+        {
+            "trigger_keywords": ["lamp"],
+            "penalize_standards": ["IS 694"],
+            "penalty": 0.20,
+            "reason": "Lamp rule should not trigger for cable clamp"
+        }
+    ]
+    monkeypatch.setattr(kl, "NEGATIVE_KEYWORD_RULES", test_rules)
+    candidates = [{"key": "IS 694", "score": 0.85, "relevance_score": 0.85}]
+    # Query contains 'clamp', which contains 'lamp' as substring
+    query = "PVC insulated cable 1.5 sq mm with cable clamp"
+    penalized, warnings = _apply_negative_keyword_rules(query, candidates, literal_keys=set())
+    assert penalized[0]["score"] == 0.85
+    assert len(warnings) == 0
+
+
+def test_penalty_capped_at_0_25(monkeypatch):
+    test_rules = [
+        {"trigger_keywords": ["water"], "penalize_standards": ["IS 100"], "penalty": 0.20, "reason": "R1"},
+        {"trigger_keywords": ["drinking"], "penalize_standards": ["IS 100"], "penalty": 0.20, "reason": "R2"},
+    ]
+    monkeypatch.setattr(kl, "NEGATIVE_KEYWORD_RULES", test_rules)
+    candidates = [{"key": "IS 100", "score": 0.80, "relevance_score": 0.80}]
+    query = "drinking water pipes"
+    penalized, warnings = _apply_negative_keyword_rules(query, candidates, literal_keys=set())
+    assert penalized[0]["score"] == 0.55  # 0.80 - 0.25 (capped)
+    assert penalized[0]["negative_penalty_applied"] == 0.25
+

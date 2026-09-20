@@ -18,7 +18,7 @@ def test_tokenize_basic():
 
 
 def test_tokenize_all_stopwords_returns_empty():
-    text = "supply of the for and with"
+    text = "procurement of the for and with"
     tokens = tokenize(text)
     assert tokens == []
 
@@ -65,7 +65,7 @@ def test_tokenize_hindi_and_hinglish():
 
 def test_search_standards_in_memory_empty_query():
     kl.load_all()
-    results = kl.search_standards_in_memory("supply of the for and with")
+    results = kl.search_standards_in_memory("procurement of the for and with")
     assert results == []
 
 
