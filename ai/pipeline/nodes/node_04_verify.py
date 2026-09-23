@@ -132,11 +132,13 @@ def _infer_scheme_code(
 
 async def _get_compliance(
     standard_key: str, postgres_ok: bool
-) -> Optional[Dict[str, Any]]:
+) -> Dict[str, Any]:
     """
     Build compliance block supporting all 6 BIS schemes.
     Primary: QCO in-memory index (always available).
     Supplement: PostgreSQL for scheme details and product rules.
+    When no QCO or confirmed compliance field exists in dataset, returns
+    mandatory: None and schemes: [] (never fabricates voluntary / scheme values).
     """
     record = kl.get_standard(standard_key) or {}
     title = record.get("title", "")
@@ -156,6 +158,7 @@ async def _get_compliance(
         meta = SCHEME_METADATA.get(scheme_code, SCHEME_METADATA["Scheme-I"])
         return {
             "mandatory": qco.get("enforcement_status") == "MANDATORY_ENFORCED",
+            "schemes": [meta["scheme_name"]],
             "scheme_name": meta["scheme_name"],
             "scheme_code": meta["scheme_code"],
             "lead_time_weeks": meta["lead_time_weeks"],
@@ -185,6 +188,7 @@ async def _get_compliance(
                 meta = SCHEME_METADATA.get(scheme_code, SCHEME_METADATA["Scheme-I"])
                 return {
                     "mandatory": qco_row.get("enforcement_status") == "MANDATORY_ENFORCED",
+                    "schemes": [meta["scheme_name"]],
                     "scheme_name": meta["scheme_name"],
                     "scheme_code": meta["scheme_code"],
                     "lead_time_weeks": meta["lead_time_weeks"],
@@ -203,7 +207,7 @@ async def _get_compliance(
         compliance = record.get("compliance", {}) or {}
         mandatory = compliance.get("mandatory_certification")
         schemes = compliance.get("schemes", [])
-        if mandatory is not None or schemes:
+        if mandatory is not None or (schemes and len(schemes) > 0):
             raw_cert = schemes[0] if schemes else ""
             scheme_code = _infer_scheme_code(
                 cert_text=raw_cert,
@@ -213,7 +217,8 @@ async def _get_compliance(
             )
             meta = SCHEME_METADATA.get(scheme_code, SCHEME_METADATA["Scheme-I"])
             return {
-                "mandatory": bool(mandatory),
+                "mandatory": bool(mandatory) if mandatory is not None else None,
+                "schemes": list(schemes) if schemes else [meta["scheme_name"]],
                 "scheme_name": meta["scheme_name"],
                 "scheme_code": meta["scheme_code"],
                 "lead_time_weeks": meta["lead_time_weeks"],
@@ -221,24 +226,23 @@ async def _get_compliance(
                 "testing_frequency": meta["testing_frequency"],
                 "penalty": None,
                 "gazette_reference": None,
-                "enforcement_status": "MANDATORY_ENFORCED" if mandatory else "VOLUNTARY",
+                "enforcement_status": "MANDATORY_ENFORCED" if mandatory is True else "VOLUNTARY" if mandatory is False else None,
                 "evidence_source": "standards_clean.json (compliance field)",
             }
 
-    # Default fallback scheme for active standard
-    scheme_code = _infer_scheme_code(category=category, title=title, key=standard_key)
-    meta = SCHEME_METADATA.get(scheme_code, SCHEME_METADATA["Scheme-I"])
+    # Explicit null/empty certification block when not available in dataset
     return {
-        "mandatory": False,
-        "scheme_name": meta["scheme_name"],
-        "scheme_code": meta["scheme_code"],
-        "lead_time_weeks": meta["lead_time_weeks"],
-        "marking_requirements": meta["marking_requirements"],
-        "testing_frequency": meta["testing_frequency"],
+        "mandatory": None,
+        "schemes": [],
+        "scheme_name": None,
+        "scheme_code": None,
+        "lead_time_weeks": None,
+        "marking_requirements": None,
+        "testing_frequency": None,
         "penalty": None,
         "gazette_reference": None,
-        "enforcement_status": "VOLUNTARY",
-        "evidence_source": "BIS Standard Catalog",
+        "enforcement_status": None,
+        "evidence_source": None,
     }
 
 
@@ -366,8 +370,28 @@ async def node_04_verify(state: PipelineState) -> dict:
                             "is_successor_promotion": True,
                         })
 
-        # ── Compliance lookup ─────────────────────────────────────────────────
+        # ── Amendments, Version Check, Compliance & Verification blocks ───────
+        amend_entries = kl.AMENDMENTS_BY_KEY.get(key, [])
+        amendments_block = {
+            "status": "listed" if len(amend_entries) > 0 else "not_available_in_dataset",
+            "entries": list(amend_entries),
+        }
+
+        version_check_block = {
+            "current_edition_year": version_info.get("current_edition_year"),
+            "cited_year": version_info.get("cited_year"),
+            "is_current": version_info.get("is_current"),
+            "status": version_info.get("status", "UNKNOWN"),
+            "successors": list(successors),
+            "messages": list(version_info.get("messages", [])),
+        }
+
         compliance = await _get_compliance(key, postgres_ok)
+
+        verification_block = {
+            "level": status_info["verification_level"],
+            "flags": list(flags),
+        }
 
         # ── Evidence sources ──────────────────────────────────────────────────
         evidence = _build_evidence_sources(cand, record, compliance)
@@ -383,6 +407,9 @@ async def node_04_verify(state: PipelineState) -> dict:
             "flags": flags,
             "has_full_text": status_info.get("has_full_text", False),
             "certification": compliance,
+            "amendments": amendments_block,
+            "version_check": version_check_block,
+            "verification": verification_block,
             "evidence_sources": evidence,
             "whitelist_valid": True,
         })
@@ -402,6 +429,26 @@ async def node_04_verify(state: PipelineState) -> dict:
             "has_full_text": False,
         }
 
+        p_amend_entries = kl.AMENDMENTS_BY_KEY.get(p_key, [])
+        p_amendments = {
+            "status": "listed" if len(p_amend_entries) > 0 else "not_available_in_dataset",
+            "entries": list(p_amend_entries),
+        }
+
+        p_version_check = {
+            "current_edition_year": p_version.get("current_edition_year"),
+            "cited_year": p_version.get("cited_year"),
+            "is_current": p_version.get("is_current"),
+            "status": p_version.get("status", "UNKNOWN"),
+            "successors": list(p_version.get("successors", [])),
+            "messages": list(p_version.get("messages", [])),
+        }
+
+        p_verification = {
+            "level": p_status_info["verification_level"],
+            "flags": list(p_status_info.get("flags", [])),
+        }
+
         verified.append({
             **p_cand,
             "status": p_version["status"],
@@ -412,6 +459,9 @@ async def node_04_verify(state: PipelineState) -> dict:
             "flags": p_status_info.get("flags", []),
             "has_full_text": p_status_info.get("has_full_text", False),
             "certification": p_compliance,
+            "amendments": p_amendments,
+            "version_check": p_version_check,
+            "verification": p_verification,
             "evidence_sources": p_evidence,
             "whitelist_valid": True,
             "related_standards": kl.RELATIONSHIPS_BY_KEY.get(p_key, []),

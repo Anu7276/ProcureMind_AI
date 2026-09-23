@@ -246,32 +246,40 @@ def _generate_spec_line(cand: Dict[str, Any], req_summary: str) -> str:
 
     product = req_summary or title or "materials/equipment"
 
-    if "Scheme-II" in scheme_code or "CRS" in scheme_name:
-        cert_term = "Registration"
-        proof_term = "valid BIS Registration Certificate (CRS)"
-    elif "Scheme-IV" in scheme_code or "CoC" in scheme_name or "Certificate of Conformity" in scheme_name:
-        cert_term = "Certificate of Conformity"
-        proof_term = "Certificate of Conformity (CoC) / Type Test Report"
-    elif "FMCS" in scheme_code or "Scheme-X" in scheme_code:
-        cert_term = "Foreign Manufacturers Certification"
-        proof_term = "valid BIS FMCS License"
-    elif "Eco" in scheme_name or "Eco" in scheme_code:
-        cert_term = "Eco Mark Certification"
-        proof_term = "valid BIS Eco Mark License"
-    elif "HM" in scheme_code or "Hallmark" in scheme_name:
-        cert_term = "Hallmarking Registration"
-        proof_term = "BIS Hallmarking Registration and HUID verification"
-    else:
-        cert_term = "License"
-        proof_term = "valid BIS Certification Marks License (ISI Mark)"
+    if scheme_name:
+        if "Scheme-II" in scheme_code or "CRS" in scheme_name:
+            cert_term = "Registration"
+            proof_term = "valid BIS Registration Certificate (CRS)"
+        elif "Scheme-IV" in scheme_code or "CoC" in scheme_name or "Certificate of Conformity" in scheme_name:
+            cert_term = "Certificate of Conformity"
+            proof_term = "Certificate of Conformity (CoC) / Type Test Report"
+        elif "FMCS" in scheme_code or "Scheme-X" in scheme_code:
+            cert_term = "Foreign Manufacturers Certification"
+            proof_term = "valid BIS FMCS License"
+        elif "Eco" in scheme_name or "Eco" in scheme_code:
+            cert_term = "Eco Mark Certification"
+            proof_term = "valid BIS Eco Mark License"
+        elif "HM" in scheme_code or "Hallmark" in scheme_name:
+            cert_term = "Hallmarking Registration"
+            proof_term = "BIS Hallmarking Registration and HUID verification"
+        else:
+            cert_term = "License"
+            proof_term = "valid BIS Certification Marks License (ISI Mark)"
 
-    spec = f"The {product} shall conform to {code} (or latest revision) with valid BIS {scheme_name} {cert_term}. The vendor shall provide {proof_term} prior to dispatch."
+        spec = f"The {product} shall conform to {code} (or latest revision) with valid BIS {scheme_name} {cert_term}. The vendor shall provide {proof_term} prior to dispatch."
 
-    if mandatory:
-        qco_clause = f"Under QCO ({gazette_ref}), this" if gazette_ref else "Under statutory Quality Control Orders (QCO), this"
-        spec += f" {qco_clause} is mandatory for supply and non-compliant bids shall be rejected at technical stage."
+        if mandatory is True:
+            qco_clause = f"Under QCO ({gazette_ref}), this" if gazette_ref else "Under statutory Quality Control Orders (QCO), this"
+            spec += f" {qco_clause} is mandatory for supply and non-compliant bids shall be rejected at technical stage."
+        elif mandatory is False:
+            spec += " Compliance is recommended for quality assurance."
     else:
-        spec += " Compliance is recommended for quality assurance."
+        spec = f"The {product} shall conform to {code} (or latest revision)."
+        if mandatory is True:
+            qco_clause = f"Under QCO ({gazette_ref}), mandatory" if gazette_ref else "Mandatory"
+            spec += f" {qco_clause} BIS certification is required for supply and non-compliant bids shall be rejected at technical stage."
+        elif mandatory is False:
+            spec += " Compliance is recommended for quality assurance."
 
     return spec
 
@@ -375,6 +383,58 @@ def _merge_reasoning(
         is_low_conf = (match_strength < low_match_thresh) or (conf < 0.60)
         clarification = _generate_clarification_prompt(cand, req_summary) if is_low_conf else None
 
+        # ── 4 mandatory blocks ─────────────────────────────────────────
+        # 1. Amendments
+        amend_obj = cand.get("amendments")
+        if not amend_obj or not isinstance(amend_obj, dict):
+            amend_entries = kl.AMENDMENTS_BY_KEY.get(key, [])
+            amend_obj = {
+                "status": "listed" if len(amend_entries) > 0 else "not_available_in_dataset",
+                "entries": list(amend_entries),
+            }
+
+        # 2. Version Check
+        vc_obj = cand.get("version_check")
+        if not vc_obj or not isinstance(vc_obj, dict):
+            v_info = cand.get("version_info") or {}
+            vc_obj = {
+                "current_edition_year": v_info.get("current_edition_year"),
+                "cited_year": v_info.get("cited_year"),
+                "is_current": v_info.get("is_current"),
+                "status": cand.get("status") or v_info.get("status", "UNKNOWN"),
+                "successors": list(cand.get("superseded_by") or v_info.get("successors") or []),
+                "messages": list(v_info.get("messages", [])),
+            }
+
+        # 3. Certification
+        cert_obj = cand.get("certification")
+        if not cert_obj or not isinstance(cert_obj, dict):
+            cert_obj = {
+                "mandatory": None,
+                "schemes": [],
+                "scheme_name": None,
+                "scheme_code": None,
+                "lead_time_weeks": None,
+                "penalty": None,
+                "gazette_reference": None,
+                "enforcement_status": None,
+                "evidence_source": None,
+                "marking_requirements": None,
+                "testing_frequency": None,
+            }
+        else:
+            if "schemes" not in cert_obj:
+                s_name = cert_obj.get("scheme_name")
+                cert_obj["schemes"] = [s_name] if s_name else []
+
+        # 4. Verification
+        verif_obj = cand.get("verification")
+        if not verif_obj or not isinstance(verif_obj, dict):
+            verif_obj = {
+                "level": cand.get("verification_level", "single_source_unconfirmed"),
+                "flags": list(cand.get("flags", [])),
+            }
+
         items.append({
             "is_code": cand.get("display_code", key),
             "key": key,
@@ -392,7 +452,10 @@ def _merge_reasoning(
             "replaced_by": cand.get("replaced_by", []),
             "version_info": cand.get("version_info"),
             "flags": cand.get("flags", []),
-            "certification": cand.get("certification"),
+            "certification": cert_obj,
+            "amendments": amend_obj,
+            "version_check": vc_obj,
+            "verification": verif_obj,
             "related_standards": related,
             "reasoning": reasoning_text,
             "evidence_sources": cand.get("evidence_sources", []),

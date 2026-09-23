@@ -20,6 +20,9 @@ from backend.schemas.api_schemas import (
     RecommendationItem,
     LineItemRecommendation,
     CertificationInfo,
+    AmendmentsInfo,
+    VersionCheckInfo,
+    VerificationInfo,
     RelatedStandard,
     PipelineMeta,
 )
@@ -29,22 +32,52 @@ router = APIRouter(tags=["Pipeline"])
 
 
 def _build_recommendation_item(r: dict) -> RecommendationItem:
-    cert = r.get("certification")
-    cert_info = (
-        CertificationInfo(
-            mandatory=cert.get("mandatory"),
-            scheme_name=cert.get("scheme_name"),
-            scheme_code=cert.get("scheme_code"),
-            lead_time_weeks=cert.get("lead_time_weeks"),
-            penalty=cert.get("penalty"),
-            gazette_reference=cert.get("gazette_reference"),
-            enforcement_status=cert.get("enforcement_status"),
-            evidence_source=cert.get("evidence_source", "qco_orders.json"),
-            marking_requirements=cert.get("marking_requirements"),
-            testing_frequency=cert.get("testing_frequency"),
-        )
-        if cert
-        else None
+    cert = r.get("certification") or {}
+    cert_info = CertificationInfo(
+        mandatory=cert.get("mandatory"),
+        schemes=cert.get("schemes") or ([] if cert.get("mandatory") is None and not cert.get("scheme_name") else [cert.get("scheme_name")] if cert.get("scheme_name") else []),
+        scheme_name=cert.get("scheme_name"),
+        scheme_code=cert.get("scheme_code"),
+        lead_time_weeks=cert.get("lead_time_weeks"),
+        penalty=cert.get("penalty"),
+        gazette_reference=cert.get("gazette_reference"),
+        enforcement_status=cert.get("enforcement_status"),
+        evidence_source=cert.get("evidence_source"),
+        marking_requirements=cert.get("marking_requirements"),
+        testing_frequency=cert.get("testing_frequency"),
+    )
+
+    amend = r.get("amendments") or {}
+    amend_info = AmendmentsInfo(
+        status=amend.get("status", "not_available_in_dataset"),
+        entries=amend.get("entries", []),
+    )
+
+    v_check = r.get("version_check") or {}
+    if not v_check and r.get("version_info"):
+        v_info = r.get("version_info") or {}
+        v_check = {
+            "current_edition_year": v_info.get("current_edition_year"),
+            "cited_year": v_info.get("cited_year"),
+            "is_current": v_info.get("is_current"),
+            "status": r.get("status") or v_info.get("status", "UNKNOWN"),
+            "successors": r.get("superseded_by") or v_info.get("successors", []),
+            "messages": v_info.get("messages", []),
+        }
+
+    version_check_info = VersionCheckInfo(
+        current_edition_year=v_check.get("current_edition_year"),
+        cited_year=v_check.get("cited_year"),
+        is_current=v_check.get("is_current"),
+        status=v_check.get("status", r.get("status", "UNKNOWN")),
+        successors=v_check.get("successors", []),
+        messages=v_check.get("messages", []),
+    )
+
+    verif = r.get("verification") or {}
+    verif_info = VerificationInfo(
+        level=verif.get("level", r.get("verification_level", "single_source_unconfirmed")),
+        flags=verif.get("flags", r.get("flags", [])),
     )
 
     related = [
@@ -67,6 +100,9 @@ def _build_recommendation_item(r: dict) -> RecommendationItem:
         superseded_by=r.get("superseded_by", []),
         flags=r.get("flags", []),
         certification=cert_info,
+        amendments=amend_info,
+        version_check=version_check_info,
+        verification=verif_info,
         related_standards=related,
         reasoning=r.get("reasoning", ""),
         evidence_sources=r.get("evidence_sources", []),

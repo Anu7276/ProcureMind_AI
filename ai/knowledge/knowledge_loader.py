@@ -559,7 +559,14 @@ def search_standards_in_memory(query_text: str, top_k: int = 10) -> List[Dict[st
 
 def get_qco_for_key(standard_key: str) -> Optional[Dict[str, Any]]:
     """In-memory QCO lookup for Node04 (Postgres-free path)."""
-    return QCO_BY_STANDARD_KEY.get(standard_key)
+    if not standard_key:
+        return None
+    if standard_key in QCO_BY_STANDARD_KEY:
+        return QCO_BY_STANDARD_KEY[standard_key]
+    for k, v in QCO_BY_STANDARD_KEY.items():
+        if k.startswith(standard_key + " (") or standard_key.startswith(k + " ("):
+            return v
+    return None
 
 
 def get_cert_scheme(scheme_code: str) -> Optional[Dict[str, Any]]:

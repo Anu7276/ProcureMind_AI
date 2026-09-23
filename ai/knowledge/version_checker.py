@@ -95,30 +95,28 @@ def check_version(
             messages.append(f"Standard is {status} in dataset.")
 
     # 4. Check cited edition year against current edition year
-    if cited_year is not None:
-        if current_edition_year is not None:
-            if cited_year != current_edition_year:
-                is_current = False
-                messages.append(
-                    f"Tender cites {key}:{cited_year}; dataset lists current edition {current_edition_year}."
-                )
-            else:
-                if status == "ACTIVE":
-                    is_current = True
-                    messages.append(
-                        f"Tender cited year {cited_year} matches current active edition."
-                    )
+    if current_edition_year is None:
+        is_current = None
+        messages.append("Edition year not available in dataset")
+    elif cited_year is not None:
+        if cited_year != current_edition_year:
+            is_current = False
+            messages.append(
+                f"Tender cites {key}:{cited_year}; dataset lists current edition {current_edition_year}."
+            )
         else:
-            messages.append("Edition year unknown in dataset; cannot verify cited year.")
+            if status == "ACTIVE":
+                is_current = True
+                messages.append(
+                    f"Tender cited year {cited_year} matches current active edition."
+                )
     else:
-        if current_edition_year is None and is_current is None:
-            messages.append("Edition year unknown in dataset.")
-        elif is_current is None and status == "ACTIVE":
+        if is_current is None and status == "ACTIVE":
             is_current = True
 
     # 5. Amendment status (do not invent — only report if in amendments_map)
     amendment_status: Any = "not_available_in_dataset"
-    if amendments_map and key in amendments_map:
+    if amendments_map and key in amendments_map and len(amendments_map[key]) > 0:
         amendment_status = amendments_map[key]
 
     return {

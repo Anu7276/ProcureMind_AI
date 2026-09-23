@@ -14,15 +14,35 @@ from pydantic import BaseModel, Field
 
 class CertificationInfo(BaseModel):
     mandatory: Optional[bool] = None
+    schemes: List[str] = Field(default_factory=list)
     scheme_name: Optional[str] = None
     scheme_code: Optional[str] = None
     lead_time_weeks: Optional[int] = None
     penalty: Optional[str] = None
     gazette_reference: Optional[str] = None
     enforcement_status: Optional[str] = None
-    evidence_source: str = "qco_orders.json"
+    evidence_source: Optional[str] = None
     marking_requirements: Optional[str] = None
     testing_frequency: Optional[str] = None
+
+
+class AmendmentsInfo(BaseModel):
+    status: str = "not_available_in_dataset"  # "listed" | "not_available_in_dataset"
+    entries: List[Any] = Field(default_factory=list)
+
+
+class VersionCheckInfo(BaseModel):
+    current_edition_year: Optional[int] = None
+    cited_year: Optional[int] = None
+    is_current: Optional[bool] = None
+    status: str = "UNKNOWN"
+    successors: List[str] = Field(default_factory=list)
+    messages: List[str] = Field(default_factory=list)
+
+
+class VerificationInfo(BaseModel):
+    level: str = "single_source_unconfirmed"
+    flags: List[str] = Field(default_factory=list)
 
 
 class RelatedStandard(BaseModel):
@@ -39,21 +59,24 @@ class RecommendationItem(BaseModel):
     confidence: float = Field(ge=0.0, le=1.0)
     verification_level: str                   # verified_multi_source | needs_review | ...
     status: str                               # ACTIVE | WITHDRAWN | SUPERSEDED
-    superseded_by: List[str] = []
-    flags: List[str] = []
-    certification: Optional[CertificationInfo] = None
-    related_standards: List[RelatedStandard] = []
+    superseded_by: List[str] = Field(default_factory=list)
+    flags: List[str] = Field(default_factory=list)
+    certification: CertificationInfo = Field(default_factory=CertificationInfo)
+    amendments: AmendmentsInfo = Field(default_factory=AmendmentsInfo)
+    version_check: VersionCheckInfo = Field(default_factory=VersionCheckInfo)
+    verification: VerificationInfo = Field(default_factory=VerificationInfo)
+    related_standards: List[RelatedStandard] = Field(default_factory=list)
     reasoning: str                            # LLM-generated, clause-level
-    evidence_sources: List[str] = []          # e.g. ["IS 1786, BIS", "QCO-ELEC-2024-01"]
+    evidence_sources: List[str] = Field(default_factory=list)          # e.g. ["IS 1786, BIS", "QCO-ELEC-2024-01"]
     data_quality_note: Optional[str] = None   # data quality explanation
     relevance_score: Optional[float] = None   # match_strength [0.0, 1.0]
     version_info: Optional[Dict[str, Any]] = None
-    replaced_by: List[str] = []
+    replaced_by: List[str] = Field(default_factory=list)
     match_strength: Optional[float] = None
     low_match: Optional[bool] = None
     spec_line: Optional[str] = None
     clarification_prompt: Optional[str] = None
-    matched_terms: List[str] = []
+    matched_terms: List[str] = Field(default_factory=list)
     evidence_clause: Optional[str] = None
     scope: Optional[str] = None
 

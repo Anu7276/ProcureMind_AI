@@ -3,9 +3,22 @@ import { useState } from 'react'
 import {
   ArrowLeft, Shield, AlertTriangle, CheckCircle, XCircle,
   Clock, ChevronDown, ChevronUp, ExternalLink, Info, Award,
-  SearchX, HelpCircle, BarChart3, MessageSquareWarning
+  FileText, SearchX, HelpCircle, BarChart3, MessageSquareWarning
 } from 'lucide-react'
 import { getStandard } from '../services/api'
+
+const BIS_DATASET_NOTE = "This standard doesn't have this information verified in our current dataset — check the official BIS source."
+
+function InfoTooltip({ text = BIS_DATASET_NOTE }) {
+  return (
+    <span className="group relative inline-flex items-center ml-1 cursor-help" title={text}>
+      <Info className="w-3.5 h-3.5 text-slate-400 hover:text-slate-200 transition-colors" />
+      <span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 hidden group-hover:block w-64 p-2 bg-slate-900 border border-slate-700 text-[11px] text-slate-300 rounded shadow-xl z-30 text-center leading-tight">
+        {text}
+      </span>
+    </span>
+  )
+}
 
 // ── Status badge ─────────────────────────────────────────────
 function StatusBadge({ status }) {
@@ -13,7 +26,7 @@ function StatusBadge({ status }) {
     return <span className="badge-active flex items-center gap-1"><CheckCircle className="w-3 h-3" /> ACTIVE</span>
   if (status === 'WITHDRAWN' || status === 'SUPERSEDED')
     return <span className="badge-withdrawn flex items-center gap-1"><XCircle className="w-3 h-3" /> {status}</span>
-  return <span className="badge-review flex items-center gap-1"><Clock className="w-3 h-3" /> {status}</span>
+  return <span className="badge-review flex items-center gap-1"><Clock className="w-3 h-3" /> {status || 'UNKNOWN'}</span>
 }
 
 // ── Verification badge ─────────────────────────────────────────
@@ -23,6 +36,10 @@ function VerificationBadge({ level }) {
     needs_review: { cls: 'badge-review', label: '⚠ Needs review' },
     unverified: { cls: 'badge-withdrawn', label: '✗ Unverified' },
     single_source_unconfirmed: { cls: 'badge-single', label: '~ Single source' },
+    unknown: { cls: 'bg-slate-700/50 text-slate-400 border border-slate-600/30 px-2 py-0.5 rounded text-xs', label: 'Not confirmed' },
+  }
+  if (!level || level === 'unknown' || level === 'unconfirmed') {
+    return <span className="bg-slate-700/50 text-slate-400 border border-slate-600/30 px-2 py-0.5 rounded text-xs">Not confirmed</span>
   }
   const { cls, label } = map[level] || { cls: 'badge-single', label: level }
   return <span className={cls}>{label}</span>
@@ -30,7 +47,7 @@ function VerificationBadge({ level }) {
 
 // ── Confidence bar ─────────────────────────────────────────────
 function ConfidenceBar({ value }) {
-  const pct = Math.round(value * 100)
+  const pct = Math.round((value || 0) * 100)
   const color = pct >= 75 ? 'bg-success-400' : pct >= 50 ? 'bg-brand-400' : 'bg-warning-400'
   return (
     <div className="flex items-center gap-3">
@@ -93,23 +110,209 @@ function LowMatchBanner({ clarificationPrompt }) {
   )
 }
 
-// ── Certification block ────────────────────────────────────────
-function CertificationBlock({ cert }) {
-  if (!cert) return (
-    <div className="text-slate-500 text-xs italic">Certification status: unknown</div>
-  )
-  return (
-    <div className={`rounded-lg px-3 py-2 text-xs ${cert.mandatory ? 'bg-danger-600/10 border border-danger-600/20' : 'bg-white/3 border border-white/10'}`}>
-      <div className="flex items-center gap-2 mb-1">
-        <Award className={`w-3.5 h-3.5 ${cert.mandatory ? 'text-danger-400' : 'text-slate-400'}`} />
-        <span className={`font-semibold ${cert.mandatory ? 'text-danger-400' : 'text-slate-300'}`}>
-          {cert.mandatory === true ? 'Mandatory Certification' : cert.mandatory === false ? 'Voluntary' : 'Status Unknown'}
-        </span>
-        {cert.scheme_name && <span className="text-slate-400 ml-1">— {cert.scheme_name}</span>}
+// ── 1. Certification Section ──────────────────────────────────
+function CertificationSection({ cert }) {
+  const isConfirmed = cert && cert.mandatory !== null && ((cert.schemes && cert.schemes.length > 0) || cert.scheme_name)
+
+  if (!isConfirmed) {
+    return (
+      <div data-section="certification" className="rounded-lg p-3 text-xs bg-slate-800/30 border border-slate-700/40 text-slate-400">
+        <div className="flex items-center justify-between mb-1.5">
+          <div className="flex items-center gap-1.5 font-medium text-slate-300">
+            <Award className="w-3.5 h-3.5 text-slate-400" />
+            <span>Certification</span>
+          </div>
+          <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-700/50 text-slate-400 border border-slate-600/30 inline-flex items-center">
+            Not confirmed <InfoTooltip />
+          </span>
+        </div>
+        <p className="text-slate-400 text-xs">
+          Not available in the dataset / Not confirmed
+        </p>
       </div>
-      {cert.gazette_reference && <div className="text-slate-400">Gazette: {cert.gazette_reference}</div>}
-      {cert.penalty && <div className="text-danger-400/70 mt-1">Penalty: {cert.penalty.substring(0, 120)}{cert.penalty.length > 120 ? '…' : ''}</div>}
-      <div className="text-slate-500 mt-1">Source: {cert.evidence_source}</div>
+    )
+  }
+
+  const isMandatory = cert.mandatory === true
+  return (
+    <div data-section="certification" className={`rounded-lg p-3 text-xs ${isMandatory ? 'bg-danger-600/10 border border-danger-600/20' : 'bg-white/3 border border-white/10'}`}>
+      <div className="flex items-center justify-between mb-1.5">
+        <div className="flex items-center gap-1.5 font-medium text-slate-300">
+          <Award className={`w-3.5 h-3.5 ${isMandatory ? 'text-danger-400' : 'text-slate-400'}`} />
+          <span>Certification</span>
+        </div>
+        <span className={`px-2 py-0.5 rounded text-[11px] font-semibold ${isMandatory ? 'bg-danger-600/20 text-danger-400 border border-danger-600/30' : 'bg-slate-700/40 text-slate-300 border border-slate-600/30'}`}>
+          {isMandatory ? 'Mandatory Certification' : 'Voluntary'}
+        </span>
+      </div>
+      <div className="space-y-1 text-slate-300">
+        {(cert.schemes?.length > 0 || cert.scheme_name) && (
+          <div>Scheme: <span className="font-medium text-white">{cert.schemes?.join(', ') || cert.scheme_name}</span></div>
+        )}
+        {cert.gazette_reference && (
+          <div className="text-slate-400">Gazette: {cert.gazette_reference}</div>
+        )}
+        {cert.penalty && (
+          <div className="text-danger-400/80">Penalty: {cert.penalty.substring(0, 120)}{cert.penalty.length > 120 ? '…' : ''}</div>
+        )}
+        {cert.evidence_source && (
+          <div className="text-slate-500 text-[11px]">Source: {cert.evidence_source}</div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+// ── 2. Version Check Section ──────────────────────────────────
+function VersionCheckSection({ versionCheck, versionInfo, status, replacedBy, supersededBy }) {
+  const vc = versionCheck || versionInfo || {}
+  const currentEditionYear = vc.current_edition_year != null ? vc.current_edition_year : vc.edition_year
+  const citedYear = vc.cited_year
+  const isCurrent = vc.is_current
+  const st = vc.status || status || 'ACTIVE'
+  const succ = (vc.successors && vc.successors.length > 0) ? vc.successors : ((replacedBy && replacedBy.length > 0) ? replacedBy : (supersededBy || []))
+
+  if (currentEditionYear == null || isCurrent === null) {
+    return (
+      <div data-section="version-check" className="rounded-lg p-3 text-xs bg-slate-800/30 border border-slate-700/40 text-slate-400">
+        <div className="flex items-center justify-between mb-1.5">
+          <div className="flex items-center gap-1.5 font-medium text-slate-300">
+            <Clock className="w-3.5 h-3.5 text-slate-400" />
+            <span>Version Check</span>
+          </div>
+          <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-700/50 text-slate-400 border border-slate-600/30 inline-flex items-center">
+            Not confirmed <InfoTooltip />
+          </span>
+        </div>
+        <p className="text-slate-400 text-xs">
+          Edition year not available in dataset
+        </p>
+      </div>
+    )
+  }
+
+  if (isCurrent === true) {
+    return (
+      <div data-section="version-check" className="rounded-lg p-3 text-xs bg-success-600/10 border border-success-600/20 text-slate-300">
+        <div className="flex items-center justify-between mb-1.5">
+          <div className="flex items-center gap-1.5 font-medium text-slate-300">
+            <Clock className="w-3.5 h-3.5 text-success-400" />
+            <span>Version Check</span>
+          </div>
+          <span className="badge-active px-2 py-0.5 rounded text-[11px] font-medium inline-flex items-center gap-1">
+            <CheckCircle className="w-3 h-3 text-success-400" /> Active Edition ({currentEditionYear})
+          </span>
+        </div>
+        <p className="text-slate-300 text-xs">
+          {citedYear
+            ? `Tender cited year ${citedYear} matches current active catalog edition (${currentEditionYear}).`
+            : `Current catalog edition is ${currentEditionYear} (Status: ACTIVE).`}
+        </p>
+      </div>
+    )
+  }
+
+  return (
+    <div data-section="version-check" className="rounded-lg p-3 text-xs bg-danger-600/10 border border-danger-600/20 text-slate-300">
+      <div className="flex items-center justify-between mb-1.5">
+        <div className="flex items-center gap-1.5 font-medium text-slate-300">
+          <Clock className="w-3.5 h-3.5 text-danger-400" />
+          <span>Version Check</span>
+        </div>
+        <span className="badge-withdrawn px-2 py-0.5 rounded text-[11px] font-medium inline-flex items-center gap-1">
+          <AlertTriangle className="w-3 h-3 text-danger-400" /> {st === 'ACTIVE' ? 'Edition Mismatch' : st}
+        </span>
+      </div>
+      <div className="text-xs text-danger-300 space-y-1">
+        {succ.length > 0 && (
+          <div>Replaced by successor(s): <span className="font-mono font-bold text-white">{succ.join(', ')}</span></div>
+        )}
+        {vc.messages?.length > 0 ? (
+          <div>{vc.messages.join(' · ')}</div>
+        ) : (
+          <div>Tender cites {citedYear || 'unspecified'}; current dataset edition is {currentEditionYear || 'different'}.</div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+// ── 3. Amendments Section ─────────────────────────────────────
+function AmendmentsSection({ amendments }) {
+  const isListed = amendments?.status === 'listed' && Array.isArray(amendments?.entries) && amendments.entries.length > 0
+
+  if (!isListed) {
+    return (
+      <div data-section="amendments" className="rounded-lg p-3 text-xs bg-slate-800/30 border border-slate-700/40 text-slate-400">
+        <div className="flex items-center justify-between mb-1.5">
+          <div className="flex items-center gap-1.5 font-medium text-slate-300">
+            <FileText className="w-3.5 h-3.5 text-slate-400" />
+            <span>Amendments</span>
+          </div>
+          <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-700/50 text-slate-400 border border-slate-600/30 inline-flex items-center">
+            Not available in dataset <InfoTooltip />
+          </span>
+        </div>
+        <p className="text-slate-400 text-xs">
+          Not available in the dataset
+        </p>
+      </div>
+    )
+  }
+
+  return (
+    <div data-section="amendments" className="rounded-lg p-3 text-xs bg-white/3 border border-white/10 text-slate-300">
+      <div className="flex items-center justify-between mb-1.5">
+        <div className="flex items-center gap-1.5 font-medium text-slate-300">
+          <FileText className="w-3.5 h-3.5 text-brand-400" />
+          <span>Amendments</span>
+        </div>
+        <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-brand-600/20 text-brand-300 border border-brand-600/30">
+          {amendments.entries.length} Amendment(s) Listed
+        </span>
+      </div>
+      <div className="space-y-1.5 mt-2">
+        {amendments.entries.map((e, idx) => (
+          <div key={idx} className="bg-white/5 px-2.5 py-1.5 rounded border border-white/5">
+            <span className="font-semibold text-white">Amendment #{e.amendment_no || idx + 1}</span>
+            {e.year && <span className="text-slate-400 ml-1.5">({e.year})</span>}
+            {(e.note || e.description) && (
+              <p className="text-slate-300 text-xs mt-0.5">{e.note || e.description}</p>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// ── 4. Verification Section ───────────────────────────────────
+function VerificationSection({ verification, verificationLevel, flags }) {
+  const level = verification?.level || verificationLevel || 'single_source_unconfirmed'
+  const flagList = verification?.flags || flags || []
+
+  return (
+    <div data-section="verification" className="rounded-lg p-3 text-xs bg-white/3 border border-white/10 text-slate-300">
+      <div className="flex items-center justify-between mb-1.5">
+        <div className="flex items-center gap-1.5 font-medium text-slate-300">
+          <Shield className="w-3.5 h-3.5 text-brand-400" />
+          <span>Verification</span>
+        </div>
+        <VerificationBadge level={level} />
+      </div>
+      <div className="mt-2">
+        {flagList.length > 0 ? (
+          <div className="flex flex-wrap gap-1.5">
+            {flagList.map(f => (
+              <span key={f} className="text-[10px] px-2 py-0.5 bg-warning-600/10 border border-warning-600/20 text-warning-400 rounded">
+                {f.replace(/_/g, ' ')}
+              </span>
+            ))}
+          </div>
+        ) : (
+          <span className="text-slate-500 text-[11px]">No quality flags reported</span>
+        )}
+      </div>
     </div>
   )
 }
@@ -202,7 +405,7 @@ function RecommendationCard({ rec, rank }) {
               <div className="flex flex-wrap items-start gap-2 mb-1">
                 <span className="text-brand-400 font-mono font-bold text-base">{rec.is_code}</span>
                 <StatusBadge status={rec.status} />
-                <VerificationBadge level={rec.verification_level} />
+                <VerificationBadge level={rec.verification?.level || rec.verification_level} />
                 {rec.low_match && (
                   <span className="text-[10px] px-2 py-0.5 bg-warning-600/20 border border-warning-600/30 text-warning-400 rounded-full font-medium">
                     ⚠ Low Confidence
@@ -273,10 +476,10 @@ function RecommendationCard({ rec, rank }) {
           )}
         </div>
 
-        {/* Expanded content */}
+        {/* Expanded content: Fixed 4 sections ALWAYS shown in exact same order */}
         {expanded && (
           <div className="px-5 pb-5 border-t border-white/5 pt-4 space-y-4 animate-fade-in">
-            {/* Reasoning */}
+            {/* Reasoning / Why this standard */}
             <div>
               <div className="text-xs text-slate-400 uppercase font-medium tracking-wider mb-2 flex items-center gap-1.5">
                 <Info className="w-3.5 h-3.5" /> Why this standard?
@@ -300,13 +503,38 @@ function RecommendationCard({ rec, rank }) {
               </div>
             )}
 
-            {/* Certification */}
-            <div>
-              <div className="text-xs text-slate-400 uppercase font-medium tracking-wider mb-2 flex items-center gap-1.5">
-                <Award className="w-3.5 h-3.5" /> Certification Requirement
-              </div>
-              <CertificationBlock cert={rec.certification} />
+            {/* ── Fixed Order 4 Sections ── */}
+            <div className="space-y-3 pt-2">
+              {/* 1. Certification */}
+              <CertificationSection cert={rec.certification} />
+
+              {/* 2. Version Check */}
+              <VersionCheckSection
+                versionCheck={rec.version_check}
+                versionInfo={rec.version_info}
+                status={rec.status}
+                replacedBy={rec.replaced_by}
+                supersededBy={rec.superseded_by}
+              />
+
+              {/* 3. Amendments */}
+              <AmendmentsSection amendments={rec.amendments} />
+
+              {/* 4. Verification */}
+              <VerificationSection
+                verification={rec.verification}
+                verificationLevel={rec.verification_level}
+                flags={rec.flags}
+              />
             </div>
+
+            {/* Suggested Tender Specification Line */}
+            {rec.spec_line && (
+              <div className="p-3 bg-brand-950/20 border border-brand-700/30 rounded-lg text-xs">
+                <div className="text-brand-300 font-semibold mb-1">Recommended Tender Spec Clause:</div>
+                <div className="text-slate-300 font-mono text-[11px] leading-relaxed select-all">{rec.spec_line}</div>
+              </div>
+            )}
 
             {/* Related standards */}
             {rec.related_standards?.length > 0 && (
@@ -507,3 +735,15 @@ export default function ResultsPage() {
     </div>
   )
 }
+
+export {
+  RecommendationCard,
+  CertificationSection,
+  VersionCheckSection,
+  AmendmentsSection,
+  VerificationSection,
+  StatusBadge,
+  VerificationBadge,
+  InfoTooltip,
+}
+
