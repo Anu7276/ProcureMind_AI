@@ -183,12 +183,20 @@ async def run_pipeline(
     if input_type == "text" and raw_input and not raw_bytes:
         items = segment_tender(raw_input)
         if len(items) > 1:
+            def _item_uuid(parent_id: str, idx: int) -> str:
+                try:
+                    ns = uuid.UUID(parent_id)
+                except Exception:
+                    ns = uuid.NAMESPACE_DNS
+                return str(uuid.uuid5(ns, f"item_{idx}"))
+
             async def _run_item(it: LineItem) -> tuple[LineItem, Dict[str, Any]]:
                 st: PipelineState = {
                     "raw_input": it.cleaned_text,
                     "raw_bytes": None,
                     "input_type": "text",
-                    "audit_id": f"{audit_id}_item_{it.item_index}",
+                    "audit_id": _item_uuid(audit_id, it.item_index),
+                    "suppress_audit": True,
                     "pipeline_warnings": [],
                     "stages_completed": [],
                 }
@@ -259,6 +267,46 @@ async def run_pipeline(
                 reverse=True,
             )
 
+            merged_returned_codes = [r["is_code"] for r in merged_recs if r.get("is_code")]
+            merged_structured_req = {
+                "items": [
+                    st.get("structured_requirement")
+                    for _, st in item_results_pairs
+                    if st.get("structured_requirement")
+                ]
+            }
+            top_conf = merged_recs[0]["confidence"] if merged_recs else None
+            top_ms = max(
+                [r.get("confidence", 0.0) for r in merged_recs]
+                + [r.get("match_strength", 0.0) or 0.0 for r in merged_recs],
+                default=None,
+            ) if merged_recs else (
+                merged_closest[0].get("match_strength") if merged_closest else None
+            )
+            merged_closest_codes = [m["is_code"] for m in merged_closest if m.get("is_code")]
+
+            audit_saved = False
+            try:
+                from backend.services import postgres_service
+                audit_saved = await postgres_service.write_recommendation_log(
+                    audit_id=audit_id,
+                    query_text=raw_input,
+                    input_type=input_type,
+                    structured_requirement=merged_structured_req,
+                    returned_codes=merged_returned_codes,
+                    pipeline_warnings=list(dict.fromkeys(all_warnings)),
+                    top_confidence=top_conf,
+                    abstained=all_abstained,
+                    abstain_reason="All tender items abstained" if all_abstained else None,
+                    top_match_strength=top_ms,
+                    closest_matches_codes=merged_closest_codes,
+                )
+                if not audit_saved:
+                    all_warnings.append("Audit log not saved: database write failed or unavailable")
+            except Exception as exc:
+                all_warnings.append(f"Audit log not saved: {exc}")
+                audit_saved = False
+
             stages_list = ["document_understanding", "segment", "extract", "retrieve", "verify", "recommend"]
 
             return {
@@ -283,7 +331,7 @@ async def run_pipeline(
                 "closest_matches": merged_closest,
                 "pipeline_warnings": list(dict.fromkeys(all_warnings)),
                 "stages_completed": stages_list,
-                "audit_saved": True,
+                "audit_saved": audit_saved,
             }
 
     initial_state: PipelineState = {

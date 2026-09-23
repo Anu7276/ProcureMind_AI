@@ -560,27 +560,28 @@ async def node_05_recommend(state: PipelineState) -> dict:
         abstained = True
         abstain_reason = state.get("abstain_reason") or "No confident match in the 1,380-standard dataset for this requirement"
         audit_saved = False
-        try:
-            from backend.services import postgres_service
-            audit_saved = await postgres_service.write_recommendation_log(
-                audit_id=audit_id,
-                query_text=state.get("normalized_text", state.get("raw_input", "")),
-                input_type=state.get("input_type", "text"),
-                structured_requirement=state.get("structured_requirement"),
-                returned_codes=[],
-                pipeline_warnings=warnings,
-                top_confidence=None,
-                abstained=True,
-                abstain_reason=abstain_reason,
-                top_match_strength=None,
-                closest_matches_codes=[],
-            )
-            if not audit_saved:
-                warnings.append("Audit log not saved: database write failed or unavailable")
-        except Exception as exc:
-            logger.warning("Node05: audit log write failed: %s", exc)
-            warnings.append(f"Audit log not saved: {exc}")
-            audit_saved = False
+        if not state.get("suppress_audit", False):
+            try:
+                from backend.services import postgres_service
+                audit_saved = await postgres_service.write_recommendation_log(
+                    audit_id=audit_id,
+                    query_text=state.get("normalized_text", state.get("raw_input", "")),
+                    input_type=state.get("input_type", "text"),
+                    structured_requirement=state.get("structured_requirement"),
+                    returned_codes=[],
+                    pipeline_warnings=warnings,
+                    top_confidence=None,
+                    abstained=True,
+                    abstain_reason=abstain_reason,
+                    top_match_strength=None,
+                    closest_matches_codes=[],
+                )
+                if not audit_saved:
+                    warnings.append("Audit log not saved: database write failed or unavailable")
+            except Exception as exc:
+                logger.warning("Node05: audit log write failed: %s", exc)
+                warnings.append(f"Audit log not saved: {exc}")
+                audit_saved = False
 
         return {
             "recommendations": [],
@@ -636,29 +637,30 @@ async def node_05_recommend(state: PipelineState) -> dict:
     closest_codes = [m["is_code"] for m in closest_matches] if closest_matches else []
 
     audit_saved = False
-    try:
-        from backend.services import postgres_service
-        audit_saved = await postgres_service.write_recommendation_log(
-            audit_id=audit_id,
-            query_text=state.get("normalized_text", state.get("raw_input", "")),
-            input_type=state.get("input_type", "text"),
-            structured_requirement=state.get("structured_requirement"),
-            returned_codes=returned_codes,
-            pipeline_warnings=warnings,
-            top_confidence=top_conf,
-            abstained=abstained,
-            abstain_reason=abstain_reason,
-            top_match_strength=top_ms,
-            closest_matches_codes=closest_codes,
-        )
-        if audit_saved:
-            logger.info("Node05: audit log written for audit_id=%s (abstained=%s)", audit_id, abstained)
-        else:
-            warnings.append("Audit log not saved: database write failed or unavailable")
-    except Exception as exc:
-        logger.warning("Node05: audit log write failed: %s", exc)
-        warnings.append(f"Audit log not saved: {exc}")
-        audit_saved = False
+    if not state.get("suppress_audit", False):
+        try:
+            from backend.services import postgres_service
+            audit_saved = await postgres_service.write_recommendation_log(
+                audit_id=audit_id,
+                query_text=state.get("normalized_text", state.get("raw_input", "")),
+                input_type=state.get("input_type", "text"),
+                structured_requirement=state.get("structured_requirement"),
+                returned_codes=returned_codes,
+                pipeline_warnings=warnings,
+                top_confidence=top_conf,
+                abstained=abstained,
+                abstain_reason=abstain_reason,
+                top_match_strength=top_ms,
+                closest_matches_codes=closest_codes,
+            )
+            if audit_saved:
+                logger.info("Node05: audit log written for audit_id=%s (abstained=%s)", audit_id, abstained)
+            else:
+                warnings.append("Audit log not saved: database write failed or unavailable")
+        except Exception as exc:
+            logger.warning("Node05: audit log write failed: %s", exc)
+            warnings.append(f"Audit log not saved: {exc}")
+            audit_saved = False
 
     stages.append("recommend")
     return {

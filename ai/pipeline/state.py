@@ -15,6 +15,7 @@ class PipelineState(TypedDict, total=False):
     input_type: str             # "text" | "pdf" | "docx" | "image"
     audit_id: str               # UUID string, set at pipeline entry
     user_edited: bool           # True when structured requirement was edited by user
+    suppress_audit: bool        # When True, node_05 skips writing audit log for sub-items
 
     # ── Node 00 output — Document Understanding ───────────────────────────────
     # Only populated when input_type != "text"
